@@ -1,10 +1,10 @@
 .scroll-content{
   overflow: hidden;
 }
-.login-content {
+.signUp-content {
   color: grey;
 }
-.login-content .header{
+.signUp-content .header{
   text-align: center;
   margin-top: 20%;
   padding: 10%;
@@ -12,7 +12,7 @@
   font-size: 20px;
   color: red;
 }
-.login-content .input-field {
+.signUp-content .input-field {
   padding: 5px;
   margin: 5%;
   alignment: center;
@@ -20,9 +20,9 @@
   margin-left: 20%;
   margin-right: 20%;
 }
-.login-content .ion-input {
+.signUp-content .ion-input {
 
 }
-.login-content .button-area {
+.signUp-content .button-area {
   text-align: center;
 }

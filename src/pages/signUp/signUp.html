@@ -1,6 +1,6 @@
 
-<ion-content class="login-content" scroll="false">
-  <ion-title class="header">Login</ion-title>
+<ion-content class="signUp-content" scroll="false">
+  <ion-title class="header">Sign Up</ion-title>
   <ion-list class="input-field">
       <!--<ion-label color="grey">Fixed Label</ion-label>-->
     <ion-list>
@@ -14,10 +14,10 @@
         <ion-input class="ion-input" type="password" placeholder="Passwort"></ion-input>
       </ion-item>
     </ion-list>
-  </ion-list>
-  <ion-list class="button-area">
-    <!--<button class="button" ion-button [navPush]="tabsView" (click)="login()">Anmelden</button>-->
-    <button class="button" ion-button (click)="login()">Anmelden</button>
-    <button class="button" ion-button [navPush]="signUpView">Registrieren</button>
+    <ion-list>
+      <ion-item>
+        <ion-input class="ion-input" type="password" placeholder="Passwort wiederholen"></ion-input>
+      </ion-item>
+    </ion-list>
   </ion-list>
 </ion-content>

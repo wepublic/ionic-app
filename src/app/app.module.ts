@@ -9,6 +9,7 @@ import {AboutPage} from "../pages/about/about";
 import {ContactPage} from "../pages/contact/contact";
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { SignUpPage } from '../pages/signUp/signUp';
 import {TabsPage} from "../pages/tabs/tabs";
 
 @NgModule({
@@ -18,6 +19,7 @@ import {TabsPage} from "../pages/tabs/tabs";
     ContactPage,
     HomePage,
     LoginPage,
+    SignUpPage,
     TabsPage,
   ],
   imports: [
@@ -31,6 +33,7 @@ import {TabsPage} from "../pages/tabs/tabs";
     ContactPage,
     HomePage,
     LoginPage,
+    SignUpPage,
     TabsPage,
   ],
   providers: [
