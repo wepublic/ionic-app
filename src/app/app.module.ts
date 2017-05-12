@@ -13,7 +13,10 @@ import { LoginPage } from '../pages/login/login';
 import { MyQuestionsPage } from '../pages/myQuestions/myQuestions';
 import {NewQuestionsPage} from '../pages/newQuestions/newQuestions';
 import { SignUpPage } from '../pages/signUp/signUp';
+import {SettingsPage} from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
+import { UserServiceProvider } from '../providers/user-service/user-service';
+import { QuestionServiceProvider } from '../providers/question-service/question-service';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     LoginPage,
     MyQuestionsPage,
     NewQuestionsPage,
+    SettingsPage,
     SignUpPage,
     TabsPage,
   ],
@@ -42,13 +46,16 @@ import { TabsPage } from '../pages/tabs/tabs';
     LoginPage,
     MyQuestionsPage,
     NewQuestionsPage,
+    SettingsPage,
     SignUpPage,
     TabsPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserServiceProvider,
+    QuestionServiceProvider
   ]
 })
 export class AppModule {}

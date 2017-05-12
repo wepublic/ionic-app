@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Einstellungen</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>Dein Profil</ion-list-header>
+    <ion-item>
+      <ion-label color="primary" stacked>Vorname</ion-label>
+      <ion-input value="{{loggedInUser.firstName}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Nachname</ion-label>
+      <ion-input value="{{loggedInUser.lastName}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked type="email">Email-Adresse</ion-label>
+      <ion-input value="{{loggedInUser.email}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Passwort ändern</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating >Passwort bestätigen</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block>Speichern</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+

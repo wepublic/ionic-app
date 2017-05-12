@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ContactPage } from "../pages/contact/contact";
 import { LoginPage } from '../pages/login/login';
+import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
@@ -23,8 +24,9 @@ export class MyApp {
     //side-menu
     this.pages = [
       { title: 'Fragen', component: TabsPage },
-      { title: 'Abmelden', component: LoginPage },
+      { title: 'Einstellungen', component: SettingsPage },
       { title: 'Kontakt', component: ContactPage },
+      { title: 'Abmelden', component: LoginPage },
     ]
   }
 
