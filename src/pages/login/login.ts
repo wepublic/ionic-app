@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { TabsPage } from '../tabs/tabs';
-import { SignUpPage } from '../signUp/signUp';
+import {SignUpPage} from '../signUp/signUp';
 
 @Component({
   selector: 'page-login',
