@@ -13,16 +13,26 @@ export class LoginPage {
   tabsView = TabsPage;
   signUpView = SignUpPage;
 
+  email = "";
+  password = "";
+
   constructor(public navCtrl: NavController) {
   }
 
   login() {
-    // console.log("login");
-    this.navCtrl.push(this.tabsView);
+    if(true){ //TODO check if user account exists, maybe special message if not activated yet
+      this.navCtrl.push(this.tabsView);
+    }
+    else{
+      //message: wrong input
+    }
   }
 
-  signUp() {
+  emailChanged(text){
+    this.email = text;
+  }
 
-    // console.log("signUp");
+  pwChanged(text){
+    this.password = text;
   }
 }
