@@ -17,6 +17,18 @@ export class SignUpPage {
   constructor(public navCtrl: NavController) {
   }
 
+  onInputMail(text){
+
+  }
+
+  onInputPW(text){
+
+  }
+
+  onInputPWR(text){
+
+  }
+
   checkEntries(){
     console.log(this.emailInput);
     if(this.emailInput==""){
