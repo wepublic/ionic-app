@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Stelle eine Frage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-label color="primary" stacked>Deine Frage</ion-label>
+    <ion-item>
+      <ion-input placeholder="Dein Titel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Dein Text" rows="10"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-list class="category-area">
+    <ion-label color="primary" stacked>Tagge deine Frage</ion-label>
+    <button ion-button>Kategorie</button>
+    <ion-input placeholder="Tag"></ion-input>
+  </ion-list>
+  <ion-list>
+    <button ion-button block>Lass die Politiker drauf los!</button>
+  </ion-list>
+</ion-content>
