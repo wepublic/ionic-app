@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { MyQuestionsPage } from '../pages/myQuestions/myQuestions';
 import {NewQuestionsPage} from '../pages/newQuestions/newQuestions';
+import { EnterQuestionPage } from '../pages/enterQuestion/enterQuestion';
 import { SignUpPage } from '../pages/signUp/signUp';
 import {SettingsPage} from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -28,6 +29,7 @@ import { QuestionServiceProvider } from '../providers/question-service/question-
     LoginPage,
     MyQuestionsPage,
     NewQuestionsPage,
+    EnterQuestionPage,
     SettingsPage,
     SignUpPage,
     TabsPage,
@@ -46,6 +48,7 @@ import { QuestionServiceProvider } from '../providers/question-service/question-
     LoginPage,
     MyQuestionsPage,
     NewQuestionsPage,
+    EnterQuestionPage,
     SettingsPage,
     SignUpPage,
     TabsPage,

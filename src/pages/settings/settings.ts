@@ -40,7 +40,7 @@ export class SettingsPage {
   }
 
   saveSettings(){
-    if(this.newPWValid && this.passwordNew.toString()===this.passwordNewRepeat.toString()){
+    if(this.newPWValid && this.passwordNew.toString()===this.passwordNewRepeat.toString()){ //TODO correct old password?
       //success message
     }
     else{
