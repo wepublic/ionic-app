@@ -20,18 +20,25 @@
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked type="email">Email-Adresse</ion-label>
-      <ion-input value="{{loggedInUser.email}}"></ion-input>
+      <ion-input readonly="true" value="{{loggedInUser.email}}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" floating>Passwort ändern</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-label color="primary" stacked type="email">Passwort ändern</ion-label>
+      <!--<ion-label color="primary" floating></ion-label>-->
     </ion-item>
     <ion-item>
-      <ion-label color="primary" floating >Passwort bestätigen</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" (input)="onInputOldPW($event.target.value)" placeholder="Altes Passwort"></ion-input>
     </ion-item>
     <ion-item>
-      <button ion-button block>Speichern</button>
+      <!--<ion-label color="primary" floating ></ion-label>-->
+      <ion-input type="password" (input)="onInputNewPW($event.target.value)" placeholder="Neues Passwort"></ion-input>
+    </ion-item>
+    <ion-item>
+      <!--<ion-label color="primary" floating ></ion-label>-->
+      <ion-input type="password" (input)="onInputNewPWRepeat($event.target.value)" placeholder="Passwort bestätigen"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block (click)="saveSettings">Speichern</button>
     </ion-item>
   </ion-list>
 </ion-content>

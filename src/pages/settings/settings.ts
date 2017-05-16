@@ -11,6 +11,11 @@ export class SettingsPage {
 
   public loggedInUser: any;
 
+  passwordOld = "";
+  passwordNew = "";
+  passwordNewRepeat = "";
+  newPWValid = false;
+
   constructor(public navCtrl: NavController, public userService: UserServiceProvider) {
     this.loadUserData();
   }
@@ -19,4 +24,27 @@ export class SettingsPage {
     this.loggedInUser = this.userService.loadUserById(0);
   }
 
+  onInputPW(text){
+    this.passwordOld = text;
+    if(text.toString().length >= 8){
+      this.newPWValid = true;
+    }
+  }
+
+  onInputNewPW(text){
+    this.passwordNew = text;
+  }
+
+  onInputNewPWRepeat(text){
+    this.passwordNewRepeat = text;
+  }
+
+  saveSettings(){
+    if(this.newPWValid && this.passwordNew.toString()===this.passwordNewRepeat.toString()){
+      //success message
+    }
+    else{
+      //fail message
+    }
+  }
 }
