@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+//import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {UserServiceProvider} from "../user-service/user-service";
 
@@ -24,8 +24,13 @@ export class QuestionServiceProvider {
     answer: any,
   }>;
 
+  //Default constructor!
+  /*constructor(public http: Http) {
+
+  }*/
+
   //TODO: remove UserService when backend is ready for real data
-  constructor(public http: Http, public userService: UserServiceProvider) {
+  constructor(public userService: UserServiceProvider) {
     this.questionDummies = this.initDummyData();
   }
 

@@ -8,13 +8,15 @@ import { LoginPage } from '../pages/login/login';
 import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { NewQuestionsPage } from '../pages/newQuestions/newQuestions';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = LoginPage;
+  rootPage:any = NewQuestionsPage;
 
   pages: Array<{title: string, component: any}>;
 
