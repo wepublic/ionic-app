@@ -12,18 +12,26 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserServiceProvider {
 
+  //TODO: remove when backend is ready for real data
   userDummies: Array<{ id: number, firstName: string, lastName: string, email: string, password: string }>;
 
   constructor() {
-    this.userDummies = [
-      { id: 0, firstName: 'Angela', lastName: 'Merkel', email: 'merkel@gmail.com', password: '1234'},
-      { id: 1, firstName: 'Test', lastName: 'User', email: 'test@gmail.com', password: 'test'},
-      { id: 2, firstName: 'Dummy', lastName: 'User', email: 'dummy@gmail.com', password: 'passwort'},
-    ]
+    this.userDummies = this.initDummyData();
   }
 
   loadUserById(id) {
     return this.userDummies[id];
+  }
+
+  //TODO: remove when backend is ready for real data
+  initDummyData() {
+    return (
+      [
+        { id: 0, firstName: 'Angela', lastName: 'Merkel', email: 'merkel@gmail.com', password: '1234'},
+        { id: 1, firstName: 'Test', lastName: 'User', email: 'test@gmail.com', password: 'test'},
+        { id: 2, firstName: 'Dummy', lastName: 'User', email: 'dummy@gmail.com', password: 'passwort'},
+      ]
+    );
   }
 
 }
