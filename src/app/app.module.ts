@@ -18,6 +18,7 @@ import {SettingsPage} from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { QuestionServiceProvider } from '../providers/question-service/question-service';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { QuestionServiceProvider } from '../providers/question-service/question-
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
