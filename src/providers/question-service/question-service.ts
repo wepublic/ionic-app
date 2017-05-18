@@ -38,11 +38,11 @@ export class QuestionServiceProvider {
     return this.questionDummies;
   }
 
-  loadMyQuestion() {
+  loadMyQuestions() {
     //TODO: add liked Questions??
     const tmp = [];
     for(let i=0; i < this.questionDummies.length; i++) {
-      if (this.questionDummies[i].creator.id == 1) {
+      if (this.questionDummies[i].creator.id == 2) {
         tmp.push(this.questionDummies[i]);
       }
     }
