@@ -17,4 +17,4 @@ To start developing in a browser (Google Chrome recommended!):
 - IDE: IntelliJ idealU-2017.1.2
 - node: v7.10.0
 - cordova: 7.0.0
-- ionic: 3.0.0
+- ionic: 3.1.2
