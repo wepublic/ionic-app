@@ -15,6 +15,7 @@ export class SettingsPage {
   passwordNew = "";
   passwordNewRepeat = "";
   newPWValid = false;
+  emailInput = this.emailInput;
 
   constructor(public navCtrl: NavController, public userService: UserServiceProvider) {
     this.loadUserData();
@@ -24,11 +25,21 @@ export class SettingsPage {
     this.loggedInUser = this.userService.loadUserById(0);
   }
 
+  onEmailInput(text) {
+    console.log(text);
+    console.log(this.emailInput);
+  }
+
   onInputPW(text){
     this.passwordOld = text;
     if(text.toString().length >= 8){
       this.newPWValid = true;
     }
+  }
+
+  onInputOldPW(text) {
+    //TODO
+    console.log(document.getElementById("vorname"));
   }
 
   onInputNewPW(text){

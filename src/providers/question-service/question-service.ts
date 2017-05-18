@@ -40,7 +40,6 @@ export class QuestionServiceProvider {
 
   loadMyQuestion() {
     //TODO: add liked Questions??
-    //TODO: how should likes be tagged??
     const tmp = [];
     for(let i=0; i < this.questionDummies.length; i++) {
       if (this.questionDummies[i].creator.id == 1) {
@@ -93,6 +92,40 @@ export class QuestionServiceProvider {
         },
         {
           id: 1,
+          content: "Why Baum?",
+          creator: this.getUserById(2),
+          category: "#baum",
+          likeCount: 1000,
+          dislikeCount: 100,
+          flags: [],
+          answer: {
+            id: 0,
+            content: "The answer is Baum!",
+            creator: this.getUserById(0),
+            likeCount: 50,
+            dislikeCount: 1,
+            flags: [],
+          }
+        },
+        {
+          id: 2,
+          content: "Why Baum?",
+          creator: this.getUserById(2),
+          category: "#baum",
+          likeCount: 1000,
+          dislikeCount: 100,
+          flags: [],
+          answer: {
+            id: 0,
+            content: "The answer is Baum!",
+            creator: this.getUserById(0),
+            likeCount: 50,
+            dislikeCount: 1,
+            flags: [],
+          }
+        },
+        {
+          id: 3,
           content: "Why Baum?",
           creator: this.getUserById(2),
           category: "#baum",

@@ -13,7 +13,15 @@ import 'rxjs/add/operator/map';
 export class UserServiceProvider {
 
   //TODO: remove when backend is ready for real data
-  userDummies: Array<{ id: number, firstName: string, lastName: string, email: string, password: string }>;
+  userDummies: Array<
+    {
+      id: number,
+      firstName: string,
+      lastName: string,
+      email: string,
+      password: string,
+      likedQuestions: any,
+    }>;
 
   constructor() {
     this.userDummies = this.initDummyData();
@@ -27,9 +35,12 @@ export class UserServiceProvider {
   initDummyData() {
     return (
       [
-        { id: 0, firstName: 'Angela', lastName: 'Merkel', email: 'merkel@gmail.com', password: '1234'},
-        { id: 1, firstName: 'Test', lastName: 'User', email: 'test@gmail.com', password: 'test'},
-        { id: 2, firstName: 'Dummy', lastName: 'User', email: 'dummy@gmail.com', password: 'passwort'},
+        { id: 0, firstName: 'Angela', lastName: 'Merkel', email: 'merkel@gmail.com', password: '1234',
+          likedQuestions: [0, 1]},
+        { id: 1, firstName: 'Test', lastName: 'User', email: 'test@gmail.com', password: 'test',
+          likedQuestions: [1]},
+        { id: 2, firstName: 'Dummy', lastName: 'User', email: 'dummy@gmail.com', password: 'passwort',
+          likedQuestions: [0]},
       ]
     );
   }

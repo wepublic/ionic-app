@@ -12,7 +12,7 @@
     <ion-list-header>Dein Profil</ion-list-header>
     <ion-item>
       <ion-label color="primary" stacked>Vorname</ion-label>
-      <ion-input value="{{loggedInUser.firstName}}"></ion-input>
+      <ion-input id="vorname" value="{{loggedInUser.firstName}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>Nachname</ion-label>
@@ -20,7 +20,7 @@
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>Email-Adresse</ion-label>
-      <ion-input readonly="true" value="{{loggedInUser.email}}"></ion-input>
+      <ion-input readonly value="{{loggedInUser.email}}" type="email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>Passwort ändern</ion-label>
@@ -38,8 +38,9 @@
       <ion-input type="password" (input)="onInputNewPWRepeat($event.target.value)" placeholder="Passwort bestätigen"></ion-input>
     </ion-item>
     <ion-item>
-      <button ion-button block (click)="saveSettings">Speichern</button>
+      <button ion-button block (click)="saveSettings" large>Speichern</button>
     </ion-item>
+
   </ion-list>
 </ion-content>
 
