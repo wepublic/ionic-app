@@ -19,6 +19,13 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { QuestionServiceProvider } from '../providers/question-service/question-service';
 import { IonicStorageModule } from '@ionic/storage';
+import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {Http, HttpModule} from "@angular/http";
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/lang/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -37,10 +44,18 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      },
+    })
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [MyApp, IonicApp],
   entryComponents: [
     MyApp,
     AboutPage,

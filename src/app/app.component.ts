@@ -7,6 +7,7 @@ import { ContactPage } from "../pages/contact/contact";
 import { LoginPage } from '../pages/login/login';
 import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   templateUrl: 'app.html'
@@ -18,8 +19,12 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
+              translate: TranslateService) {
     this.initApp();
+
+    // this language will be used as a fallback when a translation isn't found in the current language
+    translate.setDefaultLang('de');
 
     //side-menu
     this.pages = [
