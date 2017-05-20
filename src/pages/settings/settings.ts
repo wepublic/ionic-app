@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {NavController, ToastController} from 'ionic-angular';
 import {UserServiceProvider} from "../../providers/user-service/user-service";
 import { Storage } from '@ionic/storage';
 
@@ -18,7 +18,7 @@ export class SettingsPage {
   newPWValid = false;
   emailInput = this.emailInput;
 
-  constructor(public navCtrl: NavController, public userService: UserServiceProvider, public storage: Storage) {
+  constructor(public navCtrl: NavController, public userService: UserServiceProvider, public storage: Storage, private toastCtrl: ToastController) {
     this.loadUserData();
   }
 
@@ -40,11 +40,13 @@ export class SettingsPage {
     if(text.toString().length >= 8){
       this.newPWValid = true;
     }
+    else{
+      this.newPWValid = false;
+    }
   }
 
   onInputOldPW(text) {
-    //TODO
-    console.log(document.getElementById("vorname"));
+    this.passwordOld = text;
   }
 
   onInputNewPW(text){
@@ -57,10 +59,23 @@ export class SettingsPage {
 
   saveSettings(){
     if(this.newPWValid && this.passwordNew.toString()===this.passwordNewRepeat.toString()){ //TODO correct old password?
-      //success message
+      this.storage.set('localUserPassword', this.passwordNew);
+
+      let toast = this.toastCtrl.create({
+        message: 'Profil speichern erfolgreich!',
+        duration: 3000
+      });
+      // toast.onDidDismiss(() => {
+      //   console.log('Dismissed toast');
+      // });
+      toast.present();
     }
     else{
-      //fail message
+      let toast = this.toastCtrl.create({
+        message: 'Profil speichern fehlgeschlagen. Bitte prüfe deine Eingaben',
+        duration: 3000
+      });
+      toast.present();
     }
   }
 }

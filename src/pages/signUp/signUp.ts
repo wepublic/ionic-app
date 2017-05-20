@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {NavController, ToastController} from 'ionic-angular';
 import {LoginPage} from '../login/login';
 
 @Component({
@@ -15,7 +15,7 @@ export class SignUpPage {
   repeatPWValid = false;
   emailInput = this.emailInput;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
   }
 
   onInputMail(text){
@@ -42,6 +42,11 @@ export class SignUpPage {
     if(this.emailValid && this.passwordValid && this.repeatPWValid){
       //TODO Message that the account has to be verified
       //TODO send E-Mail for verification
+      let toast = this.toastCtrl.create({
+        message: 'Check deine E-Mails um deinen Account zu bestätigen.',
+        duration: 3000
+      });
+      toast.present();
       this.navCtrl.push(this.loginView);
     }
   }
