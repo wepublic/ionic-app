@@ -55,7 +55,7 @@ export function createTranslateLoader(http: Http) {
       },
     })
   ],
-  bootstrap: [MyApp, IonicApp],
+  bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     AboutPage,
