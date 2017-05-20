@@ -5,10 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
 import { AllQuestionsPage } from '../pages/allQuestions/allQuestions';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { MyQuestionsPage } from '../pages/myQuestions/myQuestions';
 import {NewQuestionsPage} from '../pages/newQuestions/newQuestions';
@@ -30,10 +28,8 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
     AllQuestionsPage,
     ContactPage,
-    HomePage,
     LoginPage,
     MyQuestionsPage,
     NewQuestionsPage,
@@ -58,10 +54,8 @@ export function createTranslateLoader(http: Http) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
     AllQuestionsPage,
     ContactPage,
-    HomePage,
     LoginPage,
     MyQuestionsPage,
     NewQuestionsPage,

@@ -3,26 +3,26 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Stelle eine Frage</ion-title>
+    <ion-title>{{ 'ENTERQUESTION.ASK_QUESTION' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-    <ion-label color="primary" stacked>Deine Frage</ion-label>
+    <ion-label color="primary" stacked>{{ 'ENTERQUESTION.YOUR_QUESTION' | translate }}</ion-label>
     <ion-item>
-      <ion-input placeholder="Dein Titel"></ion-input>
+      <ion-input placeholder="{{ 'ENTERQUESTION.YOUR_TITLE' | translate }}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Dein Text" rows="10"></ion-input>
+      <ion-input placeholder="{{ 'ENTERQUESTION.YOUR_TEXT' | translate }}" rows="10"></ion-input>
     </ion-item>
   </ion-list>
   <ion-list class="category-area">
-    <ion-label color="primary" stacked>Tagge deine Frage</ion-label>
-    <button ion-button>Kategorie</button>
-    <ion-input placeholder="Tag"></ion-input>
+    <ion-label color="primary" stacked>{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}</ion-label>
+    <button ion-button>{{ 'ENTERQUESTION.CATEGORY' | translate }}</button>
+    <ion-input placeholder="{{ 'ENTERQUESTION.TAG' | translate }}"></ion-input>
   </ion-list>
   <ion-list>
-    <button ion-button block>Lass die Politiker drauf los!</button>
+    <button ion-button block>{{ 'ENTERQUESTION.SUBMIT_QUESTION' | translate }}</button>
   </ion-list>
 </ion-content>

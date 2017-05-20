@@ -1,3 +1,71 @@
 {
-  "TEST": "test"
+  "ALL_QUESTIONS": {
+
+  },
+
+  "CONTACT": {
+    "FACEBOOK_TWITTER_FOLLOW": "Folgt uns auf Facebook, Twitter"
+  },
+
+  "ENTERQUESTION": {
+    "ASK_QUESTION": "Stelle eine Frage",
+    "CATEGORY": "Kategorie",
+    "SUBMIT_QUESTION": "Lass die Politiker drauf los!",
+    "TAG": "Tag",
+    "TAG_QUESTION": "Tagge deine Frage",
+    "YOUR_QUESTION": "Deine Frage",
+    "YOUR_TEXT": "Dein Text",
+    "YOUR_TITLE": "Dein Titel"
+  },
+
+  "LOGIN": {
+    "EMAIL": "E-Mail",
+    "LOGIN": "Login",
+    "PASSWORD": "Passwort",
+    "SIGNIN": "Anmelden",
+    "SIGNUP": "Registrieren"
+  },
+
+  "MENU": {
+    "CONTACT": "Kontakt",
+    "MENU": "Menü",
+    "LOGOUT": "Abmelden",
+    "QUESTIONS": "Fragen",
+    "SETTINGS": "Einstellungen"
+  },
+
+  "MY_QUESTIONS": {
+
+  },
+
+  "NEW_QUESTIONS": {
+
+  },
+
+  "SETTINGS": {
+    "CHANGE_PW": "Passwort ändern",
+    "EMAIL": "Email-Adresse",
+    "FIRSTNAME": "Vorname",
+    "LASTNAME": "Nachname",
+    "NEW_PW": "Neues Passwort",
+    "OLD_PW": "Altes Passwort",
+    "REPEAT_PW": "Passwort bestätigen",
+    "SAVE_SETTINGS": "Speichern",
+    "YOUR_PROFILE": "Dein Profil"
+  },
+
+  "SIGNUP": {
+    "EMAIL": "E-Mail",
+    "PASSWORD": "Passwort",
+    "REPEAT_PW": "Passwort bestätigen",
+    "SIGNUP": "Registrierung",
+    "SUBMIT_SIGNUP": "Registrieren"
+  },
+
+  "TABS": {
+    "ALL": "alle",
+    "MY": "meine",
+    "NEW": "neue"
+  }
+
 }

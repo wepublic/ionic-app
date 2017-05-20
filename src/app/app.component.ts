@@ -28,11 +28,40 @@ export class MyApp {
 
     //side-menu
     this.pages = [
-      { title: 'Fragen', component: TabsPage },
-      { title: 'Einstellungen', component: SettingsPage },
-      { title: 'Kontakt', component: ContactPage },
-      { title: 'Abmelden', component: LoginPage },
+      { title: "", component: TabsPage },
+      { title: "", component: SettingsPage },
+      { title: "", component: ContactPage },
+      { title: "", component: LoginPage },
     ]
+
+    translate.get('MENU.QUESTIONS').subscribe(
+      value => {
+        // value is our translated string
+        this.pages[0].title = value;
+      }
+    );
+
+    translate.get('MENU.SETTINGS').subscribe(
+      value => {
+        // value is our translated string
+        this.pages[1].title = value;
+      }
+    );
+
+    translate.get('MENU.CONTACT').subscribe(
+      value => {
+        // value is our translated string
+        this.pages[2].title = value;
+      }
+    );
+
+    translate.get('MENU.LOGOUT').subscribe(
+      value => {
+        // value is our translated string
+        this.pages[3].title = value;
+      }
+    );
+
   }
 
   initApp() {

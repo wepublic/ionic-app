@@ -3,42 +3,48 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Einstellungen</ion-title>
+    <ion-title>{{ 'MENU.SETTINGS' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Dein Profil</ion-list-header>
+    <ion-list-header>{{ 'SETTINGS.YOUR_PROFILE' | translate }}</ion-list-header>
     <ion-item>
-      <ion-label color="primary" stacked>Vorname</ion-label>
+      <ion-label color="primary" stacked>{{ 'SETTINGS.FIRSTNAME' | translate }}</ion-label>
       <ion-input id="vorname" value="{{loggedInUser.firstName}}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" stacked>Nachname</ion-label>
+      <ion-label color="primary" stacked>{{ 'SETTINGS.LASTNAME' | translate }}</ion-label>
       <ion-input value="{{loggedInUser.lastName}}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" stacked>Email-Adresse</ion-label>
+      <ion-label color="primary" stacked>{{ 'SETTINGS.EMAIL' | translate }}</ion-label>
       <ion-input readonly value="{{loggedInUser.email}}" type="email"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" stacked>Passwort ändern</ion-label>
+      <ion-label color="primary" stacked>{{ 'SETTINGS.CHANGE_PW' | translate }}</ion-label>
       <!--<ion-label color="primary" floating></ion-label>-->
     </ion-item>
     <ion-item>
-      <ion-input type="password" (input)="onInputOldPW($event.target.value)" placeholder="Altes Passwort"></ion-input>
+      <ion-input type="password" (input)="onInputOldPW($event.target.value)"
+                 placeholder="{{ 'SETTINGS.OLD_PW' | translate }}">
+      </ion-input>
     </ion-item>
     <ion-item>
       <!--<ion-label color="primary" floating ></ion-label>-->
-      <ion-input type="password" (input)="onInputNewPW($event.target.value)" placeholder="Neues Passwort"></ion-input>
+      <ion-input type="password" (input)="onInputNewPW($event.target.value)"
+                 placeholder="{{ 'SETTINGS.NEW_PW' | translate }}">
+      </ion-input>
     </ion-item>
     <ion-item>
       <!--<ion-label color="primary" floating ></ion-label>-->
-      <ion-input type="password" (input)="onInputNewPWRepeat($event.target.value)" placeholder="Passwort bestätigen"></ion-input>
+      <ion-input type="password" (input)="onInputNewPWRepeat($event.target.value)"
+                 placeholder="{{ 'SETTINGS.REPEAT_PW' | translate }}">
+      </ion-input>
     </ion-item>
     <ion-item>
-      <button ion-button block (click)="saveSettings()" large>Speichern</button>
+      <button ion-button block (click)="saveSettings()" large>{{ 'SETTINGS.SAVE_SETTINGS' | translate }}</button>
     </ion-item>
 
   </ion-list>
