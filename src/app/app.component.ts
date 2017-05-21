@@ -8,6 +8,8 @@ import { LoginPage } from '../pages/login/login';
 import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
 import {TranslateService} from "@ngx-translate/core";
+import {NewQuestionsPage} from "../pages/newQuestions/newQuestions";
+import { Storage } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,11 +22,21 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-              translate: TranslateService) {
+              translate: TranslateService,public storage: Storage) {
     this.initApp();
 
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('de');
+
+    //Test if user logged in (if userEmail is valid E-Mail address) -> Skip login page
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    this.storage.get('localUserEmail').then((val) => {
+      console.log(val);
+      if(re.test(val)){
+        this.rootPage = NewQuestionsPage;
+        console.log('set new root');
+      }
+    });
 
     //side-menu
     this.pages = [

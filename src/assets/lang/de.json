@@ -20,6 +20,7 @@
 
   "LOGIN": {
     "EMAIL": "E-Mail",
+    "FAILED": "Anmeldung fehlgeschlagen",
     "LOGIN": "Login",
     "PASSWORD": "Passwort",
     "SIGNIN": "Anmelden",
@@ -55,6 +56,7 @@
   },
 
   "SIGNUP": {
+    "CHECK_EMAIL": "Überprüfe deine E-Mail Adresse um deinen Account zu bestätigen.",
     "EMAIL": "E-Mail",
     "PASSWORD": "Passwort",
     "REPEAT_PW": "Passwort bestätigen",

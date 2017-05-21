@@ -4,6 +4,7 @@ import {NavController, ToastController} from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import {SignUpPage} from '../signUp/signUp';
 import { Storage } from '@ionic/storage';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'page-login',
@@ -13,11 +14,15 @@ export class LoginPage {
 
   tabsView = TabsPage;
   signUpView = SignUpPage;
+  messageFailedLogin
 
   email = "";
   password = "";
 
-  constructor(public navCtrl: NavController, public storage: Storage, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public storage: Storage, public toastCtrl: ToastController, translate: TranslateService) {
+    translate.get('LOGIN.FAILED', {value: 'world'}).subscribe((res: string) => {
+      this.messageFailedLogin = res;
+    });
   }
 
   login() {
@@ -29,9 +34,9 @@ export class LoginPage {
       //   console.log('Email is: ', val);
       // });
     }
-    else{
+    else{ //TODO auskommentiert weil nicht erreichbar
       // let toast = this.toastCtrl.create({
-      //   message: 'Anmeldung fehlgeschlagen. E-Mail oder Passwort sind ungültig.',
+      //   message: this.messageFailedLogin,
       //   duration: 3000
       // });
       // toast.present();

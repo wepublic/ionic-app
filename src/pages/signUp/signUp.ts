@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NavController, ToastController} from 'ionic-angular';
 import {LoginPage} from '../login/login';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'page-signUp',
@@ -14,8 +15,12 @@ export class SignUpPage {
   password = "";
   repeatPWValid = false;
   emailInput = this.emailInput;
+  messageCheckEmail;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService) {
+    translate.get('SIGNUP.CHECK_EMAIL', {value: 'world'}).subscribe((res: string) => {
+      this.messageCheckEmail = res;
+    });
   }
 
   onInputMail(text){
@@ -43,7 +48,7 @@ export class SignUpPage {
       //TODO Message that the account has to be verified
       //TODO send E-Mail for verification
       let toast = this.toastCtrl.create({
-        message: 'Check deine E-Mails um deinen Account zu bestätigen.',
+        message: this.messageCheckEmail,
         duration: 3000
       });
       toast.present();
