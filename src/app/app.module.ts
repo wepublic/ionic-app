@@ -20,6 +20,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {Http, HttpModule} from "@angular/http";
+import {SuperTabsModule} from "ionic2-super-tabs";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -45,6 +46,7 @@ export function createTranslateLoader(http: Http) {
       backButtonText: '',
     }),
     IonicStorageModule.forRoot(),
+    SuperTabsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

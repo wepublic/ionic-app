@@ -1,5 +1,16 @@
-<ion-tabs tabsPlacement="top">
-  <ion-tab [root]="tab1Root" tabTitle="{{ 'TABS.ALL' | translate }}"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="{{ 'TABS.NEW' | translate }}"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="{{ 'TABS.MY' | translate }}"></ion-tab>
-</ion-tabs>
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'MENU.QUESTIONS' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <super-tabs [config] = "{ sideMenu: 'left' }">
+    <super-tab [root]="tab1Root" title="{{ 'TABS.ALL' | translate }}"></super-tab>
+    <super-tab [root]="tab2Root" title="{{ 'TABS.NEW' | translate }}"></super-tab>
+    <super-tab [root]="tab3Root" title="{{ 'TABS.MY' | translate }}"></super-tab>
+  </super-tabs>
+</ion-content>
