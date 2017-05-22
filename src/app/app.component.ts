@@ -8,7 +8,6 @@ import { LoginPage } from '../pages/login/login';
 import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
 import {TranslateService} from "@ngx-translate/core";
-import {NewQuestionsPage} from "../pages/newQuestions/newQuestions";
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -33,7 +32,7 @@ export class MyApp {
     this.storage.get('localUserEmail').then((val) => {
       console.log(val);
       if(re.test(val)){
-        this.rootPage = NewQuestionsPage;
+        this.rootPage = TabsPage;
         console.log('set new root');
       }
     });
