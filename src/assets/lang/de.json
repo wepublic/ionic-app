@@ -65,9 +65,12 @@
   },
 
   "TABS": {
-    "ALL": "alle",
-    "MY": "meine",
-    "NEW": "neue"
+    "MY": "Meine",
+    "MATCH": "Match",
+    "LIKED": "Interesse",
+    "SEARCH": "Suche",
+    "TRENDING": "Beliebt",
+    "YOUR_QUESTION": "Deine Frage"
   }
 
 }

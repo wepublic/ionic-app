@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ContactPage } from "../pages/contact/contact";
 import { LoginPage } from '../pages/login/login';
 import { SettingsPage } from '../pages/settings/settings';
-import { TabsPage } from '../pages/tabs/tabs';
+import { AnswerTabsPage } from '../pages/answerTabs/answerTabs';
 import {TranslateService} from "@ngx-translate/core";
 import { Storage } from '@ionic/storage';
 
@@ -32,14 +32,14 @@ export class MyApp {
     this.storage.get('localUserEmail').then((val) => {
       console.log(val);
       if(re.test(val)){
-        this.rootPage = TabsPage;
+        this.rootPage = AnswerTabsPage;
         console.log('set new root');
       }
     });
 
     //side-menu
     this.pages = [
-      { title: "", component: TabsPage },
+      { title: "", component: AnswerTabsPage },
       { title: "", component: SettingsPage },
       { title: "", component: ContactPage },
       { title: "", component: LoginPage },

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import {NavController, ToastController} from 'ionic-angular';
 
-import { TabsPage } from '../tabs/tabs';
 import {SignUpPage} from '../signUp/signUp';
 import { Storage } from '@ionic/storage';
 import {TranslateService} from "@ngx-translate/core";
+import {QuestionTabsPage} from "../questionTabs/questionTabs";
 
 @Component({
   selector: 'page-login',
@@ -12,7 +12,7 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class LoginPage {
 
-  tabsView = TabsPage;
+  tabsView = QuestionTabsPage;
   signUpView = SignUpPage;
   messageFailedLogin
 

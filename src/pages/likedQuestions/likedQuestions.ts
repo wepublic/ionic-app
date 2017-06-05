@@ -3,20 +3,20 @@ import { NavController } from 'ionic-angular';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 
 @Component({
-  selector: 'page-newQuestions',
+  selector: 'page-likedQuestions',
   providers: [QuestionServiceProvider],
-  templateUrl: 'newQuestions.html'
+  templateUrl: 'likedQuestions.html'
 })
-export class NewQuestionsPage {
+export class LikedQuestionsPage {
 
-  public question: any;
+  public questions: any;
 
   constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider) {
-    this.loadNewQuestion();
+    this.loadQuestions();
   }
 
-  loadNewQuestion() {
-    this.question = this.questionService.loadNewQuestion();
+  loadQuestions() {
+    this.questions = this.questionService.loadAllQuestions();
   }
 
 }

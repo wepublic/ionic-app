@@ -3,11 +3,11 @@ import { NavController } from 'ionic-angular';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 
 @Component({
-  selector: 'page-allQuestions',
+  selector: 'page-trendingQuestions',
   providers: [QuestionServiceProvider],
-  templateUrl: 'allQuestions.html'
+  templateUrl: 'trendingQuestions.html'
 })
-export class AllQuestionsPage {
+export class TrendingQuestionsPage {
 
   public questions: any;
 

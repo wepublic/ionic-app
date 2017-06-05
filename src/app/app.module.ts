@@ -5,22 +5,24 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { AllQuestionsPage } from '../pages/allQuestions/allQuestions';
+import { LikedQuestionsPage } from '../pages/likedQuestions/likedQuestions';
 import { ContactPage } from '../pages/contact/contact';
 import { LoginPage } from '../pages/login/login';
 import { MyQuestionsPage } from '../pages/myQuestions/myQuestions';
-import {NewQuestionsPage} from '../pages/newQuestions/newQuestions';
 import { EnterQuestionPage } from '../pages/enterQuestion/enterQuestion';
 import { SignUpPage } from '../pages/signUp/signUp';
 import {SettingsPage} from '../pages/settings/settings';
-import { TabsPage } from '../pages/tabs/tabs';
+import { AnswerTabsPage } from '../pages/answerTabs/answerTabs';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { QuestionServiceProvider } from '../providers/question-service/question-service';
 import { IonicStorageModule } from '@ionic/storage';
 import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {Http, HttpModule} from "@angular/http";
-import {SuperTabsModule} from "ionic2-super-tabs";
+import {QuestionTabsPage} from "../pages/questionTabs/questionTabs";
+import {RandomQuestionsPage} from "../pages/randomQuestions/randomQuestions";
+import {SearchQuestionsPage} from "../pages/searchQuestions/searchQuestions";
+import {TrendingQuestionsPage} from "../pages/trendingQuestions/trendingQuestions";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -29,15 +31,18 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    AllQuestionsPage,
+    AnswerTabsPage,
     ContactPage,
+    EnterQuestionPage,
+    LikedQuestionsPage,
     LoginPage,
     MyQuestionsPage,
-    NewQuestionsPage,
-    EnterQuestionPage,
+    QuestionTabsPage,
+    RandomQuestionsPage,
+    SearchQuestionsPage,
     SettingsPage,
     SignUpPage,
-    TabsPage,
+    TrendingQuestionsPage,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,6 @@ export function createTranslateLoader(http: Http) {
       backButtonText: '',
     }),
     IonicStorageModule.forRoot(),
-    SuperTabsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -58,15 +62,18 @@ export function createTranslateLoader(http: Http) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AllQuestionsPage,
+    AnswerTabsPage,
     ContactPage,
+    EnterQuestionPage,
+    LikedQuestionsPage,
     LoginPage,
     MyQuestionsPage,
-    NewQuestionsPage,
-    EnterQuestionPage,
+    QuestionTabsPage,
+    RandomQuestionsPage,
+    SearchQuestionsPage,
     SettingsPage,
     SignUpPage,
-    TabsPage,
+    TrendingQuestionsPage,
   ],
   providers: [
     StatusBar,
