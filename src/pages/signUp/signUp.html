@@ -12,6 +12,11 @@
       <!--<ion-label color="grey">Fixed Label</ion-label>-->
     <ion-list name="c">
       <ion-item name="d">
+        <ion-input name="eD" class="ion-input" placeholder="{{ 'SIGNUP.USERNAME' | translate }}"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list name="c">
+      <ion-item name="d">
         <ion-input name="eI" class="ion-input" [(ngModel)]="emailInput" (input)="onInputMail($event.target.value)"
                    type="email" placeholder="{{ 'SIGNUP.EMAIL' | translate }}">
         </ion-input>
@@ -32,6 +37,21 @@
         </ion-input>
       </ion-item>
     </ion-list>
+  </ion-list>
+  <ion-list class="button-area">
+    <ion-item>
+      <ion-label>{{ 'SIGNUP.GENDER' | translate }}</ion-label>
+      <ion-select [(ngModel)]="gender" interface="popover">
+        <ion-option value="m">{{ 'SIGNUP.MALE' | translate }}</ion-option>
+        <ion-option value="w">{{ 'SIGNUP.FEMALE' | translate }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'SIGNUP.YEAR' | translate }}</ion-label>
+      <ion-select [(ngModel)]="year" interface="popover">
+        <!--<ion-option [(ng-repeat)]="i in years" [(ng-data)]="years" value="{{i.id}}"></ion-option>-->
+      </ion-select>
+    </ion-item>
   </ion-list>
   <ion-list class="button-area">
     <!--<button class="button" ion-button [navPush]="tabsView" (click)="login()">Anmelden</button>-->

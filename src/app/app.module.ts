@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { LikedQuestionsPage } from '../pages/likedQuestions/likedQuestions';
 import { ContactPage } from '../pages/contact/contact';
 import { LoginPage } from '../pages/login/login';
+import { WelcomePage } from '../pages/welcome/welcome';
 import { MyQuestionsPage } from '../pages/myQuestions/myQuestions';
 import { EnterQuestionPage } from '../pages/enterQuestion/enterQuestion';
 import { SignUpPage } from '../pages/signUp/signUp';
@@ -35,6 +36,7 @@ export function createTranslateLoader(http: Http) {
     ContactPage,
     EnterQuestionPage,
     LikedQuestionsPage,
+    WelcomePage,
     LoginPage,
     MyQuestionsPage,
     QuestionTabsPage,
@@ -67,6 +69,7 @@ export function createTranslateLoader(http: Http) {
     EnterQuestionPage,
     LikedQuestionsPage,
     LoginPage,
+    WelcomePage,
     MyQuestionsPage,
     QuestionTabsPage,
     RandomQuestionsPage,

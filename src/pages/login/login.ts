@@ -43,6 +43,10 @@ export class LoginPage {
     }
   }
 
+  forgotPW() {
+    //TODO
+  }
+
   emailChanged(text){
     this.email = text;
   }

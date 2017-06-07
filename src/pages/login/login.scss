@@ -6,6 +6,7 @@
 }
 .login-content .header{
   text-align: center;
+  alignment: center;
   margin-top: 20%;
   padding: 10%;
   padding-bottom: 0%;
@@ -21,8 +22,15 @@
   margin-right: 20%;
 }
 .login-content .ion-input {
+  alignment: center;
 
 }
 .login-content .button-area {
   text-align: center;
+  padding-left: 10%;
+  width: 80%;
+}
+.login-content .button {
+  text-align: center;
+  width: 100%;
 }

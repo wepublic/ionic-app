@@ -22,6 +22,6 @@
   <ion-list class="button-area">
     <!--<button class="button" ion-button [navPush]="tabsView" (click)="login()">Anmelden</button>-->
     <button class="button" ion-button (click)="login()">{{ 'LOGIN.SIGNIN' | translate }}</button>
-    <button class="button" ion-button [navPush]="signUpView">{{ 'LOGIN.SIGNUP' | translate }}</button>
+    <button class="button" ion-button (click)="forgotPW()">{{ 'LOGIN.FORGOTPW' | translate }}</button>
   </ion-list>
 </ion-content>

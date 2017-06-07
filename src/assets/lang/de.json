@@ -18,13 +18,20 @@
     "YOUR_TITLE": "Dein Titel"
   },
 
+  "WELCOME": {
+    "WELCOME": "WePublic",
+    "LOGIN": "Login",
+    "LOGINFB": "Login mit Facebook",
+    "SIGNUP": "Konto anlegen"
+  },
+
   "LOGIN": {
     "EMAIL": "E-Mail",
     "FAILED": "Anmeldung fehlgeschlagen",
     "LOGIN": "Login",
     "PASSWORD": "Passwort",
     "SIGNIN": "Anmelden",
-    "SIGNUP": "Registrieren"
+    "FORGOTPW": "Passwort vergessen?"
   },
 
   "MENU": {
@@ -61,6 +68,11 @@
     "PASSWORD": "Passwort",
     "REPEAT_PW": "Passwort bestätigen",
     "SIGNUP": "Registrierung",
+    "USERNAME": "Username",
+    "GENDER": "Geschlecht",
+    "YEAR": "Geburtsjahr",
+    "MALE": "männlich",
+    "FEMALE": "weiblich",
     "SUBMIT_SIGNUP": "Registrieren"
   },
 
