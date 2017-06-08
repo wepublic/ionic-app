@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 import {NavController, ToastController} from 'ionic-angular';
 
 import {SignUpPage} from '../signUp/signUp';
@@ -14,15 +15,38 @@ export class LoginPage {
 
   tabsView = QuestionTabsPage;
   signUpView = SignUpPage;
-  messageFailedLogin
-
+  messageFailedLogin;
+  data;
   email = "";
   password = "";
 
-  constructor(public navCtrl: NavController, public storage: Storage, public toastCtrl: ToastController, translate: TranslateService) {
+  constructor(public navCtrl: NavController, public storage: Storage, public toastCtrl: ToastController, public http: Http, translate: TranslateService) {
     translate.get('LOGIN.FAILED', {value: 'world'}).subscribe((res: string) => {
       this.messageFailedLogin = res;
     });
+    // console.log('GET');
+    // let tmp;
+    // this.http.get('http://boiling-spire-20724.herokuapp.com/Questions/').subscribe(data => {
+    //   this.data = data;
+    //   //console.log(data);
+    // });
+    // console.log(this.data);
+    // return tmp;
+    let headers: Headers;
+    headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    let data = {
+      username: this.email,
+      password: this.password
+    };
+
+    this.http.get('http://boiling-spire-20724.herokuapp.com/Questions')
+      .subscribe(res => {
+        console.log(res.json());
+      }, (err) => {
+        console.log(err);
+      });
   }
 
   login() {
