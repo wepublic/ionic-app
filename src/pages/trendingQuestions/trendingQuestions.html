@@ -4,10 +4,10 @@
       <ion-item *ngFor="let question of questions">
         <ion-card>
           <ion-card-header>
-            {{question.category}}
+            Hier werden Kategorien stehen!!
           </ion-card-header>
           <ion-card-content>
-            <p>{{question.content}}</p>
+            <p text-wrap>{{question.text}}</p>
           </ion-card-content>
           <ion-row>
             <ion-col align-self-center text-center>
@@ -17,7 +17,7 @@
                 </button>
               </div>
               <div>
-                <ion-badge item-right>{{question.likeCount}}</ion-badge>
+                <ion-badge item-right>{{question.upvotes}}</ion-badge>
               </div>
             </ion-col>
             <ion-col align-self-center text-center>
@@ -27,7 +27,7 @@
                 </button>
               </div>
               <div>
-                <ion-badge item-right>{{question.dislikeCount}}</ion-badge>
+                <ion-badge item-right>{{question.downvotes}}</ion-badge>
               </div>
             </ion-col>
           </ion-row>

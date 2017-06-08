@@ -40,13 +40,6 @@ export class LoginPage {
       username: this.email,
       password: this.password
     };
-
-    this.http.get('http://boiling-spire-20724.herokuapp.com/Questions')
-      .subscribe(res => {
-        console.log(res.json());
-      }, (err) => {
-        console.log(err);
-      });
   }
 
   login() {

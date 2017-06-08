@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { Http } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {UserServiceProvider} from "../user-service/user-service";
 
@@ -11,6 +11,8 @@ import {UserServiceProvider} from "../user-service/user-service";
 */
 @Injectable()
 export class QuestionServiceProvider {
+
+  private data = [];
 
   //TODO: remove when backend is ready for real data
   questionDummies: Array<{
@@ -24,18 +26,14 @@ export class QuestionServiceProvider {
     answer: any,
   }>;
 
-  //Default constructor!
-  /*constructor(public http: Http) {
-
-  }*/
-
   //TODO: remove UserService when backend is ready for real data
-  constructor(public userService: UserServiceProvider) {
+  constructor(public userService: UserServiceProvider, public http: Http) {
     this.questionDummies = this.initDummyData();
   }
 
   loadAllQuestions() {
-    return this.questionDummies;
+    return this.http.get('http://boiling-spire-20724.herokuapp.com/Questions')
+      .map(res => res.json());
   }
 
   loadMyQuestions() {

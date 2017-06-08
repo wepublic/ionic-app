@@ -16,7 +16,13 @@ export class TrendingQuestionsPage {
   }
 
   loadQuestions() {
-    this.questions = this.questionService.loadAllQuestions();
+    this.questionService.loadAllQuestions().subscribe(data => {
+      if (data !== undefined || data !== []) {
+        if (data.hasOwnProperty('results')) {
+          this.questions = data.results;
+        }
+      }
+    });
   }
 
 }
