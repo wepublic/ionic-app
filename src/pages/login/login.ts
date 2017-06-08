@@ -6,9 +6,11 @@ import {SignUpPage} from '../signUp/signUp';
 import { Storage } from '@ionic/storage';
 import {TranslateService} from "@ngx-translate/core";
 import {QuestionTabsPage} from "../questionTabs/questionTabs";
+import {UserServiceProvider} from "../../providers/user-service/user-service";
 
 @Component({
   selector: 'page-login',
+  providers: [UserServiceProvider],
   templateUrl: 'login.html'
 })
 export class LoginPage {
@@ -20,7 +22,8 @@ export class LoginPage {
   email = "";
   password = "";
 
-  constructor(public navCtrl: NavController, public storage: Storage, public toastCtrl: ToastController, public http: Http, translate: TranslateService) {
+  constructor(public navCtrl: NavController, public storage: Storage, public toastCtrl: ToastController,
+              public http: Http, translate: TranslateService, public userService: UserServiceProvider) {
     translate.get('LOGIN.FAILED', {value: 'world'}).subscribe((res: string) => {
       this.messageFailedLogin = res;
     });
@@ -42,7 +45,21 @@ export class LoginPage {
     };
   }
 
+  ionViewWillEnter() {
+    this.storage.get('localUserEmail').then((val) => {
+      console.log(val);
+    });
+    this.storage.get('localUserPassword').then((val) => {
+      console.log(val);
+    });
+  }
+
   login() {
+    const tmp = this.userService.login(this.email, this.password).subscribe((data) => {
+      console.log(data.json());
+      this.storage.set('localUserToken', data.json());
+    });
+    console.log(tmp);
     if(true){ //TODO check if user account exists, maybe special message if not activated yet
       this.storage.set('localUserEmail', this.email);
       this.storage.set('localUserPassword', this.password);

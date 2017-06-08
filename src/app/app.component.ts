@@ -4,14 +4,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ContactPage } from "../pages/contact/contact";
-import { LoginPage } from '../pages/login/login';
 import { SettingsPage } from '../pages/settings/settings';
 import { AnswerTabsPage } from '../pages/answerTabs/answerTabs';
 import {TranslateService} from "@ngx-translate/core";
 import { Storage } from '@ionic/storage';
 import {WelcomePage} from "../pages/welcome/welcome";
+import {UserServiceProvider} from "../providers/user-service/user-service";
 
 @Component({
+  providers: [UserServiceProvider],
   templateUrl: 'app.html'
 })
 export class MyApp {
@@ -22,7 +23,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-              translate: TranslateService,public storage: Storage) {
+              translate: TranslateService, public storage: Storage, public userService: UserServiceProvider) {
     this.initApp();
 
     // this language will be used as a fallback when a translation isn't found in the current language
@@ -43,7 +44,7 @@ export class MyApp {
       { title: "", component: AnswerTabsPage },
       { title: "", component: SettingsPage },
       { title: "", component: ContactPage },
-      { title: "", component: LoginPage },
+      { title: "", component: WelcomePage },
     ]
 
     translate.get('MENU.QUESTIONS').subscribe(
@@ -86,7 +87,21 @@ export class MyApp {
   }
 
   openPage(page) {
+    //Equals logout-operation
+    if (page.component === WelcomePage) {
+      this.logout();
+    }
     this.nav.setRoot(page.component);
+  }
+
+  logout() {
+    console.log('was here');
+    this.userService.logout(this.storage.get('localUserToken')).subscribe((data) => {
+      console.log(data.json());
+    });
+    this.storage.remove('localUserEmail');
+    this.storage.remove('localUserPassword');
+    this.storage.remove('localUserToken');
   }
 }
 

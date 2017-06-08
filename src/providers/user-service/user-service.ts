@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { Http } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -23,12 +23,25 @@ export class UserServiceProvider {
       likedQuestions: any,
     }>;
 
-  constructor() {
+  constructor(public http: Http) {
     this.userDummies = this.initDummyData();
   }
 
   loadUserById(id) {
     return this.userDummies[id];
+  }
+
+  login(userName, userPassword) {
+    return this.http.post('http://boiling-spire-20724.herokuapp.com/Users/token/',
+      {
+        username: userName,
+        password: userPassword,
+      }
+    );
+  }
+
+  logout(token) {
+    return this.http.get('http://boiling-spire-20724.herokuapp.com/Users/logout/', token);
   }
 
   //TODO: remove when backend is ready for real data

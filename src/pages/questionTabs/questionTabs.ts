@@ -21,7 +21,7 @@ export class QuestionTabsPage {
 
   }
 
-  loadQuestions() {
+  loadAnswers() {
     this.navCtrl.setRoot(this.answersTabs);
   }
 }

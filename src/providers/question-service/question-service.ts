@@ -12,8 +12,6 @@ import {UserServiceProvider} from "../user-service/user-service";
 @Injectable()
 export class QuestionServiceProvider {
 
-  private data = [];
-
   //TODO: remove when backend is ready for real data
   questionDummies: Array<{
     id: number,
