@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {UserServiceProvider} from "../user-service/user-service";
 
@@ -34,15 +34,21 @@ export class QuestionServiceProvider {
       .map(res => res.json());
   }
 
-  loadMyQuestions() {
+  loadMyQuestions(token) {
     //TODO: add liked Questions??
-    const tmp = [];
-    for(let i=0; i < this.questionDummies.length; i++) {
-      if (this.questionDummies[i].creator.id == 2) {
-        tmp.push(this.questionDummies[i]);
-      }
-    }
-    return tmp;
+    // const tmp = [];
+    // for(let i=0; i < this.questionDummies.length; i++) {
+    //   if (this.questionDummies[i].creator.id == 2) {
+    //     tmp.push(this.questionDummies[i]);
+    //   }
+    // }
+    // return tmp;
+    let headersObj = new Headers({'Authorization':'Token ${token}',
+                                  'Content-Type':'text/plain'});
+    return this.http.get('https://boiling-spire-20724.herokuapp.com/Questions/my/', {headers: headersObj})
+      .subscribe((val) => {
+        console.log(val);
+      });
   }
 
   loadNewQuestion() {
