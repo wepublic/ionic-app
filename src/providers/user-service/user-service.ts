@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Headers, Http, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -41,7 +41,11 @@ export class UserServiceProvider {
   }
 
   logout(token) {
-    return this.http.get('http://boiling-spire-20724.herokuapp.com/Users/logout/', token);
+    console.log(token);
+    let headers = new Headers({ Authorization: 'Token ' + token });
+    console.log('Token ' + token);
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get('http://boiling-spire-20724.herokuapp.com/Users/logout/', options);
   }
 
   //TODO: remove when backend is ready for real data

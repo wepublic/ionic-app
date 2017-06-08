@@ -57,7 +57,7 @@ export class LoginPage {
   login() {
     const tmp = this.userService.login(this.email, this.password).subscribe((data) => {
       console.log(data.json());
-      this.storage.set('localUserToken', data.json());
+      this.storage.set('localUserToken', data.json().Token);
     });
     console.log(tmp);
     if(true){ //TODO check if user account exists, maybe special message if not activated yet

@@ -95,13 +95,14 @@ export class MyApp {
   }
 
   logout() {
-    console.log('was here');
-    this.userService.logout(this.storage.get('localUserToken')).subscribe((data) => {
-      console.log(data.json());
+    this.storage.get('localUserToken').then((val) => {
+      this.userService.logout(val).subscribe((data) => {
+        console.log(data.json());
+      });
+      this.storage.remove('localUserEmail');
+      this.storage.remove('localUserPassword');
+      this.storage.remove('localUserToken');
     });
-    this.storage.remove('localUserEmail');
-    this.storage.remove('localUserPassword');
-    this.storage.remove('localUserToken');
   }
 }
 
