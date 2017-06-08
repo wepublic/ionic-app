@@ -43,12 +43,9 @@ export class QuestionServiceProvider {
     //   }
     // }
     // return tmp;
-    let headersObj = new Headers({'Authorization':'Token ${token}',
-                                  'Content-Type':'text/plain'});
+    let headersObj = new Headers({Authorization: 'Token ' + token});
     return this.http.get('https://boiling-spire-20724.herokuapp.com/Questions/my/', {headers: headersObj})
-      .subscribe((val) => {
-        console.log(val);
-      });
+      .map(res => res.json());;
   }
 
   loadNewQuestion() {

@@ -10,6 +10,7 @@ import {TranslateService} from "@ngx-translate/core";
 import { Storage } from '@ionic/storage';
 import {WelcomePage} from "../pages/welcome/welcome";
 import {UserServiceProvider} from "../providers/user-service/user-service";
+import {QuestionTabsPage} from "../pages/questionTabs/questionTabs";
 
 @Component({
   providers: [UserServiceProvider],
@@ -23,7 +24,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-              translate: TranslateService, public storage: Storage, public userService: UserServiceProvider) {
+              public translate: TranslateService, public storage: Storage, public userService: UserServiceProvider) {
     this.initApp();
 
     // this language will be used as a fallback when a translation isn't found in the current language
@@ -31,50 +32,15 @@ export class MyApp {
 
     //Test if user logged in (if userEmail is valid E-Mail address) -> Skip login page
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    this.storage.get('localUserEmail').then((val) => {
+    this.storage.get('localUserToken').then((val) => {
       console.log(val);
-      if(re.test(val)){
-        this.rootPage = AnswerTabsPage;
+      if(val !== null) {
+        this.rootPage = QuestionTabsPage;
         console.log('set new root');
       }
     });
 
-    //side-menu
-    this.pages = [
-      { title: "", component: AnswerTabsPage },
-      { title: "", component: SettingsPage },
-      { title: "", component: ContactPage },
-      { title: "", component: WelcomePage },
-    ]
-
-    translate.get('MENU.QUESTIONS').subscribe(
-      value => {
-        // value is our translated string
-        this.pages[0].title = value;
-      }
-    );
-
-    translate.get('MENU.SETTINGS').subscribe(
-      value => {
-        // value is our translated string
-        this.pages[1].title = value;
-      }
-    );
-
-    translate.get('MENU.CONTACT').subscribe(
-      value => {
-        // value is our translated string
-        this.pages[2].title = value;
-      }
-    );
-
-    translate.get('MENU.LOGOUT').subscribe(
-      value => {
-        // value is our translated string
-        this.pages[3].title = value;
-      }
-    );
-
+    this.initSideMenu();
   }
 
   initApp() {
@@ -84,6 +50,51 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  initSideMenu() {
+    this.pages = [
+      { title: "", component: AnswerTabsPage },
+      { title: "", component: QuestionTabsPage },
+      { title: "", component: SettingsPage },
+      { title: "", component: ContactPage },
+      { title: "", component: WelcomePage },
+    ];
+
+    this.translate.get('MENU.ANSWERS').subscribe(
+      value => {
+        // value is our translated string
+        this.pages[0].title = value;
+      }
+    );
+
+    this.translate.get('MENU.QUESTIONS').subscribe(
+      value => {
+        // value is our translated string
+        this.pages[1].title = value;
+      }
+    );
+
+    this.translate.get('MENU.SETTINGS').subscribe(
+      value => {
+        // value is our translated string
+        this.pages[2].title = value;
+      }
+    );
+
+    this.translate.get('MENU.CONTACT').subscribe(
+      value => {
+        // value is our translated string
+        this.pages[3].title = value;
+      }
+    );
+
+    this.translate.get('MENU.LOGOUT').subscribe(
+      value => {
+        // value is our translated string
+        this.pages[4].title = value;
+      }
+    );
   }
 
   openPage(page) {

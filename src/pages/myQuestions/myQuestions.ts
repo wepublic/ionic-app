@@ -12,16 +12,25 @@ import {QuestionServiceProvider} from "../../providers/question-service/question
 export class MyQuestionsPage {
 
   enterQuestionView = EnterQuestionPage;
-  public questions: any;
+  public questions;
 
   constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider, public storage: Storage) {
     this.loadQuestions();
   }
 
+  ionViewWillEnter() {
+    this.loadQuestions();
+  }
+
   loadQuestions() {
     this.storage.get('localUserToken').then((val) => {
-      console.log("hello token "+val);
-      this.questions = this.questionService.loadMyQuestions(val);
+      this.questionService.loadMyQuestions(val).subscribe((data) => {
+        if (data !== undefined && data !== []) {
+          this.questions = data.map((question) => {
+            return question;
+          });
+        }
+      });
     });
   }
 

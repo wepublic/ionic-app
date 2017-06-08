@@ -15,9 +15,13 @@ export class TrendingQuestionsPage {
     this.loadQuestions();
   }
 
+  ionViewWillEnter() {
+    this.loadQuestions();
+  }
+
   loadQuestions() {
     this.questionService.loadAllQuestions().subscribe(data => {
-      if (data !== undefined || data !== []) {
+      if (data !== undefined && data !== []) {
         if (data.hasOwnProperty('results')) {
           this.questions = data.results;
         }
