@@ -11,9 +11,11 @@ import { Storage } from '@ionic/storage';
 import {WelcomePage} from "../pages/welcome/welcome";
 import {UserServiceProvider} from "../providers/user-service/user-service";
 import {QuestionTabsPage} from "../pages/questionTabs/questionTabs";
+import {TagsServiceProvider} from "../providers/tags-service/tags-service";
+import {TagsHelper} from "../utlis/TagsHelper";
 
 @Component({
-  providers: [UserServiceProvider],
+  providers: [TagsServiceProvider, UserServiceProvider],
   templateUrl: 'app.html'
 })
 export class MyApp {
@@ -24,23 +26,18 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-              public translate: TranslateService, public storage: Storage, public userService: UserServiceProvider) {
+              public translate: TranslateService, public storage: Storage, public userService: UserServiceProvider,
+              public tagsHelper: TagsHelper) {
     this.initApp();
 
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('de');
 
-    //Test if user logged in (if userEmail is valid E-Mail address) -> Skip login page
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    this.storage.get('localUserToken').then((val) => {
-      console.log(val);
-      if(val !== null) {
-        this.rootPage = QuestionTabsPage;
-        console.log('set new root');
-      }
-    });
-
     this.initSideMenu();
+
+    this.tagsHelper.loadAllTagObjects();
+
+    this.checkLoggedInStatus();
   }
 
   initApp() {
@@ -97,6 +94,18 @@ export class MyApp {
     );
   }
 
+  checkLoggedInStatus() {
+    //Test if user logged in (if userEmail is valid E-Mail address) -> Skip login page
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    this.storage.get('localUserToken').then((val) => {
+      console.log(val);
+      if(val !== null) {
+        this.rootPage = QuestionTabsPage;
+        console.log('set new root');
+      }
+    });
+  }
+
   openPage(page) {
     //Equals logout-operation
     if (page.component === WelcomePage) {
@@ -108,6 +117,7 @@ export class MyApp {
   logout() {
     this.storage.get('localUserToken').then((val) => {
       this.userService.logout(val).subscribe((data) => {
+        //TODO: fix internal server error!!!
         console.log(data.json());
       });
       this.storage.remove('localUserEmail');

@@ -30,22 +30,23 @@ export class QuestionServiceProvider {
   }
 
   loadAllQuestions() {
+    //Todo: onError!!!
     return this.http.get('http://boiling-spire-20724.herokuapp.com/Questions')
       .map(res => res.json());
   }
 
+  loadLikedQuestions(token) {
+    //Todo: onError!!!
+    const headersObj = new Headers({Authorization: 'Token ' + token});
+    return this.http.get('https://boiling-spire-20724.herokuapp.com/Questions/upvotes/', {headers: headersObj})
+      .map(res => res.json());
+  }
+
   loadMyQuestions(token) {
-    //TODO: add liked Questions??
-    // const tmp = [];
-    // for(let i=0; i < this.questionDummies.length; i++) {
-    //   if (this.questionDummies[i].creator.id == 2) {
-    //     tmp.push(this.questionDummies[i]);
-    //   }
-    // }
-    // return tmp;
-    let headersObj = new Headers({Authorization: 'Token ' + token});
+    //Todo: onError!!!
+    const headersObj = new Headers({Authorization: 'Token ' + token});
     return this.http.get('https://boiling-spire-20724.herokuapp.com/Questions/my/', {headers: headersObj})
-      .map(res => res.json());;
+      .map(res => res.json());
   }
 
   loadNewQuestion() {

@@ -4,7 +4,9 @@
       <ion-item *ngFor="let question of questions">
         <ion-card>
           <ion-card-header>
-            Hier werden Kategorien stehen!!
+            <span *ngFor="let tag of loadTags(question)">
+              #{{tag.text}}
+            </span>
           </ion-card-header>
           <ion-card-content>
             <p text-wrap>{{question.text}}</p>

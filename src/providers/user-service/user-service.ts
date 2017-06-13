@@ -32,6 +32,7 @@ export class UserServiceProvider {
   }
 
   login(userName, userPassword) {
+    //Todo: onError!!!
     return this.http.post('http://boiling-spire-20724.herokuapp.com/Users/token/',
       {
         username: userName,
@@ -41,10 +42,9 @@ export class UserServiceProvider {
   }
 
   logout(token) {
-    console.log(token);
-    let headers = new Headers({ Authorization: 'Token ' + token });
-    console.log('Token ' + token);
-    let options = new RequestOptions({ headers: headers });
+    //Todo: onError!!!
+    const headers = new Headers({ Authorization: 'Token ' + token });
+    const options = new RequestOptions({ headers: headers });
     return this.http.get('http://boiling-spire-20724.herokuapp.com/Users/logout/', options);
   }
 

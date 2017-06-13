@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { EnterQuestionPage } from '../enterQuestion/enterQuestion';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
+import {TagsHelper} from "../../utlis/TagsHelper";
 
 @Component({
   selector: 'page-myQuestions',
@@ -13,9 +14,12 @@ export class MyQuestionsPage {
 
   enterQuestionView = EnterQuestionPage;
   public questions;
+  public allTags;
 
-  constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider, public storage: Storage) {
+  constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider, public storage: Storage,
+        public tagsHelper: TagsHelper) {
     this.loadQuestions();
+    this.allTags = this.storage.get('allTags');
   }
 
   ionViewWillEnter() {
@@ -32,6 +36,10 @@ export class MyQuestionsPage {
         }
       });
     });
+  }
+
+  loadTags(question) {
+    return this.tagsHelper.loadTagObjects(question.tags);
   }
 
 }
