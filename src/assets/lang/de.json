@@ -1,4 +1,7 @@
 {
+  //Allgemeine Strings
+  "CONNERROR": "Verbindung zum Server fehlgeschlagen, bitte überprüfe deine Internetverbindung.",
+
   "ALL_QUESTIONS": {
 
   },

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
-import {TagsHelper} from "../../utlis/TagsHelper";
+import {TagsHelper} from "../../utils/TagsHelper";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'page-likedQuestions',
@@ -12,9 +13,17 @@ import {TagsHelper} from "../../utlis/TagsHelper";
 export class LikedQuestionsPage {
 
   public questions: any;
+  messageConnectionError;
 
   constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider, public storage: Storage,
-      public tagsHelper: TagsHelper) {
+              public toastCtrl: ToastController, public translate: TranslateService, public tagsHelper: TagsHelper) {
+    translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
+      this.messageConnectionError = res;
+    });
+    this.loadQuestions();
+  }
+
+  ionViewWillEnter() {
     this.loadQuestions();
   }
 
@@ -25,6 +34,13 @@ export class LikedQuestionsPage {
           this.questions = data.map((question) => {
             return question;
           });
+        }
+        else{
+          let toast = this.toastCtrl.create({
+            message: this.messageConnectionError,
+            duration: 3000
+          });
+          toast.present();
         }
       });
     });

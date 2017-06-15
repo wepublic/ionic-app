@@ -25,7 +25,7 @@ import {RandomQuestionsPage} from "../pages/randomQuestions/randomQuestions";
 import {SearchQuestionsPage} from "../pages/searchQuestions/searchQuestions";
 import {TrendingQuestionsPage} from "../pages/trendingQuestions/trendingQuestions";
 import { TagsServiceProvider } from '../providers/tags-service/tags-service';
-import {TagsHelper} from "../utlis/TagsHelper";
+import {TagsHelper} from "../utils/TagsHelper";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');

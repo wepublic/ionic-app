@@ -12,7 +12,7 @@ import {WelcomePage} from "../pages/welcome/welcome";
 import {UserServiceProvider} from "../providers/user-service/user-service";
 import {QuestionTabsPage} from "../pages/questionTabs/questionTabs";
 import {TagsServiceProvider} from "../providers/tags-service/tags-service";
-import {TagsHelper} from "../utlis/TagsHelper";
+import {TagsHelper} from "../utils/TagsHelper";
 
 @Component({
   providers: [TagsServiceProvider, UserServiceProvider],
