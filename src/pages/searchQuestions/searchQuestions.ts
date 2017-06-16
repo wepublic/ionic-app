@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {NavController, ToastController} from 'ionic-angular';
+import {TagsHelper} from "../../utils/TagsHelper";
+import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 
 @Component({
   selector: 'page-search',
@@ -7,8 +9,67 @@ import { NavController } from 'ionic-angular';
 })
 export class SearchQuestionsPage {
 
-  constructor(public navCtrl: NavController) {
+  public tags;
+  public searchKey;
+  public showTags: boolean;
+  public questions;
+  public messageConnectionError;
 
+  constructor(public navCtrl: NavController, public tagsHelper: TagsHelper,
+              public questionService: QuestionServiceProvider, public toastCtrl: ToastController,) {
+    this.tags = this.tagsHelper.getAllTagObjects();
+    this.showTags = true;
+  }
+
+  refreshTags(event) {
+    this.showTags = true;
+
+    // Reset items back to all of the items
+    this.tags = this.tagsHelper.getAllTagObjects();
+
+    // set val to the value of the ev target
+    var val = event.target.value;
+
+    this.searchKey = val;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.tags = this.tags.filter((item) => {
+        return (item.text.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+    }
+  }
+
+  selectTag(tagObject) {
+    this.searchKey = tagObject.text;
+    this.showTags = false;
+    this.loadQuestionsByTagId(tagObject.id);
+  }
+
+  loadTags(question) {
+    return this.tagsHelper.getTagObjects(question.tags);
+  }
+
+  loadQuestionsByTagId(tagId) {
+    this.questionService.loadQuestionByTagId(tagId).subscribe(data => {
+      if (data !== undefined && data !== []) {
+        if (data.hasOwnProperty('results')) {
+          this.questions = data.results;
+          console.log(data);
+        }
+      }
+      else{
+        let toast = this.toastCtrl.create({
+          message: this.messageConnectionError,
+          duration: 3000
+        });
+        toast.present();
+      }
+    });
+  }
+
+  showTagList() {
+    this.showTags = true;
   }
 
 }

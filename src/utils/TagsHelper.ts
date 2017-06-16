@@ -27,8 +27,22 @@ export class TagsHelper {
     });
   }
 
-  //Load tag objects by id
-  loadTagObjects(tagIds) {
+  getAllTagObjects() {
+    if (this.allTagObjects === []) {
+      this.loadAllTagObjects();
+    }
+    if(this.allTagObjects === undefined){
+      let toast = this.toastCtrl.create({
+        message: this.messageConnectionError,
+        duration: 3000
+      });
+      toast.present();
+    }
+    return this.allTagObjects;
+  }
+
+  //Get tag objects by id
+  getTagObjects(tagIds) {
     if (this.allTagObjects === []) {
       this.loadAllTagObjects();
     }

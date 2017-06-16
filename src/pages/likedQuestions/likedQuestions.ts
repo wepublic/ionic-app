@@ -47,7 +47,7 @@ export class LikedQuestionsPage {
   }
 
   loadTags(question) {
-    return this.tagsHelper.loadTagObjects(question.tags);
+    return this.tagsHelper.getTagObjects(question.tags);
   }
 
 }

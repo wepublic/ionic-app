@@ -14,8 +14,8 @@ export class TrendingQuestionsPage {
   public questions: any;
   messageConnectionError;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService, public questionService: QuestionServiceProvider,
-  public tagsHelper: TagsHelper) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService,
+              public questionService: QuestionServiceProvider, public tagsHelper: TagsHelper) {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
       this.messageConnectionError = res;
     });
@@ -44,7 +44,7 @@ export class TrendingQuestionsPage {
   }
 
   loadTags(question) {
-    return this.tagsHelper.loadTagObjects(question.tags);
+    return this.tagsHelper.getTagObjects(question.tags);
   }
 
 }

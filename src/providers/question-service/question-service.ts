@@ -50,6 +50,11 @@ export class QuestionServiceProvider {
     return this.questionDummies[0];
   }
 
+  loadQuestionByTagId(tagId) {
+    return this.http.get('http://boiling-spire-20724.herokuapp.com/Tags/' + tagId + '/Questions/')
+      .map(res => res.json());
+  }
+
   //TODO: TODO: remove when backend is ready for real data
   getUserById(id) {
     return this.userService.loadUserById(id);
