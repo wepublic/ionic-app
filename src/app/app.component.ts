@@ -95,8 +95,7 @@ export class MyApp {
   }
 
   checkLoggedInStatus() {
-    //Test if user logged in (if userEmail is valid E-Mail address) -> Skip login page
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //Test if user logged in -> Skip login page
     this.storage.get('localUserToken').then((val) => {
       console.log(val);
       if(val !== null) {

@@ -3,70 +3,57 @@ import {NavController, ToastController} from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {TranslateService} from "@ngx-translate/core";
 import {WelcomePage} from "../welcome/welcome";
+import {Storage} from "@ionic/storage";
+import {UserServiceProvider} from "../../providers/user-service/user-service";
 
 @Component({
   selector: 'page-signUp',
   templateUrl: 'signUp.html'
 })
 export class SignUpPage {
+  username;
+  password;
+  email;
+  passwordRepeat;
+  sex; //m/w
+  birthYear; //YYYY
+  plz; //2 numbers
+  inputsValid=false;
 
   loginView = LoginPage;
-  emailValid = false;
-  passwordValid = false;
-  password = "";
-  repeatPWValid = false;
-  emailInput = this.emailInput;
-  messageCheckEmail;
   welcomeView = WelcomePage;
-  years = [];
+  messageCheckEmail;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public storage: Storage, public translate: TranslateService,
+              public userService: UserServiceProvider, ) {
     translate.get('SIGNUP.CHECK_EMAIL', {value: 'world'}).subscribe((res: string) => {
       this.messageCheckEmail = res;
     });
-    this.fillYears();
   }
 
-  onInputMail(text){
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(re.test(text)){
-      this.emailValid = true;
-    }
-  }
-
-  onInputPW(text){
-    this.password = text;
-    if(text.toString().length >= 8){
-      this.passwordValid = true;
-    }
-  }
-
-  onInputPWR(text){
-      if(text.toString().length >= 8 && text.toString()===this.password.toString()){
-        this.repeatPWValid = true;
+  checkInputs(){
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var isValidEmail = re.test(this.email);
+    if(isValidEmail) {
+      if (this.password.length >= 8) {
+        if (this.passwordRepeat === this.password) {
+          return true;
+        }
       }
+    }
+    return false;
   }
 
   signUp() {
-    if(this.emailValid && this.passwordValid && this.repeatPWValid){
-      //TODO Message that the account has to be verified
+    if(this.checkInputs()){ //show toast that a verification email has been sent
       //TODO send E-Mail for verification
       let toast = this.toastCtrl.create({
         message: this.messageCheckEmail,
         duration: 3000
       });
       toast.present();
+      this.userService.createNewUser(this.username, this.email, this.password, this.sex, this.birthYear, this.plz);
       this.navCtrl.push(this.loginView);
-    }
-  }
-
-  fillYears() {
-    var currYear = new Date().getFullYear();
-    var earliest = currYear - 150;
-    var i;
-    for(i = currYear-10; i>=earliest; i--){
-      // this.years[i-earliest] = i;
-      this.years.push(i.toString());
     }
   }
 }

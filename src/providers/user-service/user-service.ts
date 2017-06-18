@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Headers, Http, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Storage} from "@ionic/storage";
 
 /*
   Generated class for the UserServiceProvider provider.
@@ -23,12 +24,29 @@ export class UserServiceProvider {
       likedQuestions: any,
     }>;
 
-  constructor(public http: Http) {
+  constructor(public http: Http, public storage: Storage) {
     this.userDummies = this.initDummyData();
   }
 
   loadUserById(id) {
     return this.userDummies[id];
+  }
+
+  createNewUser(username, email, password, sex, birthYear, plz){
+    //Todo: onError!!!
+    //Todo: Send data the server is not ready for yet
+    const headers = new Headers({ 'Content-Type': 'application/json'});
+    const options = new RequestOptions({ headers: headers });
+    var toSend = {
+      username: username,
+      email: email,
+      password: password
+    };
+    this.http.post('https://boiling-spire-20724.herokuapp.com/Users/', JSON.stringify(toSend), options)
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 
   login(userName, userPassword) {
