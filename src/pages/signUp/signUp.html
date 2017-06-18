@@ -6,82 +6,87 @@
   <!--</ion-navbar>-->
 <!--</ion-header>-->
 
-<ion-content class="signUp-content" name="a">
-  <ion-scroll *ngIf="!showTags" scrollY="true" scrollbar="false" style="height: 100%">
-  <ion-title class="header">{{ 'SIGNUP.SIGNUP' | translate }}</ion-title>
-  <ion-list class="input-field" name="b">
-      <!--<ion-label color="grey">Fixed Label</ion-label>-->
-    <ion-list name="c">
-      <ion-item>
-        <ion-label class="label">{{ 'SIGNUP.USERNAME' | translate }}</ion-label>
-      </ion-item>
-      <ion-item name="d">
-        <ion-input name="eD" class="ion-input"></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-list name="c">
-      <ion-item>
-        <ion-label class="label">{{ 'SIGNUP.EMAIL' | translate }}</ion-label>
-      </ion-item>
-      <ion-item name="d">
-        <ion-input name="eI" class="ion-input" [(ngModel)]="emailInput" (input)="onInputMail($event.target.value)"
-                   type="email">
-        </ion-input>
-      </ion-item>
-    </ion-list>
-      <!--<ion-label color="primary">Inline Label</ion-label>-->
-    <ion-list>
-      <ion-item>
-        <ion-label class="label">{{ 'SIGNUP.PASSWORD' | translate }}</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-input class="ion-input" (input)="onInputPW($event.target.value)" type="password">
-        </ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-list>
-      <ion-item>
-        <ion-label class="label">{{ 'SIGNUP.REPEAT_PW' | translate }}</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-input class="ion-input" (input)="onInputPWR($event.target.value)" type="password">
-        </ion-input>
-      </ion-item>
-    </ion-list>
-  </ion-list>
-  <ion-list class="button-area">
-    <ion-item>
-      <ion-label>{{ 'SIGNUP.GENDER' | translate }}</ion-label>
-      <ion-select interface="popover">
-        <ion-option value="m">{{ 'SIGNUP.MALE' | translate }}</ion-option>
-        <ion-option value="w">{{ 'SIGNUP.FEMALE' | translate }}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label class="label">{{ 'SIGNUP.YEAR' | translate }}</ion-label>
-      <ion-select [(ngModel)]="years" placeholder="asdf">
-        <!--<ion-option [(ngModel)]="year" [(ng-repeat)]="#i in years" [(ng-data)]="years" value="{{i}}"></ion-option>-->
-        <!--<ion-option *ngFor="#year of years"></ion-option>-->
-        <ion-option *ngFor="let year of years" value="year">{{ year }}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label class="label">{{ 'SIGNUP.PLZLABEL' | translate }}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-input class="ion-input" (input)="onInputPWR($event.target.value)"
-                 placeholder="{{ 'SIGNUP.PLZ' | translate }}">
-      </ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-list class="button-area">
-    <!--<button class="button" ion-button [navPush]="tabsView" (click)="login()">Anmelden</button>-->
-    <button class="button" ion-button (repeat)="checkEntries()" (change)="checkEntries()" (click)="signUp()">
-      {{ 'SIGNUP.SUBMIT_SIGNUP' | translate }}
-    </button>
-    <button class="button" ion-button [navPush]="welcomeView">
-      {{ 'SIGNUP.CANCEL' | translate }}
-    </button>
-  </ion-list>
-  </ion-scroll>
-</ion-content>
+  <ion-content class="signUp-content" name="a">
+    <ion-scroll *ngIf="!showTags" scrollY="true" scrollbar="false" style="height: 100%">
+      <ion-title class="header">{{ 'SIGNUP.SIGNUP' | translate }}</ion-title>
+      <ion-list class="input-field" name="b">
+          <!--<ion-label color="grey">Fixed Label</ion-label>-->
+        <ion-list name="c">
+          <ion-item>
+            <ion-label class="label">{{ 'SIGNUP.USERNAME' | translate }}</ion-label>
+          </ion-item>
+          <ion-item name="d">
+            <ion-input name="eD" class="ion-input" [(ngModel)]="username"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-list name="c">
+          <ion-item>
+            <ion-label class="label">{{ 'SIGNUP.EMAIL' | translate }}</ion-label>
+          </ion-item>
+          <ion-item name="d">
+            <ion-input name="eI" class="ion-input" [(ngModel)]="email" type="email">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+          <!--<ion-label color="primary">Inline Label</ion-label>-->
+        <ion-list>
+          <ion-item>
+            <ion-label class="label">{{ 'SIGNUP.PASSWORD' | translate }}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-input class="ion-input" [(ngModel)]="password" type="password">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-list>
+          <ion-item>
+            <ion-label class="label">{{ 'SIGNUP.REPEAT_PW' | translate }}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-input class="ion-input" type="password" [(ngModel)]="passwordRepeat">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-list>
+      <ion-list class="button-area">
+        <ion-item>
+          <ion-label>{{ 'SIGNUP.GENDER' | translate }}</ion-label>
+          <ion-select interface="popover" [(ngModel)]="sex">
+            <ion-option value="m">{{ 'SIGNUP.MALE' | translate }}</ion-option>
+            <ion-option value="w">{{ 'SIGNUP.FEMALE' | translate }}</ion-option>
+          </ion-select>
+        </ion-item>
+        <!--<ion-item>-->
+          <!--<ion-label class="label">{{ 'SIGNUP.YEAR' | translate }}</ion-label>-->
+          <!--<ion-select [(ngModel)]="years" placeholder="asdf" interface="popover">-->
+            <!--&lt;!&ndash;<ion-option [(ngModel)]="year" [(ng-repeat)]="#i in years" [(ng-data)]="years" value="{{i}}"></ion-option>&ndash;&gt;-->
+            <!--&lt;!&ndash;<ion-option *ngFor="#year of years"></ion-option>&ndash;&gt;-->
+            <!--<ion-option *ngFor="let year of years">{{ year }}</ion-option>-->
+          <!--</ion-select>-->
+        <!--</ion-item>-->
+        <ion-item>
+          <ion-label class="label">{{ 'SIGNUP.YEARLABEL' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-datetime displayFormat="YYYY" [(ngModel)]="birthYear"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">{{ 'SIGNUP.PLZLABEL' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-input class="ion-input" [(ngModel)]="plz">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list class="button-area">
+        <ion-label class="label">{{ 'SIGNUP.PLZLABEL' | translate }}</ion-label>
+        <!--<button class="button" ion-button [navPush]="tabsView" (click)="login()">Anmelden</button>-->
+        <button class="button" ion-button (repeat)="checkEntries()" (change)="checkEntries()" (click)="signUp()">
+          {{ 'SIGNUP.SUBMIT_SIGNUP' | translate }}
+        </button>
+        <button class="button" ion-button [navPush]="welcomeView">
+          {{ 'SIGNUP.CANCEL' | translate }}
+        </button>
+      </ion-list>
+    </ion-scroll>
+  </ion-content>

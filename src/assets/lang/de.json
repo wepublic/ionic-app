@@ -81,6 +81,7 @@
     "MALE": "männlich",
     "FEMALE": "weiblich",
     "SUBMIT_SIGNUP": "Registrieren",
+    "YEARLABEL": "Geburtsjahr",
     "PLZLABEL": "Woher kommst du? (die ersten 2 Stellen deiner PLZ",
     "PLZ": "**",
     "CANCEL": "Zurück"
