@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NavController, ToastController} from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {TranslateService} from "@ngx-translate/core";
+import {WelcomePage} from "../welcome/welcome";
 
 @Component({
   selector: 'page-signUp',
@@ -16,11 +17,14 @@ export class SignUpPage {
   repeatPWValid = false;
   emailInput = this.emailInput;
   messageCheckEmail;
+  welcomeView = WelcomePage;
+  years = [];
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService) {
     translate.get('SIGNUP.CHECK_EMAIL', {value: 'world'}).subscribe((res: string) => {
       this.messageCheckEmail = res;
     });
+    this.fillYears();
   }
 
   onInputMail(text){
@@ -53,6 +57,16 @@ export class SignUpPage {
       });
       toast.present();
       this.navCtrl.push(this.loginView);
+    }
+  }
+
+  fillYears() {
+    var currYear = new Date().getFullYear();
+    var earliest = currYear - 150;
+    var i;
+    for(i = currYear-10; i>=earliest; i--){
+      // this.years[i-earliest] = i;
+      this.years.push(i.toString());
     }
   }
 }

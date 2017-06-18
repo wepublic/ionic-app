@@ -80,7 +80,10 @@
     "YEAR": "Geburtsjahr",
     "MALE": "männlich",
     "FEMALE": "weiblich",
-    "SUBMIT_SIGNUP": "Registrieren"
+    "SUBMIT_SIGNUP": "Registrieren",
+    "PLZLABEL": "Woher kommst du? (die ersten 2 Stellen deiner PLZ",
+    "PLZ": "**",
+    "CANCEL": "Zurück"
   },
 
   "TABS": {
