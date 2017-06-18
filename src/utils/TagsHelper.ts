@@ -19,7 +19,7 @@ export class TagsHelper {
   //GET all possible tags from server & store in local storage
   loadAllTagObjects() {
     this.tagsService.loadAllTags().subscribe(data => {
-      if (data !== undefined && data !== []) {
+      if (data !== undefined && data !== [] && data !== null) {
         console.log(data);
         this.storage.set('allTags', data);
         this.allTagObjects = data;
@@ -28,7 +28,7 @@ export class TagsHelper {
   }
 
   getAllTagObjects() {
-    if (this.allTagObjects === []) {
+    if (this.allTagObjects === [] || this.allTagObjects === null) {
       this.loadAllTagObjects();
     }
     if(this.allTagObjects === undefined){
@@ -43,7 +43,7 @@ export class TagsHelper {
 
   //Get tag objects by id
   getTagObjects(tagIds) {
-    if (this.allTagObjects === []) {
+    if (this.allTagObjects === [] || this.allTagObjects === null) {
       this.loadAllTagObjects();
     }
     let tags = [];

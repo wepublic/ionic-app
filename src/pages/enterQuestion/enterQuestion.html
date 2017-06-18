@@ -1,19 +1,10 @@
 <ion-content padding>
-  <ion-list>
-    <ion-label color="primary" stacked>{{ 'ENTERQUESTION.YOUR_QUESTION' | translate }}</ion-label>
-    <ion-item>
-      <ion-input placeholder="{{ 'ENTERQUESTION.YOUR_TITLE' | translate }}"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="{{ 'ENTERQUESTION.YOUR_TEXT' | translate }}" rows="10"></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-list class="category-area">
-    <ion-label color="primary" stacked>{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}</ion-label>
-    <button ion-button>{{ 'ENTERQUESTION.CATEGORY' | translate }}</button>
-    <ion-input placeholder="{{ 'ENTERQUESTION.TAG' | translate }}"></ion-input>
-  </ion-list>
-  <ion-list>
-    <button ion-button block>{{ 'ENTERQUESTION.SUBMIT_QUESTION' | translate }}</button>
-  </ion-list>
+  <ion-textarea [(ngModel)]="questionText" placeholder="Stelle Deine Lieblingsfrage..." type="text" wrap="soft" rows="6">
+  </ion-textarea>
+  <ion-item>
+    <ion-select [(ngModel)]="selectedTags" multiple="true" placeholder="#tagMe" cancelText="Abbrechen">
+      <ion-option *ngFor="let tag of tags" value="{{tag.id}}">{{tag.text}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <button ion-button round (click)="publishQuestion()">Veröffentliche Frage</button>
 </ion-content>

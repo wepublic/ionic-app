@@ -17,8 +17,23 @@ export class SearchQuestionsPage {
 
   constructor(public navCtrl: NavController, public tagsHelper: TagsHelper,
               public questionService: QuestionServiceProvider, public toastCtrl: ToastController,) {
-    this.tags = this.tagsHelper.getAllTagObjects();
+    this.initTagsArray();
     this.showTags = true;
+  }
+
+  initTagsArray() {
+    this.tags = this.tagsHelper.getAllTagObjects();
+    this.tags.sort(function(a, b) {
+      var tagA = a.text.toUpperCase(); // ignore upper and lowercase
+      var tagB = b.text.toUpperCase(); // ignore upper and lowercase
+      if (tagA < tagB) {
+        return -1;
+      }
+      if (tagA > tagB) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
   refreshTags(event) {
@@ -36,7 +51,7 @@ export class SearchQuestionsPage {
     if (val && val.trim() != '') {
       this.tags = this.tags.filter((item) => {
         return (item.text.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      });
+      }).sort();
     }
   }
 

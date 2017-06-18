@@ -55,6 +55,19 @@ export class QuestionServiceProvider {
       .map(res => res.json());
   }
 
+  publishQuestion(nText, nTags, token) {
+    const headersObj = new Headers({Authorization: 'Token ' + token});
+    return this.http.post('http://boiling-spire-20724.herokuapp.com/Questions/',
+      {
+        text: nText,
+        tags: nTags,
+      },
+      {
+        headers: headersObj
+      }
+    );
+  }
+
   //TODO: TODO: remove when backend is ready for real data
   getUserById(id) {
     return this.userService.loadUserById(id);
