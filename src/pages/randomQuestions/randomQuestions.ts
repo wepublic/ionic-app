@@ -35,4 +35,12 @@ export class RandomQuestionsPage {
     }
   }
 
+  downvote() {
+    console.log('thumbs down');
+  }
+
+  upvote() {
+    console.log('thumbs up');
+  }
+
 }

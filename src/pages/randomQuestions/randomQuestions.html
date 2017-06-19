@@ -29,5 +29,33 @@
       </ion-col>
     </ion-row>
   </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <div>
+          <ion-slides centeredSlides (ionSlideDidChange)="upvote()">
+            <ion-slide>
+              <ion-icon name="thumbs-up"></ion-icon>
+            </ion-slide>
+            <ion-slide>
+              <span></span>
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div>
+          <ion-slides initialSlide="1" centeredSlides (ionSlideDidChange)="downvote()">
+            <ion-slide>
+              <span></span>
+            </ion-slide>
+            <ion-slide>
+              <ion-icon name="thumbs-down"></ion-icon>
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
