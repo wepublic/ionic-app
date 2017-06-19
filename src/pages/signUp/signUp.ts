@@ -5,6 +5,8 @@ import {TranslateService} from "@ngx-translate/core";
 import {WelcomePage} from "../welcome/welcome";
 import {Storage} from "@ionic/storage";
 import {UserServiceProvider} from "../../providers/user-service/user-service";
+import {AGBPage} from "../agb/agb";
+import {PrivacyPage} from "../privacy/privacy";
 
 @Component({
   selector: 'page-signUp',
@@ -22,6 +24,8 @@ export class SignUpPage {
 
   loginView = LoginPage;
   welcomeView = WelcomePage;
+  agbView = AGBPage;
+  privacyView = PrivacyPage;
   messageCheckEmail;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public storage: Storage, public translate: TranslateService,

@@ -84,7 +84,11 @@
     "YEARLABEL": "Geburtsjahr",
     "PLZLABEL": "Woher kommst du? (die ersten 2 Stellen deiner PLZ",
     "PLZ": "**",
-    "CANCEL": "Zurück"
+    "CANCEL": "Zurück",
+    "CONFIRMLABEL1": "Durch Fortfahren akzeptierst Du unsere",
+    "CONFIRMLABEL2": "und",
+    "AGBLABEL": "AGBs",
+    "PRIVACYLABEL": "Datenschutzrichtlinien"
   },
 
   "TABS": {
@@ -94,6 +98,15 @@
     "SEARCH": "Suche",
     "TRENDING": "Beliebt",
     "YOUR_QUESTION": "Deine Frage"
-  }
+  },
 
+  "AGB": {
+    "TITLE": "WePublic AGBs",
+    "AGB": "langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text "
+  },
+
+  "PRIVACY": {
+    "TITLE": "WePublic AGBs",
+    "PRIVACY": "langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text "
+  }
 }

@@ -6,51 +6,44 @@
   <!--</ion-navbar>-->
 <!--</ion-header>-->
 
-  <ion-content class="signUp-content" name="a">
+  <ion-content class="signUp-content">
     <ion-scroll *ngIf="!showTags" scrollY="true" scrollbar="false" style="height: 100%">
       <ion-title class="header">{{ 'SIGNUP.SIGNUP' | translate }}</ion-title>
-      <ion-list class="input-field" name="b">
+      <ion-list class="input-field">
           <!--<ion-label color="grey">Fixed Label</ion-label>-->
-        <ion-list name="c">
-          <ion-item>
-            <ion-label class="label">{{ 'SIGNUP.USERNAME' | translate }}</ion-label>
-          </ion-item>
-          <ion-item name="d">
-            <ion-input name="eD" class="ion-input" [(ngModel)]="username"></ion-input>
-          </ion-item>
-        </ion-list>
-        <ion-list name="c">
-          <ion-item>
-            <ion-label class="label">{{ 'SIGNUP.EMAIL' | translate }}</ion-label>
-          </ion-item>
-          <ion-item name="d">
-            <ion-input name="eI" class="ion-input" [(ngModel)]="email" type="email">
-            </ion-input>
-          </ion-item>
-        </ion-list>
-          <!--<ion-label color="primary">Inline Label</ion-label>-->
-        <ion-list>
-          <ion-item>
-            <ion-label class="label">{{ 'SIGNUP.PASSWORD' | translate }}</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-input class="ion-input" [(ngModel)]="password" type="password">
-            </ion-input>
-          </ion-item>
-        </ion-list>
-        <ion-list>
-          <ion-item>
-            <ion-label class="label">{{ 'SIGNUP.REPEAT_PW' | translate }}</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-input class="ion-input" type="password" [(ngModel)]="passwordRepeat">
-            </ion-input>
-          </ion-item>
-        </ion-list>
+        <ion-item>
+          <ion-label class="label">{{ 'SIGNUP.USERNAME' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-input name="eD" class="ion-input" [(ngModel)]="username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">{{ 'SIGNUP.EMAIL' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-input name="eI" class="ion-input" [(ngModel)]="email" type="email">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">{{ 'SIGNUP.PASSWORD' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-input class="ion-input" [(ngModel)]="password" type="password">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">{{ 'SIGNUP.REPEAT_PW' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-input class="ion-input" type="password" [(ngModel)]="passwordRepeat">
+          </ion-input>
+        </ion-item>
       </ion-list>
-      <ion-list class="button-area">
+      <ion-list class="additional-info-area">
         <ion-item>
           <ion-label>{{ 'SIGNUP.GENDER' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
           <ion-select interface="popover" [(ngModel)]="sex">
             <ion-option value="m">{{ 'SIGNUP.MALE' | translate }}</ion-option>
             <ion-option value="w">{{ 'SIGNUP.FEMALE' | translate }}</ion-option>
@@ -79,14 +72,22 @@
         </ion-item>
       </ion-list>
       <ion-list class="button-area">
-        <ion-label class="label">{{ 'SIGNUP.PLZLABEL' | translate }}</ion-label>
-        <!--<button class="button" ion-button [navPush]="tabsView" (click)="login()">Anmelden</button>-->
-        <button class="button" ion-button (repeat)="checkEntries()" (change)="checkEntries()" (click)="signUp()">
-          {{ 'SIGNUP.SUBMIT_SIGNUP' | translate }}
-        </button>
-        <button class="button" ion-button [navPush]="welcomeView">
-          {{ 'SIGNUP.CANCEL' | translate }}
-        </button>
+        <ion-item>
+          <ion-label class="label">{{ 'SIGNUP.CONFIRMLABEL1' | translate }}</ion-label>
+          <ion-label class="label" [navPush]="agbView">{{ 'SIGNUP.AGBLABEL' | translate }}</ion-label>
+          <ion-label class="label">{{ 'SIGNUP.CONFIRMLABEL2' | translate }}</ion-label>
+          <ion-label class="label" [navPush]="privacyView">{{ 'SIGNUP.PRIVACYLABEL' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <button class="button" ion-button (repeat)="checkEntries()" (change)="checkEntries()" (click)="signUp()">
+            {{ 'SIGNUP.SUBMIT_SIGNUP' | translate }}
+          </button>
+        </ion-item>
+        <ion-item>
+          <button class="button" ion-button [navPush]="welcomeView">
+            {{ 'SIGNUP.CANCEL' | translate }}
+          </button>
+          </ion-item>
       </ion-list>
     </ion-scroll>
   </ion-content>
