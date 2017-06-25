@@ -22,12 +22,13 @@ import { IonicStorageModule } from '@ionic/storage';
 import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {Http, HttpModule} from "@angular/http";
-import {QuestionTabsPage} from "../pages/questionTabs/questionTabs";
+import {TabsPage} from "../pages/tabs/tabs";
 import {RandomQuestionsPage} from "../pages/randomQuestions/randomQuestions";
 import {SearchQuestionsPage} from "../pages/searchQuestions/searchQuestions";
 import {TrendingQuestionsPage} from "../pages/trendingQuestions/trendingQuestions";
 import { TagsServiceProvider } from '../providers/tags-service/tags-service';
 import {TagsHelper} from "../utils/TagsHelper";
+import {MainMenuPage} from "../pages/mainMenu/mainMenu";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -37,13 +38,14 @@ export function createTranslateLoader(http: Http) {
   declarations: [
     MyApp,
     AnswerTabsPage,
+    MainMenuPage,
     ContactPage,
     EnterQuestionPage,
     LikedQuestionsPage,
     WelcomePage,
     LoginPage,
     MyQuestionsPage,
-    QuestionTabsPage,
+    TabsPage,
     RandomQuestionsPage,
     SearchQuestionsPage,
     SettingsPage,
@@ -71,13 +73,14 @@ export function createTranslateLoader(http: Http) {
   entryComponents: [
     MyApp,
     AnswerTabsPage,
+    MainMenuPage,
     ContactPage,
     EnterQuestionPage,
     LikedQuestionsPage,
     LoginPage,
     WelcomePage,
     MyQuestionsPage,
-    QuestionTabsPage,
+    TabsPage,
     RandomQuestionsPage,
     SearchQuestionsPage,
     SettingsPage,

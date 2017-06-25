@@ -5,23 +5,19 @@ import {AnswerTabsPage} from "../answerTabs/answerTabs";
 import {NavController} from "ionic-angular";
 import {EnterQuestionPage} from "../enterQuestion/enterQuestion";
 import {SearchQuestionsPage} from "../searchQuestions/searchQuestions";
+import {MainMenuPage} from "../mainMenu/mainMenu";
+import {TrendingQuestionsPage} from "../trendingQuestions/trendingQuestions";
 
 @Component({
-  templateUrl: 'questionTabs.html'
+  templateUrl: 'tabs.html'
 })
-export class QuestionTabsPage {
+export class TabsPage {
 
   tab1Root = RandomQuestionsPage;
-  tab2Root = EnterQuestionPage;
-  tab3Root = SearchQuestionsPage;
-
-  answersTabs = AnswerTabsPage;
+  tab2Root = MainMenuPage;
+  tab3Root = TrendingQuestionsPage;
 
   constructor(public navCtrl: NavController) {
 
-  }
-
-  loadAnswers() {
-    this.navCtrl.setRoot(this.answersTabs);
   }
 }

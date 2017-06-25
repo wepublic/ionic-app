@@ -1,0 +1,33 @@
+<!--<ion-header>-->
+  <!--<ion-navbar>-->
+    <!--<button ion-button menuToggle>-->
+      <!--<ion-icon name="menu"></ion-icon>-->
+    <!--</button>-->
+    <!--<ion-title>-->
+      <!--<ion-toggle checked="false" (click)="loadAnswers()"></ion-toggle>-->
+    <!--</ion-title>-->
+  <!--</ion-navbar>-->
+<!--</ion-header>-->
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <button class="button" ion-button [navPush]="openQuestionsView">
+        {{ 'MAINMENU.OPENQUESTIONS' | translate }}
+      </button>
+    </ion-item>
+    <button class="button" ion-button [navPush]="answeredQuestionsView">
+      {{ 'MAINMENU.ANSWEREDQUESTIONS' | translate }}
+    </button>
+    <ion-item>
+      <button class="button" ion-button [navPush]="enterQuestionView">
+        {{ 'MAINMENU.ASK' | translate }}
+      </button>
+    </ion-item>
+    <ion-item>
+      <button class="button" ion-button [navPush]="newsView">
+        {{ 'MAINMENU.NEWS' | translate }}
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>

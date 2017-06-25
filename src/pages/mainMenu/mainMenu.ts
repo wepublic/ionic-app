@@ -4,17 +4,18 @@ import {MyQuestionsPage} from "../myQuestions/myQuestions";
 import {NavController} from "ionic-angular";
 import {TrendingQuestionsPage} from "../trendingQuestions/trendingQuestions";
 import {LikedQuestionsPage} from "../likedQuestions/likedQuestions";
-import {SearchQuestionsPage} from "../searchQuestions/searchQuestions";
+import {NewsPage} from "../news/news";
+import {EnterQuestionPage} from "../enterQuestion/enterQuestion";
 
 @Component({
-  templateUrl: 'answerTabs.html'
+  templateUrl: 'mainMenu.html'
 })
-export class AnswerTabsPage {
+export class MainMenuPage {
 
-  tab1Root = MyQuestionsPage;
-  tab2Root = TrendingQuestionsPage;
-  tab3Root = LikedQuestionsPage;
-  tab4Root = SearchQuestionsPage;
+  openQuestionsView = MyQuestionsPage;
+  answeredQuestionsView = MyQuestionsPage;
+  enterQuestionsView = EnterQuestionPage;
+  newsView = NewsPage;
 
   constructor(public navCtrl: NavController) {
 

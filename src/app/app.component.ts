@@ -10,7 +10,7 @@ import {TranslateService} from "@ngx-translate/core";
 import { Storage } from '@ionic/storage';
 import {WelcomePage} from "../pages/welcome/welcome";
 import {UserServiceProvider} from "../providers/user-service/user-service";
-import {QuestionTabsPage} from "../pages/questionTabs/questionTabs";
+import {TabsPage} from "../pages/tabs/tabs";
 import {TagsServiceProvider} from "../providers/tags-service/tags-service";
 import {TagsHelper} from "../utils/TagsHelper";
 
@@ -52,7 +52,7 @@ export class MyApp {
   initSideMenu() {
     this.pages = [
       { title: "", component: AnswerTabsPage },
-      { title: "", component: QuestionTabsPage },
+      { title: "", component: TabsPage },
       { title: "", component: SettingsPage },
       { title: "", component: ContactPage },
       { title: "", component: WelcomePage },
@@ -99,7 +99,7 @@ export class MyApp {
     this.storage.get('localUserToken').then((val) => {
       console.log(val);
       if(val !== null) {
-        this.rootPage = QuestionTabsPage;
+        this.rootPage = TabsPage;
         console.log('set new root');
       }
     });

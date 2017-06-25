@@ -4,8 +4,9 @@ import {NavController, ToastController} from 'ionic-angular';
 import {SignUpPage} from '../signUp/signUp';
 import { Storage } from '@ionic/storage';
 import {TranslateService} from "@ngx-translate/core";
-import {QuestionTabsPage} from "../questionTabs/questionTabs";
+import {TabsPage} from "../tabs/tabs";
 import {UserServiceProvider} from "../../providers/user-service/user-service";
+import {MainMenuPage} from "../mainMenu/mainMenu";
 
 @Component({
   selector: 'page-login',
@@ -14,7 +15,8 @@ import {UserServiceProvider} from "../../providers/user-service/user-service";
 })
 export class LoginPage {
 
-  tabsView = QuestionTabsPage;
+  tabsView = TabsPage;
+  mainMenuView = MainMenuPage;
   signUpView = SignUpPage;
   messageFailedLogin;
   data;
@@ -46,7 +48,7 @@ export class LoginPage {
     if(true){ //TODO check if user account exists, maybe special message if not activated yet
       this.storage.set('localUserEmail', this.email);
       this.storage.set('localUserPassword', this.password);
-      this.navCtrl.setRoot(this.tabsView);
+      this.navCtrl.setRoot(this.mainMenuView);
       // this.storage.get('localUserEmail').then((val) => {
       //   console.log('Email is: ', val);
       // });
