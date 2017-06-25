@@ -12,6 +12,7 @@ import {TranslateService} from "@ngx-translate/core";
   templateUrl: 'myQuestions.html'
 })
 export class MyQuestionsPage {
+  //This contains questions created by the user as well as liked questions now
 
   enterQuestionView = EnterQuestionPage;
   public questions;

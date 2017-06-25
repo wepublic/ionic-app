@@ -9,6 +9,13 @@
     "FACEBOOK_TWITTER_FOLLOW": "Folgt uns auf Facebook, Twitter"
   },
 
+  "MAINMENU": {
+    "OPENQUESTIONS": "meine offenen Fragen",
+    "ANSWEREDQUESTIONS": "meine beantworteten Fragen",
+    "ASK": "selber fragen",
+    "NEWS": "news"
+  },
+
   "ENTERQUESTION": {
     "ASK_QUESTION": "Stelle eine Frage",
     "CATEGORY": "Kategorie",
@@ -93,9 +100,9 @@
 
   "TABS": {
     "MY": "Meine",
-    "MATCH": "Match",
+    "MATCH": "Bewerten",
     "LIKED": "Interesse",
-    "SEARCH": "Suche",
+    "SEARCH": "Themen",
     "TRENDING": "Beliebt",
     "YOUR_QUESTION": "Deine Frage",
     "ME": "Ich"

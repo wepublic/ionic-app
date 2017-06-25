@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ContactPage } from "../pages/contact/contact";
 import { SettingsPage } from '../pages/settings/settings';
-import { AnswerTabsPage } from '../pages/answerTabs/answerTabs';
 import {TranslateService} from "@ngx-translate/core";
 import { Storage } from '@ionic/storage';
 import {WelcomePage} from "../pages/welcome/welcome";
@@ -51,7 +50,6 @@ export class MyApp {
 
   initSideMenu() {
     this.pages = [
-      { title: "", component: AnswerTabsPage },
       { title: "", component: TabsPage },
       { title: "", component: SettingsPage },
       { title: "", component: ContactPage },

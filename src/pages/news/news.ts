@@ -7,7 +7,7 @@ import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   templateUrl: 'news.html',
-  selector: 'page-likedQuestions',
+  selector: 'page-news',
   providers: [QuestionServiceProvider],
 })
 export class NewsPage {

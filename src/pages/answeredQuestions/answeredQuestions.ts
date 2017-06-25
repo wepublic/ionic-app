@@ -6,11 +6,12 @@ import {TagsHelper} from "../../utils/TagsHelper";
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
-  selector: 'page-likedQuestions',
+  selector: 'page-answeredQuestions',
   providers: [QuestionServiceProvider],
-  templateUrl: 'likedQuestions.html'
+  templateUrl: 'answeredQuestions.html'
 })
-export class LikedQuestionsPage {
+export class AnsweredQuestionsPage {
+  //This contains all answered questions
 
   public questions: any;
   messageConnectionError;

@@ -15,7 +15,7 @@ export class TabsPage {
 
   tab1Root = RandomQuestionsPage;
   tab2Root = MainMenuPage;
-  tab3Root = TrendingQuestionsPage;
+  tab3Root = SearchQuestionsPage;
 
   constructor(public navCtrl: NavController) {
 

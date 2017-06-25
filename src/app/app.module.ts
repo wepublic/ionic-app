@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { LikedQuestionsPage } from '../pages/likedQuestions/likedQuestions';
+import { AnsweredQuestionsPage } from '../pages/answeredQuestions/answeredQuestions';
 import { ContactPage } from '../pages/contact/contact';
 import { LoginPage } from '../pages/login/login';
 import { WelcomePage } from '../pages/welcome/welcome';
@@ -15,7 +15,6 @@ import { SignUpPage } from '../pages/signUp/signUp';
 import {SettingsPage} from '../pages/settings/settings';
 import {AGBPage} from '../pages/agb/agb';
 import {PrivacyPage} from '../pages/privacy/privacy';
-import { AnswerTabsPage } from '../pages/answerTabs/answerTabs';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { QuestionServiceProvider } from '../providers/question-service/question-service';
 import { IonicStorageModule } from '@ionic/storage';
@@ -29,6 +28,7 @@ import {TrendingQuestionsPage} from "../pages/trendingQuestions/trendingQuestion
 import { TagsServiceProvider } from '../providers/tags-service/tags-service';
 import {TagsHelper} from "../utils/TagsHelper";
 import {MainMenuPage} from "../pages/mainMenu/mainMenu";
+import {NewsPage} from "../pages/news/news";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -37,11 +37,10 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    AnswerTabsPage,
     MainMenuPage,
     ContactPage,
     EnterQuestionPage,
-    LikedQuestionsPage,
+    AnsweredQuestionsPage,
     WelcomePage,
     LoginPage,
     MyQuestionsPage,
@@ -53,6 +52,7 @@ export function createTranslateLoader(http: Http) {
     TrendingQuestionsPage,
     AGBPage,
     PrivacyPage,
+    NewsPage,
   ],
   imports: [
     BrowserModule,
@@ -72,11 +72,10 @@ export function createTranslateLoader(http: Http) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AnswerTabsPage,
     MainMenuPage,
     ContactPage,
     EnterQuestionPage,
-    LikedQuestionsPage,
+    AnsweredQuestionsPage,
     LoginPage,
     WelcomePage,
     MyQuestionsPage,
@@ -88,6 +87,7 @@ export function createTranslateLoader(http: Http) {
     TrendingQuestionsPage,
     AGBPage,
     PrivacyPage,
+    NewsPage,
   ],
   providers: [
     StatusBar,
