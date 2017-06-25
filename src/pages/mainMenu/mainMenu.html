@@ -1,22 +1,35 @@
-<ion-content>
-  <ion-list>
-    <ion-item>
-      <button class="button" ion-button [navPush]="openQuestionsView">
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'MENU.START' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row align-items-center="true">
+    <ion-col col-6 align-self-center text-center>
+      <button ion-button class="button" ion-button [navPush]="openQuestionsView">
         {{ 'MAINMENU.OPENQUESTIONS' | translate }}
       </button>
-    </ion-item>
-    <button class="button" ion-button [navPush]="answeredQuestionsView">
-      {{ 'MAINMENU.ANSWEREDQUESTIONS' | translate }}
-    </button>
-    <ion-item>
-      <button class="button" ion-button [navPush]="enterQuestionView">
+    </ion-col>
+    <ion-col col-6 align-self-center text-center>
+      <button ion-button class="button" ion-button [navPush]="answeredQuestionsView" text-wrap>
+        {{ 'MAINMENU.ANSWEREDQUESTIONS' | translate }}
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-6 align-self-center text-center>
+      <button ion-button class="button" ion-button [navPush]="enterQuestionView">
         {{ 'MAINMENU.ASK' | translate }}
       </button>
-    </ion-item>
-    <ion-item>
-      <button class="button" ion-button [navPush]="newsView">
+    </ion-col>
+    <ion-col col-6 align-self-center text-center>
+      <button ion-button class="button" ion-button [navPush]="newsView">
         {{ 'MAINMENU.NEWS' | translate }}
       </button>
-    </ion-item>
-  </ion-list>
+    </ion-col>
+  </ion-row>
 </ion-content>

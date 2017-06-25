@@ -1,4 +1,13 @@
-<ion-content>
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'SEARCH.SEARCH' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
   <ion-title>{{ 'SEARCH.SEARCH_KEY' | translate }}</ion-title>
 
   <ion-searchbar type="text" placeholder="{{ 'TABS.SEARCH' | translate }}" (ionInput)="refreshTags($event)" (click)="showTagList()">

@@ -1,8 +1,9 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-    <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-title>{{ 'ENTERQUESTION.YOUR_QUESTION' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,6 +12,7 @@
   </ion-textarea>
   <ion-item>
     <ion-select [(ngModel)]="selectedTags" multiple="true" placeholder="#tagMe" cancelText="Abbrechen">
+      <ion-title>Wähle Tags</ion-title>
       <ion-option *ngFor="let tag of tags" value="{{tag.id}}">{{tag.text}}</ion-option>
     </ion-select>
   </ion-item>

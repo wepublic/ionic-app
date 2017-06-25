@@ -10,8 +10,8 @@
   },
 
   "MAINMENU": {
-    "OPENQUESTIONS": "meine offenen Fragen",
-    "ANSWEREDQUESTIONS": "meine beantworteten Fragen",
+    "OPENQUESTIONS": "Meine offenen Fragen",
+    "ANSWEREDQUESTIONS": "Beantwortete Fragen",
     "ASK": "selber fragen",
     "NEWS": "news"
   },
@@ -46,10 +46,12 @@
   "MENU": {
     "ANSWERS": "Antworten",
     "CONTACT": "Kontakt",
+    "HOME": "Home",
     "MENU": "Menü",
     "LOGOUT": "Abmelden",
     "QUESTIONS": "Fragen",
-    "SETTINGS": "Einstellungen"
+    "START": "Start",
+    "SETTINGS": "Profil-Einstellungen"
   },
 
   "MY_QUESTIONS": {
@@ -61,6 +63,7 @@
   },
 
   "SEARCH": {
+    "SEARCH": "Suche",
     "SEARCH_KEY": "Suchbegriff"
   },
 

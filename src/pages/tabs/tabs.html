@@ -1,15 +1,7 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-  </ion-navbar>
-</ion-header>
-
 <ion-content>
   <ion-tabs selectedIndex="1">
     <ion-tab tabIcon="shuffle" tabTitle="{{ 'TABS.MATCH' | translate }}" [root]="tab1Root"></ion-tab>
-    <ion-tab tabIcon="leaf" tabTitle="{{ 'TABS.ME' | translate }}" [root]="tab2Root"></ion-tab>
+    <ion-tab tabIcon="contact" tabTitle="{{ 'TABS.ME' | translate }}" [root]="tab2Root"></ion-tab>
     <ion-tab tabIcon="search" tabTitle="{{ 'TABS.SEARCH' | translate }}" [root]="tab3Root"></ion-tab>
   </ion-tabs>
 </ion-content>

@@ -48,7 +48,7 @@ export class LoginPage {
     if(true){ //TODO check if user account exists, maybe special message if not activated yet
       this.storage.set('localUserEmail', this.email);
       this.storage.set('localUserPassword', this.password);
-      this.navCtrl.setRoot(this.mainMenuView);
+      this.navCtrl.setRoot(this.tabsView);
       // this.storage.get('localUserEmail').then((val) => {
       //   console.log('Email is: ', val);
       // });

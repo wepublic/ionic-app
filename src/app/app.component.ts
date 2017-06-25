@@ -12,6 +12,7 @@ import {UserServiceProvider} from "../providers/user-service/user-service";
 import {TabsPage} from "../pages/tabs/tabs";
 import {TagsServiceProvider} from "../providers/tags-service/tags-service";
 import {TagsHelper} from "../utils/TagsHelper";
+import {MainMenuPage} from "../pages/mainMenu/mainMenu";
 
 @Component({
   providers: [TagsServiceProvider, UserServiceProvider],
@@ -56,38 +57,31 @@ export class MyApp {
       { title: "", component: WelcomePage },
     ];
 
-    this.translate.get('MENU.ANSWERS').subscribe(
+    this.translate.get('MENU.HOME').subscribe(
       value => {
         // value is our translated string
         this.pages[0].title = value;
       }
     );
 
-    this.translate.get('MENU.QUESTIONS').subscribe(
+    this.translate.get('MENU.SETTINGS').subscribe(
       value => {
         // value is our translated string
         this.pages[1].title = value;
       }
     );
 
-    this.translate.get('MENU.SETTINGS').subscribe(
+    this.translate.get('MENU.CONTACT').subscribe(
       value => {
         // value is our translated string
         this.pages[2].title = value;
       }
     );
 
-    this.translate.get('MENU.CONTACT').subscribe(
-      value => {
-        // value is our translated string
-        this.pages[3].title = value;
-      }
-    );
-
     this.translate.get('MENU.LOGOUT').subscribe(
       value => {
         // value is our translated string
-        this.pages[4].title = value;
+        this.pages[3].title = value;
       }
     );
   }
