@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {Headers, Http, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Storage} from "@ionic/storage";
+import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
 
 /*
   Generated class for the UserServiceProvider provider.
@@ -50,7 +52,6 @@ export class UserServiceProvider {
   }
 
   login(userName, userPassword) {
-    //Todo: onError!!!
     return this.http.post('http://boiling-spire-20724.herokuapp.com/Users/token/',
       {
         username: userName,
