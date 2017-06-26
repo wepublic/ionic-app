@@ -30,7 +30,7 @@ export class QuestionServiceProvider {
   }
 
   loadAllQuestions() {
-    return this.http.get('http://boiling-spire-20724.herokuapp.com/Questions')
+    return this.http.get('http://boiling-spire-20724.herokuapp.com/Questions/')
       .map(res => res.json());
   }
 
@@ -60,7 +60,7 @@ export class QuestionServiceProvider {
     return this.http.post('http://boiling-spire-20724.herokuapp.com/Questions/',
       {
         text: nText,
-        tags: nTags,
+        tags: nTags
       },
       {
         headers: headersObj

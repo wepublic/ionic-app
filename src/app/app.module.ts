@@ -24,7 +24,6 @@ import {Http, HttpModule} from "@angular/http";
 import {TabsPage} from "../pages/tabs/tabs";
 import {RandomQuestionsPage} from "../pages/randomQuestions/randomQuestions";
 import {SearchQuestionsPage} from "../pages/searchQuestions/searchQuestions";
-import {TrendingQuestionsPage} from "../pages/trendingQuestions/trendingQuestions";
 import { TagsServiceProvider } from '../providers/tags-service/tags-service';
 import {TagsHelper} from "../utils/TagsHelper";
 import {MainMenuPage} from "../pages/mainMenu/mainMenu";
@@ -49,7 +48,6 @@ export function createTranslateLoader(http: Http) {
     SearchQuestionsPage,
     SettingsPage,
     SignUpPage,
-    TrendingQuestionsPage,
     AGBPage,
     PrivacyPage,
     NewsPage,
@@ -84,7 +82,6 @@ export function createTranslateLoader(http: Http) {
     SearchQuestionsPage,
     SettingsPage,
     SignUpPage,
-    TrendingQuestionsPage,
     AGBPage,
     PrivacyPage,
     NewsPage,

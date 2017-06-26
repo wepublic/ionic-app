@@ -12,7 +12,6 @@ import {UserServiceProvider} from "../providers/user-service/user-service";
 import {TabsPage} from "../pages/tabs/tabs";
 import {TagsServiceProvider} from "../providers/tags-service/tags-service";
 import {TagsHelper} from "../utils/TagsHelper";
-import {MainMenuPage} from "../pages/mainMenu/mainMenu";
 
 @Component({
   providers: [TagsServiceProvider, UserServiceProvider],
