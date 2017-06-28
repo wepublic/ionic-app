@@ -47,7 +47,8 @@ export class QuestionServiceProvider {
   }
 
   loadNewQuestion() {
-    return this.questionDummies[0];
+    const i = Math.floor(Math.random() * 4);
+    return this.questionDummies[i];
   }
 
   loadQuestionByTagId(tagId) {
@@ -107,10 +108,10 @@ export class QuestionServiceProvider {
         },
         {
           id: 1,
-          content: "Why Baum?",
+          content: "Alles fake?",
           creator: this.getUserById(2),
-          category: "#baum",
-          likeCount: 1000,
+          category: "#fake",
+          likeCount: 100,
           dislikeCount: 100,
           flags: [],
           answer: {
@@ -127,7 +128,7 @@ export class QuestionServiceProvider {
           content: "Why Baum?",
           creator: this.getUserById(2),
           category: "#baum",
-          likeCount: 1000,
+          likeCount: 3000,
           dislikeCount: 100,
           flags: [],
           answer: {
@@ -141,9 +142,9 @@ export class QuestionServiceProvider {
         },
         {
           id: 3,
-          content: "Why Baum?",
+          content: "NEEEEIIIINNN",
           creator: this.getUserById(2),
-          category: "#baum",
+          category: "#whatever",
           likeCount: 1000,
           dislikeCount: 100,
           flags: [],

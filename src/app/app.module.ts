@@ -28,6 +28,7 @@ import { TagsServiceProvider } from '../providers/tags-service/tags-service';
 import {TagsHelper} from "../utils/TagsHelper";
 import {MainMenuPage} from "../pages/mainMenu/mainMenu";
 import {NewsPage} from "../pages/news/news";
+import {SwingModule} from "angular2-swing";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -55,6 +56,7 @@ export function createTranslateLoader(http: Http) {
   imports: [
     BrowserModule,
     HttpModule,
+    SwingModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
     }),
