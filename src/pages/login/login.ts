@@ -57,7 +57,7 @@ export class LoginPage {
   }
 
   forgotPW() {
-    //TODO
+    //TODO -> Backend needs to support EMails
   }
 
   emailChanged(text){
