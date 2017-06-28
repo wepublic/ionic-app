@@ -1,3 +1,34 @@
 page-mainMenu {
 
 }
+.button {
+  height: 90%;
+  width: 90%;
+  text-align: center;
+  text-transform: none;
+  overflow: hidden;
+}
+.button-icon {
+  width: 100%;
+  height: 60%;
+  padding-bottom: 20px;
+  overflow: hidden;
+}
+.button-text {
+  width: 100%;
+  height: 40%;
+  font-size: 10px;
+  text-align: center;
+  text-transform: none;
+  overflow: hidden;
+}
+
+.row {
+  width: 100%;
+  height: 40%;
+}
+
+.col {
+  width: 50%;
+  height: 100%;
+}

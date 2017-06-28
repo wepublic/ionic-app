@@ -11,8 +11,8 @@ import {AnsweredQuestionsPage} from "../answeredQuestions/answeredQuestions";
 })
 export class MainMenuPage {
 
-  openQuestionsView = AnsweredQuestionsPage;
-  answeredQuestionsView = MyQuestionsPage;
+  openQuestionsView = MyQuestionsPage;
+  answeredQuestionsView = AnsweredQuestionsPage;
   enterQuestionView = EnterQuestionPage;
   newsView = NewsPage;
 

@@ -5,9 +5,6 @@ import {TranslateService} from "@ngx-translate/core";
 
 import {
   StackConfig,
-  Stack,
-  Card,
-  ThrowEvent,
   DragEvent,
   SwingStackComponent,
   SwingCardComponent} from 'angular2-swing';

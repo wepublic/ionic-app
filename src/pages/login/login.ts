@@ -7,7 +7,6 @@ import {TranslateService} from "@ngx-translate/core";
 import {TabsPage} from "../tabs/tabs";
 import {UserServiceProvider} from "../../providers/user-service/user-service";
 import {MainMenuPage} from "../mainMenu/mainMenu";
-import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'page-login',
@@ -41,7 +40,7 @@ export class LoginPage {
   // }
 
   login() {
-    const tmp = this.userService.login(this.email, this.password).subscribe((data) => {
+    this.userService.login(this.email, this.password).subscribe((data) => {
         console.log(data.json());
         this.storage.set('localUserToken', data.json().Token);
         this.storage.set('localUserEmail', this.email);

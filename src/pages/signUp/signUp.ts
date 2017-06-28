@@ -26,12 +26,12 @@ export class SignUpPage {
   welcomeView = WelcomePage;
   agbView = AGBPage;
   privacyView = PrivacyPage;
-  messageCheckEmail;
+  messageWrongInputs;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public storage: Storage, public translate: TranslateService,
               public userService: UserServiceProvider) {
-    translate.get('SIGNUP.CHECK_EMAIL', {value: 'world'}).subscribe((res: string) => {
-      this.messageCheckEmail = res;
+    translate.get('SIGNUP.WRONGINPUTS', {value: 'world'}).subscribe((res: string) => {
+      this.messageWrongInputs = res;
     });
   }
 
@@ -39,7 +39,7 @@ export class SignUpPage {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var isValidEmail = re.test(this.email);
     if(isValidEmail) {
-      if (this.password.length >= 8) {
+      if (this.password.length >= 6) {
         if (this.passwordRepeat === this.password) {
           return true;
         }
@@ -50,14 +50,20 @@ export class SignUpPage {
 
   signUp() {
     if(this.checkInputs()){ //show toast that a verification email has been sent
-      //TODO send E-Mail for verification
+      // let toast = this.toastCtrl.create({
+      //   message: this.messageCheckEmail,
+      //   duration: 3000
+      // });
+      // toast.present();
+      // this.userService.createNewUser(this.username, this.email, this.password, this.sex, this.birthYear, this.plz);
+      this.navCtrl.push(this.loginView);
+    }
+    else {
       let toast = this.toastCtrl.create({
-        message: this.messageCheckEmail,
+        message: this.messageWrongInputs,
         duration: 3000
       });
       toast.present();
-      this.userService.createNewUser(this.username, this.email, this.password, this.sex, this.birthYear, this.plz);
-      this.navCtrl.push(this.loginView);
     }
   }
 }
