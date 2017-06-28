@@ -7,7 +7,6 @@ import {Storage} from "@ionic/storage";
 import {UserServiceProvider} from "../../providers/user-service/user-service";
 import {AGBPage} from "../agb/agb";
 import {PrivacyPage} from "../privacy/privacy";
-import { ReCaptchaModule } from 'angular2-recaptcha';
 
 @Component({
   selector: 'page-signUp',
@@ -30,7 +29,7 @@ export class SignUpPage {
   messageCheckEmail;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public storage: Storage, public translate: TranslateService,
-              public userService: UserServiceProvider, public recaptcha: ReCaptchaModule) {
+              public userService: UserServiceProvider) {
     translate.get('SIGNUP.CHECK_EMAIL', {value: 'world'}).subscribe((res: string) => {
       this.messageCheckEmail = res;
     });
