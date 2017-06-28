@@ -1,9 +1,32 @@
-.circled-content {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  border: 2px solid map-get($colors, primary);
+page-randomQuestions {
+  #card-stack {
+    width: 90%;
+    height: 200px;
+    margin: 100px auto 0;
+    position: relative;
+  }
+
+  #card-stack ion-card {
+    border-radius: 5px;
+    position: absolute;
+    text-align: center;
+    top: 3%;
+    height: 90%;
+  }
+
+  #circled-content {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: grey;
+    color: white;
+  }
+
+  #user-img {
+    font-size: 70px;
+    color: map-get($colors, primary);
+  }
 }
