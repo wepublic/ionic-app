@@ -17,7 +17,7 @@
               #{{tag.text}}
             </span>
           </ion-card-header>
-          <ion-card-content>
+          <ion-card-content (click)="loadAnswerPage(question)">
             <p text-wrap>{{question.text}}</p>
           </ion-card-content>
           <ion-row>

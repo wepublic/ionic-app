@@ -1,43 +1,39 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import {TagsHelper} from "../../utils/TagsHelper";
 import {TranslateService} from "@ngx-translate/core";
-import {AnswersPage} from "../answers/answers";
 
 @Component({
-  selector: 'page-answeredQuestions',
+  selector: 'page-answers',
   providers: [QuestionServiceProvider],
-  templateUrl: 'answeredQuestions.html'
+  templateUrl: 'answers.html'
 })
-export class AnsweredQuestionsPage {
+export class AnswersPage {
   //This contains all answered questions
 
   public questions: any;
   messageConnectionError;
+  question;
 
-  constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider, public storage: Storage,
+  constructor(public navCtrl: NavController, private navParams: NavParams, public questionService: QuestionServiceProvider, public storage: Storage,
               public toastCtrl: ToastController, public translate: TranslateService, public tagsHelper: TagsHelper) {
-    translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
+
+    this.messageConnectionError = this.translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
       this.messageConnectionError = res;
     });
-    this.loadQuestions();
+    this.question = navParams.get('question');
+    //this.loadQuestion();
   }
 
-  ionViewWillEnter() {
-    this.loadQuestions();
-  }
-
-  loadQuestions() {
+  loadQuestion(){
     this.storage.get('localUserToken').then((val) => {
-      this.questionService.loadLikedQuestions(val).subscribe((data) => {
+      this.questionService.loadAnsweredQuestion(val, this.question.id).subscribe((data) => {
         if (data !== undefined && data !== []) {
-          this.questions = data.map((question) => {
-            return question;
-          });
+          this.question = data;
         }
-        else{
+        else {
           let toast = this.toastCtrl.create({
             message: this.messageConnectionError,
             duration: 3000
@@ -47,14 +43,4 @@ export class AnsweredQuestionsPage {
       });
     });
   }
-
-  loadAnswerPage(question){
-    //TODO get question ID
-    this.navCtrl.push(AnswersPage, { question: question});
-  }
-
-  loadTags(question) {
-    return this.tagsHelper.getTagObjects(question.tags);
-  }
-
 }

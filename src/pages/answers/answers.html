@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle="right" end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'ANSWERS.TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-scroll scrollY="true" scrollbar="false" style="height: 100%">
+    <ion-item>
+      <ion-card>
+        <ion-card-header>
+            <span>
+              {{question.category}}
+            </span>
+        </ion-card-header>
+        <ion-card-content>
+          <p text-wrap>{{question.text}}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-scroll>
+</ion-content>

@@ -23,10 +23,16 @@ export class QuestionServiceProvider {
     flags: any,
     answer: any,
   }>;
-
+  
   //TODO: remove UserService when backend is ready for real data
   constructor(public userService: UserServiceProvider, public http: Http) {
     this.questionDummies = this.initDummyData();
+  }
+
+  loadAnsweredQuestion(token, questionID) {
+    const headersObj = new Headers({Authorization: 'Token ' + token});
+    return this.http.get('https://boiling-spire-20724.herokuapp.com/Questions/'+questionID+'/', {headers: headersObj})
+      .map(res => res.json());
   }
 
   loadAllQuestions() {

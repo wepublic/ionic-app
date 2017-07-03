@@ -29,6 +29,7 @@ import {TagsHelper} from "../utils/TagsHelper";
 import {MainMenuPage} from "../pages/mainMenu/mainMenu";
 import {NewsPage} from "../pages/news/news";
 import {SwingModule} from "angular2-swing";
+import {AnswersPage} from "../pages/answers/answers";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -52,6 +53,7 @@ export function createTranslateLoader(http: Http) {
     AGBPage,
     PrivacyPage,
     NewsPage,
+    AnswersPage,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +89,7 @@ export function createTranslateLoader(http: Http) {
     AGBPage,
     PrivacyPage,
     NewsPage,
+    AnswersPage,
   ],
   providers: [
     StatusBar,
