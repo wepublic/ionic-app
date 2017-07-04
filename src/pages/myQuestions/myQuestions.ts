@@ -24,21 +24,28 @@ export class MyQuestionsPage {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
       this.messageConnectionError = res;
     });
-    this.loadQuestions();
     this.allTags = this.storage.get('allTags');
+    this.loadQuestions(null);
   }
 
   ionViewWillEnter() {
-    this.loadQuestions();
+    this.loadQuestions(null);
   }
 
-  loadQuestions() {
+  /**
+   * Loads questions from server;
+   * Input: refresher of view for reloading questions; null for initial loading call
+   */
+  loadQuestions(refresher) {
     this.storage.get('localUserToken').then((val) => {
       this.questionService.loadMyQuestions(val).subscribe((data) => {
         if (data !== undefined && data !== []) {
           this.questions = data.map((question) => {
             return question;
           });
+          if (refresher !== null) {
+            refresher.complete();
+          }
         }
         else{
           let toast = this.toastCtrl.create({

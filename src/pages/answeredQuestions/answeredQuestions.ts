@@ -22,20 +22,30 @@ export class AnsweredQuestionsPage {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
       this.messageConnectionError = res;
     });
-    this.loadQuestions();
+    this.loadQuestions(null);
+    console.log("entered answered Questions View");
   }
 
   ionViewWillEnter() {
-    this.loadQuestions();
+    this.loadQuestions(null);
+    console.log("entered answered Questions View");
   }
 
-  loadQuestions() {
+  /**
+   * Loads questions from server;
+   * Input: refresher of view for reloading questions; null for initial loading call
+   */
+  loadQuestions(refresher) {
+    console.log("load Questions");
     this.storage.get('localUserToken').then((val) => {
       this.questionService.loadLikedQuestions(val).subscribe((data) => {
         if (data !== undefined && data !== []) {
           this.questions = data.map((question) => {
             return question;
           });
+          if (refresher !== null) {
+            refresher.complete();
+          }
         }
         else{
           let toast = this.toastCtrl.create({
@@ -56,5 +66,4 @@ export class AnsweredQuestionsPage {
   loadTags(question) {
     return this.tagsHelper.getTagObjects(question.tags);
   }
-
 }
