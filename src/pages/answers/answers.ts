@@ -16,6 +16,7 @@ export class AnswersPage {
   public questions: any;
   messageConnectionError;
   question;
+  likePerc = 66;
 
   constructor(public navCtrl: NavController, private navParams: NavParams, public questionService: QuestionServiceProvider, public storage: Storage,
               public toastCtrl: ToastController, public translate: TranslateService, public tagsHelper: TagsHelper) {
@@ -24,7 +25,13 @@ export class AnswersPage {
       this.messageConnectionError = res;
     });
     this.question = navParams.get('question');
+    console.log(this.question);
+    this.loadTags();
     //this.loadQuestion();
+  }
+
+  loadTags(){
+    return this.tagsHelper.getTagObjects(this.question.tags);
   }
 
   loadQuestion(){

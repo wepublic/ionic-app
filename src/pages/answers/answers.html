@@ -12,14 +12,19 @@
     <ion-item>
       <ion-card>
         <ion-card-header>
-            <span>
-              {{question.category}}
+            <span *ngFor="let tag of loadTags()">
+              #{{tag.text}}
             </span>
         </ion-card-header>
         <ion-card-content>
           <p text-wrap>{{question.text}}</p>
         </ion-card-content>
       </ion-card>
+      <!--<div class="meter" (ngModel)="likePercQuestion">-->
+        <!--<span class="meter-left" style="width: 33.3%"></span>-->
+        <!--<span class="meter-right" style="width: 33.3%"></span>-->
+      <!--</div>-->
+      <like-bar [percentage]="likePerc"></like-bar>
     </ion-item>
   </ion-scroll>
 </ion-content>
