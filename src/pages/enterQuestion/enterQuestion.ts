@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {TagsHelper} from "../../utils/TagsHelper";
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import { Storage } from '@ionic/storage';
+import {MainMenuPage} from "../mainMenu/mainMenu";
 
 @Component({
   selector: 'page-enterQuestion',
@@ -45,7 +46,8 @@ export class EnterQuestionPage {
           this.questionService.publishQuestion(this.questionText, this.selectedTags, val)
           .subscribe((data) => {
             console.log(data);
-          });;
+          });
+          this.navCtrl.setRoot(MainMenuPage);
         });
       }
     }

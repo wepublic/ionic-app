@@ -8,13 +8,19 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-textarea [(ngModel)]="questionText" placeholder="Stelle Deine Lieblingsfrage..." type="text" wrap="soft" rows="6">
+  <ion-textarea
+    [(ngModel)]="questionText" placeholder="{{ 'ENTERQUESTION.ASK_QUESTION' | translate }}"
+    type="text" wrap="soft" rows="6"
+  >
   </ion-textarea>
   <ion-item>
-    <ion-select [(ngModel)]="selectedTags" multiple="true" placeholder="#tagMe" cancelText="Abbrechen">
-      <ion-title>Wähle Tags</ion-title>
+    <ion-select
+      [(ngModel)]="selectedTags" multiple="true" placeholder="{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}"
+      cancelText="{{ 'CANCEL' | translate }}"
+    >
+      <ion-label>{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}</ion-label>
       <ion-option *ngFor="let tag of tags" value="{{tag.id}}">{{tag.text}}</ion-option>
     </ion-select>
   </ion-item>
-  <button ion-button round (click)="publishQuestion()">Veröffentliche Frage</button>
+  <button ion-button round (click)="publishQuestion()">{{ 'ENTERQUESTION.SUBMIT_QUESTION' | translate }}</button>
 </ion-content>
