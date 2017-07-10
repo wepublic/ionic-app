@@ -53,6 +53,7 @@ export class LoginPage {
       });
       toast.present();
     });
+    this.navCtrl.setRoot(this.tabsView);
   }
 
   forgotPW() {

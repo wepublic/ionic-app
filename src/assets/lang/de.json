@@ -51,7 +51,7 @@
     "MENU": "Menü",
     "LOGOUT": "Abmelden",
     "QUESTIONS": "Fragen",
-    "START": "Start",
+    "START": "Home",
     "SETTINGS": "Profil-Einstellungen"
   },
 
@@ -107,10 +107,11 @@
   },
 
   "TABS": {
+    "HOME": "Home",
     "MY": "Meine",
-    "MATCH": "Bewerten",
+    "MATCH": "Fragen bewerten",
     "LIKED": "Interesse",
-    "SEARCH": "Themen",
+    "SEARCH": "Fragen suchen",
     "TRENDING": "Beliebt",
     "YOUR_QUESTION": "Deine Frage",
     "ME": "Ich"
