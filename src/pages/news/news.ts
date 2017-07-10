@@ -4,50 +4,27 @@ import { Storage } from '@ionic/storage';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import {TagsHelper} from "../../utils/TagsHelper";
 import {TranslateService} from "@ngx-translate/core";
+import {NewsServiceProvider} from "../../providers/news-service/news-service";
 
 @Component({
   templateUrl: 'news.html',
   selector: 'page-news',
-  providers: [QuestionServiceProvider],
+  providers: [NewsServiceProvider],
 })
 export class NewsPage {
 
-  public questions: any;
-  messageConnectionError;
+  public news: any;
 
-  constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider, public storage: Storage,
-              public toastCtrl: ToastController, public translate: TranslateService, public tagsHelper: TagsHelper) {
-    translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
-      this.messageConnectionError = res;
-    });
-    this.loadQuestions();
+  constructor(public navCtrl: NavController, public newsService: NewsServiceProvider) {
+    this.loadNews();
   }
 
   ionViewWillEnter() {
-    this.loadQuestions();
+    this.loadNews();
   }
 
-  loadQuestions() {
-    this.storage.get('localUserToken').then((val) => {
-      this.questionService.loadLikedQuestions(val).subscribe((data) => {
-        if (data !== undefined && data !== []) {
-          this.questions = data.map((question) => {
-            return question;
-          });
-        }
-        else{
-          let toast = this.toastCtrl.create({
-            message: this.messageConnectionError,
-            duration: 3000
-          });
-          toast.present();
-        }
-      });
-    });
-  }
-
-  loadTags(question) {
-    return this.tagsHelper.getTagObjects(question.tags);
+  loadNews() {
+    this.news = this.newsService.loadNews();
   }
 
 }
