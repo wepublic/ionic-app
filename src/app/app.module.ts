@@ -31,6 +31,7 @@ import {MainMenuPage} from "../pages/mainMenu/mainMenu";
 import {NewsPage} from "../pages/news/news";
 import {SwingModule} from "angular2-swing";
 import {AnswersPage} from "../pages/answers/answers";
+import { NewsServiceProvider } from '../providers/news-service/news-service';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -100,7 +101,8 @@ export function createTranslateLoader(http: Http) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserServiceProvider,
     QuestionServiceProvider,
-    TagsServiceProvider
+    TagsServiceProvider,
+    NewsServiceProvider
   ]
 })
 export class AppModule {}

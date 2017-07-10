@@ -3,44 +3,22 @@
     <button ion-button menuToggle="right" end>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-title>{{ 'MAINMENU.NEWS' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-scroll scrollY="true" scrollbar="false" style="height: 100%">
     <ion-list no-lines>
-      <ion-item *ngFor="let question of questions">
-        <ion-card>
-          <ion-card-header>
-            <span *ngFor="let tag of loadTags(question)">
-              #{{tag.text}}
-            </span>
-          </ion-card-header>
-          <ion-card-content>
-            <p text-wrap>{{question.text}}</p>
+      <ion-item *ngFor="let article of news">
+        <ion-card padding>
+          <ion-card-header>{{article.date}}</ion-card-header>
+          <ion-card-title padding-left text-wrap>
+            {{article.title}}
+          </ion-card-title>
+          <ion-card-content text-wrap text-justify>
+            {{article.content}}
           </ion-card-content>
-          <ion-row>
-            <ion-col align-self-center text-center>
-              <div>
-                <button ion-button icon-only clear>
-                  <ion-icon name="thumbs-up"></ion-icon>
-                </button>
-              </div>
-              <div>
-                <ion-badge item-right>{{question.upvotes}}</ion-badge>
-              </div>
-            </ion-col>
-            <ion-col align-self-center text-center>
-              <div>
-                <button ion-button icon-only clear>
-                  <ion-icon name="thumbs-down"></ion-icon>
-                </button>
-              </div>
-              <div>
-                <ion-badge item-right>{{question.downvotes}}</ion-badge>
-              </div>
-            </ion-col>
-          </ion-row>
         </ion-card>
       </ion-item>
     </ion-list>
