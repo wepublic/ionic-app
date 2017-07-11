@@ -50,10 +50,10 @@ export class UserServiceProvider {
       });
   }
 
-  login(userName, userPassword) {
+  login(userEmail, userPassword) {
     return this.http.post(API_ENDPOINT + '/Users/token/',
       {
-        username: userName,
+        email: userEmail,
         password: userPassword,
       }
     );
