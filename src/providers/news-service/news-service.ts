@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -17,7 +18,7 @@ export class NewsServiceProvider {
   }
 
   loadNews() {
-    return this.newsDummies;
+    return Observable.of(this.newsDummies);
   }
 
   initDummies() {
