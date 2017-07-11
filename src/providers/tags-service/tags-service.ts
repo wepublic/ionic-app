@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {API_ENDPOINT} from '../../app/app.config';
 
 @Injectable()
 export class TagsServiceProvider {
@@ -11,7 +12,7 @@ export class TagsServiceProvider {
 
   loadAllTags() {
     //Todo: onError!!!
-    return this.http.get('http://boiling-spire-20724.herokuapp.com/Tags/')
+    return this.http.get(API_ENDPOINT + '/Tags/')
       .map(res => res.json());
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {API_ENDPOINT} from '../../app/app.config';
 import {UserServiceProvider} from "../user-service/user-service";
 
 /*
@@ -31,24 +32,24 @@ export class QuestionServiceProvider {
 
   loadAnsweredQuestion(token, questionID) {
     const headersObj = new Headers({Authorization: 'Token ' + token});
-    return this.http.get('https://boiling-spire-20724.herokuapp.com/Questions/'+questionID+'/', {headers: headersObj})
+    return this.http.get(API_ENDPOINT + '/Questions/'+questionID+'/', {headers: headersObj})
       .map(res => res.json());
   }
 
   loadAllQuestions() {
-    return this.http.get('http://boiling-spire-20724.herokuapp.com/Questions/')
+    return this.http.get(API_ENDPOINT + '/Questions/')
       .map(res => res.json());
   }
 
   loadLikedQuestions(token) {
     const headersObj = new Headers({Authorization: 'Token ' + token});
-    return this.http.get('https://boiling-spire-20724.herokuapp.com/Questions/upvotes/', {headers: headersObj})
+    return this.http.get(API_ENDPOINT + '/Questions/upvotes/', {headers: headersObj})
       .map(res => res.json());
   }
 
   loadMyQuestions(token) {
     const headersObj = new Headers({Authorization: 'Token ' + token});
-    return this.http.get('https://boiling-spire-20724.herokuapp.com/Questions/my/', {headers: headersObj})
+    return this.http.get(API_ENDPOINT + '/Questions/my/', {headers: headersObj})
       .map(res => res.json());
   }
 
@@ -58,13 +59,13 @@ export class QuestionServiceProvider {
   }
 
   loadQuestionByTagId(tagId) {
-    return this.http.get('http://boiling-spire-20724.herokuapp.com/Tags/' + tagId + '/Questions/')
+    return this.http.get(API_ENDPOINT + '/Tags/' + tagId + '/Questions/')
       .map(res => res.json());
   }
 
   publishQuestion(nText, nTags, token) {
     const headersObj = new Headers({Authorization: 'Token ' + token});
-    return this.http.post('http://boiling-spire-20724.herokuapp.com/Questions/',
+    return this.http.post(API_ENDPOINT + '/Questions/',
       {
         text: nText,
         tags: nTags

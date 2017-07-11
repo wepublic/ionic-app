@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Headers, Http, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {API_ENDPOINT} from '../../app/app.config';
 import {Storage} from "@ionic/storage";
 
 /*
@@ -42,7 +43,7 @@ export class UserServiceProvider {
       email: email,
       password: password
     };
-    this.http.post('https://boiling-spire-20724.herokuapp.com/Users/', JSON.stringify(toSend), options)
+    this.http.post(API_ENDPOINT + '/Users/', JSON.stringify(toSend), options)
       .map(res => res.json())
       .subscribe(data => {
         console.log(data);
@@ -50,7 +51,7 @@ export class UserServiceProvider {
   }
 
   login(userName, userPassword) {
-    return this.http.post('http://boiling-spire-20724.herokuapp.com/Users/token/',
+    return this.http.post(API_ENDPOINT + '/Users/token/',
       {
         username: userName,
         password: userPassword,
@@ -62,7 +63,7 @@ export class UserServiceProvider {
     //Todo: onError!!!
     const headers = new Headers({ Authorization: 'Token ' + token });
     const options = new RequestOptions({ headers: headers });
-    return this.http.get('http://boiling-spire-20724.herokuapp.com/Users/logout/', options);
+    return this.http.get(API_ENDPOINT + '/Users/logout/', options);
   }
 
   //TODO: remove when backend is ready for real data
