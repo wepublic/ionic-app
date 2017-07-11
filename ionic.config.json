@@ -1,5 +1,11 @@
 {
   "name": "wepublic",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://boiling-spire-20724.herokuapp.com"
+    }
+  ]
 }
