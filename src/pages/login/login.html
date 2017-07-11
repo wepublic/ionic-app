@@ -7,23 +7,23 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="login-content" scroll="false">
+<ion-content class="login-content" scroll="false" middle>
   <ion-title class="header">{{ 'LOGIN.LOGIN' | translate }}</ion-title>
   <ion-list class="input-field">
     <ion-item>
-      <ion-input class="ion-input" (input)="emailChanged($event.target.value)" type="email"
+      <ion-input middle class="ion-input" (input)="emailChanged($event.target.value)" type="email"
                  placeholder="{{ 'LOGIN.EMAIL' | translate }}">
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-input class="ion-input" (input)="pwChanged($event.target.value)" type="password"
+      <ion-input middle class="ion-input" (input)="pwChanged($event.target.value)" type="password"
                  placeholder="{{ 'LOGIN.PASSWORD' | translate }}">
       </ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-list class="button-area">
-    <button class="button" ion-button (click)="login()">{{ 'LOGIN.SIGNIN' | translate }}</button>
-    <button class="button" ion-button (click)="forgotPW()">{{ 'LOGIN.FORGOTPW' | translate }}</button>
+  <ion-list class="button-area" middle>
+    <button class="button" middle ion-button (click)="login()">{{ 'LOGIN.SIGNIN' | translate }}</button>
+    <button class="button" middle ion-button (click)="forgotPW()">{{ 'LOGIN.FORGOTPW' | translate }}</button>
   </ion-list>
 </ion-content>
