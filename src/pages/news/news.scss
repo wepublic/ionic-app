@@ -1,3 +1,9 @@
 page-news {
+  .card-header {
+    color: map-get($colors, primary);
+  }
 
+  .card-title {
+    color: map-get($colors, secondary);
+  }
 }
