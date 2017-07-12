@@ -1,5 +1,6 @@
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import {TranslateService} from "@ngx-translate/core";
 
@@ -27,7 +28,7 @@ export class RandomQuestionsPage {
   recentCard: string = '';
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService,
-              public questionService: QuestionServiceProvider) {
+              public storage: Storage, public questionService: QuestionServiceProvider) {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
       this.messageConnectionError = res;
     });
@@ -46,14 +47,16 @@ export class RandomQuestionsPage {
   downvote() {
     console.log('thumbs down');
     this.questions.pop();
-    //TODO: send downvote to server
+    this.storage.get('localUserToken')
+    .then((val) => { this.questionService.downvoteQuestion(val, this.currentQuestion.id); });
     this.loadNewQuestion();
   }
 
   upvote() {
     console.log('thumbs up');
     this.questions.pop();
-    //TODO: send upvote to server
+    this.storage.get('localUserToken')
+    .then((val) => { this.questionService.upvoteQuestion(val, this.currentQuestion.id); });
     this.loadNewQuestion();
   }
 

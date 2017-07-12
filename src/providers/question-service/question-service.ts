@@ -76,6 +76,18 @@ export class QuestionServiceProvider {
     );
   }
 
+  downvoteQuestion(token, questionID) {
+    const headersObj = new Headers({Authorization: 'Token ' + token});
+    this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/downvote/', { }, {headers: headersObj})
+    .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
+  }
+
+  upvoteQuestion(token, questionID) {
+    const headersObj = new Headers({Authorization: 'Token ' + token});
+    this.http.post(API_ENDPOINT + '/Questions/ ' +questionID + '/upvote/', { }, {headers: headersObj})
+    .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
+  }
+
   //TODO: TODO: remove when backend is ready for real data
   getUserById(id) {
     return this.userService.loadUserById(id);
