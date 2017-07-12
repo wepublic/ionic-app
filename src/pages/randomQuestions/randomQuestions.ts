@@ -2,10 +2,12 @@ import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
+import {TagsHelper} from "../../utils/TagsHelper";
 import {TranslateService} from "@ngx-translate/core";
 
 import {
   StackConfig,
+  Direction,
   DragEvent,
   SwingStackComponent,
   SwingCardComponent} from 'angular2-swing';
@@ -19,46 +21,67 @@ export class RandomQuestionsPage {
   @ViewChild('myswing1') swingStack: SwingStackComponent;
   @ViewChildren('mycards1') swingCards: QueryList<SwingCardComponent>;
 
-  //public question: any;
   messageConnectionError;
+  token;
 
-  currentQuestion;
-  questions: Array<any>;
+  questions = [];
   stackConfig: StackConfig;
-  recentCard: string = '';
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService,
-              public storage: Storage, public questionService: QuestionServiceProvider) {
+              public storage: Storage, public questionService: QuestionServiceProvider, public tagsHelper: TagsHelper) {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
       this.messageConnectionError = res;
     });
-    this.currentQuestion = undefined;
-    this.questions = [];
     this.initSwipe();
-    this.loadNewQuestion();
+    this.storage.get('localUserToken')
+      .then((val) => {
+        this.token = val;
+        this.loadNewQuestion();
+        this.loadNewQuestion();
+        this.loadNewQuestion();
+      });
   }
 
   ionViewWillEnter() {
-    if (!(this.questions !== [] || this.questions.length > 0)) {
-      this.loadNewQuestion();
-    }
+  }
+
+  loadNewQuestion() {
+    this.questionService.loadRandomQuestion(this.token).subscribe(
+      (res) => {
+        if (res === undefined) {
+          let toast = this.toastCtrl.create({
+            message: this.messageConnectionError,
+            duration: 3000
+          });
+          toast.present();
+        } else {
+          console.log("Add " + res.id);
+          this.questions.push(res);
+        }
+      });
+  }
+
+  loadTags(question) {
+    return this.tagsHelper.getTagObjects(question.tags);
   }
 
   downvote() {
     console.log('thumbs down');
-    this.questions.pop();
-    this.storage.get('localUserToken')
-    .then((val) => { this.questionService.downvoteQuestion(val, this.currentQuestion.id); });
+    let q = this.questions.shift();
+    console.log("Remove " + q.id);
+    this.questionService.downvoteQuestion(this.token, q.id);
     this.loadNewQuestion();
   }
 
   upvote() {
     console.log('thumbs up');
-    this.questions.pop();
-    this.storage.get('localUserToken')
-    .then((val) => { this.questionService.upvoteQuestion(val, this.currentQuestion.id); });
+    let q = this.questions.shift();
+    console.log("Remove " + q.id);
+    this.questionService.upvoteQuestion(this.token, q.id);
     this.loadNewQuestion();
   }
+
+  trackById(index: number, question: any): number { return question.id; }
 
   /**
    *
@@ -70,6 +93,7 @@ export class RandomQuestionsPage {
 
   initSwipe() {
     this.stackConfig = {
+      allowedDirections: [Direction.LEFT, Direction.RIGHT],
       throwOutConfidence: (offsetX, offsetY, element) => {
         return Math.min(Math.abs(offsetX) / (element.offsetWidth/2), 1);
       },
@@ -104,32 +128,6 @@ export class RandomQuestionsPage {
 
     element.style.background = color;
     element.style['transform'] = `translate3d(0, 0, 0) translate(${x}px, ${y}px) rotate(${r}deg)`;
-  }
-
-  // Add new questions to our array
-  loadNewQuestion() {
-    const newQuestion = this.questionService.loadNewQuestion();
-    if (newQuestion === undefined){
-      let toast = this.toastCtrl.create({
-        message: this.messageConnectionError,
-        duration: 3000
-      });
-      toast.present();
-    } else {
-      //TODO: remove when real data
-      //if necessary for dummy data because of cached views
-      if (this.currentQuestion === undefined) {
-        this.questions.push(newQuestion);
-        this.currentQuestion = newQuestion;
-        console.log(this.questions);
-      } else if (newQuestion.id !== this.currentQuestion.id) {
-        this.questions.push(newQuestion);
-        this.currentQuestion = newQuestion;
-        console.log(this.questions);
-      } else {
-        this.loadNewQuestion();
-      }
-    }
   }
 
   // http://stackoverflow.com/questions/57803/how-to-convert-decimal-to-hex-in-javascript

@@ -53,9 +53,10 @@ export class QuestionServiceProvider {
       .map(res => res.json());
   }
 
-  loadNewQuestion() {
-    const i = Math.floor(Math.random() * 4);
-    return this.questionDummies[i];
+  loadRandomQuestion(token) {
+    const headersObj = new Headers({Authorization: 'Token ' + token});
+    return this.http.get(API_ENDPOINT + '/Questions/random/', {headers: headersObj})
+      .map(res => res.json());
   }
 
   loadQuestionByTagId(tagId) {

@@ -29,4 +29,8 @@ page-randomQuestions {
     font-size: 70px;
     color: map-get($colors, primary);
   }
+
+  .hint {
+    color: grey;
+  }
 }

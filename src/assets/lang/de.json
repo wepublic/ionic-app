@@ -10,6 +10,12 @@
     "FACEBOOK_TWITTER_FOLLOW": "Folgt uns auf Facebook, Twitter"
   },
 
+  "MATCH": {
+    "SWIPE_TO_VOTE": "Wischen um abzustimmen",
+    "GOOD": "interessant",
+    "BAD": "uninteressant"
+  },
+
   "MAINMENU": {
     "OPENQUESTIONS": "Meine offenen Fragen",
     "ANSWEREDQUESTIONS": "Beantwortete Fragen",
