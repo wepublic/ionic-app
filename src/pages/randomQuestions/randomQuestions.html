@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <div
-    swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutleft)="upvote()" (throwoutright)="downvote()"
+    swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutleft)="downvote()" (throwoutright)="upvote()"
     id="card-stack"
   >
     <ion-card #mycards1 swing-card *ngFor="let question of questions">
