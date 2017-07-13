@@ -2,6 +2,11 @@
   "CANCEL": "Abbrechen",
   "CONNERROR": "Verbindung zum Server fehlgeschlagen, bitte überprüfe deine Internetverbindung.",
 
+  "BUBBLE": {
+    "ANSWER": "{{value}} Antwort",
+    "ANSWERS": "{{value}} Antworten"
+  },
+
   "ALL_QUESTIONS": {
 
   },
@@ -51,6 +56,7 @@
   },
 
   "MENU": {
+    "AGB": "AGBs",
     "ANSWERS": "Antworten",
     "CONTACT": "Kontakt",
     "HOME": "Home",
