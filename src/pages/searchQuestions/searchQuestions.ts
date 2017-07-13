@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {NavController, ToastController} from 'ionic-angular';
+import { NavController, ToastController, NavParams } from 'ionic-angular';
 import {TagsHelper} from "../../utils/TagsHelper";
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
+import {AnswersPage} from "../answers/answers";
 
 @Component({
   selector: 'page-search',
@@ -15,10 +16,13 @@ export class SearchQuestionsPage {
   public questions;
   public messageConnectionError;
 
-  constructor(public navCtrl: NavController, public tagsHelper: TagsHelper,
-              public questionService: QuestionServiceProvider, public toastCtrl: ToastController,) {
+  constructor(public navCtrl: NavController, private navParams: NavParams, public tagsHelper: TagsHelper,
+              public questionService: QuestionServiceProvider, public toastCtrl: ToastController) {
     this.initTagsArray();
     this.showTags = true;
+    let tag = navParams.get('tag');
+    console.log("Tag: " + tag);
+    if (tag !== undefined) this.selectTag(tag);
   }
 
   initTagsArray() {
@@ -66,21 +70,19 @@ export class SearchQuestionsPage {
   }
 
   loadQuestionsByTagId(tagId) {
+    console.log("Load questions for tag " + tagId);
     this.questionService.loadQuestionByTagId(tagId).subscribe(data => {
-      if (data !== undefined && data !== []) {
-        if (data.hasOwnProperty('results')) {
-          this.questions = data.results;
-          console.log(data);
-        }
-      }
-      else{
-        let toast = this.toastCtrl.create({
-          message: this.messageConnectionError,
-          duration: 3000
-        });
-        toast.present();
-      }
-    });
+        console.log(data);
+        this.questions = data;
+      });
+  }
+
+  loadQuestionsByTagFunction() {
+    return tag => this.loadQuestionsByTagId(tag.id);
+  }
+
+  loadAnswerPageFunction() {
+    return (question) => { this.navCtrl.push(AnswersPage, {question: question}) };
   }
 
   showTagList() {
@@ -88,4 +90,3 @@ export class SearchQuestionsPage {
   }
 
 }
-

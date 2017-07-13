@@ -1,0 +1,15 @@
+page-search {
+  ion-title {
+    flex: 0;
+    padding: 10px;
+  }
+
+  ion-content > .scroll-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ion-scroll {
+    flex-grow: 1;
+  }
+}

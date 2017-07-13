@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding scroll="false">
   <ion-title>{{ 'SEARCH.SEARCH_KEY' | translate }}</ion-title>
 
   <ion-searchbar type="text" placeholder="{{ 'TABS.SEARCH' | translate }}" (ionInput)="refreshTags($event)" (click)="showTagList()">
@@ -19,41 +19,10 @@
     </ion-item>
   </ion-list>
 
-  <ion-scroll *ngIf="!showTags" scrollY="true" scrollbar="false" style="height: 100%">
+  <ion-scroll *ngIf="!showTags" scrollY="true" scrollbar="false">
     <ion-list no-lines>
       <ion-item *ngFor="let question of questions">
-        <ion-card>
-          <ion-card-header>
-            <span *ngFor="let tag of loadTags(question)">
-              #{{tag.text}}
-            </span>
-          </ion-card-header>
-          <ion-card-content>
-            <p text-wrap>{{question.text}}</p>
-          </ion-card-content>
-          <ion-row>
-            <ion-col align-self-center text-center>
-              <div>
-                <button ion-button icon-only clear>
-                  <ion-icon name="thumbs-up"></ion-icon>
-                </button>
-              </div>
-              <div>
-                <ion-badge item-right>{{question.upvotes}}</ion-badge>
-              </div>
-            </ion-col>
-            <ion-col align-self-center text-center>
-              <div>
-                <button ion-button icon-only clear>
-                  <ion-icon name="thumbs-down"></ion-icon>
-                </button>
-              </div>
-              <div>
-                <ion-badge item-right>{{question.downvotes}}</ion-badge>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-card>
+        <question-bubble [question]="question" [textClick]="loadAnswerPageFunction()" [tagClick]="loadQuestionsByTagFunction()"></question-bubble>
       </ion-item>
     </ion-list>
   </ion-scroll>
