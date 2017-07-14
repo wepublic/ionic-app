@@ -4,6 +4,8 @@
 *~
 *.sw[mnpcod]
 *.log
+*.gradle
+*.project*
 *.tmp
 *.tmp.*
 log.txt
