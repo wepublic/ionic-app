@@ -8,30 +8,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-scroll scrollY="true" scrollbar="false" style="height: 100%">
-    <ion-item no-lines>
-      <question-bubble [question]="question" [textClick]="foo()" [tagClick]="foo()"></question-bubble>
-      <!--<ion-card>-->
-        <!--<ion-card-header>-->
-            <!--<span *ngFor="let tag of loadTags()">-->
-              <!--#{{tag.text}}-->
-            <!--</span>-->
-        <!--</ion-card-header>-->
-        <!--<ion-card-content>-->
-          <!--<p text-wrap>{{question.text}}</p>-->
-        <!--</ion-card-content>-->
-      <!--</ion-card>-->
-      <!--<ion-card *ngFor="let answer of answers">-->
-        <!--<ion-card-header>-->
-          <!--<p text-wrap>{{answer.user.username}}</p>-->
-        <!--</ion-card-header>-->
-        <!--<ion-card-content>-->
-          <!--<p text-wrap>{{answer.text}}</p>-->
-        <!--</ion-card-content>-->
-      <!--</ion-card>-->
-    </ion-item>
-    <ion-item *ngFor="let answer of answers" no-lines>
-      <answer-bubble [answer]="answer"></answer-bubble>
-    </ion-item>
-  </ion-scroll>
+  <ion-item no-lines>
+    <question-bubble [question]="question" [textClick]="foo()" [tagClick]="foo()"></question-bubble>
+    <!--<ion-card>-->
+      <!--<ion-card-header>-->
+          <!--<span *ngFor="let tag of loadTags()">-->
+            <!--#{{tag.text}}-->
+          <!--</span>-->
+      <!--</ion-card-header>-->
+      <!--<ion-card-content>-->
+        <!--<p text-wrap>{{question.text}}</p>-->
+      <!--</ion-card-content>-->
+    <!--</ion-card>-->
+    <!--<ion-card *ngFor="let answer of answers">-->
+      <!--<ion-card-header>-->
+        <!--<p text-wrap>{{answer.user.username}}</p>-->
+      <!--</ion-card-header>-->
+      <!--<ion-card-content>-->
+        <!--<p text-wrap>{{answer.text}}</p>-->
+      <!--</ion-card-content>-->
+    <!--</ion-card>-->
+  </ion-item>
+  <ion-item *ngFor="let answer of answers" no-lines>
+    <answer-bubble [answer]="answer"></answer-bubble>
+  </ion-item>
 </ion-content>

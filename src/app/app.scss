@@ -15,6 +15,11 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+// Hide global scroll bar
+ion-content > .scroll-content {
+  overflow-y: auto;
+}
+
 .button{
   text-transform: none;
 }

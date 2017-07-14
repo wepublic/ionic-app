@@ -7,19 +7,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding scroll="false">
+<ion-content padding>
   <ion-title>{{ 'SEARCH.SEARCH_KEY' | translate }}</ion-title>
 
   <ion-searchbar type="text" placeholder="{{ 'TABS.SEARCH' | translate }}" (ionInput)="refreshTags($event)" (click)="showTagList()">
   </ion-searchbar>
 
-  <ion-list *ngIf="showTags" no-lines>
-    <ion-item *ngFor="let tag of tags" (click)="selectTag(tag)" no-lines>
-      #{{ tag.text }}
-    </ion-item>
-  </ion-list>
+  <ion-scroll *ngIf="showTags" scrollY="true">
+    <ion-list no-lines>
+      <ion-item *ngFor="let tag of tags" (click)="selectTag(tag)">
+        #{{ tag.text }}
+      </ion-item>
+    </ion-list>
+  </ion-scroll>
 
-  <ion-scroll *ngIf="!showTags" scrollY="true" scrollbar="false" no-lines>
+  <ion-scroll *ngIf="!showTags" scrollY="true">
     <ion-list no-lines>
       <ion-item *ngFor="let question of questions">
         <question-bubble [question]="question" [textClick]="loadAnswerPageFunction()" [tagClick]="loadQuestionsByTagFunction()"></question-bubble>
