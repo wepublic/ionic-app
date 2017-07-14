@@ -15,6 +15,6 @@ To start developing in a browser (Google Chrome recommended!):
 ## Programming environment
 - OS: Win 8.1/10
 - IDE: IntelliJ idealU-2017.1.2
-- node: v7.10.0
-- cordova: 7.0.0
-- ionic: 3.1.2
+- node: v7.10.1
+- cordova: 7.0.1
+- ionic: 3.5.0
