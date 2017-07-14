@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {TagsHelper} from "../../utils/TagsHelper";
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
-import { Storage } from '@ionic/storage';
 import {MainMenuPage} from "../mainMenu/mainMenu";
 
 @Component({
@@ -15,8 +14,7 @@ export class EnterQuestionPage {
   public selectedTags;
   public questionText;
 
-  constructor(public navCtrl: NavController, public tagsHelper: TagsHelper, public questionService: QuestionServiceProvider,
-      public storage: Storage) {
+  constructor(public navCtrl: NavController, public tagsHelper: TagsHelper, public questionService: QuestionServiceProvider) {
     this.initTagsArray();
   }
 
@@ -42,13 +40,9 @@ export class EnterQuestionPage {
     console.log(this.selectedTags);
     if (this.questionText !== undefined && this.selectedTags !== undefined) {
       if (this.questionText.length > 0 && this.selectedTags.length > 0) {
-        this.storage.get('localUserToken').then((val) => {
-          this.questionService.publishQuestion(this.questionText, this.selectedTags, val)
-          .subscribe((data) => {
-            console.log(data);
-          });
-          this.navCtrl.setRoot(MainMenuPage);
-        });
+        this.questionService.publishQuestion(this.questionText, this.selectedTags)
+        .subscribe(data => { console.log(data); });
+        this.navCtrl.setRoot(MainMenuPage);
       }
     }
   }

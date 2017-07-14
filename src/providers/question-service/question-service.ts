@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Storage } from "@ionic/storage";
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 import {API_ENDPOINT} from '../../app/app.config';
 import {UserServiceProvider} from "../user-service/user-service";
 
@@ -26,14 +30,18 @@ export class QuestionServiceProvider {
   }>;
 
   //TODO: remove UserService when backend is ready for real data
-  constructor(public userService: UserServiceProvider, public http: Http) {
+  constructor(public userService: UserServiceProvider, public http: Http, public storage: Storage) {
     this.questionDummies = this.initDummyData();
   }
 
-  loadAnsweredQuestion(token, questionID) {
-    const headersObj = new Headers({Authorization: 'Token ' + token});
-    return this.http.get(API_ENDPOINT + '/Questions/'+questionID+'/', {headers: headersObj})
-      .map(res => res.json());
+  getToken() { return Observable.fromPromise(this.storage.get('localUserToken')); }
+  getHeaders(token) { return {headers: new Headers({Authorization: 'Token ' + token})}; }
+
+  loadAnsweredQuestion(questionID) {
+    return this.getToken().mergeMap(
+      token => this.http.get(API_ENDPOINT + '/Questions/'+questionID+'/', this.getHeaders(token))
+        .map(res => res.json())
+    );
   }
 
   loadAllQuestions() {
@@ -41,55 +49,59 @@ export class QuestionServiceProvider {
       .map(res => res.json());
   }
 
-  loadLikedQuestions(token) {
-    const headersObj = new Headers({Authorization: 'Token ' + token});
-    return this.http.get(API_ENDPOINT + '/Questions/upvotes/', {headers: headersObj})
-      .map(res => res.json());
-  }
-
-  loadMyQuestions(token) {
-    const headersObj = new Headers({Authorization: 'Token ' + token});
-    return this.http.get(API_ENDPOINT + '/Questions/my/', {headers: headersObj})
-      .map(res => res.json());
-  }
-
-  loadRandomQuestion(token) {
-    const headersObj = new Headers({Authorization: 'Token ' + token});
-    return this.http.get(API_ENDPOINT + '/Questions/random/', {headers: headersObj})
-      .map(res => res.json());
-  }
-
-  loadQuestionByTagId(tagId) {
-    return this.http.get(API_ENDPOINT + '/Tags/' + tagId + '/Questions/')
-      .map(res => res.json());
-  }
-
-  publishQuestion(nText, nTags, token) {
-    const headersObj = new Headers({Authorization: 'Token ' + token});
-    return this.http.post(API_ENDPOINT + '/Questions/',
-      {
-        text: nText,
-        tags: nTags
-      },
-      {
-        headers: headersObj
-      }
+  loadLikedQuestions() {
+    return this.getToken().mergeMap(
+      token => this.http.get(API_ENDPOINT + '/Questions/upvotes/', this.getHeaders(token))
+        .map(res => res.json())
     );
   }
 
-  downvoteQuestion(token, questionID) {
-    const headersObj = new Headers({Authorization: 'Token ' + token});
-    this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/downvote/', { }, {headers: headersObj})
+  loadMyQuestions() {
+    return this.getToken().mergeMap(
+      token => this.http.get(API_ENDPOINT + '/Questions/my/', this.getHeaders(token))
+        .map(res => res.json())
+    );
+  }
+
+  loadRandomQuestion() {
+    return this.getToken().mergeMap(
+      token => this.http.get(API_ENDPOINT + '/Questions/random/', this.getHeaders(token))
+        .map(res => res.json())
+    );
+  }
+
+  loadQuestionByTagId(tagId) {
+    return this.getToken().mergeMap(
+      token => this.http.get(API_ENDPOINT + '/Tags/' + tagId + '/Questions/', this.getHeaders(token))
+        .map(res => res.json())
+    );
+  }
+
+  publishQuestion(nText, nTags) {
+    return this.getToken().mergeMap(
+      token => this.http.post(API_ENDPOINT + '/Questions/',
+        {
+          text: nText,
+          tags: nTags
+        },
+        this.getHeaders(token)
+      )
+    );
+  }
+
+  downvoteQuestion(questionID) {
+    this.getToken()
+    .mergeMap(token => this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/downvote/', { }, this.getHeaders(token)))
     .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
   }
 
-  upvoteQuestion(token, questionID) {
-    const headersObj = new Headers({Authorization: 'Token ' + token});
-    this.http.post(API_ENDPOINT + '/Questions/ ' +questionID + '/upvote/', { }, {headers: headersObj})
-      .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
+  upvoteQuestion(questionID) {
+    this.getToken()
+    .mergeMap(token => this.http.post(API_ENDPOINT + '/Questions/ ' +questionID + '/upvote/', { }, this.getHeaders(token)))
+    .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
   }
 
-  getAnswerById(token, answerID) {
+  getAnswerById(answerID) {
     return this.http.get(API_ENDPOINT + '/Answers/' + answerID)
       .map(res => res.json());
   }

@@ -39,24 +39,22 @@ export class MyQuestionsPage {
    * Input: refresher of view for reloading questions; null for initial loading call
    */
   loadQuestions(refresher) {
-    this.storage.get('localUserToken').then((val) => {
-      this.questionService.loadMyQuestions(val).subscribe((data) => {
-        if (data !== undefined && data !== []) {
-          this.questions = data.map((question) => {
-            return question;
-          });
-          if (refresher !== null) {
-            refresher.complete();
-          }
+    this.questionService.loadMyQuestions().subscribe((data) => {
+      if (data !== undefined && data !== []) {
+        this.questions = data.map((question) => {
+          return question;
+        });
+        if (refresher !== null) {
+          refresher.complete();
         }
-        else{
-          let toast = this.toastCtrl.create({
-            message: this.messageConnectionError,
-            duration: 3000
-          });
-          toast.present();
-        }
-      });
+      }
+      else{
+        let toast = this.toastCtrl.create({
+          message: this.messageConnectionError,
+          duration: 3000
+        });
+        toast.present();
+      }
     });
   }
 

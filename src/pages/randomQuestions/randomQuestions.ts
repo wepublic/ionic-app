@@ -1,6 +1,5 @@
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import {TagsHelper} from "../../utils/TagsHelper";
 import {TranslateService} from "@ngx-translate/core";
@@ -22,31 +21,26 @@ export class RandomQuestionsPage {
   @ViewChildren('mycards1') swingCards: QueryList<SwingCardComponent>;
 
   messageConnectionError;
-  token;
 
   questions = [];
   stackConfig: StackConfig;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService,
-              public storage: Storage, public questionService: QuestionServiceProvider, public tagsHelper: TagsHelper) {
+              public questionService: QuestionServiceProvider, public tagsHelper: TagsHelper) {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
       this.messageConnectionError = res;
     });
     this.initSwipe();
-    this.storage.get('localUserToken')
-      .then((val) => {
-        this.token = val;
-        this.loadNewQuestion();
-        this.loadNewQuestion();
-        this.loadNewQuestion();
-      });
+    this.loadNewQuestion();
+    this.loadNewQuestion();
+    this.loadNewQuestion();
   }
 
   ionViewWillEnter() {
   }
 
   loadNewQuestion() {
-    this.questionService.loadRandomQuestion(this.token).subscribe(
+    this.questionService.loadRandomQuestion().subscribe(
       (res) => {
         if (res === undefined) {
           let toast = this.toastCtrl.create({
@@ -69,7 +63,7 @@ export class RandomQuestionsPage {
     console.log('thumbs down');
     let q = this.questions.shift();
     console.log("Remove " + q.id);
-    this.questionService.downvoteQuestion(this.token, q.id);
+    this.questionService.downvoteQuestion(q.id);
     this.loadNewQuestion();
   }
 
@@ -77,7 +71,7 @@ export class RandomQuestionsPage {
     console.log('thumbs up');
     let q = this.questions.shift();
     console.log("Remove " + q.id);
-    this.questionService.upvoteQuestion(this.token, q.id);
+    this.questionService.upvoteQuestion(q.id);
     this.loadNewQuestion();
   }
 

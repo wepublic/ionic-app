@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Headers, Http, RequestOptions} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 import {API_ENDPOINT} from '../../app/app.config';
 import {Storage} from "@ionic/storage";
 
@@ -28,6 +31,9 @@ export class UserServiceProvider {
   constructor(public http: Http, public storage: Storage) {
     this.userDummies = this.initDummyData();
   }
+
+  getToken() { return Observable.fromPromise(this.storage.get('localUserToken')); }
+  getHeaders(token) { return {headers: new Headers({Authorization: 'Token ' + token})}; }
 
   loadUserById(id) {
     return this.userDummies[id];
@@ -60,10 +66,8 @@ export class UserServiceProvider {
   }
 
   logout(token) {
-    //Todo: onError!!!
-    const headers = new Headers({ Authorization: 'Token ' + token });
-    const options = new RequestOptions({ headers: headers });
-    return this.http.get(API_ENDPOINT + '/Users/logout/', options);
+    return this.getToken()
+    .mergeMap(token => this.http.get(API_ENDPOINT + '/Users/logout/', this.getHeaders(token)));
   }
 
   //TODO: remove when backend is ready for real data
