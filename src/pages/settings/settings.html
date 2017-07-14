@@ -8,15 +8,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="loggedInUser !== undefined">
     <ion-list-header>{{ 'SETTINGS.YOUR_PROFILE' | translate }}</ion-list-header>
     <ion-item>
+      <img src="{{loggedInUser.profile_pic}}">
+    </ion-item>
+    <ion-item>
       <ion-label color="primary" stacked>{{ 'SETTINGS.FIRSTNAME' | translate }}</ion-label>
-      <ion-input id="vorname" value="{{loggedInUser.firstName}}"></ion-input>
+      <ion-input id="vorname" value="{{loggedInUser.first_name}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>{{ 'SETTINGS.LASTNAME' | translate }}</ion-label>
-      <ion-input value="{{loggedInUser.lastName}}"></ion-input>
+      <ion-input value="{{loggedInUser.last_name}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>{{ 'SETTINGS.EMAIL' | translate }}</ion-label>

@@ -8,35 +8,22 @@ import {API_ENDPOINT} from '../../app/app.config';
 import {Storage} from "@ionic/storage";
 
 /*
-  Generated class for the UserServiceProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
+ * User service provider
 */
 
 @Injectable()
 export class UserServiceProvider {
 
-  //TODO: remove when backend is ready for real data
-  userDummies: Array<
-    {
-      id: number,
-      firstName: string,
-      lastName: string,
-      email: string,
-      password: string,
-      likedQuestions: any,
-    }>;
-
   constructor(public http: Http, public storage: Storage) {
-    this.userDummies = this.initDummyData();
   }
 
   getToken() { return Observable.fromPromise(this.storage.get('localUserToken')); }
   getHeaders(token) { return {headers: new Headers({Authorization: 'Token ' + token})}; }
 
-  loadUserById(id) {
-    return this.userDummies[id];
+  loadMe() {
+    return this.getToken()
+    .mergeMap(token => this.http.get(API_ENDPOINT + '/Users/me/', this.getHeaders(token)))
+    .map(res => res.json());
   }
 
   createNewUser(username, email, password, sex, birthYear, plz){
@@ -89,20 +76,6 @@ export class UserServiceProvider {
       err => { console.log("Login error"); }
     );
     return res;
-  }
-
-  //TODO: remove when backend is ready for real data
-  initDummyData() {
-    return (
-      [
-        { id: 0, firstName: 'Angela', lastName: 'Merkel', email: 'merkel@gmail.com', password: '1234',
-          likedQuestions: [0, 1]},
-        { id: 1, firstName: 'Test', lastName: 'User', email: 'test@gmail.com', password: 'test',
-          likedQuestions: [1]},
-        { id: 2, firstName: 'Dummy', lastName: 'User', email: 'dummy@gmail.com', password: 'passwort',
-          likedQuestions: [0]},
-      ]
-    );
   }
 
 }
