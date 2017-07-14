@@ -11,11 +11,9 @@
   <ion-refresher (ionRefresh)="loadQuestions($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-scroll scrollY="true" scrollbar="false" style="height: 100%">
-    <ion-list no-lines>
-      <ion-item *ngFor="let question of questions">
-        <question-bubble [question]="question" [textClick]="loadAnswerPageFunction()" [tagClick]="loadSearchPageFunction()"></question-bubble>
-      </ion-item>
-    </ion-list>
-  </ion-scroll>
+  <ion-list no-lines>
+    <ion-item *ngFor="let question of questions">
+      <question-bubble [question]="question" [textClick]="loadAnswerPageFunction()" [tagClick]="loadSearchPageFunction()"></question-bubble>
+    </ion-item>
+  </ion-list>
 </ion-content>

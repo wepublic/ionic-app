@@ -14,6 +14,7 @@ import {TagsServiceProvider} from "../providers/tags-service/tags-service";
 import {TagsHelper} from "../utils/TagsHelper";
 
 @Component({
+  selector: 'app',
   providers: [TagsServiceProvider, UserServiceProvider],
   templateUrl: 'app.html'
 })
