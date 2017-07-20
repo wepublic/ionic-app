@@ -1,10 +1,26 @@
-
 <ion-content class="welcome-content" scroll="false">
-  <ion-title class="header">{{ 'WELCOME.WELCOME' | translate }}</ion-title>
-  <ion-list class="button-area">
-    <!--<button class="button" ion-button [navPush]="tabsView" (click)="login()">Anmelden</button>-->
-    <button class="button" ion-button [navPush]="signUpView">{{ 'WELCOME.SIGNUP' | translate }}</button>
-    <!--<button class="button" ion-button>{{ 'WELCOME.LOGINFB' | translate }}</button>-->
-    <button class="button" ion-button [navPush]="loginView">{{ 'WELCOME.LOGIN' | translate }}</button>
-  </ion-list>
+  <div class="title-area">
+    <div class="logo-area">
+      <custom-icon class="logo" set="logo" name="me-logo" padding text-center></custom-icon>
+    </div>
+    <div class="subtitle-area">
+      <span class="subtitle" text-wrap text-center padding-horizontal>
+        Unterstütze Fragen, die dich interessieren und mache sie zu deinen Fragen.
+      </span>
+    </div>
+  </div>
+
+  <div class="button-area">
+    <button class="button button-signup" ion-button  [navPush]="signUpView" text-center padding block>
+      <span class="button-text">
+        {{ 'WELCOME.SIGNUP' | translate }}
+      </span>
+    </button>
+
+    <button class="button button-signin" ion-button [navPush]="loginView" text-center padding block outline>
+      <span class="button-text">
+        {{ 'WELCOME.LOGIN' | translate }}
+      </span>
+    </button>
+  </div>
 </ion-content>

@@ -33,6 +33,7 @@ import {SwingModule} from "angular2-swing";
 import {AnswersPage} from "../pages/answers/answers";
 import { NewsServiceProvider } from '../providers/news-service/news-service';
 import { QuestionBubbleComponent } from '../components/question-bubble/question-bubble';
+import {CustomIconsModule} from "ionic2-custom-icons";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -68,6 +69,7 @@ export function createTranslateLoader(http: Http) {
       backButtonText: '',
     }),
     IonicStorageModule.forRoot(),
+    CustomIconsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
