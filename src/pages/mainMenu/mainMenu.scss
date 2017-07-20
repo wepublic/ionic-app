@@ -4,31 +4,32 @@ page-mainMenu {
 .button-big {
   height: 90%;
   width: 90%;
+  color: black;
   text-align: center;
   text-transform: none;
   overflow: hidden;
 }
 .button-big-icon {
   width: 100%;
-  height: 60%;
+  height: 80%;
   padding-bottom: 20px;
   overflow: hidden;
 }
 .button-big-text {
   width: 100%;
-  height: 40%;
+  height: 20%;
   font-size: 10px;
   text-align: center;
   text-transform: none;
   overflow: hidden;
 }
 
-.row {
+.rowB {
   width: 100%;
-  height: 40%;
+  height: 50%;
 }
 
-.col {
+.colB {
   width: 50%;
   height: 100%;
 }

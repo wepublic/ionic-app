@@ -1,0 +1,23 @@
+.labelClickable{
+  text-decoration: underline;
+  text-underline: color($colors, dark);
+}
+
+.signUp-content{
+  background: color($colors, secondary);
+}
+.withBackground{
+  text-color: black;
+  background: color($colors, secondary);
+}
+
+.signUp-content{
+  .label{
+    text-color: black;
+    background: color($colors, secondary);
+  }
+  .labelClickable{
+    text-color: black;
+    background: color($colors, secondary);
+  }
+}
