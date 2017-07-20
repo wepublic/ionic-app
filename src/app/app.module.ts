@@ -32,6 +32,7 @@ import {NewsPage} from "../pages/news/news";
 import {SwingModule} from "angular2-swing";
 import {AnswersPage} from "../pages/answers/answers";
 import { NewsServiceProvider } from '../providers/news-service/news-service';
+import { QuestionBubbleComponent } from '../components/question-bubble/question-bubble';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -57,6 +58,7 @@ export function createTranslateLoader(http: Http) {
     NewsPage,
     AnswersPage,
     LikeBar,
+    QuestionBubbleComponent,
   ],
   imports: [
     BrowserModule,

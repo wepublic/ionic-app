@@ -5,6 +5,7 @@ import {QuestionServiceProvider} from "../../providers/question-service/question
 import {TagsHelper} from "../../utils/TagsHelper";
 import {TranslateService} from "@ngx-translate/core";
 import {AnswersPage} from "../answers/answers";
+import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
 
 @Component({
   selector: 'page-answeredQuestions',
@@ -58,9 +59,12 @@ export class AnsweredQuestionsPage {
     });
   }
 
-  loadAnswerPage(question){
-    //TODO get question ID
-    this.navCtrl.push(AnswersPage, { question: question});
+  loadAnswerPageFunction() {
+    return (question) => { this.navCtrl.push(AnswersPage, {question: question}) };
+  }
+
+  loadSearchPageFunction() {
+    return (tag) => { this.navCtrl.push(SearchQuestionsPage, {tag: tag}) };
   }
 
   loadTags(question) {
