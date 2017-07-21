@@ -1,12 +1,12 @@
 page-randomQuestions {
-  #card-stack {
+  .card-stack {
     width: 90%;
     height: 200px;
     margin: 100px auto 0;
     position: relative;
   }
 
-  #card-stack ion-card {
+  .card-stack {
     border-radius: 5px;
     position: absolute;
     text-align: center;
@@ -14,7 +14,7 @@ page-randomQuestions {
     height: 90%;
   }
 
-  #circled-content {
+  .circled-content {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +25,7 @@ page-randomQuestions {
     color: white;
   }
 
-  #user-img {
+  .user-img {
     font-size: 70px;
     color: map-get($colors, primary);
   }

@@ -7,6 +7,7 @@ import {EnterQuestionPage} from "../enterQuestion/enterQuestion";
 import {AnsweredQuestionsPage} from "../answeredQuestions/answeredQuestions";
 
 @Component({
+  selector: 'page-mainMenu',
   templateUrl: 'mainMenu.html'
 })
 export class MainMenuPage {

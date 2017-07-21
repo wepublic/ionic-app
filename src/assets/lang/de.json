@@ -23,9 +23,9 @@
 
   "MAINMENU": {
     "OPENQUESTIONS": "Meine offenen Fragen",
-    "ANSWEREDQUESTIONS": "Beantwortete Fragen",
-    "ASK": "selber fragen",
-    "NEWS": "News"
+    "ANSWEREDQUESTIONS": "Meine beantworteten Fragen",
+    "ASK": "Frage stellen",
+    "NEWS": "Infos"
   },
 
   "ENTERQUESTION": {
@@ -122,7 +122,7 @@
   "TABS": {
     "HOME": "Home",
     "MY": "Meine",
-    "MATCH": "Fragen bewerten",
+    "MATCH": "Fragen finden",
     "LIKED": "Interesse",
     "SEARCH": "Fragen suchen",
     "TRENDING": "Beliebt",
