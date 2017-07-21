@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NavController, ToastController} from 'ionic-angular';
+import { NavController, ToastController} from 'ionic-angular';
 
 import {SignUpPage} from '../signUp/signUp';
 import { Storage } from '@ionic/storage';
@@ -8,6 +8,7 @@ import {TabsPage} from "../tabs/tabs";
 import {UserServiceProvider} from "../../providers/user-service/user-service";
 import {MainMenuPage} from "../mainMenu/mainMenu";
 import {WelcomePage} from "../welcome/welcome";
+import { Keyboard } from 'ionic-native';
 
 @Component({
   selector: 'page-login',
@@ -29,6 +30,7 @@ export class LoginPage {
               translate: TranslateService, public userService: UserServiceProvider) {
     translate.get('LOGIN.FAILED', {value: 'world'}).subscribe((res: string) => {
       this.messageFailedLogin = res;
+      Keyboard.disableScroll(true); //not working
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import {Nav, Platform} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -12,6 +12,7 @@ import {UserServiceProvider} from "../providers/user-service/user-service";
 import {TabsPage} from "../pages/tabs/tabs";
 import {TagsServiceProvider} from "../providers/tags-service/tags-service";
 import {TagsHelper} from "../utils/TagsHelper";
+import {Keyboard} from 'ionic-native';
 
 @Component({
   providers: [TagsServiceProvider, UserServiceProvider],
@@ -37,6 +38,10 @@ export class MyApp {
     this.tagsHelper.loadAllTagObjects();
 
     this.checkLoggedInStatus();
+
+    platform.ready().then(() => {
+      Keyboard.disableScroll(true); //not working
+    });
   }
 
   initApp() {

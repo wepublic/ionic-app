@@ -24,7 +24,15 @@
         <!--<span class="meter-left" style="width: 33.3%"></span>-->
         <!--<span class="meter-right" style="width: 33.3%"></span>-->
       <!--</div>-->
-      <like-bar [percentage]="likePerc"></like-bar>
+      <!--<like-bar [percentage]="likePerc"></like-bar>-->
+      <ion-card *ngFor="let answer of answers">
+        <ion-card-header>
+          <p text-wrap>{{answer.user.username}}</p>
+        </ion-card-header>
+        <ion-card-content>
+          <p text-wrap>{{answer.text}}</p>
+        </ion-card-content>
+      </ion-card>
     </ion-item>
   </ion-scroll>
 </ion-content>

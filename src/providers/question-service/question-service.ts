@@ -24,7 +24,7 @@ export class QuestionServiceProvider {
     flags: any,
     answer: any,
   }>;
-  
+
   //TODO: remove UserService when backend is ready for real data
   constructor(public userService: UserServiceProvider, public http: Http) {
     this.questionDummies = this.initDummyData();
@@ -86,7 +86,12 @@ export class QuestionServiceProvider {
   upvoteQuestion(token, questionID) {
     const headersObj = new Headers({Authorization: 'Token ' + token});
     this.http.post(API_ENDPOINT + '/Questions/ ' +questionID + '/upvote/', { }, {headers: headersObj})
-    .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
+      .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
+  }
+
+  getAnswerById(token, answerID) {
+    return this.http.get(API_ENDPOINT + '/Answers/' + answerID)
+      .map(res => res.json());
   }
 
   //TODO: TODO: remove when backend is ready for real data

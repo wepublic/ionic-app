@@ -16,6 +16,7 @@ export class AnswersPage {
   public questions: any;
   messageConnectionError;
   question;
+  answers: any[] = [];
   likePerc = 66;
 
   constructor(public navCtrl: NavController, private navParams: NavParams, public questionService: QuestionServiceProvider, public storage: Storage,
@@ -39,6 +40,26 @@ export class AnswersPage {
       this.questionService.loadAnsweredQuestion(val, this.question.id).subscribe((data) => {
         if (data !== undefined && data !== []) {
           this.question = data;
+          console.log(data); //TODO debug ausgabe
+          console.log(data.answers); //TODO debug ausgabe
+          for(let answer of data.answers){ //TODO not working
+            console.log("in for"); //TODO debug ausgabe
+            this.questionService.getAnswerById(val, answer.id).subscribe((data2 => {
+              if (data !== undefined && data !== []) {
+                console.log("data valid"); //TODO debug ausgabe
+                console.log(data2);
+                this.answers.push(data2);
+              }
+              else {
+                console.log("data invalid"); //TODO debug ausgabe
+                let toast = this.toastCtrl.create({
+                  message: this.messageConnectionError,
+                  duration: 3000
+                });
+                toast.present();
+              }
+            }));
+          }
         }
         else {
           let toast = this.toastCtrl.create({
