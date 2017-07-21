@@ -41,6 +41,7 @@
 
   "WELCOME": {
     "WELCOME": "WePublic",
+    "SUBTITLE": "Unterstütze Fragen, die dich interessieren und mache sie zu deinen Fragen.",
     "LOGIN": "Login",
     "LOGINFB": "Login mit Facebook",
     "SIGNUP": "Konto anlegen"
@@ -49,7 +50,7 @@
   "LOGIN": {
     "EMAIL": "E-Mail",
     "FAILED": "Anmeldung fehlgeschlagen",
-    "LOGIN": "Login",
+    "LOGIN": "Anmeldung",
     "PASSWORD": "Passwort",
     "SIGNIN": "Anmelden",
     "FORGOTPW": "Passwort vergessen?"

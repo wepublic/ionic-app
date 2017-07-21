@@ -1,29 +1,34 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle="right" end>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>{{ 'WELCOME.LOGIN' | translate }}</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content class="login-content" scroll="false" middle>
-  <ion-title class="header">{{ 'LOGIN.LOGIN' | translate }}</ion-title>
-  <ion-list class="input-field">
-    <ion-item>
-      <ion-input middle class="ion-input" (input)="emailChanged($event.target.value)" type="email"
-                 placeholder="{{ 'LOGIN.EMAIL' | translate }}">
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input middle class="ion-input" (input)="pwChanged($event.target.value)" type="password"
-                 placeholder="{{ 'LOGIN.PASSWORD' | translate }}">
-      </ion-input>
-    </ion-item>
-  </ion-list>
-
-  <ion-list class="button-area" middle>
-    <button class="button" middle ion-button (click)="login()">{{ 'LOGIN.SIGNIN' | translate }}</button>
-    <button class="button" middle ion-button (click)="forgotPW()">{{ 'LOGIN.FORGOTPW' | translate }}</button>
-  </ion-list>
+<ion-content class="login-content" scroll="false">
+  <ion-grid no-padding>
+    <ion-row class="title-area">
+      <div class="logo-area">
+        <custom-icon class="logo" set="logo" name="me-logo" padding text-center></custom-icon>
+      </div>
+    </ion-row>
+    <ion-row class="input-area" center>
+      <ion-title class="title" text-center padding>{{ 'LOGIN.LOGIN' | translate }}</ion-title>
+      <ion-item class="input-item" no-lines>
+        <ion-label class="input-label" stacked>{{ 'LOGIN.EMAIL' | translate }}</ion-label>
+        <ion-input class="ion-input" (input)="emailChanged($event.target.value)" type="email">
+        </ion-input>
+      </ion-item>
+      <ion-item class="input-item" no-lines>
+        <ion-label class="input-label" stacked>{{ 'LOGIN.PASSWORD' | translate }}</ion-label>
+        <ion-input class="ion-input" (input)="pwChanged($event.target.value)" type="password">
+        </ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row class="button-area">
+      <button class="button button-filled" ion-button (click)="login()" block>
+        <span class="button-text">{{ 'LOGIN.SIGNIN' | translate }}</span>
+      </button>
+      <button class="button button-filled" ion-button (click)="forgotPW()" block>
+        <span class="button-text">{{ 'LOGIN.FORGOTPW' | translate }}</span>
+      </button>
+      <button class="button button-outlined" ion-button navPop block outline>
+        <span class="button-text">{{ 'CANCEL' | translate }}</span>
+      </button>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

@@ -67,6 +67,8 @@ export function createTranslateLoader(http: Http) {
     SwingModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
+      scrollAssist: false,
+      autoFocusAssist: false,
     }),
     IonicStorageModule.forRoot(),
     CustomIconsModule,

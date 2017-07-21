@@ -7,6 +7,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {TabsPage} from "../tabs/tabs";
 import {UserServiceProvider} from "../../providers/user-service/user-service";
 import {MainMenuPage} from "../mainMenu/mainMenu";
+import {WelcomePage} from "../welcome/welcome";
 
 @Component({
   selector: 'page-login',
@@ -17,6 +18,7 @@ export class LoginPage {
 
   tabsView = TabsPage;
   mainMenuView = MainMenuPage;
+  welcomePage = WelcomePage;
   signUpView = SignUpPage;
   messageFailedLogin;
   data;

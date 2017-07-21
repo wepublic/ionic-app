@@ -1,9 +1,12 @@
 page-welcome {
+  .welcome-content {
+    background-color: color($colors, primary);
+  }
 
   .title-area {
     height: 60%;
     width: 100%;
-    background-color: #15E1AE;
+    background-color: color($colors, primary);
     position: relative;
     display: table;
 
@@ -42,7 +45,7 @@ page-welcome {
     height: 40%;
     width: 100%;
     display: table;
-    background-color: #FFDD5A;
+    background-color: color($colors, secondary);
 
     .button {
       height: 20%;
@@ -60,7 +63,7 @@ page-welcome {
     }
 
     .button-signup {
-      background-color: #15E1AE;
+      background-color: color($colors, primary);
       color: white;
     }
 
