@@ -12,7 +12,6 @@ import {UserServiceProvider} from "../providers/user-service/user-service";
 import {TabsPage} from "../pages/tabs/tabs";
 import {TagsServiceProvider} from "../providers/tags-service/tags-service";
 import {TagsHelper} from "../utils/TagsHelper";
-import {Keyboard} from 'ionic-native';
 
 @Component({
   providers: [TagsServiceProvider, UserServiceProvider],
@@ -28,8 +27,6 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
               public translate: TranslateService, public storage: Storage, public userService: UserServiceProvider,
               public tagsHelper: TagsHelper) {
-    this.initApp();
-
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('de');
 
@@ -38,6 +35,8 @@ export class MyApp {
     this.tagsHelper.loadAllTagObjects();
 
     this.checkLoggedInStatus();
+
+    this.initApp();
   }
 
   initApp() {
@@ -45,7 +44,10 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+
+      setTimeout(() => {
+        this.splashScreen.hide();
+      }, 400);
     });
   }
 
@@ -93,6 +95,8 @@ export class MyApp {
       if(val !== null) {
         this.rootPage = TabsPage;
         console.log('set new root');
+      } else {
+        this.rootPage = WelcomePage;
       }
     });
   }
@@ -108,7 +112,6 @@ export class MyApp {
   logout() {
     this.storage.get('localUserToken').then((val) => {
       this.userService.logout(val).subscribe((data) => {
-        //TODO: fix internal server error!!!
         console.log(data.json());
       });
       this.storage.remove('localUserEmail');
