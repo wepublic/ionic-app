@@ -38,10 +38,6 @@ export class MyApp {
     this.tagsHelper.loadAllTagObjects();
 
     this.checkLoggedInStatus();
-
-    platform.ready().then(() => {
-      Keyboard.disableScroll(true); //not working
-    });
   }
 
   initApp() {

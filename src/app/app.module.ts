@@ -34,7 +34,6 @@ import {AnswersPage} from "../pages/answers/answers";
 import { NewsServiceProvider } from '../providers/news-service/news-service';
 import { QuestionBubbleComponent } from '../components/question-bubble/question-bubble';
 import {CustomIconsModule} from "ionic2-custom-icons";
-import { Keyboard } from '@ionic-native/keyboard';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -106,7 +105,6 @@ export function createTranslateLoader(http: Http) {
     StatusBar,
     SplashScreen,
     TagsHelper,
-    Keyboard,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserServiceProvider,
     QuestionServiceProvider,
