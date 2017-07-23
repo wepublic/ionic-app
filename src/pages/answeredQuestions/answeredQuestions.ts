@@ -42,7 +42,7 @@ export class AnsweredQuestionsPage {
       this.questionService.loadLikedQuestions(val).subscribe((data) => {
         if (data !== undefined && data !== []) {
           this.questions = data.map((question) => {
-            return question;
+              return question;
           });
           if (refresher !== null) {
             refresher.complete();

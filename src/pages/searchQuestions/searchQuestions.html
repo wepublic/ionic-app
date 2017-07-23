@@ -13,13 +13,13 @@
   <ion-searchbar type="text" placeholder="{{ 'TABS.SEARCH' | translate }}" (ionInput)="refreshTags($event)" (click)="showTagList()">
   </ion-searchbar>
 
-  <ion-list *ngIf="showTags">
-    <ion-item *ngFor="let tag of tags" (click)="selectTag(tag)">
+  <ion-list *ngIf="showTags" no-lines>
+    <ion-item *ngFor="let tag of tags" (click)="selectTag(tag)" no-lines>
       #{{ tag.text }}
     </ion-item>
   </ion-list>
 
-  <ion-scroll *ngIf="!showTags" scrollY="true" scrollbar="false">
+  <ion-scroll *ngIf="!showTags" scrollY="true" scrollbar="false" no-lines>
     <ion-list no-lines>
       <ion-item *ngFor="let question of questions">
         <question-bubble [question]="question" [textClick]="loadAnswerPageFunction()" [tagClick]="loadQuestionsByTagFunction()"></question-bubble>
