@@ -6,6 +6,11 @@ import {API_ENDPOINT} from '../../app/app.config';
 @Injectable()
 export class TagsServiceProvider {
 
+  tagDummies: Array<{
+    id: number,
+    text: string
+  }>;
+
   constructor(public http: Http) {
     console.log('Hello TagsServiceProvider Provider');
   }
