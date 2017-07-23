@@ -58,7 +58,7 @@ export class AnswersPage {
       if(this.question !== undefined && this.question !== []){
         for (let answer of this.question.answers) {
           this.questionService.getAnswerById(val, answer.id).subscribe((data2 => {
-            if (data2 !== undefined && data2 !== []) {
+            if (data2 !== undefined) {
               this.answers.push(data2);
             }
             else {

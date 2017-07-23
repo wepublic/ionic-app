@@ -55,7 +55,6 @@ export class RandomQuestionsPage {
           });
           toast.present();
         } else {
-          console.log("Add " + res.id);
           this.questions.push(res);
         }
       });

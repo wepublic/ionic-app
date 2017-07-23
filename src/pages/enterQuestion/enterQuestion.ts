@@ -43,10 +43,7 @@ export class EnterQuestionPage {
     if (this.questionText !== undefined && this.selectedTags !== undefined) {
       if (this.questionText.length > 0 && this.selectedTags.length > 0) {
         this.storage.get('localUserToken').then((val) => {
-          this.questionService.publishQuestion(this.questionText, this.selectedTags, val)
-          .subscribe((data) => {
-            console.log(data);
-          });
+          this.questionService.publishQuestion(this.questionText, this.selectedTags, val);
           this.navCtrl.setRoot(MainMenuPage);
         });
       }
