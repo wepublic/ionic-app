@@ -70,7 +70,7 @@ export class QuestionServiceProvider {
     // return this.http.get(API_ENDPOINT + '/Questions/random/', {headers: headersObj})
     //   .map(res => res.json());
     this.qId++;
-    return Observable.of(this.questionDummies.filter((q: any) => q.id === (this.qId % 10)));
+    return this.questionDummies[this.qId % 10];
   }
 
   loadQuestionByTagId(tagId) {

@@ -6,7 +6,7 @@ page-randomQuestions {
     position: relative;
   }
 
-  .card-stack {
+  .card-stack ion-card {
     border-radius: 5px;
     position: absolute;
     text-align: center;
@@ -30,7 +30,7 @@ page-randomQuestions {
     color: map-get($colors, primary);
   }
 
-  .hint {
-    color: grey;
+  .card {
+    height: 150px;
   }
 }

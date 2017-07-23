@@ -42,7 +42,7 @@ export class LoginPage {
   // }
 
   login() {
-    this.userService.login(this.email, this.password).subscribe((data) => {
+    /*this.userService.login(this.email, this.password).subscribe((data) => {
         console.log(data.json());
         this.storage.set('localUserToken', data.json().Token);
         this.storage.set('localUserEmail', this.email);
@@ -54,7 +54,7 @@ export class LoginPage {
         duration: 3000
       });
       toast.present();
-    });
+    });*/
     this.navCtrl.setRoot(this.tabsView);
   }
 

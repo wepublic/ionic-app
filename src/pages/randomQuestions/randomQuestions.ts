@@ -1,16 +1,15 @@
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
-import {TagsHelper} from "../../utils/TagsHelper";
 import {TranslateService} from "@ngx-translate/core";
+import { Storage } from '@ionic/storage';
 
 import {
   StackConfig,
-  Direction,
   DragEvent,
   SwingStackComponent,
   SwingCardComponent} from 'angular2-swing';
+import {TagsHelper} from "../../utils/TagsHelper";
 
 @Component({
   selector: 'page-randomQuestions',
@@ -21,66 +20,48 @@ export class RandomQuestionsPage {
   @ViewChild('myswing1') swingStack: SwingStackComponent;
   @ViewChildren('mycards1') swingCards: QueryList<SwingCardComponent>;
 
+  //public question: any;
   messageConnectionError;
-  token;
 
-  questions = [];
+  currentQuestion;
+  questions: Array<any>;
   stackConfig: StackConfig;
+  recentCard: string = '';
+  allTags;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService,
-              public storage: Storage, public questionService: QuestionServiceProvider, public tagsHelper: TagsHelper) {
+              public questionService: QuestionServiceProvider, public storage: Storage, public tagsHelper: TagsHelper) {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
       this.messageConnectionError = res;
     });
+    this.currentQuestion = undefined;
+    this.allTags = this.tagsHelper.getAllTagObjects();
+    this.questions = [];
     this.initSwipe();
-    this.storage.get('localUserToken')
-      .then((val) => {
-        this.token = val;
-        this.loadNewQuestion();
-        this.loadNewQuestion();
-        this.loadNewQuestion();
-      });
+    this.loadNewQuestion();
+    console.log('all Tags');
+    console.log(this.allTags);
   }
 
   ionViewWillEnter() {
-  }
-
-  loadNewQuestion() {
-    this.questionService.loadRandomQuestion(this.token).subscribe(
-      (res) => {
-        if (res === undefined) {
-          let toast = this.toastCtrl.create({
-            message: this.messageConnectionError,
-            duration: 3000
-          });
-          toast.present();
-        } else {
-          this.questions.push(res);
-        }
-      });
-  }
-
-  loadTags(question) {
-    return this.tagsHelper.getTagObjects(question.tags);
+    if (!(this.questions !== [] || this.questions.length > 0)) {
+      this.loadNewQuestion();
+    }
   }
 
   downvote() {
     console.log('thumbs down');
-    let q = this.questions.shift();
-    console.log("Remove " + q.id);
-    this.questionService.downvoteQuestion(this.token, q.id);
+    this.questions.pop();
+    //TODO: send downvote to server
     this.loadNewQuestion();
   }
 
   upvote() {
     console.log('thumbs up');
-    let q = this.questions.shift();
-    console.log("Remove " + q.id);
-    this.questionService.upvoteQuestion(this.token, q.id);
+    this.questions.pop();
+    //TODO: send upvote to server
     this.loadNewQuestion();
   }
-
-  trackById(index: number, question: any): number { return question.id; }
 
   /**
    *
@@ -92,7 +73,6 @@ export class RandomQuestionsPage {
 
   initSwipe() {
     this.stackConfig = {
-      allowedDirections: [Direction.LEFT, Direction.RIGHT],
       throwOutConfidence: (offsetX, offsetY, element) => {
         return Math.min(Math.abs(offsetX) / (element.offsetWidth/2), 1);
       },
@@ -127,6 +107,32 @@ export class RandomQuestionsPage {
 
     element.style.background = color;
     element.style['transform'] = `translate3d(0, 0, 0) translate(${x}px, ${y}px) rotate(${r}deg)`;
+  }
+
+  // Add new questions to our array
+  loadNewQuestion() {
+    const newQuestion = this.questionService.loadRandomQuestion(null);
+    if (newQuestion === undefined){
+      let toast = this.toastCtrl.create({
+        message: this.messageConnectionError,
+        duration: 3000
+      });
+      toast.present();
+    } else {
+      //TODO: remove when real data
+      //if necessary for dummy data because of cached views
+      if (this.currentQuestion === undefined) {
+        this.questions.push(newQuestion);
+        this.currentQuestion = newQuestion;
+        console.log(this.questions);
+      } else if (newQuestion.id !== this.currentQuestion.id) {
+        this.questions.push(newQuestion);
+        this.currentQuestion = newQuestion;
+        console.log(this.questions);
+      } else {
+        this.loadNewQuestion();
+      }
+    }
   }
 
   // http://stackoverflow.com/questions/57803/how-to-convert-decimal-to-hex-in-javascript

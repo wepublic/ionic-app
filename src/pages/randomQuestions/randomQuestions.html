@@ -9,12 +9,12 @@
 
 <ion-content padding>
   <div
-    swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutleft)="downvote()" (throwoutright)="upvote()"
-    id="card-stack" [style.zIndex]="-1000"
+    swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutleft)="upvote()" (throwoutright)="downvote()"
+    id="card-stack"
   >
-    <ion-card #mycards1 swing-card *ngFor="let question of questions; trackBy: trackById; let i=index" [style.zIndex]="-1 * i" [style.marginTop]="i === 0 ? '0px' : '12px'">
+    <ion-card class="card" #mycards1 swing-card *ngFor="let question of questions">
       <ion-card-header>
-        {{question.id}}: <span *ngFor="let tag of loadTags(question)">#{{tag.text}}</span>
+        <span *ngFor="let tag of question.tags">#{{allTags[tag].text}} </span>
       </ion-card-header>
       <ion-card-content>
         <p>{{question.text}}</p>
@@ -22,25 +22,27 @@
     </ion-card>
   </div>
 
-  <ion-grid *ngIf="questions.length > 0">
-    <ion-row>
-      <ion-col>
-        <div>
-          <span id="circled-content">{{questions[0].upvotes}}</span>
-        </div>
-      </ion-col>
-      <ion-col>
-        <ion-icon id="user-img" name="contact" float-right>{{questions[0].user.profile_pic}}</ion-icon>
-      </ion-col>
-    </ion-row>
+  <ion-row padding-top>
+    <ion-col>
+      <div>
+        <span id="circled-content">{{currentQuestion.upvotes}}</span>
+      </div>
+    </ion-col>
+    <ion-col>
+      <ion-icon id="user-img" name="contact" float-right></ion-icon>
+    </ion-col>
+  </ion-row>
 
-    <ion-row class="hint">
-      <ion-col text-center>{{ 'MATCH.SWIPE_TO_VOTE' | translate }}</ion-col>
-    </ion-row>
-
-    <ion-row class="hint">
-      <ion-col>&lt;&lt; {{ 'MATCH.BAD' | translate }}</ion-col>
-      <ion-col text-right>{{ 'MATCH.GOOD' | translate }} &gt;&gt;</ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-row padding-top>
+    <ion-col>
+      <span float-right>
+        << uninteressant
+      </span>
+    </ion-col>
+    <ion-col>
+      <span>
+        interessant >>
+      </span>
+    </ion-col>
+  </ion-row>
 </ion-content>
