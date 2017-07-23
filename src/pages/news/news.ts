@@ -30,6 +30,8 @@ export class NewsPage {
         if (refresher !== null) {
           refresher.complete();
         }
+        console.log(data);
+        console.log(this.news);
       }
       else{
         let toast = this.toastCtrl.create({
