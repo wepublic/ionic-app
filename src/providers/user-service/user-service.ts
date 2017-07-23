@@ -18,11 +18,10 @@ export class UserServiceProvider {
   userDummies: Array<
     {
       id: number,
-      firstName: string,
-      lastName: string,
+      first_name: string,
+      last_name: string,
+      username: string,
       email: string,
-      password: string,
-      likedQuestions: any,
     }>;
 
   constructor(public http: Http, public storage: Storage) {
@@ -69,14 +68,7 @@ export class UserServiceProvider {
   //TODO: remove when backend is ready for real data
   initDummyData() {
     return (
-      [
-        { id: 0, firstName: 'Angela', lastName: 'Merkel', email: 'merkel@gmail.com', password: '1234',
-          likedQuestions: [0, 1]},
-        { id: 1, firstName: 'Test', lastName: 'User', email: 'test@gmail.com', password: 'test',
-          likedQuestions: [1]},
-        { id: 2, firstName: 'Dummy', lastName: 'User', email: 'dummy@gmail.com', password: 'passwort',
-          likedQuestions: [0]},
-      ]
+      []
     );
   }
 
