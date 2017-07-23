@@ -10,40 +10,40 @@
 <ion-content padding>
   <ion-row align-items-center="true" class="rowB">
     <ion-col col-6 align-self-center text-center class="colB">
-      <button ion-button clear class="button-big" [navPush]="openQuestionsView">
-        <div>
-          <custom-icon class="logo" set="home" name="open-questions" padding text-center></custom-icon>
+      <button class="button" ion-button clear class="button-big" [navPush]="openQuestionsView">
+        <div class="button-container">
+          <ion-img class="image" src="assets/img/home1.png"></ion-img>
           <br>
-          <label class="button-big-text">{{ 'MAINMENU.OPENQUESTIONS' | translate }}</label>
+          <label class="button-text" text-center text-wrap>{{ 'MAINMENU.OPENQUESTIONS' | translate }}</label>
         </div>
       </button>
     </ion-col>
     <ion-col col-6 align-self-center text-center class="colB">
-      <button ion-button clear class="button-big" [navPush]="answeredQuestionsView" text-wrap>
-        <div>
-          <custom-icon class="logo" set="home" name="answered-questions" padding text-center></custom-icon>
+      <button class="button" ion-button clear class="button-big" [navPush]="answeredQuestionsView" text-wrap>
+        <div class="button-container">
+          <ion-img class="image" src="assets/img/home2.png"></ion-img>
           <br>
-          <label class="button-big-text">{{ 'MAINMENU.ANSWEREDQUESTIONS' | translate }}</label>
+          <label class="button-text">{{ 'MAINMENU.ANSWEREDQUESTIONS' | translate }}</label>
         </div>
       </button>
     </ion-col>
   </ion-row>
   <ion-row class="rowB">
     <ion-col col-6 align-self-center text-center class="colB">
-      <button ion-button clear class="button-big" [navPush]="enterQuestionView">
-        <div>
-          <custom-icon class="logo" set="home" name="ask-question" padding text-center></custom-icon>
+      <button class="button" ion-button clear class="button-big" [navPush]="enterQuestionView">
+        <div class="button-container">
+          <ion-img class="image" src="assets/img/home3.png"></ion-img>
           <br>
-          <label class="button-big-text">{{ 'MAINMENU.ASK' | translate }}</label>
+          <label class="button-text">{{ 'MAINMENU.ASK' | translate }}</label>
         </div>
       </button>
     </ion-col>
     <ion-col col-6 align-self-center text-center class="colB">
-      <button ion-button clear class="button-big" [navPush]="newsView">
-        <div>
-          <custom-icon class="logo" set="home" name="info-area" padding text-center></custom-icon>
+      <button class="button" ion-button clear class="button-big" [navPush]="newsView">
+        <div class="button-container">
+          <ion-img class="image" src="assets/img/home4.png"></ion-img>
           <br>
-          <label class="button-big-text">{{ 'MAINMENU.NEWS' | translate }}</label>
+          <label class="button-text">{{ 'MAINMENU.NEWS' | translate }}</label>
         </div>
       </button>
     </ion-col>
