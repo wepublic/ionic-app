@@ -33,6 +33,7 @@ import {SwingModule} from "angular2-swing";
 import {AnswersPage} from "../pages/answers/answers";
 import { NewsServiceProvider } from '../providers/news-service/news-service';
 import { QuestionBubbleComponent } from '../components/question-bubble/question-bubble';
+import { AnswerBubbleComponent } from '../components/answer-bubble/answer-bubble';
 import {CustomIconsModule} from "ionic2-custom-icons";
 
 export function createTranslateLoader(http: Http) {
@@ -60,6 +61,7 @@ export function createTranslateLoader(http: Http) {
     AnswersPage,
     LikeBar,
     QuestionBubbleComponent,
+    AnswerBubbleComponent,
   ],
   imports: [
     BrowserModule,

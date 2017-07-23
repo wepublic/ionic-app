@@ -9,30 +9,29 @@
 
 <ion-content>
   <ion-scroll scrollY="true" scrollbar="false" style="height: 100%">
-    <ion-item>
-      <ion-card>
-        <ion-card-header>
-            <span *ngFor="let tag of loadTags()">
-              #{{tag.text}}
-            </span>
-        </ion-card-header>
-        <ion-card-content>
-          <p text-wrap>{{question.text}}</p>
-        </ion-card-content>
-      </ion-card>
-      <!--<div class="meter" (ngModel)="likePercQuestion">-->
-        <!--<span class="meter-left" style="width: 33.3%"></span>-->
-        <!--<span class="meter-right" style="width: 33.3%"></span>-->
-      <!--</div>-->
-      <!--<like-bar [percentage]="likePerc"></like-bar>-->
-      <ion-card *ngFor="let answer of answers">
-        <ion-card-header>
-          <p text-wrap>{{answer.user.username}}</p>
-        </ion-card-header>
-        <ion-card-content>
-          <p text-wrap>{{answer.text}}</p>
-        </ion-card-content>
-      </ion-card>
+    <ion-item no-lines>
+      <question-bubble [question]="question" [textClick]="foo()" [tagClick]="foo()"></question-bubble>
+      <!--<ion-card>-->
+        <!--<ion-card-header>-->
+            <!--<span *ngFor="let tag of loadTags()">-->
+              <!--#{{tag.text}}-->
+            <!--</span>-->
+        <!--</ion-card-header>-->
+        <!--<ion-card-content>-->
+          <!--<p text-wrap>{{question.text}}</p>-->
+        <!--</ion-card-content>-->
+      <!--</ion-card>-->
+      <!--<ion-card *ngFor="let answer of answers">-->
+        <!--<ion-card-header>-->
+          <!--<p text-wrap>{{answer.user.username}}</p>-->
+        <!--</ion-card-header>-->
+        <!--<ion-card-content>-->
+          <!--<p text-wrap>{{answer.text}}</p>-->
+        <!--</ion-card-content>-->
+      <!--</ion-card>-->
+    </ion-item>
+    <ion-item no-lines>
+      <answer-bubble *ngFor="let answer of answers" [answer]="answer"></answer-bubble>
     </ion-item>
   </ion-scroll>
 </ion-content>

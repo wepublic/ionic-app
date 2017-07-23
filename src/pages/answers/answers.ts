@@ -28,6 +28,7 @@ export class AnswersPage {
     this.question = navParams.get('question');
     console.log(this.question);
     this.loadTags();
+    this.loadAnswers();
     //this.loadQuestion();
   }
 
@@ -35,40 +36,45 @@ export class AnswersPage {
     return this.tagsHelper.getTagObjects(this.question.tags);
   }
 
-  loadQuestion(){
+  // loadQuestion(){
+  //   this.storage.get('localUserToken').then((val) => {
+  //     this.questionService.loadAnsweredQuestion(val, this.question.id).subscribe((data) => {
+  //       if (data !== undefined && data !== []) {
+  //         this.question = data;
+  //       }
+  //       else {
+  //         let toast = this.toastCtrl.create({
+  //           message: this.messageConnectionError,
+  //           duration: 3000
+  //         });
+  //         toast.present();
+  //       }
+  //     });
+  //   });
+  // }
+
+  loadAnswers(){
     this.storage.get('localUserToken').then((val) => {
-      this.questionService.loadAnsweredQuestion(val, this.question.id).subscribe((data) => {
-        if (data !== undefined && data !== []) {
-          this.question = data;
-          console.log(data); //TODO debug ausgabe
-          console.log(data.answers); //TODO debug ausgabe
-          for(let answer of data.answers){ //TODO not working
-            console.log("in for"); //TODO debug ausgabe
-            this.questionService.getAnswerById(val, answer.id).subscribe((data2 => {
-              if (data !== undefined && data !== []) {
-                console.log("data valid"); //TODO debug ausgabe
-                console.log(data2);
-                this.answers.push(data2);
-              }
-              else {
-                console.log("data invalid"); //TODO debug ausgabe
-                let toast = this.toastCtrl.create({
-                  message: this.messageConnectionError,
-                  duration: 3000
-                });
-                toast.present();
-              }
-            }));
-          }
+      if(this.question !== undefined && this.question !== []){
+        for (let answer of this.question.answers) {
+          this.questionService.getAnswerById(val, answer.id).subscribe((data2 => {
+            if (data2 !== undefined && data2 !== []) {
+              this.answers.push(data2);
+            }
+            else {
+              let toast = this.toastCtrl.create({
+                message: this.messageConnectionError,
+                duration: 3000
+              });
+              toast.present();
+            }
+          }));
         }
-        else {
-          let toast = this.toastCtrl.create({
-            message: this.messageConnectionError,
-            duration: 3000
-          });
-          toast.present();
-        }
-      });
+      }
     });
+  }
+
+  foo(){
+
   }
 }
