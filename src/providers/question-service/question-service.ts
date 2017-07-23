@@ -31,6 +31,7 @@ export class QuestionServiceProvider {
   }>;
 
   qId=0;
+  newID = 10;
 
   //TODO: remove UserService when backend is ready for real data
   constructor(public userService: UserServiceProvider, public http: Http) {
@@ -76,20 +77,20 @@ export class QuestionServiceProvider {
   loadQuestionByTagId(tagId) {
     // return this.http.get(API_ENDPOINT + '/Tags/' + tagId + '/Questions/')
     //   .map(res => res.json());
+    var asdf = this.questionDummies;
+    this.questionDummies = [];
+    this.questionDummies = asdf;
     return Observable.of(this.questionDummies.filter((q: any) => q.tags.includes(tagId)));
   }
 
   publishQuestion(nText, nTags, token) {
-    const headersObj = new Headers({Authorization: 'Token ' + token});
-    // return this.http.post(API_ENDPOINT + '/Questions/',
-    //   {
-    //     text: nText,
-    //     tags: nTags
-    //   },
-    //   {
-    //     headers: headersObj
-    //   }
-    // );
+    var asdf = {id: this.newID, upvotes: 0, voted: true, answers: [], user: { url: "http://test.de", id: 0, username: "angela.merkel@cdu.de", profile_pic: null },
+      text: nText, time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: nTags};
+    this.questionDummies.push(asdf);
+    console.log("sdfalshdfi8hosaihdfodsaihfojiosadf");
+    console.log(asdf);
+    this.newID++;
+    console.log(this.questionDummies);
   }
 
   downvoteQuestion(token, questionID) {
