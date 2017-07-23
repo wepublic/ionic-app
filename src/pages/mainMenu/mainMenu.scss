@@ -1,8 +1,24 @@
 page-mainMenu {
-  .logo {
-    font-size: 15vw;
-    color: color($colors, primary);
-    fill: color($colors, primary);
+
+  .button {
+    width: 100%;
+    height: 100%;
+
+    .button-container {
+      margin: auto;
+
+      .image {
+        width: 10rem;
+        height: 10rem;
+        color: white;
+        background-color: white;
+      }
+
+      .button-text {
+        height: 30%;
+      }
+    }
+
   }
 
   .button-big {
