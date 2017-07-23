@@ -42,8 +42,12 @@ export class EnterQuestionPage {
     console.log(this.selectedTags);
     if (this.questionText !== undefined && this.selectedTags !== undefined) {
       if (this.questionText.length > 0 && this.selectedTags.length > 0) {
+        let tmp = [];
+        this.selectedTags.forEach((tag) => {
+          tmp.push(parseInt(tag));
+        });
         this.storage.get('localUserToken').then((val) => {
-          this.questionService.publishQuestion(this.questionText, this.selectedTags, val);
+          this.questionService.publishQuestion(this.questionText, tmp, val);
           this.navCtrl.setRoot(MainMenuPage);
         });
       }

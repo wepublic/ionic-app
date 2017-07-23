@@ -19,7 +19,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-scroll *ngIf="!showTags" scrollY="true" scrollbar="false" no-lines>
+  <ion-scroll class="results" *ngIf="!showTags" scrollY="true" scrollbar="false" no-lines>
     <ion-list no-lines>
       <ion-item *ngFor="let question of questions">
         <question-bubble [question]="question" [textClick]="loadAnswerPageFunction()" [tagClick]="loadQuestionsByTagFunction()"></question-bubble>

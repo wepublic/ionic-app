@@ -14,15 +14,15 @@ page-randomQuestions {
     height: 90%;
   }
 
-  .circled-content {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    width: 60px;
+  .circle {
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
+    line-height: 3.5rem;
+    font-size: 13px;
     background-color: grey;
     color: white;
+    text-align: center;
   }
 
   .user-img {
@@ -32,5 +32,23 @@ page-randomQuestions {
 
   .card {
     height: 150px;
+  }
+
+  .bar {
+    height: 150px;
+  }
+
+  .image {
+    color: white;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-me {
+    color: white;
+    background-color: white;
+    width: 4rem;
+    height: 4rem;
   }
 }

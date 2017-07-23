@@ -63,6 +63,9 @@ export class QuestionServiceProvider {
     const headersObj = new Headers({Authorization: 'Token ' + token});
     // return this.http.get(API_ENDPOINT + '/Questions/my/', {headers: headersObj})
     //   .map(res => res.json());
+    console.log('start loading');
+    console.log(this.questionDummies);
+    console.log(this.questionDummies.filter((q: any) => q.voted === true));
     return Observable.of(this.questionDummies.filter((q: any) => q.voted === true));
   }
 
@@ -122,23 +125,23 @@ export class QuestionServiceProvider {
       [
         { id: 0, upvotes: 2, voted: true, answers: [{ id: 0, user: 0}, { id: 1, user: 1}, { id: 2, user: 1}, { id: 3, user: 1}], user: { url: "http://test.de", id: 0, username: "angela.merkel@cdu.de", profile_pic: null },
           text: "Wie sieht die Bildung in Zukunft aus?", time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: [0]},
-        { id: 1, upvotes: 2, voted: false, answers: [{ id: 4, user: 0}, { id: 5, user: 1}], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
+        { id: 1, upvotes: 10, voted: false, answers: [{ id: 4, user: 0}, { id: 5, user: 1}], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
           text: "Was spricht heute noch gegen die Einführung der direkten Demokratie in Deutschland?", time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: [6]},
-        { id: 2, upvotes: 2, voted: true, answers: [{ id: 7, user: 0}, { id: 6, user: 1}], user: { url: "http://test.de", id: 0, username: "angela.merkel@cdu.de", profile_pic: null },
+        { id: 2, upvotes: 8, voted: true, answers: [{ id: 7, user: 0}, { id: 6, user: 1}], user: { url: "http://test.de", id: 0, username: "angela.merkel@cdu.de", profile_pic: null },
           text: "Was spricht gegen das G9?", time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: [0]},
         { id: 3, upvotes: 2, voted: true, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
           text: "Wie wollen Sie der \"postfaktischen Politik\" entgegen wirken und Inhalte zum Mittelpunkt der Politik machen anstatt Ideologien? ", time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: [6]},
-        { id: 4, upvotes: 2, voted: false, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
+        { id: 4, upvotes: 4, voted: false, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
           text: "Was ist Ihre Meinung zu Europa und Asylpolitik?", time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: [4, 5]},
-        { id: 5, upvotes: 2, voted: false, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
+        { id: 5, upvotes: 8, voted: false, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
           text: "Warum wird der unkontrollierte Zustrom an Flüchtlingen nicht begrenzt?", time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: [1, 4]},
-        { id: 6, upvotes: 2, voted: false, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
+        { id: 6, upvotes: 5, voted: false, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
           text: "Was sind die größten Probleme unserer wirtschaftlichen Entwicklung und wie wollen Sie diese beheben?", time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: [3]},
-        { id: 7, upvotes: 2, voted: false, answers: [{ id: 8, user: 0}], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
+        { id: 7, upvotes: 9, voted: false, answers: [{ id: 8, user: 0}], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
           text: "Werden Sie gerecht bezahlt?", time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: [2]},
-        { id: 8, upvotes: 2, voted: false, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
+        { id: 8, upvotes: 6, voted: false, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
           text: "Warum investieren Sie nicht mehr Geld in die Zukunft unserer Kinder?", time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: [0, 2]},
-        { id: 9, upvotes: 2, voted: false, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
+        { id: 9, upvotes: 7, voted: false, answers: [], user: { url: "http://test.de", id: 5, username: "angela.merkel@cdu.de", profile_pic: null },
           text: "Wie wollen Sie der Flüchtlingskrise Herr werden, ohne die Abgehängten im eigenen Land aus den Augen zu verlieren?", time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: [1]},
       ]);
   }

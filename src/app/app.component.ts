@@ -12,9 +12,10 @@ import {UserServiceProvider} from "../providers/user-service/user-service";
 import {TabsPage} from "../pages/tabs/tabs";
 import {TagsServiceProvider} from "../providers/tags-service/tags-service";
 import {TagsHelper} from "../utils/TagsHelper";
+import {QuestionServiceProvider} from "../providers/question-service/question-service";
 
 @Component({
-  providers: [TagsServiceProvider, UserServiceProvider],
+  providers: [TagsServiceProvider, QuestionServiceProvider, UserServiceProvider],
   templateUrl: 'app.html'
 })
 export class MyApp {

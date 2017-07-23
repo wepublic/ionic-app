@@ -22,27 +22,18 @@
     </ion-card>
   </div>
 
-  <ion-row padding-top>
+  <ion-row>
     <ion-col>
-      <div>
-        <span id="circled-content">{{currentQuestion.upvotes}}</span>
-      </div>
+        <div class="circle">
+          <span>{{currentQuestion.upvotes}}</span>
+        </div>
     </ion-col>
     <ion-col>
-      <ion-icon id="user-img" name="contact" float-right></ion-icon>
+      <ion-img float-end class="image-me" src="assets/img/random_q_me.png"></ion-img>
     </ion-col>
   </ion-row>
 
-  <ion-row padding-top>
-    <ion-col>
-      <span float-right>
-        << uninteressant
-      </span>
-    </ion-col>
-    <ion-col>
-      <span>
-        interessant >>
-      </span>
-    </ion-col>
-  </ion-row>
+  <div class="bar">
+    <ion-img class="image" src="assets/img/random_q_bar.png"></ion-img>
+  </div>
 </ion-content>

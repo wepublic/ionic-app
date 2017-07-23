@@ -10,7 +10,7 @@ import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
 
 @Component({
   selector: 'page-myQuestions',
-  providers: [QuestionServiceProvider],
+  providers: [],
   templateUrl: 'myQuestions.html'
 })
 export class MyQuestionsPage {
