@@ -16,13 +16,12 @@ export class QuestionServiceProvider {
   //TODO: remove when backend is ready for real data
   questionDummies: Array<{
     id: number,
-    content: string,
-    creator: any,
-    category: string,
-    likeCount: number,
-    dislikeCount: number,
-    flags: any,
-    answer: any,
+    upvotes: number,
+    voted: boolean,
+    answers: any,
+    user: any,
+    text: string,
+    tags: any,
   }>;
 
   //TODO: remove UserService when backend is ready for real data
@@ -102,87 +101,7 @@ export class QuestionServiceProvider {
   //TODO: remove when backend is ready for real data
   initDummyData() {
     return (
-      [
-        {
-          id: 0,
-          content: "This is a question",
-          creator: this.getUserById(1),
-          category: "#norealquestion",
-          likeCount: 10,
-          dislikeCount: 100,
-          flags: [
-            {
-              id: 0,
-              reason: "spam",
-              flagCount: 43,
-            },
-            {
-              id: 1,
-              reason: "inappropriate",
-              flagCount: 2,
-            }
-          ],
-          answer: {
-            id: 0,
-            content: "Stupid question",
-            creator: this.getUserById(0),
-            likeCount: 50,
-            dislikeCount: 1,
-            flags: [],
-          }
-        },
-        {
-          id: 1,
-          content: "Alles fake?",
-          creator: this.getUserById(2),
-          category: "#fake",
-          likeCount: 100,
-          dislikeCount: 100,
-          flags: [],
-          answer: {
-            id: 0,
-            content: "The answer is Baum!",
-            creator: this.getUserById(0),
-            likeCount: 50,
-            dislikeCount: 1,
-            flags: [],
-          }
-        },
-        {
-          id: 2,
-          content: "Why Baum?",
-          creator: this.getUserById(2),
-          category: "#baum",
-          likeCount: 3000,
-          dislikeCount: 100,
-          flags: [],
-          answer: {
-            id: 0,
-            content: "The answer is Baum!",
-            creator: this.getUserById(0),
-            likeCount: 50,
-            dislikeCount: 1,
-            flags: [],
-          }
-        },
-        {
-          id: 3,
-          content: "NEEEEIIIINNN",
-          creator: this.getUserById(2),
-          category: "#whatever",
-          likeCount: 1000,
-          dislikeCount: 100,
-          flags: [],
-          answer: {
-            id: 0,
-            content: "The answer is Baum!",
-            creator: this.getUserById(0),
-            likeCount: 50,
-            dislikeCount: 1,
-            flags: [],
-          }
-        }
-      ]
+      []
     );
   }
 
