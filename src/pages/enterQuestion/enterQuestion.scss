@@ -1,5 +1,27 @@
 page-enterQuestion {
   .button-area {
-    text-align: center;
+    width: 100%;
+    display: table;
+    background-color: color($colors, secondary);
+
+
+    .button {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      text-align: center;
+      text-transform: none;
+      overflow: hidden;
+    }
+
+    .button-text {
+      font-size: 1.2em;
+    }
+
+    .button-filled {
+      background-color: color($colors, primary);
+      color: white;
+    }
   }
 }

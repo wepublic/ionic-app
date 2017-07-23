@@ -7,14 +7,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-textarea
+<ion-content padding no-lines>
+  <ion-textarea no-lines
     [(ngModel)]="questionText" placeholder="{{ 'ENTERQUESTION.ASK_QUESTION' | translate }}"
     type="text" wrap="soft" rows="6"
   >
   </ion-textarea>
-  <ion-item>
-    <ion-select
+  <ion-item no-lines>
+    <ion-select no-lines
       [(ngModel)]="selectedTags" multiple="true" placeholder="{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}"
       cancelText="{{ 'CANCEL' | translate }}"
     >
@@ -22,5 +22,5 @@
       <ion-option *ngFor="let tag of tags" value="{{tag.id}}">{{tag.text}}</ion-option>
     </ion-select>
   </ion-item>
-  <button ion-button round (click)="publishQuestion()">{{ 'ENTERQUESTION.SUBMIT_QUESTION' | translate }}</button>
+  <button ion-button block (click)="publishQuestion()">{{ 'ENTERQUESTION.SUBMIT_QUESTION' | translate }}</button>
 </ion-content>
