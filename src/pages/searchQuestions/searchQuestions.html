@@ -10,7 +10,7 @@
 <ion-content padding scroll="false">
   <ion-title>{{ 'SEARCH.SEARCH_KEY' | translate }}</ion-title>
 
-  <ion-searchbar type="text" placeholder="{{ 'TABS.SEARCH' | translate }}" (ionInput)="refreshTags($event)" (click)="showTagList()">
+  <ion-searchbar type="text" placeholder="{{searchKey}}" (ionInput)="refreshTags($event)" (click)="showTagList()">
   </ion-searchbar>
 
   <ion-list *ngIf="showTags" no-lines>

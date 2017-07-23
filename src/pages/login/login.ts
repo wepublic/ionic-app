@@ -49,11 +49,6 @@ export class LoginPage {
         this.storage.set('localUserPassword', this.password);
         this.navCtrl.setRoot(this.tabsView);
     }, (error) => {
-      let toast = this.toastCtrl.create({
-        message: this.messageFailedLogin,
-        duration: 3000
-      });
-      toast.present();
     });
     this.navCtrl.setRoot(this.tabsView);
   }
