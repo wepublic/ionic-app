@@ -30,8 +30,8 @@
         <!--</ion-card-content>-->
       <!--</ion-card>-->
     </ion-item>
-    <ion-item no-lines>
-      <answer-bubble *ngFor="let answer of answers" [answer]="answer"></answer-bubble>
+    <ion-item *ngFor="let answer of answers" no-lines>
+      <answer-bubble [answer]="answer"></answer-bubble>
     </ion-item>
   </ion-scroll>
 </ion-content>
