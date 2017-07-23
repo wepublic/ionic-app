@@ -1,0 +1,56 @@
+answer-bubble {
+
+  .message-answer {
+    font-size: medium;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  .message-answer-detail {
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .answer-bubble {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px 18px;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .answer-bubble:before {
+    z-index: -1;
+    border-radius: 2px;
+    content: "\00a0";
+    display: block;
+    height: 35px;
+    width: 20px;
+    position: absolute;
+    bottom: -14px;
+  }
+
+  .answer-bubble.left {
+    background-color: map-get($colors, primary);
+    float: left;
+  }
+
+  .answer-bubble.left:before {
+    background-color: map-get($colors, primary);
+    left: 15px;
+    -webkit-transform: rotate(70deg) skew(5deg);
+  }
+
+  .answer-bubble.right {
+    background-color: map-get($colors, secondary);
+    float: right;
+  }
+
+  .answer-bubble.right:before {
+    background-color: map-get($colors, secondary);
+    right: 15px;
+    -webkit-transform: rotate(118deg) skew(-5deg);
+  }
+
+}
