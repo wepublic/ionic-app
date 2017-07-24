@@ -45,7 +45,15 @@ export class LoginPage {
   }
 
   forgotPW() {
-    //TODO -> Backend needs to support EMails
+    this.userService.forgotPW(this.email).subscribe(
+      null,
+      (error) => {
+        let toast = this.toastCtrl.create({
+          message: this.messageFailedLogin,
+          duration: 3000
+        });
+        toast.present();
+      });
   }
 
   emailChanged(text){

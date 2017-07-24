@@ -78,4 +78,8 @@ export class UserServiceProvider {
     return res;
   }
 
+  forgotPW(userEmail) {
+    return this.http.post(API_ENDPOINT + '/Users/forgotpw/', {email: userEmail});
+  }
+
 }
