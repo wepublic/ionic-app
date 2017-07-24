@@ -154,5 +154,13 @@ export class RandomQuestionsPage {
    *
    *
    */
-
+  loadQTags(){
+    var res = [];
+    for(let t of this.allTags){
+      if(this.currentQuestion.tags.includes(t.id)){
+        res.push(t.text);
+      }
+    }
+    return res;
+  }
 }

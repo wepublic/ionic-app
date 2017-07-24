@@ -14,7 +14,7 @@
   >
     <ion-card class="card" #mycards1 swing-card *ngFor="let question of questions">
       <ion-card-header>
-        <span *ngFor="let tag of question.tags">#{{allTags[tag].text}} </span>
+        <span *ngFor="let tag of loadQTags()">#{{tag}} </span>
       </ion-card-header>
       <ion-card-content>
         <p>{{question.text}}</p>

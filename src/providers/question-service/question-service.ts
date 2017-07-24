@@ -43,7 +43,7 @@ export class QuestionServiceProvider {
     const headersObj = new Headers({Authorization: 'Token ' + token});
     // return this.http.get(API_ENDPOINT + '/Questions/'+questionID+'/', {headers: headersObj})
     //   .map(res => res.json());
-    return Observable.of(this.questionDummies.filter((q: any) => q.answers.length > 0));
+    return Observable.of(this.questionDummies.filter((q: any) => q.voted === true && q.answers.length > 0));
   }
 
   loadAllQuestions() {
@@ -56,7 +56,7 @@ export class QuestionServiceProvider {
     const headersObj = new Headers({Authorization: 'Token ' + token});
     // return this.http.get(API_ENDPOINT + '/Questions/upvotes/', {headers: headersObj})
     //   .map(res => res.json());
-    return Observable.of(this.questionDummies.filter((q: any) => q.user.id === 0));
+    return Observable.of(this.questionDummies.filter((q: any) => q.voted === true && q.answers.length > 0));
   }
 
   loadMyQuestions(token) {
@@ -90,10 +90,7 @@ export class QuestionServiceProvider {
     var asdf = {id: this.newID, upvotes: 0, voted: true, answers: [], user: { url: "http://test.de", id: 0, username: "angela.merkel@cdu.de", profile_pic: null },
       text: nText, time_created: "2017-06-27T14:33:39.300687Z", last_modified: "2017-06-27T14:33:39.300687Z", tags: nTags};
     this.questionDummies.push(asdf);
-    console.log("sdfalshdfi8hosaihdfodsaihfojiosadf");
-    console.log(asdf);
     this.newID++;
-    console.log(this.questionDummies);
   }
 
   downvoteQuestion(token, questionID) {
