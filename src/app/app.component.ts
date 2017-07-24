@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ContactPage } from "../pages/contact/contact";
 import { SettingsPage } from '../pages/settings/settings';
 import {TranslateService} from "@ngx-translate/core";
-import { Storage } from '@ionic/storage';
 import {WelcomePage} from "../pages/welcome/welcome";
 import {UserServiceProvider} from "../providers/user-service/user-service";
 import {TabsPage} from "../pages/tabs/tabs";
@@ -26,7 +25,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-              public translate: TranslateService, public storage: Storage, public userService: UserServiceProvider,
+              public translate: TranslateService, public userService: UserServiceProvider,
               public tagsHelper: TagsHelper) {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('de');
@@ -87,7 +86,7 @@ export class MyApp {
 
   checkLoggedInStatus() {
     //Test if user logged in -> Skip login page
-    this.storage.get('localUserToken').then((val) => {
+    this.userService.getToken().subscribe(val =>{
       console.log(val);
       if(val !== null) {
         this.rootPage = TabsPage;
@@ -110,14 +109,7 @@ export class MyApp {
   }
 
   logout() {
-    this.storage.get('localUserToken').then((val) => {
-      this.userService.logout(val).subscribe((data) => {
-        console.log(data.json());
-      });
-      this.storage.remove('localUserEmail');
-      this.storage.remove('localUserPassword');
-      this.storage.remove('localUserToken');
-    });
+    this.userService.logout();
   }
 }
 

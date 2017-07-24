@@ -57,17 +57,38 @@ export class UserServiceProvider {
   }
 
   login(userEmail, userPassword) {
-    return this.http.post(API_ENDPOINT + '/Users/token/',
-      {
-        email: userEmail,
-        password: userPassword,
-      }
+    var param = {
+      email: userEmail,
+      password: userPassword
+    };
+    var res = this.http.post(API_ENDPOINT + '/Users/token/', param).share();
+    res.subscribe(
+      data => {
+        console.log("Logged in:");
+        console.log(data.json());
+        this.storage.set('localUserToken', data.json().Token);
+        this.storage.set('localUserEmail', userEmail);
+        this.storage.set('localUserPassword', userPassword);
+      },
+      err => { console.log("Login error"); }
     );
+    return res;
   }
 
-  logout(token) {
-    return this.getToken()
-    .mergeMap(token => this.http.get(API_ENDPOINT + '/Users/logout/', this.getHeaders(token)));
+  logout() {
+    var res = this.getToken()
+    .mergeMap(token => this.http.get(API_ENDPOINT + '/Users/logout/', this.getHeaders(token))).share();
+    res.subscribe(
+      data => {
+        console.log("Logged out:");
+        console.log(data.json());
+        this.storage.remove('localUserEmail');
+        this.storage.remove('localUserPassword');
+        this.storage.remove('localUserToken');
+      },
+      err => { console.log("Login error"); }
+    );
+    return res;
   }
 
   //TODO: remove when backend is ready for real data
