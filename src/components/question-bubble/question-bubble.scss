@@ -1,4 +1,10 @@
 question-bubble {
+  $bubble: (
+    radius: 6px,
+    answer-height: 30px,
+  );
+
+
   .tags {
     font-weight: bold;
     display: block;
@@ -19,61 +25,65 @@ question-bubble {
   }
 
   .answers {
+    position: relative;
+    bottom: map-get($bubble, answer-height);
     margin: auto;
     width: 8em;
   }
 
   .answers div {
-    background-color: orange;
+    background-color: map-get($colors, danger);
     color: white;
     text-align: center;
-    border-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     padding: 2px;
-    position: absolute;
-    bottom: 12px;
     width: inherit;
   }
 
   .question-bubble {
-    border-radius: 5px;
-    display: inline-block;
+    border-top-left-radius: map-get($bubble, radius);
+    border-top-right-radius: map-get($bubble, radius);
     padding: 10px 18px;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: map-get($bubble, answer-height);
     width: 100%;
   }
 
   .question-bubble:before {
-    z-index: -1;
-    border-radius: 2px;
-    content: "\00a0";
-    display: block;
-    height: 35px;
-    width: 20px;
     position: absolute;
-    bottom: -14px;
+    bottom: -29px;
   }
 
   .question-bubble.left {
     background-color: map-get($colors, light);
-    float: left;
+    border: 1px solid #d1d1d1;
+    border-bottom-right-radius: map-get($bubble, radius);
+//    float: left;
   }
 
   .question-bubble.left:before {
-    background-color: map-get($colors, light);
-    left: 15px;
-    -webkit-transform: rotate(70deg) skew(5deg);
+    content:url('/assets/icon/lasche_grau.svg');
+    left: -1px;
   }
 
   .question-bubble.right {
-    background-color: map-get($colors, secondary);
-    float: right;
+    background-color: map-get($colors, primary);
+    border: 1px solid #15d7a9;
+    border-bottom-left-radius: map-get($bubble, radius);
+//    float: right;
   }
 
   .question-bubble.right:before {
-    background-color: map-get($colors, secondary);
-    right: 15px;
-    -webkit-transform: rotate(118deg) skew(-5deg);
+    content:url('/assets/icon/lasche_gruen.svg');
+    right: -1px;
   }
 
+  img {
+    position: relative;
+    top: -25px;
+    right: -20px;
+    display: block;
+    float: right
+  }
 }

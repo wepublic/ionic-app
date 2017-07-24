@@ -1,11 +1,9 @@
-<div>
-  <div class="answers">
-    <div translate [translateParams]="{value: question.answers.length}" (click)="textClick(question)">
-      {{question.answers.length == 1 ? 'BUBBLE.ANSWER' : 'BUBBLE.ANSWERS'}}
-    </div>
-  </div>
-  <div class="question-bubble right"><!-- TODO make left/right an option of the component -->
-    <div class="tags"><span *ngFor="let tag of loadTags(question)" (click)="tagClick(tag)">#{{tag.text}} </span></div>
-    <div class="message" (click)="textClick(question)">{{question.text}}</div>
+<div class="question-bubble {{question.voted ? 'right' : 'left'}}"><!-- TODO make left/right an option of the component -->
+  <div class="tags"><span *ngFor="let tag of loadTags(question)" (click)="tagClick(tag)">#{{tag.text}} </span></div>
+  <div class="message" (click)="textClick(question)">{{question.text}}</div>
+</div>
+<div class="answers">
+  <div translate [translateParams]="{value: question.answers.length}" (click)="textClick(question)">
+    {{question.answers.length == 1 ? 'BUBBLE.ANSWER' : 'BUBBLE.ANSWERS'}}
   </div>
 </div>
