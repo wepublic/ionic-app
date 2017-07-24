@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="104px"
+   height="58px"
+   viewBox="0 0 104 58"
+   version="1.1"
+   id="svg40"
+   sodipodi:docname="99999.svg"
+   inkscape:version="0.92.1 r15371">
+  <metadata
+     id="metadata44">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1158"
+     inkscape:window-height="564"
+     id="namedview42"
+     showgrid="false"
+     inkscape:zoom="3.4711538"
+     inkscape:cx="52"
+     inkscape:cy="29"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg40" />
+  <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title2">Community-Avatar/99999</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <defs
+     id="defs8">
+    <circle
+       id="path-1"
+       cx="24"
+       cy="24"
+       r="24" />
+    <circle
+       id="path-3"
+       cx="26"
+       cy="24"
+       r="24" />
+  </defs>
+  <g
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1"
+     id="Community-Avatar"
+     transform="translate(0,10)">
+    <g
+       id="Community">
+      <mask
+         id="mask-2"
+         fill="white">
+        <use
+           xlink:href="#path-1"
+           id="use13"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </mask>
+      <use
+         id="Oval"
+         xlink:href="#path-1"
+         style="fill:#ffce0f;fill-rule:nonzero"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <g
+         id="Group"
+         mask="url(#mask-2)">
+        <g
+           transform="translate(-2)"
+           id="g33">
+          <path
+             d="m 19.3,39.2 c 0,5.2 -4.2,9.4 -9.4,9.4 -5.2,0 -9.4,-4.2 -9.4,-9.4 0,-5.2 4.2,-12.9 9.4,-12.9 5.2,0 9.4,7.7 9.4,12.9 z"
+             id="Shape"
+             inkscape:connector-curvature="0"
+             style="fill:#ffffff;fill-rule:nonzero;stroke:#ffce0f;stroke-width:2.125" />
+          <path
+             d="m 51.5,39.2 c 0,5.2 -4.2,9.4 -9.4,9.4 -5.2,0 -9.4,-4.2 -9.4,-9.4 0,-5.2 4.2,-12.9 9.4,-12.9 5.2,0 9.4,7.7 9.4,12.9 z"
+             id="path18"
+             inkscape:connector-curvature="0"
+             style="fill:#ffffff;fill-rule:nonzero;stroke:#ffce0f;stroke-width:2.125" />
+          <path
+             d="m 39.5,47.1 c 0,7.5 -6,13.5 -13.5,13.5 -7.5,0 -13.5,-6 -13.5,-13.5 0,-7.5 6,-18.5 13.5,-18.5 7.5,0 13.5,11.1 13.5,18.5 z"
+             id="path20"
+             inkscape:connector-curvature="0"
+             style="fill:#ffffff;fill-rule:nonzero;stroke:#ffce0f;stroke-width:2" />
+          <circle
+             id="circle22"
+             cx="41.900002"
+             cy="21.5"
+             r="6.9000001"
+             style="fill:#ffffff;fill-rule:nonzero;stroke:#ffce0f;stroke-width:2.125" />
+          <circle
+             id="circle24"
+             cx="10.1"
+             cy="21.5"
+             r="6.9000001"
+             style="fill:#ffffff;fill-rule:nonzero;stroke:#ffce0f;stroke-width:2.125" />
+          <circle
+             id="circle26"
+             cx="26"
+             cy="20.6"
+             r="10"
+             style="fill:#ffffff;fill-rule:nonzero;stroke:#ffce0f;stroke-width:2" />
+          <mask
+             id="mask-4"
+             fill="white">
+            <use
+               xlink:href="#path-3"
+               id="use28"
+               x="0"
+               y="0"
+               width="100%"
+               height="100%" />
+          </mask>
+          <circle
+             cx="26"
+             cy="24"
+             r="23.5"
+             id="circle31"
+             style="stroke:#c49700;stroke-width:1;stroke-opacity:0.05" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

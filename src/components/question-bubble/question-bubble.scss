@@ -47,7 +47,9 @@ question-bubble {
     padding: 10px 18px;
     position: relative;
     margin-bottom: map-get($bubble, answer-height);
-    width: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
   }
 
   .question-bubble:before {
@@ -79,11 +81,40 @@ question-bubble {
     right: -1px;
   }
 
-  img {
+  .community .badge {
     position: relative;
-    top: -25px;
-    right: -20px;
-    display: block;
-    float: right
+    top: -44px;
+    left: -54px;
+    color: map-get($colors, yellowElem);
   }
+
+  .upvote {
+    display: inline-block;
+    border-radius: 0 24px 24px 0;
+    color: map-get($colors, greenDark);
+    background: linear-gradient(to right, #fff , #65e3c4);
+    margin-top: 8px;
+    height: 48px;
+    line-height: 48px;
+    width: 45%;
+    text-align: right;
+    float: right;
+  }
+
+  .upvote img {
+    vertical-align: middle;
+    padding-right: 15px;
+  }
+
+  .me {
+    float: right;
+  }
+
+  .me .badge {
+    position: relative;
+    top: -44px;
+    left: 54px;
+    color: map-get($colors, yellowElem);
+  }
+
 }

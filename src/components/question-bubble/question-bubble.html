@@ -6,4 +6,12 @@
   <div translate [translateParams]="{value: question.answers.length}" (click)="textClick(question)">
     {{question.answers.length == 1 ? 'BUBBLE.ANSWER' : 'BUBBLE.ANSWERS'}}
   </div>
+<div class="community" *ngIf="!question.voted">
+  <img src="/assets/icon/99999.svg">
+  <span class="badge">{{question.upvotes}}</span>
+  <a class="upvote">gute Frage <img src="/assets/icon/+icon.svg"></a>
+</div>
+<div class="me" *ngIf="question.voted">
+  <span class="badge">{{question.upvotes}}</span>
+  <img src="/assets/icon/99999+me.svg">
 </div>

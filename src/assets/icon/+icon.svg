@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>+Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Shipe-Bar/default" transform="translate(-292.000000, -12.000000)" fill-rule="nonzero" fill="#008864">
+            <g id="guteFrage" transform="translate(166.000000, 0.000000)">
+                <path d="M139.4,22.3836735 L139.4,12 L136.6,12 L136.6,22.3836735 L126,22.3836735 L126,25.1265306 L136.6,25.1265306 L136.6,35.5102041 L139.4,35.5102041 L139.4,25.1265306 L150,25.1265306 L150,22.3836735 L139.4,22.3836735 Z" id="+Icon"></path>
+            </g>
+        </g>
+    </g>
+</svg>
