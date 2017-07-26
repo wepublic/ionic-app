@@ -16,41 +16,37 @@ answer-bubble {
     display: inline-block;
     padding: 10px 18px;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
     width: 100%;
   }
 
   .answer-bubble:before {
-    z-index: -1;
-    border-radius: 2px;
-    content: "\00a0";
-    display: block;
-    height: 35px;
-    width: 20px;
     position: absolute;
-    bottom: -14px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -26px;
+    width: 36px;
   }
 
-  .answer-bubble.left {
+  .answer-bubble.unvoted {
+    background-color: #e1e1e1;
+  }
+
+  .answer-bubble.unvoted:before {
+    content:url('/assets/icon/lasche_mitte_grau.svg');
+  }
+
+  .answer-bubble.voted {
     background-color: map-get($colors, primary);
-    float: left;
   }
 
-  .answer-bubble.left:before {
-    background-color: map-get($colors, primary);
-    left: 15px;
-    -webkit-transform: rotate(70deg) skew(5deg);
+  .answer-bubble.voted:before {
+    content:url('/assets/icon/lasche_mitte_gruen.svg');
   }
-
-  .answer-bubble.right {
-    background-color: map-get($colors, secondary);
     float: right;
   }
 
-  .answer-bubble.right:before {
-    background-color: map-get($colors, secondary);
-    right: 15px;
-    -webkit-transform: rotate(118deg) skew(-5deg);
   }
 
 }
