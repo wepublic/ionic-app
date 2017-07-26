@@ -34,13 +34,13 @@ export class UserServiceProvider {
     var toSend = {
       username: username,
       email: email,
-      password: password
+      password: password,
+      sex: sex,
+      birthYear: birthYear,
+      plz: plz
     };
-    this.http.post(API_ENDPOINT + '/Users/', JSON.stringify(toSend), options)
-      .map(res => res.json())
-      .subscribe(data => {
-        console.log(data);
-      });
+    return this.http.post(API_ENDPOINT + '/Users/', JSON.stringify(toSend), options)
+      .map(res => res.json());
   }
 
   login(userEmail, userPassword) {

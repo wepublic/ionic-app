@@ -49,14 +49,18 @@ export class SignUpPage {
   }
 
   signUp() {
-    if(this.checkInputs()){ //show toast that a verification email has been sent
-      // let toast = this.toastCtrl.create({
-      //   message: this.messageCheckEmail,
-      //   duration: 3000
-      // });
-      // toast.present();
-      // this.userService.createNewUser(this.username, this.email, this.password, this.sex, this.birthYear, this.plz);
-      this.navCtrl.push(this.loginView);
+    if (this.checkInputs()) {
+      var res = this.userService.createNewUser(this.username, this.email, this.password, this.sex, this.birthYear, this.plz)
+      res.subscribe(data => {
+        console.log(data);
+        //show toast that a verification email has been sent
+        // let toast = this.toastCtrl.create({
+        //   message: this.messageCheckEmail,
+        //   duration: 3000
+        // });
+        // toast.present();
+        this.navCtrl.push(this.loginView);
+      }, err => { console.log(err); });
     }
     else {
       let toast = this.toastCtrl.create({
