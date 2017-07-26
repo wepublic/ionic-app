@@ -62,11 +62,11 @@ export class MyQuestionsPage {
     return this.tagsHelper.getTagObjects(question.tags);
   }
 
-  loadAnswerPageFunction() {
-    return (question) => { this.navCtrl.push(AnswersPage, {question: question}) };
+  loadAnswerPage(question) {
+    this.navCtrl.push(AnswersPage, {question: question});
   }
 
-  loadSearchPageFunction() {
-    return (tag) => { this.navCtrl.push(SearchQuestionsPage, {tag: tag}) };
+  loadSearchPage(tag) {
+    this.navCtrl.push(SearchQuestionsPage, {tag: tag});
   }
 }

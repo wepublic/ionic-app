@@ -19,26 +19,18 @@ question-bubble {
     white-space: pre-wrap;
   }
 
-  .message-detail {
-    white-space: nowrap;
-    font-size: 14px;
-  }
-
   .answers {
     position: relative;
     bottom: map-get($bubble, answer-height);
     margin: auto;
+    margin-bottom: -1 * map-get($bubble, answer-height);
     width: 8em;
-  }
-
-  .answers div {
     background-color: map-get($colors, danger);
     color: white;
     text-align: center;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 2px;
-    width: inherit;
   }
 
   .question-bubble {

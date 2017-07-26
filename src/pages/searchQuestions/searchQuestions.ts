@@ -77,12 +77,12 @@ export class SearchQuestionsPage {
       });
   }
 
-  loadQuestionsByTagFunction() {
-    return tag => this.loadQuestionsByTagId(tag.id);
+  loadQuestionsByTag(tag) {
+    this.loadQuestionsByTagId(tag.id);
   }
 
-  loadAnswerPageFunction() {
-    return (question) => { this.navCtrl.push(AnswersPage, {question: question}) };
+  loadAnswerPage(question) {
+    this.navCtrl.push(AnswersPage, {question: question});
   }
 
   showTagList() {
