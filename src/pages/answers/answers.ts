@@ -28,45 +28,25 @@ export class AnswersPage {
     console.log(this.question);
     this.loadTags();
     this.loadAnswers();
-    //this.loadQuestion();
   }
 
   loadTags(){
     return this.tagsHelper.getTagObjects(this.question.tags);
   }
 
-  // loadQuestion(){
-  //   this.storage.get('localUserToken').then((val) => {
-  //     this.questionService.loadAnsweredQuestion(val, this.question.id).subscribe((data) => {
-  //       if (data !== undefined && data !== []) {
-  //         this.question = data;
-  //       }
-  //       else {
-  //         let toast = this.toastCtrl.create({
-  //           message: this.messageConnectionError,
-  //           duration: 3000
-  //         });
-  //         toast.present();
-  //       }
-  //     });
-  //   });
-  // }
-
-  loadAnswers(){
-    if(this.question !== undefined && this.question !== []){
-      for (let answer of this.question.answers) {
-        this.questionService.getAnswerById(answer.id).subscribe(data => {
-          if (data !== undefined && data !== []) {
-            this.answers.push(data);
-          } else {
-            let toast = this.toastCtrl.create({
-              message: this.messageConnectionError,
-              duration: 3000
-            });
-            toast.present();
-          }
+  loadAnswers() {
+    if (this.question !== undefined && this.question !== []) {
+      this.questionService.getAnswersForQuestion(this.question.id)
+      .subscribe(data => {
+        console.log(data);
+        this.answers = data;
+       }, err => {
+        let toast = this.toastCtrl.create({
+          message: this.messageConnectionError,
+          duration: 3000
         });
-      }
+        toast.present();
+      });
     };
   }
 

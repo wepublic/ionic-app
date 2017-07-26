@@ -83,9 +83,12 @@ export class QuestionServiceProvider {
     .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
   }
 
-  getAnswerById(answerID) {
-    return this.http.get(API_ENDPOINT + '/Answers/' + answerID)
-      .map(res => res.json());
+  getAnswersForQuestion(questionID) {
+    return this.getToken().mergeMap(
+      token => this.http.get(API_ENDPOINT + '/Questions/' + questionID + '/answers/', this.getHeaders(token))
+        .map(res => res.json())
+    );
+  }
 
   downvoteAnswer(answerID) {
     this.getToken()
