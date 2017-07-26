@@ -1,3 +1,13 @@
 <div class="answer-bubble {{answer.voted ? 'voted' : 'unvoted'}}">
   <div class="message-answer">{{answer.text}}</div>
 </div>
+<div class="vote-bar" *ngIf="!answer.voted">
+  <a class="vote-button downvote" (click)="downvote.emit(answer)" translate>ANSWERS.BAD</a>
+  <span class="author">?</span>
+  <a class="vote-button upvote" (click)="upvote.emit(answer)" translate>ANSWERS.GOOD</a>
+</div>
+<div class="vote-bar" *ngIf="answer.voted">
+  <span class="vote-button downvote" *ngIf="!answer.voted">+me</span>
+  <span class="author">?</span>
+  <span class="vote-button upvote" *ngIf="answer.voted">+me</span>
+</div>

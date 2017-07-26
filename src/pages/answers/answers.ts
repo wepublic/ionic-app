@@ -70,7 +70,16 @@ export class AnswersPage {
     };
   }
 
-  foo(){
-
+  downvote(answer) {
+    console.log('thumbs down ' + answer.id);
+    this.questionService.downvoteAnswer(answer.id);
+    this.loadAnswers();
   }
+
+  upvote(answer) {
+    console.log('thumbs up ' + answer.id);
+    this.questionService.upvoteAnswer(answer.id);
+    this.loadAnswers();
+  }
+
 }

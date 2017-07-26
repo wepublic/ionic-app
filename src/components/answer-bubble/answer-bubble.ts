@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'answer-bubble',
-  inputs: ['answer: answer'],
   templateUrl: 'answer-bubble.html'
 })
 
 export class AnswerBubbleComponent {
-
-  answer: any;
+  @Input() answer: any;
+  @Output() upvote = new EventEmitter<any>();
+  @Output() downvote = new EventEmitter<any>();
 
   constructor() {
   }

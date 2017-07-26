@@ -12,6 +12,6 @@
     <question-bubble [question]="question"></question-bubble>
   </ion-item>
   <ion-item *ngFor="let answer of answers" no-lines>
-    <answer-bubble [answer]="answer"></answer-bubble>
+    <answer-bubble [answer]="answer" (downvote)="downvote($event)" (upvote)="upvote($event)"></answer-bubble>
   </ion-item>
 </ion-content>

@@ -86,6 +86,17 @@ export class QuestionServiceProvider {
   getAnswerById(answerID) {
     return this.http.get(API_ENDPOINT + '/Answers/' + answerID)
       .map(res => res.json());
+
+  downvoteAnswer(answerID) {
+    this.getToken()
+    .mergeMap(token => this.http.post(API_ENDPOINT + '/Answers/' + answerID + '/downvote/', { }, this.getHeaders(token)))
+    .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
+  }
+
+  upvoteAnswer(answerID) {
+    this.getToken()
+    .mergeMap(token => this.http.post(API_ENDPOINT + '/Answers/ ' +answerID + '/upvote/', { }, this.getHeaders(token)))
+    .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
   }
 
 }

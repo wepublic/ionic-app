@@ -69,7 +69,9 @@
   },
 
   "ANSWERS": {
-    "TITLE": "Antworten"
+    "TITLE": "Antworten",
+    "BAD": "schlechte Antwort",
+    "GOOD": "gute Antwort"
   },
 
   "MY_QUESTIONS": {

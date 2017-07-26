@@ -44,9 +44,50 @@ answer-bubble {
   .answer-bubble.voted:before {
     content:url('/assets/icon/lasche_mitte_gruen.svg');
   }
-    float: right;
+
+  .vote-bar {
+    width: 100%;
+    height: 48px;
   }
 
+  .vote-button {
+    display: inline-block;
+    width: 45%;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 15px 0 15px;
+  }
+
+  .downvote {
+    border-radius: 24px 0 0 24px;
+    color: map-get($colors, orangeElem);
+    background: linear-gradient(to right, #fbb , #fff);
+    float: left;
+    text-align: left;
+  }
+
+  .upvote {
+    border-radius: 0 24px 24px 0;
+    color: map-get($colors, greenDark);
+    background: linear-gradient(to right, #fff , #65e3c4);
+    float: right;
+    text-align: right;
+  }
+
+  .author {
+    display: inline-block;
+    border-radius: 24px;
+    background: red;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
   }
 
 }
