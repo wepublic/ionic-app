@@ -5,27 +5,28 @@
     </button>
     <ion-title>{{ 'SEARCH.SEARCH' | translate }}</ion-title>
   </ion-navbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar type="text" placeholder="{{ 'TABS.SEARCH' | translate }}" [(ngModel)]="selectedTag.text" (ionInput)="refreshTags($event)" (click)="showTagList()"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-title>{{ 'SEARCH.SEARCH_KEY' | translate }}</ion-title>
-
-  <ion-searchbar type="text" placeholder="{{ 'TABS.SEARCH' | translate }}" (ionInput)="refreshTags($event)" (click)="showTagList()">
-  </ion-searchbar>
-
-  <ion-scroll *ngIf="showTags" scrollY="true">
+<ion-content>
+  <div *ngIf="showTags">
     <ion-list no-lines>
       <ion-item *ngFor="let tag of tags" (click)="selectTag(tag)">
         #{{ tag.text }}
       </ion-item>
     </ion-list>
-  </ion-scroll>
+  </div>
 
-  <ion-scroll *ngIf="!showTags" scrollY="true">
+  <div *ngIf="!showTags">
     <ion-list no-lines>
       <ion-item *ngFor="let question of questions">
-        <question-bubble [question]="question" (textClick)="loadAnswerPage($event)" (tagClick)="loadQuestionsByTag($event)"></question-bubble>
+        <question-bubble [question]="question" (textClick)="loadAnswerPage($event)" (tagClick)="loadQuestionsByTag($event)" (upvote)="upvoteQuestion($event)"></question-bubble>
       </ion-item>
     </ion-list>
-  </ion-scroll>
+  </div>
+
+  <h2 translate ion-fixed *ngIf="!showTags && (questions === undefined || questions.length == 0)">SEARCH.EMPTY</h2>
+
 </ion-content>

@@ -11,7 +11,7 @@ import {AnswersPage} from "../answers/answers";
 export class SearchQuestionsPage {
 
   public tags;
-  public searchKey;
+  public selectedTag = { 'text': '' };
   public showTags: boolean;
   public questions;
   public messageConnectionError;
@@ -34,7 +34,6 @@ export class SearchQuestionsPage {
     // set val to the value of the ev target
     var val = event.target.value;
 
-    this.searchKey = val;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
@@ -44,10 +43,10 @@ export class SearchQuestionsPage {
     }
   }
 
-  selectTag(tagObject) {
-    this.searchKey = tagObject.text;
+  selectTag(tag) {
+    this.selectedTag = tag;
     this.showTags = false;
-    this.loadQuestionsByTagId(tagObject.id);
+    this.loadQuestionsByTagId(tag.id);
   }
 
   loadTags(question) {
@@ -68,6 +67,14 @@ export class SearchQuestionsPage {
 
   loadAnswerPage(question) {
     this.navCtrl.push(AnswersPage, {question: question});
+  }
+
+  upvoteQuestion(question) {
+    console.log('thumbs up for question ' + question.id);
+    this.questionService.upvoteQuestion(question.id)
+    .subscribe(question => {
+      this.loadQuestionsByTag(this.selectedTag);
+    });
   }
 
   showTagList() {

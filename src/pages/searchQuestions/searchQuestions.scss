@@ -9,6 +9,18 @@ page-search {
     flex-direction: column;
   }
 
+  ion-content > .fixed-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    h2 {
+      color: color($colors, primary);
+      padding: 15%;
+    }
+  }
+
   ion-scroll {
     flex-grow: 1;
   }

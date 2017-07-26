@@ -79,6 +79,7 @@
   },
 
   "SEARCH": {
+    "EMPTY": "Zu diesem Suchbegriff gibt es noch keine Fragen.",
     "SEARCH": "Suche",
     "SEARCH_KEY": "Suchbegriff"
   },
