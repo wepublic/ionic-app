@@ -25,7 +25,7 @@ question-bubble {
     margin: auto;
     margin-bottom: -1 * map-get($bubble, answer-height);
     width: 8em;
-    background-color: map-get($colors, danger);
+    background-color: color($colors, danger);
     color: white;
     text-align: center;
     border-bottom-left-radius: 5px;
@@ -50,7 +50,7 @@ question-bubble {
   }
 
   .question-bubble.left {
-    background-color: map-get($colors, light);
+    background-color: color($colors, light);
     border: 1px solid #d1d1d1;
     border-bottom-right-radius: map-get($bubble, radius);
 //    float: left;
@@ -62,7 +62,7 @@ question-bubble {
   }
 
   .question-bubble.right {
-    background-color: map-get($colors, primary);
+    background-color: color($colors, primary);
     border: 1px solid #15d7a9;
     border-bottom-left-radius: map-get($bubble, radius);
 //    float: right;
@@ -77,14 +77,14 @@ question-bubble {
     position: relative;
     top: -44px;
     left: -54px;
-    color: map-get($colors, yellowElem);
+    color: color($colors, yellowElem);
   }
 
   .upvote {
     display: inline-block;
     border-radius: 0 24px 24px 0;
-    color: map-get($colors, greenDark);
-    background: linear-gradient(to right, #fff , #65e3c4);
+    color: color($colors, greenDark);
+    background: linear-gradient(to right, #fff , color($colors, answerPos));
     margin-top: 8px;
     height: 48px;
     line-height: 48px;
@@ -106,7 +106,7 @@ question-bubble {
     position: relative;
     top: -44px;
     left: 54px;
-    color: map-get($colors, yellowElem);
+    color: color($colors, yellowElem);
   }
 
 }

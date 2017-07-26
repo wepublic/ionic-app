@@ -30,7 +30,7 @@ answer-bubble {
   }
 
   .answer-bubble.unvoted {
-    background-color: #e1e1e1;
+    background-color: color($colors, light);
   }
 
   .answer-bubble.unvoted:before {
@@ -38,7 +38,7 @@ answer-bubble {
   }
 
   .answer-bubble.voted {
-    background-color: map-get($colors, primary);
+    background-color: color($colors, primary);
   }
 
   .answer-bubble.voted:before {
@@ -48,6 +48,7 @@ answer-bubble {
   .vote-bar {
     width: 100%;
     height: 48px;
+    font-size: 0.8em;
   }
 
   .vote-button {
@@ -60,16 +61,16 @@ answer-bubble {
 
   .downvote {
     border-radius: 24px 0 0 24px;
-    color: map-get($colors, orangeElem);
-    background: linear-gradient(to right, #fbb , #fff);
+    color: color($colors, danger);
+    background: linear-gradient(to right, color($colors, answerNeg) , #fff);
     float: left;
     text-align: left;
   }
 
   .upvote {
     border-radius: 0 24px 24px 0;
-    color: map-get($colors, greenDark);
-    background: linear-gradient(to right, #fff , #65e3c4);
+    color: color($colors, greenDark);
+    background: linear-gradient(to right, #fff , color($colors, answerPos));
     float: right;
     text-align: right;
   }
