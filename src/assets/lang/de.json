@@ -29,14 +29,9 @@
   },
 
   "ENTERQUESTION": {
-    "ASK_QUESTION": "Stelle eine Frage",
-    "CATEGORY": "Kategorie",
-    "SUBMIT_QUESTION": "Lass die Politiker drauf los!",
-    "TAG": "Tag",
-    "TAG_QUESTION": "Tagge deine Frage",
-    "YOUR_QUESTION": "Deine Frage",
-    "YOUR_TEXT": "Dein Text",
-    "YOUR_TITLE": "Dein Titel"
+    "ASK_QUESTION": "Frage stellen",
+    "TAG_QUESTION": "Bitte #Tag eingeben",
+    "YOUR_QUESTION": "Deine Frage eingeben"
   },
 
   "WELCOME": {

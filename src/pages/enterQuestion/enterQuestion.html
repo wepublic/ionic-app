@@ -3,24 +3,25 @@
     <button ion-button menuToggle="right" end>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{ 'ENTERQUESTION.YOUR_QUESTION' | translate }}</ion-title>
+    <ion-title>{{ 'ENTERQUESTION.ASK_QUESTION' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding no-lines>
-  <ion-textarea no-lines
-    [(ngModel)]="questionText" placeholder="{{ 'ENTERQUESTION.ASK_QUESTION' | translate }}"
-    type="text" wrap="soft" rows="6"
-  >
-  </ion-textarea>
-  <ion-item no-lines>
-    <ion-select no-lines
-      [(ngModel)]="selectedTags" multiple="true" placeholder="{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}"
-      cancelText="{{ 'CANCEL' | translate }}"
-    >
-      <ion-label>{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}</ion-label>
-      <ion-option *ngFor="let tag of tags" value="{{tag.id}}">{{tag.text}}</ion-option>
-    </ion-select>
-  </ion-item>
-  <button ion-button block (click)="publishQuestion()">{{ 'ENTERQUESTION.SUBMIT_QUESTION' | translate }}</button>
+<ion-content padding>
+  <div class="fixed" padding ion-fixed>
+    <div class="bubble">
+      <ion-select no-lines
+        [(ngModel)]="selectedTags" multiple="true" placeholder="{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}"
+        cancelText="{{ 'CANCEL' | translate }}"
+      >
+        <ion-option *ngFor="let tag of tags" value="{{tag.id}}">#{{tag.text}}</ion-option>
+      </ion-select>
+      <ion-textarea
+        [(ngModel)]="questionText" placeholder="{{ 'ENTERQUESTION.YOUR_QUESTION' | translate }}"
+        type="text" wrap="soft" rows="6"
+      >
+      </ion-textarea>
+    </div>
+    <div><a (click)="publishQuestion()"><img class="button" src="/assets/icon/enter.svg"></a></div>
+  </div>
 </ion-content>
