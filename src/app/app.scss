@@ -15,11 +15,66 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-// Hide global scroll bar
-ion-content > .scroll-content {
+.logo-area {
+  background-color: color($colors, primary);
+  color: white;
+}
+
+.scroll-content {
   overflow-y: auto;
 }
 
-.button{
+.button {
   text-transform: none;
+  border-radius: 10px;
+  height: 2.8em;
+  font-size: 1.4em;
+  color: white;
+}
+
+.button-outline {
+  border-color: white;
+  border-width: 2px;
+}
+
+.button-block {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+}
+
+.input-area .item {
+  background-color: color($colors, secondary);
+  width: 100%;
+
+  .label {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0.4em;
+    font-size: 0.8em;
+    font-weight: 500;
+    color: black;
+  }
+
+  .label-small {
+    width: 90%;
+    margin-top: -2px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.6em;
+    font-weight: 400;
+    color: black;
+  }
+
+  .input, .select, .datetime {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 8px;
+    background-color: white;
+    border-radius: 6px;
+  }
 }

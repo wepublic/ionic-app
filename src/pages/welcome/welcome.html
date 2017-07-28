@@ -1,26 +1,18 @@
-<ion-content class="welcome-content" scroll="false">
-  <div class="title-area">
-    <div class="logo-area">
-      <custom-icon class="logo" set="logo" name="me-logo" padding text-center></custom-icon>
-    </div>
-    <div class="subtitle-area">
-      <span class="subtitle" text-wrap text-center padding-horizontal>
-        {{ 'WELCOME.SUBTITLE' | translate }}
-      </span>
-    </div>
-  </div>
-
-  <div class="button-area">
-    <button class="button button-signup" ion-button  [navPush]="signUpView" text-center padding block>
-      <span class="button-text">
-        {{ 'WELCOME.SIGNUP' | translate }}
-      </span>
-    </button>
-
-    <button class="button button-signin" ion-button [navPush]="loginView" text-center padding block outline>
-      <span class="button-text">
-        {{ 'WELCOME.LOGIN' | translate }}
-      </span>
-    </button>
-  </div>
+<ion-content>
+  <ion-grid no-padding ion-fixed>
+    <ion-row class="logo-area">
+      <ion-col></ion-col>
+      <ion-col align-self-end>
+        <custom-icon set="logo" name="me-logo"></custom-icon>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row class="subtitle">
+      <ion-col text-center align-self-center>{{ 'WELCOME.SUBTITLE' | translate }}</ion-col>
+    </ion-row>
+    <ion-row class="button-area">
+      <button ion-button block [navPush]="signUpView">{{ 'WELCOME.SIGNUP' | translate }}</button>
+      <button ion-button block outline [navPush]="loginView">{{ 'WELCOME.LOGIN' | translate }}</button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

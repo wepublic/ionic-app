@@ -1,7 +1,5 @@
-<ion-content>
-  <ion-tabs class="ion-tabs" color="secondary" selectedIndex="1">
-    <ion-tab customIconSet="tabs" customIconName="find-questions" tabTitle="{{ 'TABS.MATCH' | translate }}" [root]="tab1Root" primary></ion-tab>
-    <ion-tab customIconSet="tabs" customIconName="home" tabTitle="{{ 'TABS.HOME' | translate }}" [root]="tab2Root"></ion-tab>
-    <ion-tab customIconSet="tabs" customIconName="search-questions" tabTitle="{{ 'TABS.SEARCH' | translate }}" [root]="tab3Root"></ion-tab>
-  </ion-tabs>
-</ion-content>
+<ion-tabs class="ion-tabs" color="secondary" selectedIndex="1">
+  <ion-tab customIconSet="tabs" customIconName="find-questions" tabTitle="{{ 'TABS.MATCH' | translate }}" [root]="tab1Root" primary></ion-tab>
+  <ion-tab customIconSet="tabs" customIconName="home" tabTitle="{{ 'TABS.HOME' | translate }}" [root]="tab2Root"></ion-tab>
+  <ion-tab tabIcon="search" tabTitle="{{ 'TABS.SEARCH' | translate }}" [root]="tab3Root"></ion-tab>
+</ion-tabs>

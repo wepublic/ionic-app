@@ -1,34 +1,23 @@
-<ion-content padding>
-  <ion-grid no-padding>
-    <ion-row class="title-area">
-      <div class="logo-area">
-        <custom-icon class="logo" set="logo" name="me-logo" padding text-center></custom-icon>
-      </div>
-    </ion-row>
-    <ion-row class="input-area" center>
-      <ion-title class="title" text-center padding>{{ 'LOGIN.LOGIN' | translate }}</ion-title>
-      <ion-item class="input-item" no-lines>
-        <ion-label class="input-label" stacked>{{ 'LOGIN.EMAIL' | translate }}</ion-label>
-        <ion-input class="ion-input" (input)="emailChanged($event.target.value)" type="email">
-        </ion-input>
-      </ion-item>
-      <ion-item class="input-item" no-lines>
-        <ion-label class="input-label" stacked>{{ 'LOGIN.PASSWORD' | translate }}</ion-label>
-        <ion-input class="ion-input" (input)="pwChanged($event.target.value)" type="password">
-        </ion-input>
-      </ion-item>
-    </ion-row>
-    <ion-row class="button-area">
-      <button class="button button-filled" ion-button (click)="login()" block>
-        <span class="button-text">{{ 'LOGIN.SIGNIN' | translate }}</span>
-      </button>
-      <button class="button button-filled" ion-button (click)="forgotPW()" block>
-        <span class="button-text">{{ 'LOGIN.FORGOTPW' | translate }}</span>
-      </button>
-      <button class="button button-outlined" ion-button navPop block outline>
-        <span class="button-text">{{ 'CANCEL' | translate }}</span>
-      </button>
-    </ion-row>
-  </ion-grid>
+<ion-content text-center>
+  <div class="logo-area">
+    <custom-icon set="logo" name="me-logo" padding text-center></custom-icon>
+  </div>
+  <div class="title">{{ 'LOGIN.LOGIN' | translate }}</div>
+  <ion-list class="input-area">
+    <ion-item no-lines>
+      <ion-label stacked>{{ 'LOGIN.EMAIL' | translate }}</ion-label>
+      <ion-input (input)="emailChanged($event.target.value)" type="email">
+      </ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label stacked>{{ 'LOGIN.PASSWORD' | translate }}</ion-label>
+      <ion-input (input)="pwChanged($event.target.value)" type="password">
+      </ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="button-area">
+    <button ion-button block (click)="login()">{{ 'LOGIN.SIGNIN' | translate }}</button>
+    <button ion-button block (click)="forgotPW()">{{ 'LOGIN.FORGOTPW' | translate }}</button>
+    <button ion-button block outline navPop>{{ 'CANCEL' | translate }}</button>
+  </div>
 </ion-content>
-

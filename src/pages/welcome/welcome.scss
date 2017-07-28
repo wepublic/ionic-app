@@ -1,76 +1,24 @@
 page-welcome {
-  .welcome-content {
-    background-color: color($colors, primary);
+  ion-grid {
+    height: 100%;
   }
 
-  .title-area {
-    height: 60%;
-    width: 100%;
+  .logo-area {
+    flex: 1;
+    font-size: 11vw;
+  }
+
+  .subtitle {
+    flex: 1;
+    padding: 2em;
+    font-size: 1.6em;
+    color: white;
     background-color: color($colors, primary);
-    position: relative;
-    display: table;
-
-    .logo-area {
-      width: 100%;
-      display: table;
-      height: 60%;
-
-      .logo {
-        display: table-cell;
-        vertical-align: middle;
-        font-size: 15vw;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        color: white;
-      }
-    }
-
-    .subtitle-area {
-      height: 40%;
-      position: absolute;
-      bottom: 0;
-      text-align: center;
-      color: white;
-      display: flex;
-      align-items: center;
-
-      .subtitle {
-        font-size: 1.3em;
-      }
-    }
   }
 
   .button-area {
-    height: 40%;
-    width: 100%;
-    display: table;
+    flex: 1;
+    padding-top: 4em;
     background-color: color($colors, secondary);
-
-    .button {
-      height: 20%;
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 10%;
-      text-align: center;
-      text-transform: none;
-      overflow: hidden;
-    }
-
-    .button-text {
-      font-size: 1.3em;
-    }
-
-    .button-signup {
-      background-color: color($colors, primary);
-      color: white;
-    }
-
-    .button-signin {
-      color: white;
-      border-color: white;
-      border-width: 2px;
-    }
   }
 }
