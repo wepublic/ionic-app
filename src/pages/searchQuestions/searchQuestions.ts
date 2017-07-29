@@ -18,26 +18,11 @@ export class SearchQuestionsPage {
 
   constructor(public navCtrl: NavController, private navParams: NavParams, public tagsHelper: TagsHelper,
               public questionService: QuestionServiceProvider, public toastCtrl: ToastController) {
-    this.initTagsArray();
+    this.tags = this.tagsHelper.getAllTagObjectsSorted();
     this.showTags = true;
     let tag = navParams.get('tag');
     console.log("Tag: " + tag);
     if (tag !== undefined) this.selectTag(tag);
-  }
-
-  initTagsArray() {
-    this.tags = this.tagsHelper.getAllTagObjects();
-    this.tags.sort(function(a, b) {
-      var tagA = a.text.toUpperCase(); // ignore upper and lowercase
-      var tagB = b.text.toUpperCase(); // ignore upper and lowercase
-      if (tagA < tagB) {
-        return -1;
-      }
-      if (tagA > tagB) {
-        return 1;
-      }
-      return 0;
-    });
   }
 
   refreshTags(event) {

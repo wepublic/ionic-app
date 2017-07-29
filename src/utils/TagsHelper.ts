@@ -64,4 +64,21 @@ export class TagsHelper {
     return tags;
   }
 
+  getAllTagObjectsSorted() {
+    var tags = this.getAllTagObjects();
+    tags.sort(function(a, b) {
+      var tagA = a.text.toUpperCase(); // ignore upper and lowercase
+      var tagB = b.text.toUpperCase(); // ignore upper and lowercase
+      if (tagA < tagB) {
+        return -1;
+      }
+      if (tagA > tagB) {
+        return 1;
+      }
+      return 0;
+    });
+    console.log(tags);
+    return tags;
+  }
+
 }
