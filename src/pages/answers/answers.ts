@@ -62,4 +62,13 @@ export class AnswersPage {
     this.loadAnswers();
   }
 
+  upvoteQuestion(question) {
+    console.log('thumbs up for question ' + question.id);
+    this.questionService.upvoteQuestion(question.id)
+    .subscribe(question => {
+       console.log(question);
+       this.question = question;
+     });
+  }
+
 }

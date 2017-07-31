@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-item no-lines>
-    <question-bubble [question]="question"></question-bubble>
+    <question-bubble [question]="question" (upvote)="upvoteQuestion($event)"></question-bubble>
   </ion-item>
   <ion-item *ngFor="let answer of answers" no-lines>
     <answer-bubble [answer]="answer" (downvote)="downvote($event)" (upvote)="upvote($event)"></answer-bubble>

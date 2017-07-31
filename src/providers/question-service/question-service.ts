@@ -19,7 +19,7 @@ export class QuestionServiceProvider {
   getToken() { return Observable.fromPromise(this.storage.get('localUserToken')); }
   getHeaders(token) { return {headers: new Headers({Authorization: 'Token ' + token})}; }
 
-  loadAnsweredQuestion(questionID) {
+  loadAnsweredQuestion(questionID) : Observable<any> {
     return this.getToken().mergeMap(
       token => this.http.get(API_ENDPOINT + '/Questions/'+questionID+'/', this.getHeaders(token))
         .map(res => res.json())
@@ -77,10 +77,11 @@ export class QuestionServiceProvider {
     .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
   }
 
-  upvoteQuestion(questionID) {
-    this.getToken()
-    .mergeMap(token => this.http.post(API_ENDPOINT + '/Questions/ ' +questionID + '/upvote/', { }, this.getHeaders(token)))
-    .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
+  upvoteQuestion(questionID) : Observable<any> {
+    return this.getToken().mergeMap(
+      token => this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/upvote/', { }, this.getHeaders(token))
+        .map(res => res.json())
+    );
   }
 
   getAnswersForQuestion(questionID) {

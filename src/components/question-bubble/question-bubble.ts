@@ -10,6 +10,7 @@ export class QuestionBubbleComponent {
   @Input() question: any;
   @Output() textClick = new EventEmitter<any>();
   @Output() tagClick = new EventEmitter<any>();
+  @Output() upvote = new EventEmitter<any>();
 
   constructor(public tagsHelper: TagsHelper) {
   }
