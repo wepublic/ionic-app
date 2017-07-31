@@ -12,6 +12,15 @@ page-randomQuestions {
     text-align: center;
     top: 3%;
     height: 90%;
+    background: color($colors, light);
+  }
+
+  #card-stack .card-header {
+    font-weight: bold;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   #circled-content {
@@ -25,9 +34,16 @@ page-randomQuestions {
     color: white;
   }
 
+  .badge {
+    position: relative;
+    top: -44px;
+    left: -54px;
+    color: color($colors, yellowElem);
+  }
+
   #user-img {
     font-size: 70px;
-    color: map-get($colors, primary);
+    color: color($colors, primary);
   }
 
   .hint {

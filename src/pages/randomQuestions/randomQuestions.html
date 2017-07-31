@@ -14,7 +14,7 @@
   >
     <ion-card #mycards1 swing-card *ngFor="let question of questions; trackBy: trackById; let i=index" [style.zIndex]="-1 * i" [style.marginTop]="i === 0 ? '0px' : '12px'">
       <ion-card-header>
-        {{question.id}}: <span *ngFor="let tag of loadTags(question)">#{{tag.text}}</span>
+        <span *ngFor="let tag of loadTags(question)">#{{tag.text}} </span>
       </ion-card-header>
       <ion-card-content>
         <p>{{question.text}}</p>
@@ -25,9 +25,8 @@
   <ion-grid *ngIf="questions.length > 0">
     <ion-row>
       <ion-col>
-        <div>
-          <span id="circled-content">{{questions[0].upvotes}}</span>
-        </div>
+        <img src="/assets/icon/99999.svg">
+        <span class="badge">{{questions[0].upvotes}}</span>
       </ion-col>
       <ion-col>
         <ion-icon id="user-img" name="contact" float-right>{{questions[0].user.profile_pic}}</ion-icon>

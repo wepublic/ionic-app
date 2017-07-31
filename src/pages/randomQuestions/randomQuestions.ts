@@ -111,13 +111,13 @@ export class RandomQuestionsPage {
   onItemMove(element, x, y, r) {
     var color = '';
     var abs = Math.abs(x);
-    let min = Math.trunc(Math.min(16*16 - abs, 16*16));
+    let min = Math.trunc(Math.min(0xE1 - abs, 0xE1));
     let hexCode = this.decimalToHex(min, 2);
 
     if (x < 0) {
-      color = '#FF' + hexCode + hexCode;
+      color = '#E1' + hexCode + hexCode;
     } else {
-      color = '#' + hexCode + 'FF' + hexCode;
+      color = '#' + hexCode + 'E1' + hexCode;
     }
 
     element.style.background = color;
