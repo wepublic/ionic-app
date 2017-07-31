@@ -6,7 +6,9 @@
     "ANSWER": "{{value}} Antwort",
     "ANSWERS": "{{value}} Antworten",
     "GOOD": "gute Frage",
-    "BAD": "schlechte Frage"
+    "BAD": "schlechte Frage",
+    "REPORT": "Diese Frage melden",
+    "REPORT_CONFIRM": "Wir werden uns diese Frage anschauen. Wenn sie gegen unseren +me Codex verstößt wird sie gelöscht."
   },
 
   "CONTACT": {

@@ -71,6 +71,13 @@ export class QuestionServiceProvider {
     );
   }
 
+  reportQuestion(questionID) {
+    return this.getToken().mergeMap(
+      token => this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/report/', { reason: "unbekannt" }, this.getHeaders(token))
+        .map(res => res.json())
+    );
+  }
+
   downvoteQuestion(questionID) {
     return this.getToken().mergeMap(
       token => this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/downvote/', { }, this.getHeaders(token))
