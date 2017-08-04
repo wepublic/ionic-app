@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="me.wepublic.ionic-app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>
       Wepublic
     </name>
@@ -7,10 +7,8 @@
     <author>Wepublic Team</author>
     <content src="index.html" />
     <access origin="*" />
-    <allow-navigation href="http://ionic.local/*" />
+    <allow-navigation href="https://boiling-spire-20724.herokuapp.com/*" />
     <allow-navigation href="http://localhost:8100" />
-    <allow-navigation href="http://192.168.178.20:8100" />
-    <allow-navigation href="http://192.168.178.20:8101" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
