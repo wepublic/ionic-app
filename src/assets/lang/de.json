@@ -97,7 +97,10 @@
   },
 
   "SIGNUP": {
+    "OK": "OK",
     "WRONGINPUTS": "Deine Eingaben sind ungültig. Bitte gib eine gültige E-Mail Adresse ein und benutze ein Passwort mit mindestens 6 Zeichen.",
+    "CHECKEMAIL": "Wir haben dir eine E-Mail mit einem Link zur Bestätigung geschickt. Bitte klicke auf diesen Link um fortzufahren.",
+    "NAME": "Name",
     "EMAIL": "E-Mail",
     "PASSWORD": "Passwort",
     "REPEAT_PW": "Passwort bestätigen",
@@ -109,7 +112,7 @@
     "YEAR": "Geburtsjahr",
     "MALE": "männlich",
     "FEMALE": "weiblich",
-    "SUBMIT_SIGNUP": "jetzt Konto anlegen!",
+    "SUBMIT_SIGNUP": "Jetzt Konto anlegen!",
     "YEARLABEL": "Geburtsjahr",
     "PLZLABEL1": "Woher kommst du?",
     "PLZLABEL2": "(die ersten beiden Stellen deiner PLZ)",

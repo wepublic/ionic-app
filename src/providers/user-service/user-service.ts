@@ -26,18 +26,16 @@ export class UserServiceProvider {
     .map(res => res.json());
   }
 
-  createNewUser(username, email, password, sex, birthYear, plz){
-    //Todo: onError!!!
-    //Todo: Send data the server is not ready for yet
+  createNewUser(username, email, password, sex, birthYear, plz) {
     const headers = new Headers({ 'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: headers });
     var toSend = {
-      username: username,
       email: email,
       password: password,
-      sex: sex,
-      birthYear: birthYear,
-      plz: plz
+      username: username,
+      zip_code: plz,
+      gender: sex,
+      year_of_birth: birthYear
     };
     return this.http.post(API_ENDPOINT + '/Users/', JSON.stringify(toSend), options)
       .map(res => res.json());
