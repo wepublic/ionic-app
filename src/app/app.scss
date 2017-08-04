@@ -26,15 +26,6 @@
 
 .button {
   text-transform: none;
-  border-radius: 10px;
-  height: 2.8em;
-  font-size: 1.4em;
-  color: white;
-}
-
-.button-outline {
-  border-color: white;
-  border-width: 2px;
 }
 
 .button-block {
@@ -47,7 +38,6 @@
 
 .input-area .item {
   background-color: color($colors, secondary);
-  width: 100%;
 
   .label {
     width: 90%;
@@ -56,7 +46,6 @@
     padding-bottom: 0.4em;
     font-size: 0.8em;
     font-weight: 500;
-    color: black;
   }
 
   .label-small {
@@ -66,7 +55,6 @@
     margin-right: auto;
     font-size: 0.6em;
     font-weight: 400;
-    color: black;
   }
 
   .input, .select, .datetime {

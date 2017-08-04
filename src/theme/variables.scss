@@ -47,15 +47,36 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-$text-input-ios-show-focus-highlight: true;
+$button-ios-border-radius: 10px;
+$button-ios-font-size: 2rem;
+$button-ios-text-color: white;
+$button-ios-outline-border-color: white;
+$button-ios-outline-border-width: 2px;
+$button-ios-outline-text-color: white;
+
+$text-input-ios-show-focus-highlight: false;
+$text-input-ios-background-color: white;
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+$button-md-border-radius: 10px;
+$button-md-font-size: 2rem;
+$button-md-height: 2.8em;
+$button-md-text-color: white;
+$button-md-outline-border-color: white;
+$button-md-outline-border-width: 2px;
+$button-md-outline-text-color: white;
 
+$list-md-border-color: transparent;
 
+$text-input-md-show-focus-highlight: false;
+$text-input-md-background-color: white;
+
+$label-md-text-color: black;
+$label-md-text-color-focused: black;
 
 // App Windows Variables
 // --------------------------------------------------
