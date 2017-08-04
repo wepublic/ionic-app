@@ -34,7 +34,7 @@ answer-bubble {
   }
 
   .answer-bubble.unvoted:before {
-    content:url('/assets/icon/lasche_mitte_grau.svg');
+    content:url('../assets/icon/lasche_mitte_grau.svg');
   }
 
   .answer-bubble.voted {
@@ -42,7 +42,7 @@ answer-bubble {
   }
 
   .answer-bubble.voted:before {
-    content:url('/assets/icon/lasche_mitte_gruen.svg');
+    content:url('../assets/icon/lasche_mitte_gruen.svg');
   }
 
   .vote-bar {

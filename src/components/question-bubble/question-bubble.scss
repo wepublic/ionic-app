@@ -57,7 +57,7 @@ question-bubble {
   }
 
   .question-bubble.left:before {
-    content:url('/assets/icon/lasche_grau.svg');
+    content:url('../assets/icon/lasche_grau.svg');
     left: -1px;
   }
 
@@ -69,7 +69,7 @@ question-bubble {
   }
 
   .question-bubble.right:before {
-    content:url('/assets/icon/lasche_gruen.svg');
+    content:url('../assets/icon/lasche_gruen.svg');
     right: -1px;
   }
 
