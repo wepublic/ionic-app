@@ -16,7 +16,7 @@
       <ion-card padding>
         <ion-card-header>{{article.last_modified | date:'fullDate'}}</ion-card-header>
         <ion-card-title padding-left text-wrap>{{article.title}}</ion-card-title>
-        <ion-card-content text-wrap text-justify [innerHTML]="article.html_content">
+        <ion-card-content text-wrap text-justify [innerHTML]="article.content">
         </ion-card-content>
       </ion-card>
     </ion-item>
