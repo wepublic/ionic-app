@@ -5,7 +5,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "https://boiling-spire-20724.herokuapp.com"
+      "proxyUrl": "https://api.wepublic.me/v1"
     }
   ]
 }

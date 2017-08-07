@@ -7,7 +7,7 @@
     <author>Wepublic Team</author>
     <content src="index.html" />
     <access origin="*" />
-    <allow-navigation href="https://boiling-spire-20724.herokuapp.com/*" />
+    <allow-navigation href="https://api.wepublic.me/*" />
     <allow-navigation href="http://localhost:8100" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
