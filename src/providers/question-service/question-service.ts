@@ -99,7 +99,7 @@ export class QuestionServiceProvider {
 
   upvoteAnswer(answerID) {
     this.getToken()
-    .mergeMap(token => this.http.post(API_ENDPOINT + '/Answers/ ' +answerID + '/upvote/', { }, this.getHeaders(token)))
+    .mergeMap(token => this.http.post(API_ENDPOINT + '/Answers/' + answerID + '/upvote/', { }, this.getHeaders(token)))
     .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
   }
 
