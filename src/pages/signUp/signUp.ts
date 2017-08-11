@@ -30,7 +30,7 @@ export class SignUpPage {
               public navCtrl: NavController, public toastCtrl: ToastController,
               public storage: Storage, public translate: TranslateService,
               public userService: UserServiceProvider) {
-    const transKeys = ['SIGNUP.OK', 'SIGNUP.WRONGINPUTS', 'SIGNUP.CHECKEMAIL'];
+    const transKeys = ['SIGNUP.OK', 'SIGNUP.WRONGINPUTS', 'SIGNUP.CHECKEMAIL', 'AGB.TITLE', 'AGB.MESSAGE', 'PRIVACY.TITLE', 'PRIVACY.MESSAGE'];
     translate.get(transKeys, {value: 'world'}).subscribe((res: string[]) => this.msgs = res);
   }
 
@@ -75,5 +75,23 @@ export class SignUpPage {
       }).present();
       this.navCtrl.push(this.contactView);
     });
+  }
+
+  showUsageConditions() {
+    let alert = this.alertCtrl.create({
+      title: this.msgs['AGB.TITLE'],
+      message: this.msgs['AGB.MESSAGE'],
+      buttons: [this.msgs['SIGNUP.OK']]
+    });
+    alert.present();
+  }
+
+  showPrivacy() {
+    let alert = this.alertCtrl.create({
+      title: this.msgs['PRIVACY.TITLE'],
+      message: this.msgs['PRIVACY.MESSAGE'],
+      buttons: [this.msgs['SIGNUP.OK']]
+    });
+    alert.present();
   }
 }

@@ -41,9 +41,9 @@
   </ion-list>
   <ion-label class="notice">
     {{ 'SIGNUP.CONFIRMLABEL1' | translate }}
-    <a [navPush]="agbView">{{ 'SIGNUP.AGBLABEL' | translate }}</a>
+    <a (click)="showUsageConditions()">{{ 'AGB.TITLE' | translate }}</a>
     {{ 'SIGNUP.CONFIRMLABEL2' | translate }}
-    <a [navPush]="privacyView">{{ 'SIGNUP.PRIVACYLABEL' | translate }}</a>
+    <a (click)="showPrivacy()">{{ 'PRIVACY.TITLE' | translate }}</a>
   </ion-label>
   <div class="button-area">
     <button ion-button block (repeat)="checkEntries()" (change)="checkEntries()" (click)="signUp()">

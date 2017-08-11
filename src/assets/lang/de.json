@@ -97,7 +97,7 @@
   },
 
   "SIGNUP": {
-    "OK": "OK",
+    "OK": "Verstanden",
     "WRONGINPUTS": "Deine Eingaben sind ungültig. Bitte gib eine gültige E-Mail Adresse ein und benutze ein Passwort mit mindestens 6 Zeichen.",
     "CHECKEMAIL": "Wir haben dir eine E-Mail mit einem Link zur Bestätigung geschickt. Bitte klicke auf diesen Link um fortzufahren.",
     "NAME": "Name",
@@ -119,9 +119,7 @@
     "PLZPLACEHOLDER": "**",
     "CANCEL": "Abbrechen",
     "CONFIRMLABEL1": "Durch Fortfahren akzeptierst Du unsere ",
-    "CONFIRMLABEL2": "und",
-    "AGBLABEL": "Nutzungsbedingungen",
-    "PRIVACYLABEL": "Datenschutzrichtlinien"
+    "CONFIRMLABEL2": "und"
   },
 
   "TABS": {
@@ -136,12 +134,12 @@
   },
 
   "AGB": {
-    "TITLE": "WePublic AGBs",
-    "AGB": "langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text "
+    "TITLE": "Nutzungsbedingungen",
+    "MESSAGE": "<p>+me Codex</p><p>Auf +me geht es um Dialog und konstruktiven Austausch. Das wollen wir durch das Frage-Antwort-Prinzip der App ermöglichen. Am Ende soll die App dir helfen, Antworten auf für dich wichtige Fragen zu bekommen und dir deine Wahlentscheidung  bei der Bundestagswahl 2017 zu erleichtern.</p><p>Damit das funktioniert, müssen alle Nutzer ein paar Regeln einhalten. Bitte <ul><li>stell keine Fragen, die sexistisch, gewaltverherrlichend, rassistisch, homophob, diskriminierend oder beleidigend sind</li><li>stell keine Fragen mit Beschimpfungen, Bedrohungen oder menschenverachtenden Inhalt</li><li>stell keine Fragen zum Privatleben oder Fragen, die unter die berufliche Schweigepflicht fallen</li><li>triff keine bloße Meinungsäußerung. Stell eine  Frage, für deren Antwort du dich wirklich interessierst</li></ul></p><p>Wie stelle ich eine gute Frage?<ul><li>formuliere möglichst kurz und knapp eine konkrete Frage</li><li>stelle keine Suggestivfrage, also unterstelle nicht, dass du die Antwort bereits weißt</li><li>es geht nicht um die eigene Meinung, sondern um die Antworten auf Fragen, die dir wichtig sind</li><li>auf gute Fragen gibt es auch oft bessere Antworten</li></ul></p>"
   },
 
   "PRIVACY": {
-    "TITLE": "WePublic AGBs",
-    "PRIVACY": "langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text langer Text "
+    "TITLE": "Datenschutzrichtlinien",
+    "MESSAGE": "Die Betreiber dieser APP nehmen den Schutz deiner persönlichen Daten sehr ernst. Wir behandeln deine personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie unserer Datenschutzerklärung. Damit du dich bei der Nutzung ung unserer App sicher fühlst, informieren wir dich zusätzlich zu den gesetzlichen Bestimmungen auf unserer <a href='http://wepublic.me/impressum.html'>Website</a> darüber, welche Daten wir erheben und wie wir diese verarbeiten und nutzen."
   }
 }

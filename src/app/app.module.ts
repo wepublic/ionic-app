@@ -13,8 +13,6 @@ import { MyQuestionsPage } from '../pages/myQuestions/myQuestions';
 import { EnterQuestionPage } from '../pages/enterQuestion/enterQuestion';
 import { SignUpPage } from '../pages/signUp/signUp';
 import {SettingsPage} from '../pages/settings/settings';
-import {AGBPage} from '../pages/agb/agb';
-import {PrivacyPage} from '../pages/privacy/privacy';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { QuestionServiceProvider } from '../providers/question-service/question-service';
 import { IonicStorageModule } from '@ionic/storage';
@@ -56,8 +54,6 @@ export function createTranslateLoader(http: Http) {
     SearchQuestionsPage,
     SettingsPage,
     SignUpPage,
-    AGBPage,
-    PrivacyPage,
     NewsPage,
     AnswersPage,
     LikeBar,
@@ -99,8 +95,6 @@ export function createTranslateLoader(http: Http) {
     SearchQuestionsPage,
     SettingsPage,
     SignUpPage,
-    AGBPage,
-    PrivacyPage,
     NewsPage,
     AnswersPage,
   ],
