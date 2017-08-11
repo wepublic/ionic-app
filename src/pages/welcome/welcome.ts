@@ -16,6 +16,6 @@ export class WelcomePage {
   loginView = LoginPage;
 
   constructor(menuCtrl: MenuController, public navCtrl: NavController, public storage: Storage, public toastCtrl: ToastController, translate: TranslateService) {
-    menuCtrl.swipeEnable(false);
+    menuCtrl.enable(false);
   }
 }

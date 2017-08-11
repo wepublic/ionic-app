@@ -18,6 +18,6 @@ export class MainMenuPage {
   newsView = NewsPage;
 
   constructor(menuCtrl: MenuController, public navCtrl: NavController) {
-    menuCtrl.swipeEnable(true);
+    menuCtrl.enable(true);
   }
 }
