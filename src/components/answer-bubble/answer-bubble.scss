@@ -20,29 +20,28 @@ answer-bubble {
     width: 100%;
   }
 
-  .answer-bubble:before {
+  .lasche {
     position: absolute;
     left: 0;
     right: 0;
     margin: 0 auto;
-    bottom: -26px;
+    bottom: -22px;
     width: 36px;
   }
 
   .answer-bubble.unvoted {
     background-color: color($colors, light);
+    .lasche { fill: color($colors, light); }
   }
 
-  .answer-bubble.unvoted:before {
-    content:url('../assets/icon/lasche_mitte_grau.svg');
+  .answer-bubble.downvoted {
+    background-color: color($colors, answerNeg);
+    .lasche { fill: color($colors, answerNeg); }
   }
 
-  .answer-bubble.voted {
-    background-color: color($colors, primary);
-  }
-
-  .answer-bubble.voted:before {
-    content:url('../assets/icon/lasche_mitte_gruen.svg');
+  .answer-bubble.upvoted {
+    background-color: color($colors, answerPos);
+    .lasche { fill: color($colors, answerPos); }
   }
 
   .vote-bar {
