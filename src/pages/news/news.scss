@@ -1,9 +1,13 @@
 page-news {
   .card-header {
-    color: map-get($colors, primary);
+    color: map-get($colors, dark);
+    font-size: small;
+    padding-top: 10px;
+    padding-bottom: 0px;
   }
 
   .card-title {
-    color: map-get($colors, secondary);
+    font-size: huge;
+    font-weight: 500;
   }
 }
