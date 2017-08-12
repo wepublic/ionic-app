@@ -19,10 +19,13 @@ import {TagsHelper} from "../utils/TagsHelper";
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+  @ViewChild('content') content;
 
-  rootPage:any = WelcomePage;
-
-  pages: Array<{title: string, component: any}>;
+  rootPage: any = WelcomePage;
+  tabsPage = TabsPage;
+  settingsPage = SettingsPage;
+  contactPage = ContactPage;
+  welcomePage = WelcomePage;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
               public translate: TranslateService, public userService: UserServiceProvider,
@@ -30,12 +33,8 @@ export class MyApp {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('de');
 
-    this.initSideMenu();
-
     this.tagsHelper.loadAllTagObjects();
-
     this.checkLoggedInStatus();
-
     this.initApp();
   }
 
@@ -45,43 +44,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
     });
-  }
-
-  initSideMenu() {
-    this.pages = [
-      { title: "", component: TabsPage },
-      { title: "", component: SettingsPage },
-      { title: "", component: ContactPage },
-      { title: "", component: WelcomePage },
-    ];
-
-    this.translate.get('MENU.HOME').subscribe(
-      value => {
-        // value is our translated string
-        this.pages[0].title = value;
-      }
-    );
-
-    this.translate.get('MENU.SETTINGS').subscribe(
-      value => {
-        // value is our translated string
-        this.pages[1].title = value;
-      }
-    );
-
-    this.translate.get('MENU.CONTACT').subscribe(
-      value => {
-        // value is our translated string
-        this.pages[2].title = value;
-      }
-    );
-
-    this.translate.get('MENU.LOGOUT').subscribe(
-      value => {
-        // value is our translated string
-        this.pages[3].title = value;
-      }
-    );
   }
 
   checkLoggedInStatus() {
@@ -102,10 +64,10 @@ export class MyApp {
 
   openPage(page) {
     //Equals logout-operation
-    if (page.component === WelcomePage) {
+    if (page === WelcomePage) {
       this.logout();
     }
-    this.nav.setRoot(page.component);
+    this.nav.setRoot(page);
   }
 
   logout() {
