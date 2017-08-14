@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, ToastController, Content, Refresher } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { EnterQuestionPage } from '../enterQuestion/enterQuestion';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
@@ -14,48 +14,42 @@ import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
   templateUrl: 'myQuestions.html'
 })
 export class MyQuestionsPage {
-  //This contains questions created by the user as well as liked questions now
+  @ViewChild(Content) content: Content;
+  @ViewChild(Refresher) refresher: Refresher;
 
   enterQuestionView = EnterQuestionPage;
-  public questions;
+  public questions: Array<any>;
   public allTags;
-  messageConnectionError;
+  connectionErrorToast;
 
   constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider, public storage: Storage,
               public toastCtrl: ToastController, public translate: TranslateService, public tagsHelper: TagsHelper) {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
-      this.messageConnectionError = res;
+      this.connectionErrorToast = this.toastCtrl.create({
+        message: res,
+        duration: 3000
+      });
     });
     this.allTags = this.storage.get('allTags');
-    this.loadQuestions(null);
   }
 
-  ionViewWillEnter() {
-    this.loadQuestions(null);
+  ionViewDidEnter() {
+    this.refresher._top = this.content.contentTop + 'px';
+    this.refresher.state = 'ready';
+    this.refresher._onEnd();
   }
 
-  /**
-   * Loads questions from server;
-   * Input: refresher of view for reloading questions; null for initial loading call
-   */
-  loadQuestions(refresher) {
-    this.questionService.loadMyQuestions().subscribe((data) => {
-      if (data !== undefined && data !== []) {
-        this.questions = data.map((question) => {
-          return question;
-        });
-        if (refresher !== null) {
-          refresher.complete();
-        }
+  loadQuestions(refresher: Refresher) {
+    this.questionService.loadMyQuestions().subscribe(
+      data => {
+        refresher.complete();
+        this.questions = data;
+      },
+      err => {
+        refresher.complete();
+        this.connectionErrorToast.present();
       }
-      else{
-        let toast = this.toastCtrl.create({
-          message: this.messageConnectionError,
-          duration: 3000
-        });
-        toast.present();
-      }
-    });
+    );
   }
 
   loadTags(question) {

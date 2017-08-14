@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, ToastController, Content, Refresher } from 'ionic-angular';
+import { TranslateService } from "@ngx-translate/core";
 import {NewsServiceProvider} from "../../providers/news-service/news-service";
 
 @Component({
@@ -8,37 +9,39 @@ import {NewsServiceProvider} from "../../providers/news-service/news-service";
   providers: [NewsServiceProvider],
 })
 export class NewsPage {
+  @ViewChild(Content) content: Content;
+  @ViewChild(Refresher) refresher: Refresher;
 
   public news: any;
-  messageConnectionError;
+  connectionErrorToast;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController,
-              public newsService: NewsServiceProvider) {
-    this.loadNews(null);
+              public translate: TranslateService, public newsService: NewsServiceProvider) {
+    translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
+      this.connectionErrorToast = this.toastCtrl.create({
+        message: res,
+        duration: 3000
+      });
+    });
   }
 
-  ionViewWillEnter() {
-    this.loadNews(null);
+  ionViewDidEnter() {
+    this.refresher._top = this.content.contentTop + 'px';
+    this.refresher.state = 'ready';
+    this.refresher._onEnd();
   }
 
   loadNews(refresher) {
-    this.newsService.loadNews().subscribe((data) => {
-      if (data !== undefined && data !== []) {
-        this.news = data.map((news) => {
-          return news;
-        });
-        if (refresher !== null) {
-          refresher.complete();
-        }
+    this.newsService.loadNews().subscribe(
+      data => {
+        refresher.complete();
+        this.news = data;
+      },
+      err => {
+        refresher.complete();
+        this.connectionErrorToast.present();
       }
-      else{
-        let toast = this.toastCtrl.create({
-          message: this.messageConnectionError,
-          duration: 3000
-        });
-        toast.present();
-      }
-    });
+    );
   }
 
 }

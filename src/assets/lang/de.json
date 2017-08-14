@@ -71,11 +71,11 @@
   },
 
   "MY_QUESTIONS": {
-
+    "EMPTY": "Hier siehst du alle Fragen, die du dir mit +me hinzugefügt hast."
   },
 
-  "NEW_QUESTIONS": {
-
+  "ANSWERED_QUESTIONS": {
+    "EMPTY": "Hier siehst du alle deine Fragen, die bereits beantwortet wurden."
   },
 
   "SEARCH": {

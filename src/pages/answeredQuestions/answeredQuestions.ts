@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, ToastController, Content, Refresher } from 'ionic-angular';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import {TagsHelper} from "../../utils/TagsHelper";
 import {TranslateService} from "@ngx-translate/core";
@@ -12,47 +12,39 @@ import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
   templateUrl: 'answeredQuestions.html'
 })
 export class AnsweredQuestionsPage {
-  //This contains all answered questions
+  @ViewChild(Content) content: Content;
+  @ViewChild(Refresher) refresher: Refresher;
 
   public questions: any;
-  messageConnectionError;
+  connectionErrorToast;
 
   constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider,
               public toastCtrl: ToastController, public translate: TranslateService, public tagsHelper: TagsHelper) {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
-      this.messageConnectionError = res;
+      this.connectionErrorToast = this.toastCtrl.create({
+        message: res,
+        duration: 3000
+      });
     });
-    this.loadQuestions(null);
-    console.log("entered answered Questions View");
   }
 
-  ionViewWillEnter() {
-    this.loadQuestions(null);
-    console.log("entered answered Questions View");
+  ionViewDidEnter() {
+    this.refresher._top = this.content.contentTop + 'px';
+    this.refresher.state = 'ready';
+    this.refresher._onEnd();
   }
 
-  /**
-   * Loads questions from server;
-   * Input: refresher of view for reloading questions; null for initial loading call
-   */
-  loadQuestions(refresher) {
-    console.log("load Questions");
-    this.questionService.loadLikedQuestions().subscribe((data) => {
-      if (data !== undefined && data !== []) {
-        this.questions = data.map((question) => {
-          return question;
-        });
-        if (refresher !== null) {
-          refresher.complete();
-        }
-      } else {
-        let toast = this.toastCtrl.create({
-          message: this.messageConnectionError,
-          duration: 3000
-        });
-        toast.present();
+  loadQuestions(refresher: Refresher) {
+    this.questionService.loadMyQuestions().subscribe(
+      data => {
+        refresher.complete();
+        this.questions = data;
+      },
+      err => {
+        refresher.complete();
+        this.connectionErrorToast.present();
       }
-    });
+    );
   }
 
   loadAnswerPage(question) {
