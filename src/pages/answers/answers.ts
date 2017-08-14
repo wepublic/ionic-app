@@ -3,6 +3,7 @@ import { NavController, ToastController, NavParams } from 'ionic-angular';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import {TagsHelper} from "../../utils/TagsHelper";
 import {TranslateService} from "@ngx-translate/core";
+import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
 
 @Component({
   selector: 'page-answers',
@@ -71,4 +72,7 @@ export class AnswersPage {
      });
   }
 
+  loadSearchPage(tag) {
+    this.navCtrl.push(SearchQuestionsPage, {tag: tag});
+  }
 }

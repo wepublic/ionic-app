@@ -47,15 +47,15 @@ export class AnsweredQuestionsPage {
     );
   }
 
+  loadTags(question) {
+    return this.tagsHelper.getTagObjects(question.tags);
+  }
+
   loadAnswerPage(question) {
     this.navCtrl.push(AnswersPage, {question: question});
   }
 
-  loadSearchPageFunction(tag) {
+  loadSearchPage(tag) {
     this.navCtrl.push(SearchQuestionsPage, {tag: tag});
-  }
-
-  loadTags(question) {
-    return this.tagsHelper.getTagObjects(question.tags);
   }
 }
