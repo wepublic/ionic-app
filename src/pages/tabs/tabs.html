@@ -1,5 +1,40 @@
-<ion-tabs selectedIndex="1">
+<ion-tabs selectedIndex="1" class="blurred">
   <ion-tab customIconSet="tabs" customIconName="find-questions" tabTitle="{{ 'TABS.MATCH' | translate }}" [root]="tab1Root" primary></ion-tab>
   <ion-tab customIconSet="tabs" customIconName="home" tabTitle="{{ 'TABS.HOME' | translate }}" [root]="tab2Root"></ion-tab>
   <ion-tab tabIcon="search" tabTitle="{{ 'TABS.SEARCH' | translate }}" [root]="tab3Root"></ion-tab>
 </ion-tabs>
+
+<div id="onboarding" #onboarding>
+  <ion-card>
+    <ion-slides pager="true">
+      <ion-slide>
+        <img src="assets/icon/onboarding/page1.svg">
+        <h1>Fragen folgen mit Wisch-Geste.</h1>
+        <p>Swipe nach rechts zu +me, wenn dir eine Frage gefällt.</p>
+        <p>Je mehr +me Votes, desto schneller wird die Frage von den Politikern beantwortet.</p>
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/icon/onboarding/page2.svg">
+        <h1>Eigene Fragen stellen.</h1>
+        <p>Hast du genügend Fragen bewertet, kannst du selber Fragen stellen!</p>
+        <p>Erhalten deine Frage viele +me Votes gehen sie direkt an alle Kandidaten.</p>
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/icon/onboarding/page3.svg">
+        <h1>Antworten bekommen und bewerten.</h1>
+        <p>Lies die Antworten der Kandidaten und bewerte sie mit einer Wisch-Geste.</p>
+        <p>Danach erfährst du von wem die Antwort ist.</p>
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/icon/onboarding/page4.svg">
+        <h1>Und hier unten geht es los!</h1>
+        <p>Entdecke und bewerte Fragen Fragen der Community.</p>
+        <p>Oder suche gezielt nach Fragen zu Themen die dich bewegen.</p>
+        <button ion-button block (click)="hideOnboarding()">OK, los!</button>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="blur-svg">
+    <defs><filter id="blur-filter"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+  </svg>
+</div>
