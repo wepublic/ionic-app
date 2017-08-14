@@ -4,10 +4,10 @@
   </svg>
   <div class="message-answer">{{answer.text}}</div>
 </div>
-<div class="vote-bar" *ngIf="answer.voted == null">
-  <a class="vote-button downvote" (click)="downvote.emit(answer)" translate>ANSWERS.BAD</a>
-  <img class="author" src="assets/icon/parties/unbekannt.svg">
-  <a class="vote-button upvote" (click)="upvote.emit(answer)" translate>ANSWERS.GOOD</a>
+<div class="vote-bar" *ngIf="answer.voted == null" (pan)="panEvent($event)" #votebar>
+  <a class="vote-button downvote" translate>ANSWERS.BAD</a>
+  <img class="author" src="assets/icon/parties/unbekannt.svg" #turnable>
+  <a class="vote-button upvote" translate>ANSWERS.GOOD</a>
 </div>
 <div class="vote-bar" *ngIf="answer.voted != null">
   <span class="vote-button downvote" *ngIf="!answer.voted">+me</span>

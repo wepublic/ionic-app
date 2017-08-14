@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { TagsHelper } from '../../utils/TagsHelper';
 
 @Component({
@@ -7,6 +7,8 @@ import { TagsHelper } from '../../utils/TagsHelper';
 })
 
 export class QuestionBubbleComponent {
+  @ViewChild('votebar') votebar;
+  @ViewChild('movable') movable;
   @Input() question: any;
   @Output() textClick = new EventEmitter<any>();
   @Output() tagClick = new EventEmitter<any>();
@@ -19,4 +21,13 @@ export class QuestionBubbleComponent {
     return this.tagsHelper.getTagObjects(question.tags);
   }
 
+  panEvent(e) {
+    if (e.isFinal) {
+      const acceptDelta = this.votebar.nativeElement.offsetWidth * 0.8;
+      if (e.deltaX > acceptDelta) { this.upvote.emit(this.question); }
+      else { this.movable.nativeElement.style.transform = ""; }
+    } else {
+      this.movable.nativeElement.style.transform = "translateX(" + e.deltaX + "px)";
+    }
+  }
 }

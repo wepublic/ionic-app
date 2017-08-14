@@ -10,11 +10,11 @@
   {{question.answers.length == 1 ? 'BUBBLE.ANSWER' : 'BUBBLE.ANSWERS'}}
 </div>
 <div class="community" *ngIf="!question.voted">
-  <img src="assets/icon/99999.svg">
+  <img src="assets/icon/99999.svg" #movable>
   <span class="badge">{{question.upvotes}}</span>
-  <a class="upvote" translate (click)="upvote.emit(question)">BUBBLE.GOOD <img src="assets/icon/+icon.svg"></a>
+  <a class="upvote" translate (click)="upvote.emit(question)" (pan)="panEvent($event)" #votebar>BUBBLE.GOOD <img src="assets/icon/+icon.svg"></a>
 </div>
 <div class="me" *ngIf="question.voted">
-  <span class="badge">{{question.upvotes}}</span>
+  <span class="badge">{{question.upvotes - 1}}</span>
   <img src="assets/icon/99999+me.svg">
 </div>

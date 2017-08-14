@@ -53,14 +53,14 @@ export class AnswersPage {
 
   downvote(answer) {
     console.log('thumbs down ' + answer.id);
-    this.questionService.downvoteAnswer(answer.id);
-    this.loadAnswers();
+    this.questionService.downvoteAnswer(answer.id).
+    subscribe(updatedAnswer => { this.loadAnswers(); });
   }
 
   upvote(answer) {
     console.log('thumbs up ' + answer.id);
-    this.questionService.upvoteAnswer(answer.id);
-    this.loadAnswers();
+    this.questionService.upvoteAnswer(answer.id).
+    subscribe(updatedAnswer => { this.loadAnswers(); });
   }
 
   upvoteQuestion(question) {
