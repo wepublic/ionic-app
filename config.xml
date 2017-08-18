@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="me.wepublic.plusme" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Wepublic ME+</name>
+    <name>+me</name>
     <description>Social app for political participation.</description>
     <author>Wepublic Team</author>
     <content src="index.html" />
