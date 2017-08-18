@@ -6,7 +6,7 @@
   <div class="tags"><span *ngFor="let tag of loadTags(question)" (click)="tagClick.emit(tag)">#{{tag.text}} </span></div>
   <div class="message" (click)="textClick.emit(question)">{{question.text}}</div>
 </div>
-<div class="answers" translate [translateParams]="{value: question.answers.length}" (click)="textClick.emit(question)">
+<div class="answers" *ngIf="question.answers.length > 0" translate [translateParams]="{value: question.answers.length}" (click)="textClick.emit(question)">
   {{question.answers.length == 1 ? 'BUBBLE.ANSWER' : 'BUBBLE.ANSWERS'}}
 </div>
 <div class="community" *ngIf="!question.voted">
