@@ -20,15 +20,17 @@ export class RandomQuestionsPage {
   @ViewChild('myswing1') swingStack: SwingStackComponent;
   @ViewChildren('mycards1') swingCards: QueryList<SwingCardComponent>;
 
-  messageConnectionError;
-
   questions = [];
   stackConfig: StackConfig;
+  connectionErrorToast;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService,
               public questionService: QuestionServiceProvider, public tagsHelper: TagsHelper) {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
-      this.messageConnectionError = res;
+      this.connectionErrorToast = this.toastCtrl.create({
+        message: res,
+        duration: 3000
+      });
     });
     this.initSwipe();
     this.loadNewQuestion();
@@ -41,18 +43,19 @@ export class RandomQuestionsPage {
 
   loadNewQuestion() {
     this.questionService.loadRandomQuestion().subscribe(
-      (res) => {
+      res => {
         if (res === undefined) {
-          let toast = this.toastCtrl.create({
-            message: this.messageConnectionError,
-            duration: 3000
-          });
+          this.connectionErrorToast.present();
           toast.present();
         } else {
           console.log("Add " + res.id);
           this.questions.push(res);
         }
-      });
+      },
+      err => {
+        this.connectionErrorToast.present();
+      }
+    );
   }
 
   loadTags(question) {
