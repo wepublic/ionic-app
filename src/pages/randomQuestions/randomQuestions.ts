@@ -71,7 +71,9 @@ export class RandomQuestionsPage {
     console.log('thumbs up');
     let q = this.questions.shift();
     console.log("Remove " + q.id);
-    this.questionService.upvoteQuestion(q.id);
+    this.questionService.upvoteQuestion(q.id).subscribe((res) => {
+      console.log(res);}, (err) => { console.log(err);}
+    );
     this.loadNewQuestion();
   }
 
