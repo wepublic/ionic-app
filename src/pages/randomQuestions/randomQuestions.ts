@@ -1,5 +1,6 @@
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Observable } from 'rxjs/Rx';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import { ConnectionErrorController } from '../../utils/connection-error';
 import {TagsHelper} from "../../utils/TagsHelper";
@@ -26,21 +27,12 @@ export class RandomQuestionsPage {
   constructor(public navCtrl: NavController, public errorCtrl: ConnectionErrorController,
               public questionService: QuestionServiceProvider, public tagsHelper: TagsHelper) {
     this.initSwipe();
-    this.loadNewQuestion();
-    this.loadNewQuestion();
-    this.loadNewQuestion();
-  }
-
-  loadNewQuestion() {
-    this.questionService.loadRandomQuestion().subscribe(
-      res => {
-        if (res === undefined) {
-          this.errorCtrl.show();
-        } else {
-          console.log("Add " + res.id);
-          this.questions.push(res);
-        }
-      },
+    Observable.forkJoin(
+      this.questionService.loadRandomQuestion(),
+      this.questionService.loadRandomQuestion(),
+      this.questionService.loadRandomQuestion()
+    ).subscribe(
+      res => this.questions = this.questions.concat(res),
       err => this.errorCtrl.show()
     );
   }
@@ -53,22 +45,26 @@ export class RandomQuestionsPage {
     console.log('thumbs down');
     let q = this.questions.shift();
     console.log("Remove " + q.id);
-    this.questionService.downvoteQuestion(q.id).subscribe(
+    Observable.forkJoin(
+      this.questionService.downvoteQuestion(q.id),
+      this.questionService.loadRandomQuestion()
+    ).subscribe(
       null,
       err => this.errorCtrl.show()
     );
-    this.loadNewQuestion();
   }
 
   upvote() {
     console.log('thumbs up');
     let q = this.questions.shift();
     console.log("Remove " + q.id);
-    this.questionService.upvoteQuestion(q.id).subscribe(
+    Observable.forkJoin(
+      this.questionService.upvoteQuestion(q.id),
+      this.questionService.loadRandomQuestion()
+    ).subscribe(
       null,
       err => this.errorCtrl.show()
     );
-    this.loadNewQuestion();
   }
 
   trackById(index: number, question: any): number { return question.id; }
