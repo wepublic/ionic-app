@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { ConnectionErrorController } from '../../utils/connection-error';
 import {TagsHelper} from "../../utils/TagsHelper";
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import {AnswersPage} from "../answers/answers";
@@ -14,10 +15,9 @@ export class SearchQuestionsPage {
   public selectedTag = { 'text': '' };
   public showTags: boolean;
   public questions;
-  public messageConnectionError;
 
   constructor(public navCtrl: NavController, private navParams: NavParams, public tagsHelper: TagsHelper,
-              public questionService: QuestionServiceProvider, public toastCtrl: ToastController) {
+              public questionService: QuestionServiceProvider, public errorCtrl: ConnectionErrorController) {
     this.tags = this.tagsHelper.getAllTagObjectsSorted();
     this.showTags = true;
     let tag = navParams.get('tag');

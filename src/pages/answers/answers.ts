@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
+import { ConnectionErrorController } from '../../utils/connection-error';
 import {TagsHelper} from "../../utils/TagsHelper";
-import {TranslateService} from "@ngx-translate/core";
 import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
 
 @Component({
@@ -14,17 +14,14 @@ export class AnswersPage {
   //This contains all answered questions
 
   public questions: any;
-  messageConnectionError;
+  connectionErrorMsg: string;
   question;
   answers: any[] = [];
   likePerc = 66;
 
-  constructor(public navCtrl: NavController, private navParams: NavParams, public questionService: QuestionServiceProvider,
-              public toastCtrl: ToastController, public translate: TranslateService, public tagsHelper: TagsHelper) {
-
-    this.messageConnectionError = this.translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
-      this.messageConnectionError = res;
-    });
+  constructor(private navParams: NavParams,
+              public navCtrl: NavController, public errorCtrl: ConnectionErrorController,
+              public questionService: QuestionServiceProvider, public tagsHelper: TagsHelper) {
     this.question = navParams.get('question');
     console.log(this.question);
     this.loadTags();
@@ -37,17 +34,10 @@ export class AnswersPage {
 
   loadAnswers() {
     if (this.question !== undefined && this.question !== []) {
-      this.questionService.getAnswersForQuestion(this.question.id)
-      .subscribe(data => {
-        console.log(data);
-        this.answers = data;
-       }, err => {
-        let toast = this.toastCtrl.create({
-          message: this.messageConnectionError,
-          duration: 3000
-        });
-        toast.present();
-      });
+      this.questionService.getAnswersForQuestion(this.question.id).subscribe(
+        data => { console.log(data); this.answers = data;},
+        err => this.errorCtrl.show()
+      );
     };
   }
 

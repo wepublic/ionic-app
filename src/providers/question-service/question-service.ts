@@ -72,9 +72,10 @@ export class QuestionServiceProvider {
   }
 
   downvoteQuestion(questionID) {
-    this.getToken()
-    .mergeMap(token => this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/downvote/', { }, this.getHeaders(token)))
-    .subscribe((res) => { console.log(res); }, (err) => { console.log(err); });
+    return this.getToken().mergeMap(
+      token => this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/downvote/', { }, this.getHeaders(token))
+        .map(res => res.json())
+    );
   }
 
   upvoteQuestion(questionID) : Observable<any> {

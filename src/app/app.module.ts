@@ -27,6 +27,7 @@ import {SearchQuestionsPage} from "../pages/searchQuestions/searchQuestions";
 import { TagsServiceProvider } from '../providers/tags-service/tags-service';
 import {TagsHelper} from "../utils/TagsHelper";
 import {LikeBar} from "../utils/LikeBar";
+import { ConnectionErrorController } from '../utils/connection-error';
 import {MainMenuPage} from "../pages/mainMenu/mainMenu";
 import {NewsPage} from "../pages/news/news";
 import {SwingModule} from "angular2-swing";
@@ -111,7 +112,8 @@ export function createTranslateLoader(http: Http) {
     UserServiceProvider,
     QuestionServiceProvider,
     TagsServiceProvider,
-    NewsServiceProvider
+    NewsServiceProvider,
+    ConnectionErrorController
   ]
 })
 export class AppModule {}

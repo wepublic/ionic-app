@@ -1,8 +1,8 @@
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
+import { ConnectionErrorController } from '../../utils/connection-error';
 import {TagsHelper} from "../../utils/TagsHelper";
-import {TranslateService} from "@ngx-translate/core";
 
 import {
   StackConfig,
@@ -22,39 +22,26 @@ export class RandomQuestionsPage {
 
   questions = [];
   stackConfig: StackConfig;
-  connectionErrorToast;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, translate: TranslateService,
+  constructor(public navCtrl: NavController, public errorCtrl: ConnectionErrorController,
               public questionService: QuestionServiceProvider, public tagsHelper: TagsHelper) {
-    translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
-      this.connectionErrorToast = this.toastCtrl.create({
-        message: res,
-        duration: 3000
-      });
-    });
     this.initSwipe();
     this.loadNewQuestion();
     this.loadNewQuestion();
     this.loadNewQuestion();
   }
 
-  ionViewWillEnter() {
-  }
-
   loadNewQuestion() {
     this.questionService.loadRandomQuestion().subscribe(
       res => {
         if (res === undefined) {
-          this.connectionErrorToast.present();
-          toast.present();
+          this.errorCtrl.show();
         } else {
           console.log("Add " + res.id);
           this.questions.push(res);
         }
       },
-      err => {
-        this.connectionErrorToast.present();
-      }
+      err => this.errorCtrl.show()
     );
   }
 
@@ -66,7 +53,10 @@ export class RandomQuestionsPage {
     console.log('thumbs down');
     let q = this.questions.shift();
     console.log("Remove " + q.id);
-    this.questionService.downvoteQuestion(q.id);
+    this.questionService.downvoteQuestion(q.id).subscribe(
+      null,
+      err => this.errorCtrl.show()
+    );
     this.loadNewQuestion();
   }
 
@@ -74,7 +64,10 @@ export class RandomQuestionsPage {
     console.log('thumbs up');
     let q = this.questions.shift();
     console.log("Remove " + q.id);
-    this.questionService.upvoteQuestion(q.id);
+    this.questionService.upvoteQuestion(q.id).subscribe(
+      null,
+      err => this.errorCtrl.show()
+    );
     this.loadNewQuestion();
   }
 

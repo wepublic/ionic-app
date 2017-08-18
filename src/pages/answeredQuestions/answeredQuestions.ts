@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, ToastController, Content, Refresher } from 'ionic-angular';
+import { NavController, Content, Refresher } from 'ionic-angular';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
+import { ConnectionErrorController } from '../../utils/connection-error';
 import {TagsHelper} from "../../utils/TagsHelper";
-import {TranslateService} from "@ngx-translate/core";
 import {AnswersPage} from "../answers/answers";
 import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
 
@@ -16,16 +16,10 @@ export class AnsweredQuestionsPage {
   @ViewChild(Refresher) refresher: Refresher;
 
   public questions: any;
-  connectionErrorToast;
+  connectionErrorMsg: string;
 
   constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider,
-              public toastCtrl: ToastController, public translate: TranslateService, public tagsHelper: TagsHelper) {
-    translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
-      this.connectionErrorToast = this.toastCtrl.create({
-        message: res,
-        duration: 3000
-      });
-    });
+              public errorCtrl: ConnectionErrorController, public tagsHelper: TagsHelper) {
   }
 
   ionViewDidEnter() {
@@ -42,7 +36,7 @@ export class AnsweredQuestionsPage {
       },
       err => {
         refresher.complete();
-        this.connectionErrorToast.present();
+        this.errorCtrl.show();
       }
     );
   }
