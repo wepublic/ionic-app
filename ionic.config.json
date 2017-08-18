@@ -7,5 +7,8 @@
       "path": "/api",
       "proxyUrl": "https://api.wepublic.me/v1"
     }
-  ]
+  ],
+  "integrations": {
+    "cordova": {}
+  }
 }
