@@ -27,6 +27,7 @@
     </ion-list>
   </div>
 
-  <h2 translate ion-fixed *ngIf="!showTags && (questions === undefined || questions.length == 0)">SEARCH.EMPTY</h2>
+  <ion-spinner ion-fixed *ngIf="loading"></ion-spinner>
+  <h2 translate ion-fixed *ngIf="!loading && !showTags && (questions === undefined || questions.length == 0)">SEARCH.EMPTY</h2>
 
 </ion-content>

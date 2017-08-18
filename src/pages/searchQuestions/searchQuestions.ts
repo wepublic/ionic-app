@@ -13,12 +13,14 @@ export class SearchQuestionsPage {
 
   public tags;
   public selectedTag = { 'text': '' };
+  public loading: boolean;
   public showTags: boolean;
-  public questions;
+  public questions: Array<any>;
 
   constructor(public navCtrl: NavController, private navParams: NavParams, public tagsHelper: TagsHelper,
               public questionService: QuestionServiceProvider, public errorCtrl: ConnectionErrorController) {
     this.tags = this.tagsHelper.getAllTagObjectsSorted();
+    this.loading = false;
     this.showTags = true;
     let tag = navParams.get('tag');
     console.log("Tag: " + tag);
@@ -26,6 +28,7 @@ export class SearchQuestionsPage {
   }
 
   refreshTags(event) {
+    this.loading = false;
     this.showTags = true;
 
     // Reset items back to all of the items
@@ -49,16 +52,14 @@ export class SearchQuestionsPage {
     this.loadQuestionsByTagId(tag.id);
   }
 
-  loadTags(question) {
-    return this.tagsHelper.getTagObjects(question.tags);
-  }
-
   loadQuestionsByTagId(tagId) {
     console.log("Load questions for tag " + tagId);
-    this.questionService.loadQuestionByTagId(tagId).subscribe(data => {
-        console.log(data);
-        this.questions = data;
-      });
+    this.loading = true;
+    this.questions = [];
+    this.questionService.loadQuestionByTagId(tagId).subscribe(
+      data => { this.loading = false; this.questions = data; },
+      err =>  { this.loading = false; this.errorCtrl.show(); } 
+    );
   }
 
   loadQuestionsByTag(tag) {
@@ -71,10 +72,10 @@ export class SearchQuestionsPage {
 
   upvoteQuestion(question) {
     console.log('thumbs up for question ' + question.id);
-    this.questionService.upvoteQuestion(question.id)
-    .subscribe(question => {
-      this.loadQuestionsByTag(this.selectedTag);
-    });
+    this.questionService.upvoteQuestion(question.id).subscribe(
+      question => this.loadQuestionsByTag(this.selectedTag),
+      err => this.errorCtrl.show() 
+    );
   }
 
   showTagList() {

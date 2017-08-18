@@ -15,6 +15,9 @@ page-search {
     justify-content: center;
     text-align: center;
 
+    .spinner {
+      width: 100%;
+    }
     h2 {
       color: color($colors, primary);
       padding: 15%;
