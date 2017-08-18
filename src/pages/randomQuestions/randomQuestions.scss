@@ -1,52 +1,24 @@
 page-randomQuestions {
-  #card-stack {
-    width: 90%;
-    height: 200px;
-    margin: 100px auto 0;
-    position: relative;
+  .scroll-content {
+    display: flex;
+
+    .spacer {
+      flex: 1;
+    }
   }
 
-  #card-stack ion-card {
-    border-radius: 5px;
-    position: absolute;
-    text-align: center;
-    top: 3%;
-    height: 90%;
-    background: color($colors, light);
-  }
-
-  #card-stack .card-header {
-    font-weight: bold;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  #circled-content {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    background-color: grey;
-    color: white;
-  }
-
-  .badge {
-    position: relative;
-    top: -44px;
-    left: -54px;
-    color: color($colors, yellowElem);
-  }
-
-  #user-img {
-    font-size: 70px;
+  h2 {
     color: color($colors, primary);
+    padding: 15%;
+    text-align: center;
   }
 
-  .hint {
-    color: grey;
+  .votebar {
+    height: 150px;
+
+    .downvote, .upvote {
+      top: 70px;
+      opacity: 1;
+    }
   }
 }

@@ -30,12 +30,6 @@
     "FAQ13": "Wenn deine Frage hier noch nicht beantwortet wurde, schreibe uns bitte unter Hilfe im Burger Menu eine Mail."
   },
 
-  "MATCH": {
-    "SWIPE_TO_VOTE": "Wischen um abzustimmen",
-    "GOOD": "interessant",
-    "BAD": "uninteressant"
-  },
-
   "MAINMENU": {
     "OPENQUESTIONS": "Meine offenen Fragen",
     "ANSWEREDQUESTIONS": "Meine beantworteten Fragen",
@@ -87,6 +81,10 @@
 
   "ANSWERED_QUESTIONS": {
     "EMPTY": "Hier siehst du alle deine Fragen, die bereits beantwortet wurden."
+  },
+
+  "RANDOM": {
+    "EMPTY": "Keine weiteren Fragen übrig."
   },
 
   "SEARCH": {

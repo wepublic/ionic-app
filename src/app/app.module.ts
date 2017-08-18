@@ -30,7 +30,6 @@ import {LikeBar} from "../utils/LikeBar";
 import { ConnectionErrorController } from '../utils/connection-error';
 import {MainMenuPage} from "../pages/mainMenu/mainMenu";
 import {NewsPage} from "../pages/news/news";
-import {SwingModule} from "angular2-swing";
 import {AnswersPage} from "../pages/answers/answers";
 import { NewsServiceProvider } from '../providers/news-service/news-service';
 import { QuestionBubbleComponent } from '../components/question-bubble/question-bubble';
@@ -67,7 +66,6 @@ export function createTranslateLoader(http: Http) {
     BrowserModule,
     HttpModule,
     FormsModule,
-    SwingModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       scrollPadding: false,
