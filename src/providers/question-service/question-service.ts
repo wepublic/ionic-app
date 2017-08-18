@@ -33,14 +33,14 @@ export class QuestionServiceProvider {
 
   loadLikedQuestions() {
     return this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Questions/upvotes/', this.getHeaders(token))
+      token => this.http.get(API_ENDPOINT + '/Questions/upvotes/?answered=true', this.getHeaders(token))
         .map(res => res.json())
     );
   }
 
   loadMyQuestions() {
     return this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Questions/my/', this.getHeaders(token))
+      token => this.http.get(API_ENDPOINT + '/Questions/my/?answered=false', this.getHeaders(token))
         .map(res => res.json())
     );
   }
