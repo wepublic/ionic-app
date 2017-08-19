@@ -1,20 +1,17 @@
 import { Component, ViewChild } from '@angular/core';
-import {Nav, Platform} from 'ionic-angular';
+import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { TranslateService } from "@ngx-translate/core";
 
-import { ContactPage } from "../pages/contact/contact";
-import { SettingsPage } from '../pages/settings/settings';
-import {TranslateService} from "@ngx-translate/core";
-import {WelcomePage} from "../pages/welcome/welcome";
-import {UserServiceProvider} from "../providers/user-service/user-service";
-import {TabsPage} from "../pages/tabs/tabs";
-import {TagsServiceProvider} from "../providers/tags-service/tags-service";
-import {TagsHelper} from "../utils/TagsHelper";
+import { UserServiceProvider } from "../providers/user-service/user-service";
+import { TagsHelper } from "../utils/TagsHelper";
+import { TabsPage } from "../pages/tabs/tabs";
+import { WelcomePage } from "../pages/welcome/welcome";
 
 @Component({
   selector: 'app',
-  providers: [TagsServiceProvider, UserServiceProvider],
+  providers: [UserServiceProvider],
   templateUrl: 'app.html'
 })
 export class MyApp {
@@ -22,10 +19,6 @@ export class MyApp {
   @ViewChild('content') content;
 
   rootPage: any = WelcomePage;
-  tabsPage = TabsPage;
-  settingsPage = SettingsPage;
-  contactPage = ContactPage;
-  welcomePage = WelcomePage;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
               public translate: TranslateService, public userService: UserServiceProvider,
@@ -61,17 +54,4 @@ export class MyApp {
       }, 400);
     });
   }
-
-  openPage(page) {
-    //Equals logout-operation
-    if (page === WelcomePage) {
-      this.logout();
-    }
-    this.nav.setRoot(page);
-  }
-
-  logout() {
-    this.userService.logout();
-  }
 }
-

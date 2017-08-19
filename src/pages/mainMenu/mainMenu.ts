@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { NavController } from "ionic-angular";
 
 import {MyQuestionsPage} from "../myQuestions/myQuestions";
-import {MenuController, NavController} from "ionic-angular";
 import {NewsPage} from "../news/news";
 import {EnterQuestionPage} from "../enterQuestion/enterQuestion";
 import {AnsweredQuestionsPage} from "../answeredQuestions/answeredQuestions";
@@ -17,7 +17,6 @@ export class MainMenuPage {
   enterQuestionView = EnterQuestionPage;
   newsView = NewsPage;
 
-  constructor(menuCtrl: MenuController, public navCtrl: NavController) {
-    menuCtrl.enable(true);
+  constructor(public navCtrl: NavController) {
   }
 }

@@ -1,4 +1,19 @@
-<ion-tabs selectedIndex="1" class="blurred">
+<ion-menu [content]="content" side="right" swipeEnabled="false">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>{{ 'MENU.MENU' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item [navPush]="settingsPage">{{ 'MENU.SETTINGS' | translate }}</button>
+      <button menuClose ion-item [navPush]="contactPage">{{ 'MENU.CONTACT' | translate }}</button>
+      <button menuClose ion-item (click)="logout()">{{ 'MENU.LOGOUT' | translate }}</button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-tabs selectedIndex="1" class="blurred" #content>
   <ion-tab customIconSet="tabs" customIconName="find-questions" tabTitle="{{ 'TABS.MATCH' | translate }}" [root]="tab1Root" primary></ion-tab>
   <ion-tab customIconSet="tabs" customIconName="home" tabTitle="{{ 'TABS.HOME' | translate }}" [root]="tab2Root"></ion-tab>
   <ion-tab tabIcon="search" tabTitle="{{ 'TABS.SEARCH' | translate }}" [root]="tab3Root"></ion-tab>

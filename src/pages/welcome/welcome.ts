@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MenuController, NavController, ToastController} from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 
 import {SignUpPage} from '../signUp/signUp';
 import {LoginPage} from '../login/login';
@@ -15,7 +15,6 @@ export class WelcomePage {
   signUpView = SignUpPage;
   loginView = LoginPage;
 
-  constructor(menuCtrl: MenuController, public navCtrl: NavController, public storage: Storage, public toastCtrl: ToastController, translate: TranslateService) {
-    menuCtrl.enable(false);
+  constructor(public navCtrl: NavController, public storage: Storage, public toastCtrl: ToastController, translate: TranslateService) {
   }
 }
