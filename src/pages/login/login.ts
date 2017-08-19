@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { NavController, ToastController} from 'ionic-angular';
 
-import {SignUpPage} from '../signUp/signUp';
 import {TranslateService} from "@ngx-translate/core";
 import {TabsPage} from "../tabs/tabs";
 import {UserServiceProvider} from "../../providers/user-service/user-service";
-import {MainMenuPage} from "../mainMenu/mainMenu";
-import {WelcomePage} from "../welcome/welcome";
 
 @Component({
   selector: 'page-login',
@@ -15,24 +13,30 @@ import {WelcomePage} from "../welcome/welcome";
 })
 export class LoginPage {
 
-  tabsView = TabsPage;
-  mainMenuView = MainMenuPage;
-  welcomePage = WelcomePage;
-  signUpView = SignUpPage;
-  messageFailedLogin;
-  data;
-  email = "";
-  password = "";
+  private tabsView = TabsPage;
+  private messageFailedLogin;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController,
+  authForm: FormGroup;
+  email: AbstractControl;
+  password: AbstractControl;
+
+  constructor(private navCtrl: NavController, private toastCtrl: ToastController, private fb: FormBuilder,
               translate: TranslateService, public userService: UserServiceProvider) {
     translate.get('LOGIN.FAILED', {value: 'world'}).subscribe((res: string) => {
       this.messageFailedLogin = res;
     });
+    this.authForm = fb.group({  
+      'email': ['', Validators.compose([Validators.required])],
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(8)])]
+    });
+  
+    this.email = this.authForm.controls['email'];     
+    this.password = this.authForm.controls['password'];
   }
 
-  login() {
-    this.userService.login(this.email, this.password).subscribe(
+  login(value: string) {
+    if (!this.authForm.valid) return;
+    this.userService.login(this.email.value, this.password.value).subscribe(
       data => { this.navCtrl.setRoot(this.tabsView); },
       error => {
         let toast = this.toastCtrl.create({
