@@ -15,6 +15,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+
 .card {
   border-radius: 8px;
 }
@@ -84,4 +85,41 @@
     margin-right: auto;
     padding-left: 8px;
   }
+}
+
+//////////////// Display the same navbar and tabbar shadows in iOS as in Android ///////////////
+.tabs-ios,
+.tabbar,
+.toolbar-background-ios {
+  border: none !important;
+}
+
+.header-ios::after,
+.tabs-ios[tabsPlacement="top"] > .tabbar::after,
+.footer-ios::before,
+.tabs-ios[tabsPlacement="bottom"] > .tabbar::before {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==);
+  background-repeat: repeat-x;
+  background-position: 0 -2px;
+  content: "";
+}
+
+.footer-ios::before,
+.tabs-ios[tabsPlacement="bottom"] > .tabbar::before {
+  top: -2px;
+  bottom: auto;
+  height: 2px;
+  background-position: 0 0;
+}
+
+.header-ios[no-border]::after,
+.footer-ios[no-border]::before,
+.tabs-ios[tabsPlacement="top"][no-border] > .tabbar::after,
+.tabs-ios[tabsPlacement="bottom"][no-border] > .tabbar::before {
+  display: none;
 }
