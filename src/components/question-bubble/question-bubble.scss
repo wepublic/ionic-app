@@ -20,9 +20,11 @@ question-bubble {
   }
 
   .answers {
+    z-index: -1;
     position: relative;
     bottom: map-get($bubble, answer-height);
     margin: auto;
+    margin-top: 0;
     margin-bottom: -1 * map-get($bubble, answer-height);
     width: 8em;
     background-color: color($colors, danger);
@@ -31,6 +33,7 @@ question-bubble {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 2px;
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.6);
   }
 
   .question-bubble {
@@ -41,11 +44,13 @@ question-bubble {
     margin-bottom: map-get($bubble, answer-height);
     margin-left: 5%;
     margin-right: 5%;
+    margin-top: 4px;
     width: 90%;
+    box-shadow: 0px 5px 3px -3px rgba(0, 0, 0, 0.3);
 
     .lasche {
       position: absolute;
-      bottom: -25px;
+      bottom: -29px;
       width: 36px;
     }
   }
