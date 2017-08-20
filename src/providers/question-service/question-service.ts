@@ -52,7 +52,7 @@ export class QuestionServiceProvider {
     );
   }
 
-  loadQuestionByTagId(tagId) {
+  loadQuestionByTagId(tagId: number) {
     return this.getToken().mergeMap(
       token => this.http.get(API_ENDPOINT + '/Tags/' + tagId + '/Questions/', this.getHeaders(token))
         .map(res => res.json())

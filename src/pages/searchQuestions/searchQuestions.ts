@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs/Rx';
+import { TranslateService } from "@ngx-translate/core";
 import { ConnectionErrorController } from '../../utils/connection-error';
-import {TagsHelper} from "../../utils/TagsHelper";
-import {QuestionServiceProvider} from "../../providers/question-service/question-service";
-import {AnswersPage} from "../answers/answers";
+import { TagsHelper } from "../../utils/TagsHelper";
+import { QuestionServiceProvider } from "../../providers/question-service/question-service";
+import { AnswersPage } from "../answers/answers";
 
 @Component({
   selector: 'page-search',
@@ -11,59 +13,50 @@ import {AnswersPage} from "../answers/answers";
 })
 export class SearchQuestionsPage {
 
-  public tags;
-  public selectedTag = { 'text': '' };
+  public tags: any[];
+  public selectedTags: number[];
   public loading: boolean;
-  public showTags: boolean;
   public questions: Array<any>;
+  private selectOptions = {
+    title: ""
+  };
 
-  constructor(public navCtrl: NavController, private navParams: NavParams, public tagsHelper: TagsHelper,
-              public questionService: QuestionServiceProvider, public errorCtrl: ConnectionErrorController) {
+  constructor(private navCtrl: NavController, navParams: NavParams, translate: TranslateService,
+              private tagsHelper: TagsHelper, private errorCtrl: ConnectionErrorController,
+              private questionService: QuestionServiceProvider) {
+    translate.get('ENTERQUESTION.TAG_QUESTION', {value: 'world'}).subscribe((res: string) => this.selectOptions.title = res);
     this.tags = this.tagsHelper.getAllTagObjectsSorted();
     this.loading = false;
-    this.showTags = true;
     let tag = navParams.get('tag');
-    console.log("Tag: " + tag);
-    if (tag !== undefined) this.selectTag(tag);
-  }
-
-  refreshTags(event) {
-    this.loading = false;
-    this.showTags = true;
-
-    // Reset items back to all of the items
-    this.tags = this.tagsHelper.getAllTagObjects();
-
-    // set val to the value of the ev target
-    var val = event.target.value;
-
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.tags = this.tags.filter((item) => {
-        return (item.text.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      }).sort();
+    console.log("Search questions for tag: " + tag);
+    if (tag !== undefined) {
+      this.selectedTags = [tag.id];
+      this.selectTags();
     }
   }
 
-  selectTag(tag) {
-    this.selectedTag = tag;
-    this.showTags = false;
-    this.loadQuestionsByTagId(tag.id);
-  }
-
-  loadQuestionsByTagId(tagId) {
-    console.log("Load questions for tag " + tagId);
+  selectTags() {
+    console.log("Load questions for tags " + this.selectedTags);
     this.loading = true;
     this.questions = [];
-    this.questionService.loadQuestionByTagId(tagId).subscribe(
-      data => { this.loading = false; this.questions = data; },
-      err =>  { this.loading = false; this.errorCtrl.show(); } 
+    let obs = [];
+    for (let t of this.selectedTags) {
+      obs.push(this.questionService.loadQuestionByTagId(t));
+    }
+    Observable.forkJoin(obs)
+    .subscribe(
+      res => {
+        var seen = [];
+        this.loading = false;
+        this.questions = [].concat.apply([], res)
+        /* Filter questions with all tags */
+        .filter(question => this.selectedTags.every(t => question.tags.includes(t)))
+        /* Filter duplicate questions */
+        .filter(question => seen.includes(question.id) ? false : seen.push(question.id));
+        console.log(this.questions);
+      },
+      err => { this.loading = false; this.errorCtrl.show(); }
     );
-  }
-
-  loadQuestionsByTag(tag) {
-    this.loadQuestionsByTagId(tag.id);
   }
 
   loadAnswerPage(question) {
@@ -73,13 +66,9 @@ export class SearchQuestionsPage {
   upvoteQuestion(question) {
     console.log('thumbs up for question ' + question.id);
     this.questionService.upvoteQuestion(question.id).subscribe(
-      question => this.loadQuestionsByTag(this.selectedTag),
-      err => this.errorCtrl.show() 
+      question => this.selectTags(),
+      err => this.errorCtrl.show()
     );
-  }
-
-  showTagList() {
-    this.showTags = true;
   }
 
 }

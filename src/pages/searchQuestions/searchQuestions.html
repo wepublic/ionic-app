@@ -6,28 +6,24 @@
     <ion-title>{{ 'SEARCH.SEARCH' | translate }}</ion-title>
   </ion-navbar>
   <ion-toolbar color="primary">
-    <ion-searchbar type="text" placeholder="{{ 'TABS.SEARCH' | translate }}" [(ngModel)]="selectedTag.text" (ionInput)="refreshTags($event)" (click)="showTagList()"></ion-searchbar>
+    <ion-select [(ngModel)]="selectedTags" multiple="true"
+      placeholder="{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}"
+      cancelText="{{ 'CANCEL' | translate }}" [selectOptions]="selectOptions"
+      (ionChange)="selectTags($event)"
+    >
+      <ion-option *ngFor="let tag of tags" [value]="tag.id">#{{tag.text}}</ion-option>
+    </ion-select>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div *ngIf="showTags">
-    <ion-list no-lines>
-      <ion-item *ngFor="let tag of tags" (click)="selectTag(tag)">
-        #{{ tag.text }}
-      </ion-item>
-    </ion-list>
-  </div>
-
-  <div *ngIf="!showTags">
-    <ion-list no-lines>
-      <ion-item *ngFor="let question of questions">
-        <question-bubble [question]="question" (textClick)="loadAnswerPage($event)" (tagClick)="loadQuestionsByTag($event)" (upvote)="upvoteQuestion($event)"></question-bubble>
-      </ion-item>
-    </ion-list>
-  </div>
+  <ion-list no-lines>
+    <ion-item *ngFor="let question of questions">
+      <question-bubble [question]="question" (textClick)="loadAnswerPage($event)" (tagClick)="selectedTags = [$event.id]" (upvote)="upvoteQuestion($event)"></question-bubble>
+    </ion-item>
+  </ion-list>
+  <h2 translate ion-fixed *ngIf="!loading && (selectedTags !== undefined && selectedTags.length > 0) && (questions === undefined || questions.length == 0)">SEARCH.EMPTY</h2>
+  <h2 translate ion-fixed *ngIf="!loading && (selectedTags === undefined || selectedTags.length == 0)">ENTERQUESTION.TAG_QUESTION</h2>
 
   <ion-spinner ion-fixed *ngIf="loading"></ion-spinner>
-  <h2 translate ion-fixed *ngIf="!loading && !showTags && (questions === undefined || questions.length == 0)">SEARCH.EMPTY</h2>
-
 </ion-content>

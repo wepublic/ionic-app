@@ -1,12 +1,7 @@
 page-search {
-  ion-title {
-    flex: 0;
-    padding: 10px;
-  }
-
-  ion-content > .scroll-content {
-    display: flex;
-    flex-direction: column;
+  ion-header .select {
+    max-width: 100% !important;
+    background-color: white;
   }
 
   ion-content > .fixed-content {
@@ -22,9 +17,5 @@ page-search {
       color: color($colors, primary);
       padding: 15%;
     }
-  }
-
-  ion-scroll {
-    flex-grow: 1;
   }
 }
