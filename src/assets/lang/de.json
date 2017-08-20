@@ -39,7 +39,7 @@
 
   "ENTERQUESTION": {
     "ASK_QUESTION": "Frage stellen",
-    "TAG_QUESTION": "Bitte #Tag eingeben",
+    "TAG_QUESTION": "#Tags auswählen",
     "YOUR_QUESTION": "Deine Frage eingeben"
   },
 

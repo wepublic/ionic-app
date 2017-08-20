@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {TagsHelper} from "../../utils/TagsHelper";
-import {QuestionServiceProvider} from "../../providers/question-service/question-service";
-import {MainMenuPage} from "../mainMenu/mainMenu";
+import { TranslateService } from "@ngx-translate/core";
+import { TagsHelper } from "../../utils/TagsHelper";
+import { QuestionServiceProvider } from "../../providers/question-service/question-service";
+import { MainMenuPage } from "../mainMenu/mainMenu";
 
 @Component({
   selector: 'page-enterQuestion',
@@ -14,8 +15,14 @@ export class EnterQuestionPage {
   public selectedTags;
   public questionText;
 
-  constructor(public navCtrl: NavController, public tagsHelper: TagsHelper, public questionService: QuestionServiceProvider) {
+  private selectOptions = {
+    title: ""
+  };
+
+  constructor(private navCtrl: NavController, translate: TranslateService,
+              private tagsHelper: TagsHelper, private questionService: QuestionServiceProvider) {
     this.tags = this.tagsHelper.getAllTagObjectsSorted();
+    translate.get('ENTERQUESTION.TAG_QUESTION', {value: 'world'}).subscribe((res: string) => this.selectOptions.title = res);
   }
 
   publishQuestion() {

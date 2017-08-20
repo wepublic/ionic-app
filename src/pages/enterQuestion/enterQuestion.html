@@ -8,20 +8,19 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="fixed" padding ion-fixed>
-    <div class="bubble">
-      <ion-select no-lines
-        [(ngModel)]="selectedTags" multiple="true" placeholder="{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}"
-        cancelText="{{ 'CANCEL' | translate }}"
-      >
-        <ion-option *ngFor="let tag of tags" value="{{tag.id}}">#{{tag.text}}</ion-option>
-      </ion-select>
-      <ion-textarea
-        [(ngModel)]="questionText" placeholder="{{ 'ENTERQUESTION.YOUR_QUESTION' | translate }}"
-        type="text" wrap="soft" rows="6"
-      >
-      </ion-textarea>
-    </div>
-    <div><a (click)="publishQuestion()"><img class="button" src="assets/icon/enter.svg"></a></div>
+  <div class="bubble">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="25" width="30" class="lasche">
+      <path d="m 1,0 H 18.5 V 1 H 1 z" style="stroke:none" />
+      <path d="m 19.779181,0.5004292 v 0 c -2.50318,0.1043 -4.69502,1.53631 -5.92219,3.76774 l -2.525,4.825 C 8.3861611,14.722329 8.3861611,14.722329 3.7658811,23.551929 c -0.34061,0.59607 -0.89967,0.94807 -1.56588,0.94807 -0.92386,0 -1.70106173,-0.776141 -1.69999999,-1.7 L 0.52562438,0.5041545"/>
+    </svg>
+    <ion-select [(ngModel)]="selectedTags" multiple="true" [selectOptions]="selectOptions"
+                placeholder="{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}"
+                cancelText="{{ 'CANCEL' | translate }}">
+      <ion-option *ngFor="let tag of tags" value="{{tag.id}}">#{{tag.text}}</ion-option>
+    </ion-select>
+    <ion-textarea [(ngModel)]="questionText" placeholder="{{ 'ENTERQUESTION.YOUR_QUESTION' | translate }}"
+                  type="text" wrap="soft" rows="6">
+    </ion-textarea>
   </div>
+  <div><a (click)="publishQuestion()"><img class="button" src="assets/icon/enter.svg"></a></div>
 </ion-content>

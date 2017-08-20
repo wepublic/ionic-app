@@ -1,11 +1,5 @@
 page-enterQuestion {
 
-  .fixed {
-    width: 100%;
-    height: 100%;
-    background: white;
-  }
-
   .bubble {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -15,16 +9,18 @@ page-enterQuestion {
     margin-bottom: 30px;
     margin-left: 5%;
     margin-right: 5%;
-    width: 90%;
     background-color: color($colors, primary);
-    border: 1px solid #15d7a9;
-  }
-
-  .bubble:before {
-    position: absolute;
-    bottom: -28px;
-    content:url('../assets/icon/lasche_gruen.svg');
-    right: -1px;
+    border: 1px solid darken(color($colors, primary), 10%);
+    
+    .lasche {
+      position: absolute;
+      right: -1px;
+      bottom: -25px;
+      width: 30px;
+      fill: color($colors, primary);
+      stroke: darken(color($colors, primary), 10%);
+      transform: scale(-1,1);
+    }
   }
 
   .input, .select {
