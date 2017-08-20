@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { AnsweredQuestionsPage } from '../pages/answeredQuestions/answeredQuestions';
 import { ContactPage } from '../pages/contact/contact';
+import { FaqPage } from '../pages/faq/faq';
 import { LoginPage } from '../pages/login/login';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { MyQuestionsPage } from '../pages/myQuestions/myQuestions';
@@ -45,6 +46,7 @@ export function createTranslateLoader(http: Http) {
     MyApp,
     MainMenuPage,
     ContactPage,
+    FaqPage,
     EnterQuestionPage,
     AnsweredQuestionsPage,
     WelcomePage,
@@ -87,6 +89,7 @@ export function createTranslateLoader(http: Http) {
     MyApp,
     MainMenuPage,
     ContactPage,
+    FaqPage,
     EnterQuestionPage,
     AnsweredQuestionsPage,
     LoginPage,

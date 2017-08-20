@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { UserServiceProvider } from "../../providers/user-service/user-service";
 
 import { ContactPage } from "../contact/contact";
+import { FaqPage } from "../faq/faq";
 import { MainMenuPage } from "../mainMenu/mainMenu";
 import { RandomQuestionsPage } from "../randomQuestions/randomQuestions";
 import { SearchQuestionsPage } from "../searchQuestions/searchQuestions";
@@ -23,6 +24,7 @@ export class TabsPage {
   tab3Root = SearchQuestionsPage;
   settingsPage = SettingsPage;
   contactPage = ContactPage;
+  faqPage = FaqPage;
 
   constructor(private storage: Storage, private navCtrl: NavController, private userService: UserServiceProvider) {
   }
