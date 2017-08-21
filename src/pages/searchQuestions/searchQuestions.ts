@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Content, NavController, NavParams, Refresher } from 'ionic-angular';
 import { Observable } from 'rxjs/Rx';
 import { TranslateService } from "@ngx-translate/core";
 import { ConnectionErrorController } from '../../utils/connection-error';
@@ -12,10 +12,11 @@ import { AnswersPage } from "../answers/answers";
   templateUrl: 'searchQuestions.html'
 })
 export class SearchQuestionsPage {
+  @ViewChild(Content) content: Content;
+  @ViewChild(Refresher) refresher: Refresher;
 
   public tags: any[];
-  public selectedTags: number[];
-  public loading: boolean;
+  public selectedTags: number[] = [];
   public questions: Array<any>;
   private selectOptions = {
     title: ""
@@ -26,18 +27,26 @@ export class SearchQuestionsPage {
               private questionService: QuestionServiceProvider) {
     translate.get('ENTERQUESTION.TAG_QUESTION', {value: 'world'}).subscribe((res: string) => this.selectOptions.title = res);
     this.tags = this.tagsHelper.getAllTagObjectsSorted();
-    this.loading = false;
     let tag = navParams.get('tag');
     console.log("Search questions for tag: " + tag);
     if (tag !== undefined) {
       this.selectedTags = [tag.id];
-      this.selectTags();
     }
   }
 
+  ionViewDidEnter() {
+    this.selectTags();
+  }
+
   selectTags() {
+    if (this.selectedTags.length == 0) return;
+    this.refresher._top = this.content.contentTop + 'px';
+    this.refresher.state = 'ready';
+    this.refresher._onEnd();
+  }
+
+  loadQuestionsForTags() {
     console.log("Load questions for tags " + this.selectedTags);
-    this.loading = true;
     this.questions = [];
     let obs = [];
     for (let t of this.selectedTags) {
@@ -47,15 +56,15 @@ export class SearchQuestionsPage {
     .subscribe(
       res => {
         var seen = [];
-        this.loading = false;
         this.questions = [].concat.apply([], res)
         /* Filter questions with all tags */
         .filter(question => this.selectedTags.every(t => question.tags.includes(t)))
         /* Filter duplicate questions */
         .filter(question => seen.includes(question.id) ? false : seen.push(question.id));
+        this.refresher.complete();
         console.log(this.questions);
       },
-      err => { this.loading = false; this.errorCtrl.show(); }
+      err => { this.refresher.complete(); this.errorCtrl.show(); }
     );
   }
 
@@ -66,7 +75,7 @@ export class SearchQuestionsPage {
   upvoteQuestion(question) {
     console.log('thumbs up for question ' + question.id);
     this.questionService.upvoteQuestion(question.id).subscribe(
-      question => this.selectTags(),
+      question => this.questions[this.questions.indexOf(question)] = question,
       err => this.errorCtrl.show()
     );
   }

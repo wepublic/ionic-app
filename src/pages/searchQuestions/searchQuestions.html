@@ -17,13 +17,14 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="loadQuestionsForTags()" [enabled]="selectedTags !== undefined && selectedTags.length > 0">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list no-lines>
     <ion-item *ngFor="let question of questions">
       <question-bubble [question]="question" (textClick)="loadAnswerPage($event)" (tagClick)="selectedTags = [$event.id]" (upvote)="upvoteQuestion($event)"></question-bubble>
     </ion-item>
   </ion-list>
-  <h2 translate ion-fixed *ngIf="!loading && (selectedTags !== undefined && selectedTags.length > 0) && (questions === undefined || questions.length == 0)">SEARCH.EMPTY</h2>
-  <h2 translate ion-fixed *ngIf="!loading && (selectedTags === undefined || selectedTags.length == 0)">ENTERQUESTION.TAG_QUESTION</h2>
-
-  <ion-spinner ion-fixed *ngIf="loading"></ion-spinner>
+  <h2 translate ion-fixed *ngIf="refresher.state == 'inactive' && (selectedTags !== undefined && selectedTags.length > 0) && (questions === undefined || questions.length == 0)">SEARCH.EMPTY</h2>
+  <h2 translate ion-fixed *ngIf="selectedTags === undefined || selectedTags.length == 0">ENTERQUESTION.TAG_QUESTION</h2>
 </ion-content>
