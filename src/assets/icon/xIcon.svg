@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="25px" viewBox="0 0 24 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>xIcon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Shipe-Bar/default" transform="translate(-12.000000, -11.000000)" fill-rule="nonzero" fill="#FF6E40">
+            <g id="schlechte-Frage">
+                <path d="M23.9964129,21.6531621 L14.230496,11.8872453 L12.250616,13.8671253 L22.0165329,23.6330421 L11.9757129,33.6738621 L13.9151871,35.6133364 L23.9560071,25.5725164 L33.792634,35.4091433 L35.772514,33.4292633 L25.9358871,23.5926364 L35.9059971,13.6225264 L33.9665229,11.6830521 L23.9964129,21.6531621 Z" id="xIcon"></path>
+            </g>
+        </g>
+    </g>
+</svg>

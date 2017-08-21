@@ -2,14 +2,11 @@
   "CANCEL": "Abbrechen",
   "CONNERROR": "Verbindung zum Server fehlgeschlagen, bitte überprüfe deine Internetverbindung.",
 
-  "BUBBLE": {
+  "QUESTION": {
     "ANSWER": "{{value}} Antwort",
     "ANSWERS": "{{value}} Antworten",
-    "GOOD": "gute Frage"
-  },
-
-  "ALL_QUESTIONS": {
-
+    "GOOD": "gute Frage",
+    "BAD": "schlechte Frage"
   },
 
   "CONTACT": {

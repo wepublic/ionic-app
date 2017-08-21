@@ -1,5 +1,5 @@
-<div class="question-bubble {{question.voted ? 'voted' : 'unvoted'}}">
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="29" width="30" class="lasche">
+<div class="question-bubble" [class.voted]="question.voted" #questionbubble>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="29" width="30" class="lasche" #lasche>
     <filter id="dropshadow" height="130%">
       <feGaussianBlur in="SourceAlpha" stdDeviation="2"/> <!-- stdDeviation is how much to blur -->
     </filter>
@@ -11,14 +11,17 @@
   <div class="message" (click)="textClick.emit(question)">{{question.text}}</div>
 </div>
 <div class="answers" *ngIf="question.answers.length > 0" translate [translateParams]="{value: question.answers.length}" (click)="textClick.emit(question)">
-  {{question.answers.length == 1 ? 'BUBBLE.ANSWER' : 'BUBBLE.ANSWERS'}}
+  {{question.answers.length == 1 ? 'QUESTION.ANSWER' : 'QUESTION.ANSWERS'}}
 </div>
-<div class="community" *ngIf="!question.voted">
-  <img src="assets/icon/99999.svg" #movable>
-  <span class="badge">{{question.upvotes}}</span>
-  <a class="upvote" translate (click)="upvote.emit(question)" (pan)="panEvent($event)" #votebar>BUBBLE.GOOD <img src="assets/icon/+icon.svg"></a>
-</div>
-<div class="me" *ngIf="question.voted">
-  <span class="badge">{{question.upvotes - 1}}</span>
-  <img src="assets/icon/99999+me.svg">
+<div class="votebar" [class.voted]="question.voted" (pan)="panEvent($event)" #votebar>
+  <a class="downvote" translate><img src="assets/icon/xIcon.svg"> QUESTION.BAD</a>
+  <svg class="community" xmlns="http://www.w3.org/2000/svg" version="1.1" width="104px" height="58px" viewBox="0 0 104 58" #community>
+    <text x="54" y="14">{{question.upvotes}}</text>
+    <image href="assets/icon/99999.svg" width="104" height="58" />
+  </svg>
+  <svg class="me" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 104 58" height="58px" width="104px">
+    <text x="51" y="14" text-anchor="end" fill="#ffce0f">{{question.upvotes - 1}}</text>
+    <image href="assets/icon/99999+me.svg" width="104" height="58" />
+  </svg>
+  <a class="upvote" translate>QUESTION.GOOD <img src="assets/icon/+icon.svg"></a>
 </div>

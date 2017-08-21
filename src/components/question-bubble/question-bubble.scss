@@ -4,6 +4,9 @@ question-bubble {
     answer-height: 30px,
   );
 
+  img {
+    pointer-events: none;
+  }
 
   .tags {
     font-weight: bold;
@@ -39,6 +42,7 @@ question-bubble {
   .question-bubble {
     border-top-left-radius: map-get($bubble, radius);
     border-top-right-radius: map-get($bubble, radius);
+    border-bottom-right-radius: map-get($bubble, radius);
     padding: 10px 18px;
     position: relative;
     margin-bottom: map-get($bubble, answer-height);
@@ -46,21 +50,14 @@ question-bubble {
     margin-right: 5%;
     margin-top: 4px;
     width: 90%;
+    background-color: color($colors, light);
+    border: 1px solid darken(color($colors, light), 10%);
     box-shadow: 0px 5px 3px -3px rgba(0, 0, 0, 0.3);
 
     .lasche {
       position: absolute;
       bottom: -29px;
       width: 36px;
-    }
-  }
-
-  .question-bubble.unvoted {
-    background-color: color($colors, light);
-    border: 1px solid darken(color($colors, light), 10%);
-    border-bottom-right-radius: map-get($bubble, radius);
-
-    .lasche {
       fill: color($colors, light);
       stroke: darken(color($colors, light), 10%);
       left: -1px;
@@ -71,50 +68,84 @@ question-bubble {
     background-color: color($colors, primary);
     border: 1px solid darken(color($colors, primary), 10%);
     border-bottom-left-radius: map-get($bubble, radius);
+    border-bottom-right-radius: initial;
 
     .lasche {
+      transition: 1s linear;
       fill: color($colors, primary);
       stroke: darken(color($colors, primary), 10%);
-      right: -1px;
-      transform: scale(-1,1);
+      left: 100%;
+      transform: translateX(-97%) scale(-1,1);
     }
   }
 
-  .community .badge {
+  .votebar {
     position: relative;
-    top: -44px;
-    left: -54px;
-    color: color($colors, yellowElem);
+    width: 100%;
+    height: 60px;
+
+    .downvote, .upvote, .community, .me {
+       position: absolute;
+    }
+
+    .downvote, .upvote, .me {
+      opacity: 0;
+    }
+
+    .downvote, .upvote {
+      margin-top: 9px;
+      height: 49px;
+      line-height: 49px;
+      width: 45%;
+
+      img { vertical-align: middle; }
+    }
+
+    .downvote {
+      border-radius: 24px 0 0 24px;
+      color: color($colors, danger);
+      background: linear-gradient(to left, #fff , color($colors, answerNeg));
+      text-align: left;
+      left: 0;
+
+      img {
+        padding-left: 15px;
+      }
+    }
+
+    .upvote {
+      border-radius: 0 24px 24px 0;
+      color: color($colors, greenDark);
+      background: linear-gradient(to right, #fff , color($colors, answerPos));
+      text-align: right;
+      right: 0;
+
+      img {
+        padding-right: 15px;
+      }
+    }
+
+    .community {
+      text  { fill: color($colors, yellowElem); }
+    }
+
+    .me {
+      right: 0;
+      text  { fill: color($colors, yellowElem); }
+    }
   }
 
-  .upvote {
-    display: inline-block;
-    border-radius: 0 24px 24px 0;
-    color: color($colors, greenDark);
-    background: linear-gradient(to right, #fff , color($colors, answerPos));
-    margin-top: 8px;
-    height: 48px;
-    line-height: 48px;
-    width: 45%;
-    text-align: right;
-    float: right;
-  }
+  .votebar.voted {
+    .community {
+      transition: 1s linear;
+      opacity: 0;
+      left: 100%;
+      transform: translateX(-50%);
+    }
 
-  .upvote img {
-    vertical-align: middle;
-    padding-right: 15px;
-    pointer-events: none;
+    .me {
+      transition: 1s linear;
+      opacity: 1;
+    }
   }
-
-  .me {
-    float: right;
-  }
-
-  .me .badge {
-    position: relative;
-    top: -44px;
-    left: 54px;
-    color: color($colors, yellowElem);
-  }
-
 }
