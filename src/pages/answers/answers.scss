@@ -39,4 +39,10 @@ page-answers {
     position: relative;
     overflow: hidden;
   }
+
+  h2 {
+    color: color($colors, primary);
+    padding: 10%;
+    text-align: center;
+  }
 }

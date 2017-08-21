@@ -72,7 +72,8 @@
   "ANSWERS": {
     "TITLE": "Antworten",
     "BAD": "schlechte Antwort",
-    "GOOD": "gute Antwort"
+    "GOOD": "gute Antwort",
+    "NO_ANSWERS": "Zu dieser Frage gibt es bisher keine Antworten."
   },
 
   "MY_QUESTIONS": {
