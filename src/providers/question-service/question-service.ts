@@ -31,16 +31,16 @@ export class QuestionServiceProvider {
       .map(res => res.json());
   }
 
-  loadLikedQuestions() {
+  loadAnsweredQuestions() {
     return this.getToken().mergeMap(
       token => this.http.get(API_ENDPOINT + '/Questions/upvotes/?answered=true', this.getHeaders(token))
         .map(res => res.json())
     );
   }
 
-  loadMyQuestions() {
+  loadOpenQuestions() {
     return this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Questions/my/?answered=false', this.getHeaders(token))
+      token => this.http.get(API_ENDPOINT + '/Questions/upvotes/?answered=false', this.getHeaders(token))
         .map(res => res.json())
     );
   }

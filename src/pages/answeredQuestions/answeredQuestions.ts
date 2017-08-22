@@ -29,7 +29,7 @@ export class AnsweredQuestionsPage {
   }
 
   loadQuestions(refresher: Refresher) {
-    this.questionService.loadLikedQuestions().subscribe(
+    this.questionService.loadAnsweredQuestions().subscribe(
       data => {
         refresher.complete();
         this.questions = data;

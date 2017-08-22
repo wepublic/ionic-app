@@ -77,7 +77,7 @@
   },
 
   "MY_QUESTIONS": {
-    "EMPTY": "Hier siehst du alle Fragen, die du dir mit +me hinzugefügt hast."
+    "EMPTY": "Hier siehst du alle deine Fragen, die noch nicht beantwortet wurden."
   },
 
   "ANSWERED_QUESTIONS": {

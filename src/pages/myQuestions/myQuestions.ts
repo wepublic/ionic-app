@@ -33,7 +33,7 @@ export class MyQuestionsPage {
   }
 
   loadQuestions(refresher: Refresher) {
-    this.questionService.loadMyQuestions().subscribe(
+    this.questionService.loadOpenQuestions().subscribe(
       data => {
         refresher.complete();
         this.questions = data;
