@@ -40,6 +40,16 @@
   width: 85%;
 }
 
+.input, .select, .datetime {
+  background-color: white;
+  border-radius: 6px;
+}
+
+.datetime {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 .input-area .item {
   background-color: color($colors, secondary);
 
@@ -66,7 +76,5 @@
     margin-left: auto;
     margin-right: auto;
     padding-left: 8px;
-    background-color: white;
-    border-radius: 6px;
   }
 }
