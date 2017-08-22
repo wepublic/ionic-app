@@ -8,11 +8,12 @@
 </ion-header>
 
 <ion-content>
+  <h2 class="hint" translate ion-fixed *ngIf="!(answers && answers.length)">ANSWERS.NO_ANSWERS</h2>
+
   <ion-item no-lines>
     <question-bubble [question]="question" (upvote)="upvoteQuestion($event)" (tagClick)="loadSearchPage($event)"></question-bubble>
   </ion-item>
   <ion-item *ngFor="let answer of answers" no-lines>
     <answer-bubble [answer]="answer" (downvote)="downvote($event)" (upvote)="upvote($event)"></answer-bubble>
   </ion-item>
-  <h2 translate *ngIf="answers.length == 0">ANSWERS.NO_ANSWERS</h2>
 </ion-content>

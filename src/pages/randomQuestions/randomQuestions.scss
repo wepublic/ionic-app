@@ -1,16 +1,10 @@
 page-randomQuestions {
-  .scroll-content {
+  ion-content > .scroll-content {
     display: flex;
 
     .spacer {
       flex: 1;
     }
-  }
-
-  h2 {
-    color: color($colors, primary);
-    padding: 15%;
-    text-align: center;
   }
 
   .votebar {

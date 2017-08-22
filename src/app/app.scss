@@ -19,6 +19,13 @@
   border-radius: 8px;
 }
 
+.hint {
+  color: color($colors, primary);
+  padding: 15%;
+  text-align: center;
+}
+
+
 .logo-area {
   background-color: color($colors, primary);
   color: white;

@@ -21,14 +21,5 @@ page-search {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-
-    .spinner {
-      width: 100%;
-    }
-    h2 {
-      color: color($colors, primary);
-      padding: 15%;
-    }
   }
 }

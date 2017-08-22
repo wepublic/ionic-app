@@ -3,11 +3,5 @@ page-answeredQuestions {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-
-    h2 {
-      color: color($colors, primary);
-      padding: 15%;
-    }
   }
 }
