@@ -23,8 +23,9 @@
       <ion-option *ngFor="let tag of tags" value="{{tag.id}}">#{{tag.text}}</ion-option>
     </ion-select>
     <ion-textarea [(ngModel)]="questionText" placeholder="{{ 'ENTERQUESTION.YOUR_QUESTION' | translate }}"
-                  type="text" wrap="soft" rows="6">
+                  type="text" wrap="soft" rows="8" [attr.maxlength]="maxTextLength">
     </ion-textarea>
+    <p translate [translateParams]="{x: questionText.length, max: maxTextLength}">ENTERQUESTION.OF_X_CHARACTERS</p>
   </div>
   <div><a (click)="publishQuestion()"><img class="button" src="assets/icon/enter.svg"></a></div>
 </ion-content>

@@ -11,9 +11,10 @@ import { MainMenuPage } from "../mainMenu/mainMenu";
 })
 export class EnterQuestionPage {
 
+  public maxTextLength = 250;
   public tags = [];
   public selectedTags;
-  public questionText;
+  public questionText: string = "";
 
   private selectOptions = {
     title: ""
