@@ -41,12 +41,16 @@ export class MyApp {
 
   checkLoggedInStatus() {
     // Test if user logged in -> Skip login page
-    this.userService.getToken().subscribe(val => {
-      console.log("API Token: ", val);
-      if(val !== null) {
-        this.rootPage = TabsPage;
+    this.userService.loadMe().subscribe(
+      me => {
+        console.log("Hello: ", me);
+        if (me !== null) this.rootPage = TabsPage;
+        setTimeout(() => this.splashScreen.hide(), 1000);
+      },
+      err => {
+        console.log("Error logging in: ", err);
+        this.splashScreen.hide();
       }
-      setTimeout(() => this.splashScreen.hide(), 1000);
-    });
+    );
   }
 }
