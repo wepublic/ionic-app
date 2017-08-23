@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
 
-import {SignUpPage} from '../signUp/signUp';
-import {LoginPage} from '../login/login';
-import { Storage } from '@ionic/storage';
-import {TranslateService} from "@ngx-translate/core";
+import { SignUpPage } from '../signUp/signUp';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-welcome',
@@ -15,6 +12,7 @@ export class WelcomePage {
   signUpView = SignUpPage;
   loginView = LoginPage;
 
-  constructor(public navCtrl: NavController, public storage: Storage, public toastCtrl: ToastController, translate: TranslateService) {
+  constructor() {
   }
+
 }
