@@ -5,14 +5,13 @@
     <author>Wepublic Team</author>
     <content src="index.html" />
     <access origin="*" />
-    <allow-navigation href="https://api.wepublic.me/*" />
-    <allow-navigation href="http://localhost:8100" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <hook src="scripts/replace_api_endpoint.js" type="before_prepare" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
