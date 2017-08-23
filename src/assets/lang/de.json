@@ -66,6 +66,7 @@
     "CONTACT": "Kontakt",
     "FAQ": "Häufig gestellte Fragen",
     "MENU": "Menü",
+    "ONBOARDING": "Einführung",
     "LOGOUT": "Abmelden",
     "SETTINGS": "Profil-Einstellungen"
   },
@@ -83,6 +84,14 @@
 
   "ANSWERED_QUESTIONS": {
     "EMPTY": "Hier siehst du alle deine Fragen, die bereits beantwortet wurden."
+  },
+
+  "ONBOARDING": {
+    "PAGE1": "<h1>Fragen folgen mit Wisch-Geste.</h1><p>Swipe nach rechts zu +me, wenn dich eine Frage interessiert.</p><p>Je mehr +me Votes, desto schneller wird die Frage von den Politikern beantwortet.</p>",
+    "PAGE2": "<h1>Eigene Fragen stellen.</h1><p>Hast du genügend Fragen bewertet, kannst du selber Fragen stellen!</p><p>Erhalten deine Fragen viele +me Votes gehen sie direkt an alle Kandidaten.</p>",
+    "PAGE3": "<h1>Antworten bekommen und bewerten.</h1><p>Lies die Antworten der Kandidaten und bewerte sie mit einer Wisch-Geste.</p><p>Danach erfährst du von wem die Antwort ist.</p>",
+    "PAGE4": "<h1>Und hier unten geht es los!</h1><p>Entdecke und bewerte Fragen der Community.</p><p>Oder suche gezielt nach Fragen zu Themen, die dich interessieren.</p>",
+    "OK_GO": "OK, los!"
   },
 
   "RANDOM": {

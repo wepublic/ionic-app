@@ -17,7 +17,6 @@ import { WelcomePage } from "../welcome/welcome";
 })
 export class TabsPage {
   @ViewChild(Tabs) tabs: Tabs;
-  @ViewChild('onboarding') onboarding;
 
   tab1Root = RandomQuestionsPage;
   tab2Root = MainMenuPage;
@@ -25,12 +24,13 @@ export class TabsPage {
   settingsPage = SettingsPage;
   contactPage = ContactPage;
   faqPage = FaqPage;
+  onboardingVisible: boolean = false;
 
   constructor(private storage: Storage, private navCtrl: NavController, private userService: UserServiceProvider) {
   }
 
   ionViewWillEnter() {
-    this.storage.get('showedOnboarding').then(val => { if (val) this.hideOnboarding(); });
+    this.storage.get('showedOnboarding').then(val => { if (!val) this.showOnboarding(); });
   }
 
   logout() {
@@ -38,9 +38,16 @@ export class TabsPage {
     this.navCtrl.setRoot(WelcomePage);
   }
 
+   showOnboarding() {
+    console.log("Show onboarding");
+    this.tabs.setElementClass('blurred', true);
+    this.onboardingVisible = true;
+  }
+
   hideOnboarding() {
+    console.log("Hide onboarding");
     this.tabs.setElementClass('blurred', false);
-    this.onboarding.nativeElement.style.display = 'none';
+    this.onboardingVisible = false;
     this.storage.set('showedOnboarding', true);
   }
 }

@@ -9,44 +9,37 @@
       <button menuClose ion-item [navPush]="settingsPage">{{ 'MENU.SETTINGS' | translate }}</button>
       <button menuClose ion-item [navPush]="contactPage">{{ 'MENU.CONTACT' | translate }}</button>
       <button menuClose ion-item [navPush]="faqPage">{{ 'MENU.FAQ' | translate }}</button>
+      <button menuClose ion-item (click)="showOnboarding()">{{ 'MENU.ONBOARDING' | translate }}</button>
       <button menuClose ion-item (click)="logout()">{{ 'MENU.LOGOUT' | translate }}</button>
     </ion-list>
   </ion-content>
 </ion-menu>
 
-<ion-tabs selectedIndex="1" class="blurred" #content>
+<ion-tabs selectedIndex="1" #content>
   <ion-tab customIconSet="tabs" customIconName="find-questions" tabTitle="{{ 'TABS.MATCH' | translate }}" [root]="tab1Root" primary></ion-tab>
   <ion-tab customIconSet="tabs" customIconName="home" tabTitle="{{ 'TABS.HOME' | translate }}" [root]="tab2Root"></ion-tab>
   <ion-tab tabIcon="search" tabTitle="{{ 'TABS.SEARCH' | translate }}" [root]="tab3Root"></ion-tab>
 </ion-tabs>
 
-<div id="onboarding" #onboarding>
+<div id="onboarding" *ngIf="onboardingVisible">
   <ion-card>
     <ion-slides pager="true">
       <ion-slide>
         <img src="assets/icon/onboarding/page1.svg">
-        <h1>Fragen folgen mit Wisch-Geste.</h1>
-        <p>Swipe nach rechts zu +me, wenn dir eine Frage gefällt.</p>
-        <p>Je mehr +me Votes, desto schneller wird die Frage von den Politikern beantwortet.</p>
+        <span [innerHTML]="'ONBOARDING.PAGE1' | translate"></span>
       </ion-slide>
       <ion-slide>
         <img src="assets/icon/onboarding/page2.svg">
-        <h1>Eigene Fragen stellen.</h1>
-        <p>Hast du genügend Fragen bewertet, kannst du selber Fragen stellen!</p>
-        <p>Erhalten deine Frage viele +me Votes gehen sie direkt an alle Kandidaten.</p>
+        <span [innerHTML]="'ONBOARDING.PAGE2' | translate"></span>
       </ion-slide>
       <ion-slide>
         <img src="assets/icon/onboarding/page3.svg">
-        <h1>Antworten bekommen und bewerten.</h1>
-        <p>Lies die Antworten der Kandidaten und bewerte sie mit einer Wisch-Geste.</p>
-        <p>Danach erfährst du von wem die Antwort ist.</p>
+        <span [innerHTML]="'ONBOARDING.PAGE3' | translate"></span>
       </ion-slide>
       <ion-slide>
         <img src="assets/icon/onboarding/page4.svg">
-        <h1>Und hier unten geht es los!</h1>
-        <p>Entdecke und bewerte Fragen Fragen der Community.</p>
-        <p>Oder suche gezielt nach Fragen zu Themen die dich bewegen.</p>
-        <button ion-button block (click)="hideOnboarding()">OK, los!</button>
+        <span [innerHTML]="'ONBOARDING.PAGE4' | translate"></span>
+        <button ion-button block (click)="hideOnboarding()">{{ 'ONBOARDING.OK_GO' | translate }}</button>
       </ion-slide>
     </ion-slides>
   </ion-card>
