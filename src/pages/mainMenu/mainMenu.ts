@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from "ionic-angular";
 
-import {MyQuestionsPage} from "../myQuestions/myQuestions";
-import {NewsPage} from "../news/news";
-import {EnterQuestionPage} from "../enterQuestion/enterQuestion";
-import {AnsweredQuestionsPage} from "../answeredQuestions/answeredQuestions";
+import { MyQuestionsPage } from "../myQuestions/myQuestions";
+import { NewsPage } from "../news/news";
+import { EnterQuestionPage } from "../enterQuestion/enterQuestion";
+import { AnsweredQuestionsPage } from "../answeredQuestions/answeredQuestions";
 
 @Component({
   selector: 'page-main',
@@ -17,6 +16,7 @@ export class MainMenuPage {
   enterQuestionView = EnterQuestionPage;
   newsView = NewsPage;
 
-  constructor(public navCtrl: NavController) {
+  constructor() {
   }
+
 }
