@@ -39,9 +39,12 @@
 
   "ENTERQUESTION": {
     "ASK_QUESTION": "Frage stellen",
-    "TAG_QUESTION": "#Tags auswählen",
+    "TAG_QUESTION": "Ein bis drei #Tags",
     "YOUR_QUESTION": "Deine Frage eingeben",
-    "OF_X_CHARACTERS": "{{x}} von {{max}} Zeichen"
+    "OF_X_TAGS": "{{x}} von {{max}} #Tags",
+    "OF_X_CHARACTERS": "{{x}} von {{max}} Zeichen",
+    "ERROR_NO_TAGS": "Du musst mindestens ein #Tag vergeben.",
+    "ERROR_SHORT_TEXT": "Die Frage ist zu kurz."
   },
 
   "WELCOME": {

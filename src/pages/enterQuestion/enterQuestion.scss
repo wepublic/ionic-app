@@ -15,7 +15,6 @@ page-enterQuestion {
 
     p {
       color: color($colors, greyDark);
-      text-align: right;
     }
 
     .lasche {
@@ -37,7 +36,6 @@ page-enterQuestion {
   .input, .select {
     max-width: 100% !important;
     margin-top: 10px;
-    margin-bottom: 10px;
     border: 0.5px solid darken(color($colors, primary), 2%);
     box-shadow: inset 0px 1px 5px 0px rgba(0, 0, 0, 0.4);
 
