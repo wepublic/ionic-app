@@ -61,7 +61,8 @@
     "LOGIN": "Anmeldung",
     "PASSWORD": "Passwort",
     "SIGNIN": "Anmelden",
-    "FORGOTPW": "Passwort vergessen?"
+    "FORGOTPW": "Passwort vergessen?",
+    "INVALID_USER": "Diese E-Mail-Adresse ist uns nicht bekannt."
   },
 
   "MENU": {
@@ -121,7 +122,7 @@
 
   "SIGNUP": {
     "OK": "Verstanden",
-    "WRONGINPUTS": "Deine Eingaben sind ungültig. Bitte gib eine gültige E-Mail Adresse ein und benutze ein Passwort mit mindestens 6 Zeichen.",
+    "WRONGINPUTS": "Deine Eingaben sind ungültig. Bitte gib eine gültige E-Mail Adresse ein und benutze ein Passwort mit mindestens 8 Zeichen.",
     "CHECKEMAIL": "Wir haben dir eine E-Mail mit einem Link zur Bestätigung geschickt. Bitte klicke auf diesen Link um fortzufahren.",
     "NAME": "Name",
     "EMAIL": "E-Mail",

@@ -77,7 +77,7 @@ export class UserServiceProvider {
   }
 
   forgotPW(userEmail) {
-    return this.http.post(API_ENDPOINT + '/Users/forgotpw/', {email: userEmail});
+    return this.http.post(API_ENDPOINT + '/Users/reset_password/', {email: userEmail});
   }
 
 }
