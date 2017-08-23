@@ -40,18 +40,13 @@ export class MyApp {
   }
 
   checkLoggedInStatus() {
-    //Test if user logged in -> Skip login page
-    this.userService.getToken().subscribe(val =>{
-      console.log(val);
+    // Test if user logged in -> Skip login page
+    this.userService.getToken().subscribe(val => {
+      console.log("API Token: ", val);
       if(val !== null) {
         this.rootPage = TabsPage;
-        console.log('set new root');
-      } else {
-        this.rootPage = WelcomePage;
       }
-      setTimeout(() => {
-        this.splashScreen.hide();
-      }, 400);
+      setTimeout(() => this.splashScreen.hide(), 1000);
     });
   }
 }
