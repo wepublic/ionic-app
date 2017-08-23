@@ -46,17 +46,17 @@ export class RandomQuestionsPage {
     this.navCtrl.push(SearchQuestionsPage, {tag: tag});
   }
 
+  downvote(question) {
+    console.log('thumbs down for ' + question.id);
+    Observable.timer(1000).subscribe(res => this.questions.shift());
+    this.questionService.downvoteQuestion(question.id).subscribe(null, err => this.errorCtrl.show());
+    this.questionService.loadRandomQuestion().subscribe(res => this.questions.push(res));
+  }
+
   upvote(question) {
     console.log('thumbs up for ' + question.id);
-    Observable.timer(1000).withLatestFrom(this.questionService.loadRandomQuestion())
-    .subscribe(
-      res => { this.questions.push(res[1]); let q = this.questions.shift(); console.log(res[1], " remove " + q.id); },
-      err => this.questions.shift()
-    );
-    this.questionService.upvoteQuestion(question.id)
-    .subscribe(
-      null,
-      err => { this.errorCtrl.show(); }
-    );
+    Observable.timer(1000).subscribe(res => this.questions.shift());
+    this.questionService.upvoteQuestion(question.id).subscribe(null, err => this.errorCtrl.show());
+    this.questionService.loadRandomQuestion().subscribe(res => this.questions.push(res));
   }
 }

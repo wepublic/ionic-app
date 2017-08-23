@@ -2,6 +2,10 @@ page-randomQuestions {
   ion-content > .scroll-content {
     display: flex;
 
+    ion-row {
+      width: 100%;
+    }
+
     .spacer {
       flex: 1;
     }
@@ -13,6 +17,12 @@ page-randomQuestions {
     .downvote, .upvote {
       top: 70px;
       opacity: 1;
+    }
+  }
+
+  .votebar.upvoted {
+    .upvote {
+      opacity: 1 !important;
     }
   }
 }

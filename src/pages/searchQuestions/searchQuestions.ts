@@ -18,6 +18,7 @@ export class SearchQuestionsPage {
   public tags: any[];
   public selectedTags: number[] = [];
   public questions: Array<any>;
+  public voting: boolean = false;
   private selectOptions = {
     title: ""
   };

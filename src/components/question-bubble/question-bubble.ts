@@ -12,9 +12,15 @@ export class QuestionBubbleComponent {
   @ViewChild('votebar') votebar;
   @ViewChild('community') community;
   @Input() question: any;
+  @Input() enableDownvote: boolean = true;
+  @Input() enableUpvote: boolean = true;
   @Output() textClick = new EventEmitter<any>();
   @Output() tagClick = new EventEmitter<any>();
   @Output() upvote = new EventEmitter<any>();
+  @Output() downvote = new EventEmitter<any>();
+  @Output() voting = new EventEmitter<boolean>();
+
+  private _panState = 'idle';
 
   constructor(public tagsHelper: TagsHelper) {
   }
@@ -23,22 +29,57 @@ export class QuestionBubbleComponent {
     return this.tagsHelper.getTagObjects(question.tags);
   }
 
+  resetPan() {
+    this.community.nativeElement.style.left = "";
+    this.lasche.nativeElement.style.left = "";
+    this.questionBubble.nativeElement.style.backgroundColor = "";
+    this.questionBubble.nativeElement.style.transform = "";
+    this.lasche.nativeElement.style.fill = "";
+  }
+
   panEvent(e) {
-    if (this.question.voted) return;
+    if (!this.enableDownvote && !this.enableUpvote) return;
+    const currentState = this._panState;
+    if (e.isFinal) {
+      this._panState = 'idle';
+      this.voting.emit(false);
+    }
+    if (this.question.voted || currentState == 'disabled') return;
     const minLeft = 50;
     const acceptDelta = this.votebar.nativeElement.offsetWidth * 0.5;
-    const accepted = e.deltaX > acceptDelta;
-    if (e.isFinal || accepted) {
-      if (accepted) {
-        this.upvote.emit(this.question);
-        this.question.voted = true;
-        this.question.upvotes += 1;
-      }
-      this.community.nativeElement.style.left = "";
-      this.lasche.nativeElement.style.left = "";
-      this.questionBubble.nativeElement.style.backgroundColor = "";
-      this.lasche.nativeElement.style.fill = "";
-    } else {
+    const upvoted = e.deltaX > acceptDelta && currentState == "panright";
+    const downvoted = e.deltaX < -acceptDelta && currentState == "panleft";
+    if (upvoted) {
+      console.log("upvote");
+      this._panState = 'disabled';
+      this.upvote.emit(this.question);
+      this.question.voted = true;
+      this.question.upvotes += 1;
+    }
+    if (downvoted) {
+      console.log("downvote");
+      this._panState = 'disabled';
+      this.downvote.emit(this.question);
+      this.question.voted = false;
+    }
+    if (e.isFinal || upvoted || downvoted) {
+      this.resetPan();
+      return;
+    }
+
+    if (currentState == 'idle') {
+      if (e.additionalEvent == 'panright') {
+        this._panState = e.additionalEvent;
+        this.voting.emit(true);
+      } else if (e.additionalEvent == 'panleft' && this.enableDownvote) {
+        this._panState = e.additionalEvent;
+        this.voting.emit(true);
+      } else this._panState = 'disabled';
+    } else if (currentState != e.additionalEvent) {
+      this._panState = 'disabled';
+      this.resetPan();
+    }
+    if (this._panState == 'panright') {
       let x = Math.max(minLeft, Math.min(this.votebar.nativeElement.offsetWidth - 10, e.center.x));
       this.lasche.nativeElement.style.left = (x - minLeft) + "px";
       this.community.nativeElement.style.left = (x - minLeft) + "px";
@@ -48,6 +89,9 @@ export class QuestionBubbleComponent {
       let c = "hsl(165," + s + "%," + l + "%)";
       this.questionBubble.nativeElement.style.backgroundColor = c;
       this.lasche.nativeElement.style.fill = c;
+    }
+    if (this._panState == 'panleft') {
+      this.questionBubble.nativeElement.style.transform = "translateX(" + e.deltaX + "px)";
     }
   }
 }

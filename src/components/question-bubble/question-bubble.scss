@@ -1,4 +1,6 @@
 question-bubble {
+  width: 100%;
+
   $bubble: (
     radius: 6px,
     answer-height: 30px,
@@ -49,7 +51,6 @@ question-bubble {
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 4px;
-    width: 90%;
     background-color: color($colors, light);
     border: 1px solid darken(color($colors, light), 10%);
     box-shadow: 0px 5px 3px -3px rgba(0, 0, 0, 0.3);
@@ -64,7 +65,8 @@ question-bubble {
     }
   }
 
-  .question-bubble.voted {
+  .question-bubble.upvoted {
+    transition: 1s linear;
     background-color: color($colors, primary);
     border: 1px solid darken(color($colors, primary), 10%);
     border-bottom-left-radius: map-get($bubble, radius);
@@ -78,6 +80,11 @@ question-bubble {
       left: 100%;
       transform: translateX(-97%) scale(-1,1);
     }
+  }
+
+  .question-bubble.downvoted {
+    transition: 1s linear;
+    transform: translateX(-150%);
   }
 
   .votebar {
@@ -136,7 +143,16 @@ question-bubble {
     }
   }
 
-  .votebar.voted {
+  .votebar.downvoted {
+    .community {
+      text {
+        transition: 1s linear;
+        opacity: 0;
+      }
+    }
+  }
+
+  .votebar.upvoted {
     .upvote {
       transition: 1s linear;
       -webkit-transition: 1s linear;

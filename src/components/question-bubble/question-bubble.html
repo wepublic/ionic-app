@@ -1,4 +1,4 @@
-<div class="question-bubble" [class.voted]="question.voted" #questionbubble>
+<div class="question-bubble" [class.downvoted]="question.voted === false" [class.upvoted]="question.voted" #questionbubble>
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="29" width="30" class="lasche" #lasche>
     <filter id="dropshadow" height="130%">
       <feGaussianBlur in="SourceAlpha" stdDeviation="2"/> <!-- stdDeviation is how much to blur -->
@@ -13,7 +13,7 @@
 <div class="answers" *ngIf="question.answers.length > 0" translate [translateParams]="{value: question.answers.length}" (click)="textClick.emit(question)">
   {{question.answers.length == 1 ? 'QUESTION.ANSWER' : 'QUESTION.ANSWERS'}}
 </div>
-<div class="votebar" [class.voted]="question.voted" (pan)="panEvent($event)" #votebar>
+<div class="votebar" [class.downvoted]="question.voted === undefined" [class.upvoted]="question.voted" (pan)="panEvent($event)" #votebar>
   <a class="downvote" translate><img src="assets/icon/xIcon.svg"> QUESTION.BAD</a>
   <a class="upvote" translate>QUESTION.GOOD <img src="assets/icon/+icon.svg"></a>
   <svg class="me" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 104 58" height="58px" width="104px">

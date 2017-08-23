@@ -20,12 +20,15 @@
   <h2 class="hint" translate ion-fixed *ngIf="refresher.state == 'inactive' && (selectedTags && selectedTags.length) && !(questions && questions.length)">SEARCH.EMPTY</h2>
   <h2 class="hint" translate ion-fixed *ngIf="!(selectedTags && selectedTags.length)">SEARCH.SELECT_TAGS</h2>
 
-  <ion-refresher (ionRefresh)="loadQuestionsForTags()" [enabled]="(selectedTags && selectedTags.length)">
+  <ion-refresher (ionRefresh)="loadQuestionsForTags()" [enabled]="selectedTags && selectedTags.length && !voting">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-list no-lines>
     <ion-item *ngFor="let question of questions">
-      <question-bubble [question]="question" (textClick)="loadAnswerPage($event)" (tagClick)="selectedTags = [$event.id]" (upvote)="upvoteQuestion($event)"></question-bubble>
+      <question-bubble [question]="question" [enableDownvote]="false" [enableUpvote]="refresher.state == 'inactive'"
+                       (textClick)="loadAnswerPage($event)" (tagClick)="selectedTags = [$event.id]"
+                       (upvote)="upvoteQuestion($event)" (voting)="voting=$event">
+      </question-bubble>
     </ion-item>
   </ion-list>
 </ion-content>
