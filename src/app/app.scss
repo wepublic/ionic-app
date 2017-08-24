@@ -58,6 +58,16 @@
   padding-bottom: 8px;
 }
 
+// Hide lines below list items
+.list .item-block {
+  border: none !important;
+}
+
+.list .item-block .item-inner {
+  border: none !important;
+}
+////
+
 .input-area .item {
   background-color: color($colors, secondary);
 
