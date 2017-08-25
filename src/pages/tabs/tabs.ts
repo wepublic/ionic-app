@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Tabs } from "ionic-angular";
+import { AlertController, NavController, Tabs } from "ionic-angular";
 import { Storage } from '@ionic/storage';
+import { TranslateService } from "@ngx-translate/core";
 
 import { UserServiceProvider } from "../../providers/user-service/user-service";
 
@@ -26,7 +27,9 @@ export class TabsPage {
   faqPage = FaqPage;
   onboardingVisible: boolean = false;
 
-  constructor(private storage: Storage, private navCtrl: NavController, private userService: UserServiceProvider) {
+  constructor(private storage: Storage, private alertCtrl: AlertController,
+              private navCtrl: NavController, private userService: UserServiceProvider,
+              private translate: TranslateService) {
   }
 
   ionViewWillEnter() {
@@ -38,7 +41,18 @@ export class TabsPage {
     this.navCtrl.setRoot(WelcomePage);
   }
 
-   showOnboarding() {
+  showUsageConditions() {
+    this.translate.get(['AGB.TITLE', 'AGB.MESSAGE', 'SIGNUP.OK'], {value: 'world'})
+    .subscribe((res: string[]) => {
+      this.alertCtrl.create({
+        title: res['AGB.TITLE'],
+        message: res['AGB.MESSAGE'],
+        buttons: [res['SIGNUP.OK']]
+      }).present();
+    });
+  }
+    
+  showOnboarding() {
     console.log("Show onboarding");
     this.tabs.setElementClass('blurred', true);
     this.onboardingVisible = true;
