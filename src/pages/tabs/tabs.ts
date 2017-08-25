@@ -10,7 +10,6 @@ import { FaqPage } from "../faq/faq";
 import { MainMenuPage } from "../mainMenu/mainMenu";
 import { RandomQuestionsPage } from "../randomQuestions/randomQuestions";
 import { SearchQuestionsPage } from "../searchQuestions/searchQuestions";
-import { SettingsPage } from '../settings/settings';
 import { WelcomePage } from "../welcome/welcome";
 
 @Component({
@@ -22,7 +21,6 @@ export class TabsPage {
   tab1Root = RandomQuestionsPage;
   tab2Root = MainMenuPage;
   tab3Root = SearchQuestionsPage;
-  settingsPage = SettingsPage;
   contactPage = ContactPage;
   faqPage = FaqPage;
   onboardingVisible: boolean = false;
