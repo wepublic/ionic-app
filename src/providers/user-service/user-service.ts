@@ -53,7 +53,6 @@ export class UserServiceProvider {
         console.log(data.json());
         this.storage.set('localUserToken', data.json().Token);
         this.storage.set('localUserEmail', userEmail);
-        this.storage.set('localUserPassword', userPassword);
       },
       err => { console.log("Login error"); }
     );
@@ -68,7 +67,6 @@ export class UserServiceProvider {
         console.log("Logged out:");
         console.log(data.json());
         this.storage.remove('localUserEmail');
-        this.storage.remove('localUserPassword');
         this.storage.remove('localUserToken');
       },
       err => { console.log("Login error"); }
