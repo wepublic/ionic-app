@@ -26,7 +26,8 @@ export class UserServiceProvider {
     .map(res => res.json());
   }
 
-  createNewUser(username, email, password, sex, birthYear, plz) {
+  createNewUser(username: string, email: string, password: string, sex, birthYear, plz) {
+    console.log("Create user " + username);
     const headers = new Headers({ 'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: headers });
     var toSend = {
@@ -37,11 +38,17 @@ export class UserServiceProvider {
       gender: sex,
       year_of_birth: birthYear
     };
-    return this.http.post(API_ENDPOINT + '/Users/', JSON.stringify(toSend), options)
-      .map(res => res.json());
+    var res = this.http.post(API_ENDPOINT + '/Users/', JSON.stringify(toSend), options).share();
+    res.subscribe(
+      data => {
+        this.storage.set('localUserToken', data.json().token);
+        this.storage.set('localUserEmail', data.json().email);
+      }
+    );
+    return res;
   }
 
-  login(userEmail, userPassword) {
+  login(userEmail: string, userPassword: string) {
     var param = {
       email: userEmail,
       password: userPassword

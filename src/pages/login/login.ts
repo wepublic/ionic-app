@@ -31,6 +31,15 @@ export class LoginPage {
     this.password = this.authForm.controls['password'];
   }
 
+  ionViewDidEnter() {
+    this.userService.loadMe().subscribe(
+      me => {
+        console.log("Hello: ", me);
+        if (me !== null) this.navCtrl.setRoot(this.tabsView);
+      }
+    );
+  }
+
   showToast(text: string, err: string) {
     this.translate.get(text, {value: 'world'})
     .subscribe((res: string) => this.toastCtrl.create({ message: res + ' ' + err, duration: 3000 }).present());
