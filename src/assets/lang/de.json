@@ -42,7 +42,7 @@
   "ENTERQUESTION": {
     "ASK_QUESTION": "Frage stellen",
     "TAG_QUESTION": "Ein bis drei #Tags",
-    "YOUR_QUESTION": "Gib deine Frage hier ein, aber richte sie bitte nicht direkt an einen Politiker bzw. Partei, sondern halte sie allgemein, dass alle darauf antworten können.",
+    "YOUR_QUESTION": "Gib deine Frage hier ein, aber richte sie bitte nicht direkt an einen Politiker oder Partei, weil Antworten bekommst du von allen!",
     "OF_X_TAGS": "{{x}} von {{max}} #Tags",
     "OF_X_CHARACTERS": "{{x}} von {{max}} Zeichen",
     "ERROR_NO_TAGS": "Du musst mindestens ein #Tag vergeben.",
