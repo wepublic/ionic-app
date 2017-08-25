@@ -57,6 +57,8 @@ $button-ios-outline-text-color: white;
 $text-input-ios-show-focus-highlight: false;
 $text-input-ios-background-color: white;
 
+$tabs-ios-tab-color-inactive: #616161;
+$tabs-ios-tab-color-active: #29c49a;
 
 // App Material Design Variables
 // --------------------------------------------------
@@ -72,6 +74,9 @@ $button-md-outline-text-color: white;
 
 $text-input-md-show-focus-highlight: false;
 $text-input-md-background-color: white;
+
+$tabs-md-tab-color-inactive: #616161;
+$tabs-md-tab-color-active: #29c49a;
 
 $label-md-text-color: black;
 $label-md-text-color-focused: black;
