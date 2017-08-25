@@ -46,7 +46,7 @@ export class QuestionBubbleComponent {
     }
     if (this.question.voted || currentState == 'disabled') return;
     const minLeft = 50;
-    const acceptDelta = this.votebar.nativeElement.offsetWidth * 0.5;
+    const acceptDelta = this.votebar.nativeElement.offsetWidth * 0.3;
     const upvoted = e.deltaX > acceptDelta && currentState == "panright";
     const downvoted = e.deltaX < -acceptDelta && currentState == "panleft";
     if (upvoted) {
@@ -75,9 +75,6 @@ export class QuestionBubbleComponent {
         this._panState = e.additionalEvent;
         this.voting.emit(true);
       } else this._panState = 'disabled';
-    } else if (currentState != e.additionalEvent) {
-      this._panState = 'disabled';
-      this.resetPan();
     }
     if (this._panState == 'panright') {
       let x = Math.max(minLeft, Math.min(this.votebar.nativeElement.offsetWidth - 10, e.center.x));
