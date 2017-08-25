@@ -51,7 +51,22 @@ export class TabsPage {
       }).present();
     });
   }
-    
+
+  showPrivacy() {
+    this.translate.get(['PRIVACY.TITLE', 'PRIVACY.MESSAGE', 'SIGNUP.OK'], {value: 'world'})
+    .subscribe((res: string[]) => {
+      this.alertCtrl.create({
+        title: res['PRIVACY.TITLE'],
+        message: res['PRIVACY.MESSAGE'],
+        buttons: [res['SIGNUP.OK']]
+      }).present();
+    });
+  }
+
+  showImprint() {
+    window.open('https://wepublic.me/impressum.html', '_blank', 'location=yes');
+  }
+
   showOnboarding() {
     console.log("Show onboarding");
     this.tabs.setElementClass('blurred', true);
