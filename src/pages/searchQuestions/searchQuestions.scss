@@ -17,6 +17,14 @@ page-search {
     }
   }
 
+  .question-bubble.downvoted {
+    background-color: color($colors, answerNeg);
+    .lasche {
+      fill: color($colors, answerNeg);
+      stroke: darken(color($colors, answerNeg), 10%);
+    }
+  }
+
   ion-content > .fixed-content {
     display: flex;
     flex-direction: column;

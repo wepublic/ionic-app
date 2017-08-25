@@ -82,11 +82,6 @@ question-bubble {
     }
   }
 
-  .question-bubble.downvoted {
-    transition: 1s linear;
-    transform: translateX(-150%);
-  }
-
   .votebar {
     position: relative;
     width: 100%;
