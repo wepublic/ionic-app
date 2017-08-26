@@ -4,6 +4,7 @@ import { TranslateService } from "@ngx-translate/core";
 import {NewsServiceProvider} from "../../providers/news-service/news-service";
 import {MatchServiceProvider} from "../../providers/match-service/match-service";
 
+
 @Component({
   templateUrl: 'news.html',
   selector: 'page-news',
@@ -32,18 +33,31 @@ export class NewsPage {
     this.refresher._onEnd();
   }
 
+  ionViewDidLoad() {
+    this.initSvg();
+  }
+
+  initSvg() {
+  }
+
 
   loadMatch(refresher) {
     this.matchService.loadMatch().subscribe(
       data => {
         refresher.complete();
         this.news = data;
+        console.log(this);
+
+        for (var match of data) {
+          console.log(match);
+        }
+
       },
       err => {
         refresher.complete();
         this.connectionErrorToast.present();
       }
     );
-  } 
+  }
 
 }

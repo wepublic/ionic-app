@@ -12,11 +12,12 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-list no-lines>
-    <ion-item *ngFor="let article of news">
+    <ion-item *ngFor="let match of news">
       <ion-card padding>
-        <ion-card-header>{{article.last_modified | date:'dd.MM.yyyy'}}</ion-card-header>
-        <ion-card-title padding-left text-wrap>{{article.title}}</ion-card-title>
-        <ion-card-content text-wrap [innerHTML]="article.content">
+        <ion-card-header>{{match.percentage}}</ion-card-header>
+        <ion-card-title padding-left text-wrap>{{ match.name }}</ion-card-title>
+        <ion-card-content text-wrap>
+          <div id="{{ match.name }}-div"></div>
         </ion-card-content>
       </ion-card>
     </ion-item>
