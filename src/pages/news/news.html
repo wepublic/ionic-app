@@ -14,8 +14,7 @@
   <ion-list no-lines>
     <ion-item *ngFor="let match of news">
       <ion-card padding>
-        <ion-card-header>{{match.percentage}}</ion-card-header>
-        <ion-card-title padding-left text-wrap>{{ match.name }}</ion-card-title>
+        <ion-card-title padding-left text-wrap>{{ match.name }} &nbsp;{{ match.percentage }}%</ion-card-title>
         <ion-card-content text-wrap>
           <div *ngFor="let point of match.aa">
             <div class="point {{ match.name }}"></div>
