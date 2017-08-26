@@ -50,6 +50,7 @@ export class NewsPage {
 
         for (var match of data) {
           console.log(match);
+          match.aa = Array(Math.round(match.percentage/10));
         }
 
       },

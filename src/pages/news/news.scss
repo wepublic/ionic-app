@@ -10,5 +10,42 @@ page-news {
     font-size: huge;
     font-weight: 500;
   }
+
+  .point {
+      margin: 3px;
+      float: left;
+      width: 20px;
+      height: 20px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 1px #888888;
+  }
+
+  .CDU {
+    background: black;
+  }
+  
+  .GRÜNEN {
+    background: #59ae2f;
+  }
+
+  .SPD {
+    background: #e33d32;
+  }
+
+  .CSU {
+    background: #3d9fe1;
+  }
+
+  .LINKE {
+    background: #e03c31;
+  }
+
+  .AfD {
+    background: #348ac5;
+  }
+
+
 }
 
