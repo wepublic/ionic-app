@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Content, NavController, NavParams, Refresher } from 'ionic-angular';
 import { Observable } from 'rxjs/Rx';
-import { TranslateService } from "@ngx-translate/core";
 import { ConnectionErrorController } from '../../utils/connection-error';
 import { TagsHelper } from "../../utils/TagsHelper";
 import { QuestionServiceProvider } from "../../providers/question-service/question-service";
@@ -19,14 +18,10 @@ export class SearchQuestionsPage {
   public selectedTags: number[] = [];
   public questions: Array<any>;
   public voting: boolean = false;
-  private selectOptions = {
-    title: ""
-  };
 
-  constructor(private navCtrl: NavController, navParams: NavParams, translate: TranslateService,
+  constructor(private navCtrl: NavController, navParams: NavParams,
               private tagsHelper: TagsHelper, private errorCtrl: ConnectionErrorController,
               private questionService: QuestionServiceProvider) {
-    translate.get('ENTERQUESTION.TAG_QUESTION', {value: 'world'}).subscribe((res: string) => this.selectOptions.title = res);
     this.tags = this.tagsHelper.getAllTagObjectsSorted();
     let tag = navParams.get('tag');
     console.log("Search questions for tag: " + tag);

@@ -8,7 +8,7 @@
   <ion-toolbar color="primary">
     <ion-select [(ngModel)]="selectedTags" multiple="true"
       placeholder="{{ 'SEARCH.SELECT_TAGS' | translate }}"
-      cancelText="{{ 'CANCEL' | translate }}" [selectOptions]="selectOptions"
+      cancelText="{{ 'CANCEL' | translate }}" [selectOptions]="{ title: 'SEARCH.SELECT_TAGS' | translate }"
       (ionChange)="selectTags($event)"
     >
       <ion-option *ngFor="let tag of tags" [value]="tag.id">#{{tag.text}}</ion-option>
