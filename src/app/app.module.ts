@@ -1,38 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { Http, HttpModule } from "@angular/http";
 import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { IonicStorageModule } from '@ionic/storage';
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { CustomIconsModule } from "ionic2-custom-icons";
 
 import { MyApp } from './app.component';
+import { AnswerBubbleComponent } from '../components/answer-bubble/answer-bubble';
+import { QuestionBubbleComponent } from '../components/question-bubble/question-bubble';
+
 import { AnsweredQuestionsPage } from '../pages/answeredQuestions/answeredQuestions';
+import { AnswersPage} from "../pages/answers/answers";
 import { ContactPage } from '../pages/contact/contact';
+import { EnterQuestionPage } from '../pages/enterQuestion/enterQuestion';
 import { FaqPage } from '../pages/faq/faq';
 import { LoginPage } from '../pages/login/login';
-import { WelcomePage } from '../pages/welcome/welcome';
+import { MainMenuPage } from "../pages/mainMenu/mainMenu";
 import { MyQuestionsPage } from '../pages/myQuestions/myQuestions';
-import { EnterQuestionPage } from '../pages/enterQuestion/enterQuestion';
+import { NewsPage } from "../pages/news/news";
+import { RandomQuestionsPage } from "../pages/randomQuestions/randomQuestions";
+import { SearchQuestionsPage } from "../pages/searchQuestions/searchQuestions";
 import { SignUpPage } from '../pages/signUp/signUp';
-import { UserServiceProvider } from '../providers/user-service/user-service';
-import { QuestionServiceProvider } from '../providers/question-service/question-service';
-import { IonicStorageModule } from '@ionic/storage';
-import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
-import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import {Http, HttpModule} from "@angular/http";
-import {TabsPage} from "../pages/tabs/tabs";
-import {RandomQuestionsPage} from "../pages/randomQuestions/randomQuestions";
-import {SearchQuestionsPage} from "../pages/searchQuestions/searchQuestions";
-import { TagsServiceProvider } from '../providers/tags-service/tags-service';
-import {TagsHelper} from "../utils/TagsHelper";
-import { ConnectionErrorController } from '../utils/connection-error';
-import {MainMenuPage} from "../pages/mainMenu/mainMenu";
-import {NewsPage} from "../pages/news/news";
-import {AnswersPage} from "../pages/answers/answers";
+import { TabsPage } from "../pages/tabs/tabs";
+import { WelcomePage } from '../pages/welcome/welcome';
+
 import { NewsServiceProvider } from '../providers/news-service/news-service';
-import { QuestionBubbleComponent } from '../components/question-bubble/question-bubble';
-import { AnswerBubbleComponent } from '../components/answer-bubble/answer-bubble';
-import {CustomIconsModule} from "ionic2-custom-icons";
+import { QuestionServiceProvider } from '../providers/question-service/question-service';
+import { UserServiceProvider } from '../providers/user-service/user-service';
+import { TagsServiceProvider } from '../providers/tags-service/tags-service';
+
+import { TagsHelper } from "../utils/TagsHelper";
+import { ConnectionErrorController } from '../utils/connection-error';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -41,22 +44,22 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    MainMenuPage,
-    ContactPage,
-    FaqPage,
-    EnterQuestionPage,
+    AnswerBubbleComponent,
+    QuestionBubbleComponent,
     AnsweredQuestionsPage,
-    WelcomePage,
+    AnswersPage,
+    ContactPage,
+    EnterQuestionPage,
+    FaqPage,
     LoginPage,
+    MainMenuPage,
     MyQuestionsPage,
-    TabsPage,
+    NewsPage,
     RandomQuestionsPage,
     SearchQuestionsPage,
     SignUpPage,
-    NewsPage,
-    AnswersPage,
-    QuestionBubbleComponent,
-    AnswerBubbleComponent,
+    TabsPage,
+    WelcomePage,
   ],
   imports: [
     BrowserModule,
@@ -74,27 +77,27 @@ export function createTranslateLoader(http: Http) {
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [Http]
+        deps: [Http],
       },
     })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    MainMenuPage,
-    ContactPage,
-    FaqPage,
-    EnterQuestionPage,
     AnsweredQuestionsPage,
+    AnswersPage,
+    ContactPage,
+    EnterQuestionPage,
+    FaqPage,
     LoginPage,
-    WelcomePage,
-    MyQuestionsPage,
-    TabsPage,
+    MainMenuPage,
+    OpenQuestionsPage,
+    NewsPage,
     RandomQuestionsPage,
     SearchQuestionsPage,
     SignUpPage,
-    NewsPage,
-    AnswersPage,
+    TabsPage,
+    WelcomePage,
   ],
   providers: [
     StatusBar,
@@ -105,7 +108,7 @@ export function createTranslateLoader(http: Http) {
     QuestionServiceProvider,
     TagsServiceProvider,
     NewsServiceProvider,
-    ConnectionErrorController
+    ConnectionErrorController,
   ]
 })
 export class AppModule {}
