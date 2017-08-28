@@ -107,8 +107,7 @@
   "SEARCH": {
     "TITLE": "Suche",
     "EMPTY": "Zu diesem Suchbegriff gibt es noch keine Fragen.",
-    "SELECT_TAGS": "Bitte #Tags auswählen",
-    "DOWNVOTED": "Fragen, für die Du dich nicht interessiert hast"
+    "SELECT_TAGS": "Bitte #Tags auswählen"
   },
 
   "SETTINGS": {

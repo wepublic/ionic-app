@@ -16,10 +16,7 @@ export class SearchQuestionsPage {
 
   public tags: any[];
   public selectedTags: number[] = [];
-  public questions = {
-    'up_unvoted': [],
-    'downvoted': []
-  };
+  public questions: Array<any>;
   public voting: boolean = false;
 
   constructor(private navCtrl: NavController, navParams: NavParams,
@@ -37,15 +34,6 @@ export class SearchQuestionsPage {
     this.selectTags();
   }
 
-  clearQuestions() {
-    for (var key in this.questions) this.questions[key].length = 0;
-  }
-
-  getQuestionType(question) {
-    var voted = question.voted;
-    return (voted === false) ? 'downvoted' : 'up_unvoted';
-  }
-
   selectTags() {
     this.refresher._top = this.content.contentTop + 'px';
     this.refresher.state = 'ready';
@@ -54,7 +42,7 @@ export class SearchQuestionsPage {
 
   loadQuestionsForTags() {
     console.log("Load questions for tags " + this.selectedTags);
-    this.clearQuestions();
+    this.questions = [];
     let obs = [];
     for (let t of this.selectedTags) {
       obs.push(this.questionService.loadQuestionByTagId(t));
@@ -64,13 +52,12 @@ export class SearchQuestionsPage {
     .subscribe(
       res => {
         var seen = [];
-        var questions = [].concat.apply([], res)
+        this.questions = [].concat.apply([], res)
         /* Filter questions with all tags */
         .filter(question => this.selectedTags.every(t => question.tags.includes(t)))
         /* Filter duplicate questions */
         .filter(question => seen.includes(question.id) ? false : seen.push(question.id));
-        questions.forEach(q => this.questions[this.getQuestionType(q)].push(q));
-        for (var key in this.questions) this.questions[key].sort((a, b) => b.upvotes - a.upvotes);
+        this.questions.sort((a, b) => b.upvotes - a.upvotes);
         this.refresher.complete();
       },
       err => { this.refresher.complete(); this.notifier.showToast('CONNERROR'); }
@@ -81,15 +68,10 @@ export class SearchQuestionsPage {
     this.navCtrl.push(AnswersPage, {question: question});
   }
 
-  updateQuestion(question) {
-    var questions = this.questions[this.getQuestionType(question)];
-    questions[questions.indexOf(question)] = question;
-  }
-
   upvoteQuestion(question) {
     console.log('thumbs up for question ' + question.id);
     this.questionService.upvoteQuestion(question.id).subscribe(
-      question => this.updateQuestion(question),
+      question => this.questions[this.questions.indexOf(question)] = question,
       err => this.notifier.showToast('CONNERROR')
     );
   }
