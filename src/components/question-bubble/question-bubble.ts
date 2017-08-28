@@ -37,6 +37,17 @@ export class QuestionBubbleComponent {
     this.lasche.nativeElement.style.fill = "";
   }
 
+  downvoteQuestion() {
+    this.downvote.emit(this.question);
+    this.question.voted = false;
+  }
+
+  upvoteQuestion() {
+    this.upvote.emit(this.question);
+    this.question.voted = true;
+    this.question.upvotes += 1;
+  }
+
   panEvent(e) {
     if (!this.enableDownvote && !this.enableUpvote) return;
     const currentState = this._panState;
@@ -52,15 +63,12 @@ export class QuestionBubbleComponent {
     if (upvoted) {
       console.log("upvote");
       this._panState = 'disabled';
-      this.upvote.emit(this.question);
-      this.question.voted = true;
-      this.question.upvotes += 1;
+      this.upvoteQuestion()
     }
     if (downvoted) {
       console.log("downvote");
       this._panState = 'disabled';
-      this.downvote.emit(this.question);
-      this.question.voted = false;
+      this.downvoteQuestion();
     }
     if (e.isFinal || upvoted || downvoted) {
       this.resetPan();

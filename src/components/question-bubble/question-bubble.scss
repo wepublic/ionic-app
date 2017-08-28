@@ -130,6 +130,7 @@ question-bubble {
     }
 
     .community {
+      left: 0%;
       text  { fill: color($colors, yellowElem); }
     }
 
@@ -156,8 +157,8 @@ question-bubble {
     }
 
     .community {
-      transition: 1s linear;
-      -webkit-transition: 1s linear;
+      transition: all 1s linear;
+      -webkit-transition: all 1s linear;
       opacity: 0;
       left: 100%;
       transform: translateX(-50%);
