@@ -83,8 +83,8 @@
     "NO_ANSWERS": "Zu dieser Frage gibt es bisher keine Antworten."
   },
 
-  "MY_QUESTIONS": {
-    "EMPTY": "Hier siehst du alle deine Fragen, die noch nicht beantwortet wurden."
+  "OPEN_QUESTIONS": {
+    "EMPTY": "Hier siehst du alle Fragen, die du positiv bewertet hast und die noch nicht beantwortet wurden."
   },
 
   "ANSWERED_QUESTIONS": {

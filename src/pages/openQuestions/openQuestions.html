@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <h2 class="hint" translate ion-fixed *ngIf="!(questions && questions.length)">MY_QUESTIONS.EMPTY</h2>
+  <h2 class="hint" translate ion-fixed *ngIf="!(questions && questions.length)">OPEN_QUESTIONS.EMPTY</h2>
 
   <ion-refresher (ionRefresh)="loadQuestions($event)">
     <ion-refresher-content></ion-refresher-content>

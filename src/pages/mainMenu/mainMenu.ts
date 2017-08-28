@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MyQuestionsPage } from "../myQuestions/myQuestions";
+import { OpenQuestionsPage } from "../openQuestions/openQuestions";
 import { NewsPage } from "../news/news";
 import { EnterQuestionPage } from "../enterQuestion/enterQuestion";
 import { AnsweredQuestionsPage } from "../answeredQuestions/answeredQuestions";
@@ -11,7 +11,7 @@ import { AnsweredQuestionsPage } from "../answeredQuestions/answeredQuestions";
 })
 export class MainMenuPage {
 
-  openQuestionsView = MyQuestionsPage;
+  openQuestionsView = OpenQuestionsPage;
   answeredQuestionsView = AnsweredQuestionsPage;
   enterQuestionView = EnterQuestionPage;
   newsView = NewsPage;

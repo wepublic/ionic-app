@@ -9,11 +9,11 @@ import {AnswersPage} from "../answers/answers";
 import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
 
 @Component({
-  selector: 'page-myQuestions',
+  selector: 'page-open-questions',
   providers: [QuestionServiceProvider],
-  templateUrl: 'myQuestions.html'
+  templateUrl: 'openQuestions.html'
 })
-export class MyQuestionsPage {
+export class OpenQuestionsPage {
   @ViewChild(Content) content: Content;
   @ViewChild(Refresher) refresher: Refresher;
 

@@ -21,7 +21,7 @@ import { EnterQuestionPage } from '../pages/enterQuestion/enterQuestion';
 import { FaqPage } from '../pages/faq/faq';
 import { LoginPage } from '../pages/login/login';
 import { MainMenuPage } from "../pages/mainMenu/mainMenu";
-import { MyQuestionsPage } from '../pages/myQuestions/myQuestions';
+import { OpenQuestionsPage } from '../pages/openQuestions/openQuestions';
 import { NewsPage } from "../pages/news/news";
 import { RandomQuestionsPage } from "../pages/randomQuestions/randomQuestions";
 import { SearchQuestionsPage } from "../pages/searchQuestions/searchQuestions";
@@ -53,7 +53,7 @@ export function createTranslateLoader(http: Http) {
     FaqPage,
     LoginPage,
     MainMenuPage,
-    MyQuestionsPage,
+    OpenQuestionsPage,
     NewsPage,
     RandomQuestionsPage,
     SearchQuestionsPage,
