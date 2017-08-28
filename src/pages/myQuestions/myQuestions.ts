@@ -36,6 +36,7 @@ export class MyQuestionsPage {
     this.questionService.loadOpenQuestions().subscribe(
       data => {
         refresher.complete();
+        data.sort((a, b) => b.upvotes - a.upvotes);
         this.questions = data;
       },
       err => {
