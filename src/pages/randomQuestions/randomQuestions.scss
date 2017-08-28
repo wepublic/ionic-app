@@ -13,7 +13,7 @@ page-randomQuestions {
   }
 
   .question-bubble.downvoted {
-    transition: 1s linear;
+    transition: $animation-duration linear;
     transform: translateX(-150%);
   }
 

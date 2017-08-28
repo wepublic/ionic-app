@@ -1,3 +1,5 @@
+$animation-duration: 300ms;
+
 question-bubble {
   width: 100%;
 
@@ -66,15 +68,14 @@ question-bubble {
   }
 
   .question-bubble.upvoted {
-    transition: 1s linear;
+    transition: $animation-duration linear;
     background-color: color($colors, primary);
     border: 1px solid darken(color($colors, primary), 10%);
     border-bottom-left-radius: map-get($bubble, radius);
     border-bottom-right-radius: initial;
 
     .lasche {
-      transition: 1s linear;
-      -webkit-transition: 1s linear;
+      transition: $animation-duration linear;
       fill: color($colors, primary);
       stroke: darken(color($colors, primary), 10%);
       left: 100%;
@@ -143,7 +144,7 @@ question-bubble {
   .votebar.downvoted {
     .community {
       text {
-        transition: 1s linear;
+        transition: $animation-duration linear;
         opacity: 0;
       }
     }
@@ -151,22 +152,22 @@ question-bubble {
 
   .votebar.upvoted {
     .upvote {
-      transition: 1s linear;
-      -webkit-transition: 1s linear;
+      transition: $animation-duration linear;
+      -webkit-transition: $animation-duration linear;
       opacity: 0;
     }
 
     .community {
-      transition: all 1s linear;
-      -webkit-transition: all 1s linear;
+      transition: all $animation-duration linear;
+      -webkit-transition: all $animation-duration linear;
       opacity: 0;
       left: 100%;
       transform: translateX(-50%);
     }
 
     .me {
-      transition: 1s linear;
-      -webkit-transition: 1s linear;
+      transition: $animation-duration linear;
+      -webkit-transition: $animation-duration linear;
       opacity: 1;
     }
   }
