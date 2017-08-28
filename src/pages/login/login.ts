@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { AlertController, NavController, ToastController} from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 
-import {TranslateService} from "@ngx-translate/core";
+import { TranslatedNotificationController } from "../../utils/TranslatedNotificationController";
 import {TabsPage} from "../tabs/tabs";
 import {UserServiceProvider} from "../../providers/user-service/user-service";
 
@@ -19,9 +19,8 @@ export class LoginPage {
   email: AbstractControl;
   password: AbstractControl;
 
-  constructor(private alertCtrl: AlertController, private navCtrl: NavController,
-              private toastCtrl: ToastController, private fb: FormBuilder,
-              private translate: TranslateService, private userService: UserServiceProvider) {
+  constructor(private navCtrl: NavController, private fb: FormBuilder,
+              private notifier: TranslatedNotificationController, private userService: UserServiceProvider) {
     this.authForm = fb.group({
       'email': ['', Validators.compose([Validators.required])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(8)])]
@@ -40,22 +39,12 @@ export class LoginPage {
     );
   }
 
-  showToast(text: string, err: string) {
-    this.translate.get(text, {value: 'world'})
-    .subscribe((res: string) => this.toastCtrl.create({ message: res + ' ' + err, duration: 3000 }).present());
-  }
-
-  showAlert(text: string) {
-    this.translate.get(text, {value: 'world'})
-    .subscribe((res: string) => this.alertCtrl.create({ message: res }).present());
-  }
-
   login(value: string) {
     console.log("login");
     if (!this.authForm.valid) return;
     this.userService.login(this.email.value, this.password.value).subscribe(
       () => this.navCtrl.setRoot(this.tabsView),
-      err => this.showToast('LOGIN.FAILED', err)
+      err => this.notifier.showToast('LOGIN.FAILED')
     );
   }
 
@@ -63,8 +52,8 @@ export class LoginPage {
     console.log("forgot PW");
     this.userService.forgotPW(this.email.value)
     .subscribe(
-      res => this.showAlert('SIGNUP.RESETMAIL'),
-      err => this.showToast('LOGIN.INVALID_USER', err)
+      res => this.notifier.showAlert('', 'SIGNUP.RESETMAIL', 'OK'),
+      err => this.notifier.showToast('LOGIN.INVALID_USER')
     );
     return false;
   }

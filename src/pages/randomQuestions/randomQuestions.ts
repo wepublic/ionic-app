@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoadingController, NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Rx';
 import { QuestionServiceProvider } from "../../providers/question-service/question-service";
-import { ConnectionErrorController } from '../../utils/connection-error';
+import { TranslatedNotificationController } from "../../utils/TranslatedNotificationController";
 import { TagsHelper } from "../../utils/TagsHelper";
 import { AnswersPage } from "../answers/answers";
 import { SearchQuestionsPage } from '../searchQuestions/searchQuestions';
@@ -16,7 +16,7 @@ export class RandomQuestionsPage {
   questions = [];
 
   constructor(private navCtrl: NavController, private loadCtrl: LoadingController,
-              private errorCtrl: ConnectionErrorController,
+              private notifier: TranslatedNotificationController,
               private questionService: QuestionServiceProvider, private tagsHelper: TagsHelper) {
   }
 
@@ -29,7 +29,7 @@ export class RandomQuestionsPage {
       this.questionService.loadRandomQuestion())
     .subscribe(
       res => this.questions = this.questions.concat(res),
-      err => { loading.dismiss(); this.errorCtrl.show(); },
+      err => { loading.dismiss(); this.notifier.showToast('CONNERROR'); },
       () => loading.dismiss()
     );
   }
@@ -49,14 +49,16 @@ export class RandomQuestionsPage {
   downvote(question) {
     console.log('thumbs down for ' + question.id);
     Observable.timer(1000).subscribe(res => this.questions.shift());
-    this.questionService.downvoteQuestion(question.id).subscribe(null, err => this.errorCtrl.show());
+    this.questionService.downvoteQuestion(question.id)
+    .subscribe(null, err => this.notifier.showToast('CONNERROR'));
     this.questionService.loadRandomQuestion().subscribe(res => this.questions.push(res));
   }
 
   upvote(question) {
     console.log('thumbs up for ' + question.id);
     Observable.timer(1000).subscribe(res => this.questions.shift());
-    this.questionService.upvoteQuestion(question.id).subscribe(null, err => this.errorCtrl.show());
+    this.questionService.upvoteQuestion(question.id)
+    .subscribe(null, err => this.notifier.showToast('CONNERROR'));
     this.questionService.loadRandomQuestion().subscribe(res => this.questions.push(res));
   }
 }

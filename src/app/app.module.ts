@@ -35,7 +35,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
 import { TagsServiceProvider } from '../providers/tags-service/tags-service';
 
 import { TagsHelper } from "../utils/TagsHelper";
-import { ConnectionErrorController } from '../utils/connection-error';
+import { TranslatedNotificationController } from "../utils/TranslatedNotificationController";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -108,7 +108,7 @@ export function createTranslateLoader(http: Http) {
     QuestionServiceProvider,
     TagsServiceProvider,
     NewsServiceProvider,
-    ConnectionErrorController,
+    TranslatedNotificationController,
   ]
 })
 export class AppModule {}

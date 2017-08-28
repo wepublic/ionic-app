@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController, NavParams } from 'ionic-angular';
-import { TranslateService } from "@ngx-translate/core";
+import { NavController, NavParams } from 'ionic-angular';
 import { QuestionServiceProvider } from "../../providers/question-service/question-service";
-import { ConnectionErrorController } from '../../utils/connection-error';
+import { TranslatedNotificationController } from "../../utils/TranslatedNotificationController";
 import { TagsHelper } from "../../utils/TagsHelper";
 import { SearchQuestionsPage } from '../searchQuestions/searchQuestions';
 
@@ -20,10 +19,9 @@ export class AnswersPage {
   answers: any[] = [];
   likePerc = 66;
 
-  constructor(private navParams: NavParams, private alertCtrl: AlertController,
-              private navCtrl: NavController, private errorCtrl: ConnectionErrorController,
-              private translate: TranslateService, private questionService: QuestionServiceProvider,
-              private tagsHelper: TagsHelper) {
+  constructor(private navParams: NavParams, private navCtrl: NavController,
+              private notifier: TranslatedNotificationController,
+              private questionService: QuestionServiceProvider, private tagsHelper: TagsHelper) {
     this.question = navParams.get('question');
     console.log(this.question);
     this.loadTags();
@@ -38,14 +36,9 @@ export class AnswersPage {
     if (this.question !== undefined && this.question !== []) {
       this.questionService.getAnswersForQuestion(this.question.id).subscribe(
         data => { console.log(data); this.answers = data;},
-        err => this.errorCtrl.show()
+        err => this.notifier.showToast('CONNERROR')
       );
     };
-  }
-
-  showAlert(text: string) {
-    this.translate.get(text, {value: 'world'})
-    .subscribe((res: string) => this.alertCtrl.create({ message: res, buttons: ['OK'] }).present());
   }
 
   downvote(answer) {
@@ -76,7 +69,7 @@ export class AnswersPage {
   reportQuestion(question) {
     this.questionService.reportQuestion(question.id)
     .subscribe(
-      () => this.showAlert('QUESTION.REPORT_CONFIRM'),
-      err => this.errorCtrl.show());
+      () => this.notifier.showAlert('', 'QUESTION.REPORT_CONFIRM', 'OK'),
+      err => this.notifier.showToast('CONNERROR'));
   }
 }

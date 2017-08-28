@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Content, Refresher } from 'ionic-angular';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
-import { ConnectionErrorController } from '../../utils/connection-error';
+import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
 import {TagsHelper} from "../../utils/TagsHelper";
 import {AnswersPage} from "../answers/answers";
 import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
@@ -19,7 +19,7 @@ export class AnsweredQuestionsPage {
   connectionErrorMsg: string;
 
   constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider,
-              public errorCtrl: ConnectionErrorController, public tagsHelper: TagsHelper) {
+              public notifier: TranslatedNotificationController, public tagsHelper: TagsHelper) {
   }
 
   ionViewDidEnter() {
@@ -37,7 +37,7 @@ export class AnsweredQuestionsPage {
       },
       err => {
         refresher.complete();
-        this.errorCtrl.show();
+        this.notifier.showToast('CONNERROR');
       }
     );
   }

@@ -3,7 +3,7 @@ import { NavController, Content, Refresher } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { EnterQuestionPage } from '../enterQuestion/enterQuestion';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
-import { ConnectionErrorController } from '../../utils/connection-error';
+import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
 import {TagsHelper} from "../../utils/TagsHelper";
 import {AnswersPage} from "../answers/answers";
 import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
@@ -22,7 +22,7 @@ export class OpenQuestionsPage {
   public allTags;
 
   constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider, public storage: Storage,
-              public errorCtrl: ConnectionErrorController, public tagsHelper: TagsHelper) {
+              private notifier: TranslatedNotificationController, public tagsHelper: TagsHelper) {
     this.allTags = this.storage.get('allTags');
   }
 
@@ -41,7 +41,7 @@ export class OpenQuestionsPage {
       },
       err => {
         refresher.complete();
-        this.errorCtrl.show();
+        this.notifier.showToast('CONNERROR');
       }
     );
   }

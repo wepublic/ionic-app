@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Content, NavController, NavParams, Refresher } from 'ionic-angular';
 import { Observable } from 'rxjs/Rx';
-import { ConnectionErrorController } from '../../utils/connection-error';
+import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
 import { TagsHelper } from "../../utils/TagsHelper";
 import { QuestionServiceProvider } from "../../providers/question-service/question-service";
 import { AnswersPage } from "../answers/answers";
@@ -23,7 +23,7 @@ export class SearchQuestionsPage {
   public voting: boolean = false;
 
   constructor(private navCtrl: NavController, navParams: NavParams,
-              private tagsHelper: TagsHelper, private errorCtrl: ConnectionErrorController,
+              private tagsHelper: TagsHelper, private notifier: TranslatedNotificationController,
               private questionService: QuestionServiceProvider) {
     this.tags = this.tagsHelper.getAllTagObjectsSorted();
     let tag = navParams.get('tag');
@@ -73,7 +73,7 @@ export class SearchQuestionsPage {
         for (var key in this.questions) this.questions[key].sort((a, b) => b.upvotes - a.upvotes);
         this.refresher.complete();
       },
-      err => { this.refresher.complete(); this.errorCtrl.show(); }
+      err => { this.refresher.complete(); this.notifier.showToast('CONNERROR'); }
     );
   }
 
@@ -90,7 +90,7 @@ export class SearchQuestionsPage {
     console.log('thumbs up for question ' + question.id);
     this.questionService.upvoteQuestion(question.id).subscribe(
       question => this.updateQuestion(question),
-      err => this.errorCtrl.show()
+      err => this.notifier.showToast('CONNERROR')
     );
   }
 
