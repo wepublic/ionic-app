@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { AlertController, NavController, ToastController } from 'ionic-angular';
 import { TranslateService } from "@ngx-translate/core";
+import { ConnectionErrorController } from '../../utils/connection-error';
 import { TagsHelper } from "../../utils/TagsHelper";
 import { QuestionServiceProvider } from "../../providers/question-service/question-service";
 import { MainMenuPage } from "../mainMenu/mainMenu";
@@ -17,8 +18,10 @@ export class EnterQuestionPage {
   public selectedTags: number[] = [];
   public questionText: string = "";
 
-  constructor(private navCtrl: NavController, private toastCtrl: ToastController, private translate: TranslateService,
-              private tagsHelper: TagsHelper, private questionService: QuestionServiceProvider) {
+  constructor(private alertCtrl: AlertController, private navCtrl: NavController,
+              private toastCtrl: ToastController, private translate: TranslateService,
+              private errorCtrl: ConnectionErrorController, private tagsHelper: TagsHelper,
+              private questionService: QuestionServiceProvider) {
     this.tags = this.tagsHelper.getAllTagObjectsSorted();
   }
 
@@ -27,6 +30,11 @@ export class EnterQuestionPage {
     .subscribe(text => this.toastCtrl.create({ message: text, duration: 3000 }).present());
   }
     
+  showAlert(title: string, text: string, button: string) {
+    this.translate.get([title, text, button], {value: 'world'})
+    .subscribe((res: string[]) => this.alertCtrl.create({ title: res[title], message: res[text], buttons: [res[button]] }).present());
+  }
+
   onSelectTags() {
     if (this.selectedTags.length > 3) this.selectedTags.length = 3;
   }
@@ -44,8 +52,15 @@ export class EnterQuestionPage {
       return;
     } 
     this.questionService.publishQuestion(this.questionText, this.selectedTags)
-    .subscribe(data => { console.log(data); });
-    this.navCtrl.setRoot(MainMenuPage);
+    .subscribe(
+      data => {
+        this.showAlert('ENTERQUESTION.POSTED_TITLE', 'ENTERQUESTION.POSTED', 'OK')
+        this.navCtrl.setRoot(MainMenuPage);
+      },
+      err => {
+        this.errorCtrl.show();
+      }
+    );
   }
 
 }
