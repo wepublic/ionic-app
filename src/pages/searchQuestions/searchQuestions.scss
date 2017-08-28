@@ -17,6 +17,11 @@ page-search {
     }
   }
 
+  .item-divider {
+    color: color($colors, danger);
+    text-align: center;
+  }
+
   .question-bubble.downvoted {
     background-color: color($colors, answerNeg);
     .lasche {

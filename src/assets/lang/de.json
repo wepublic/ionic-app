@@ -108,7 +108,8 @@
   "SEARCH": {
     "TITLE": "Suche",
     "EMPTY": "Zu diesem Suchbegriff gibt es noch keine Fragen.",
-    "SELECT_TAGS": "Bitte #Tags auswählen"
+    "SELECT_TAGS": "Bitte #Tags auswählen",
+    "DOWNVOTED": "Fragen, für die Du dich nicht interessiert hast"
   },
 
   "SETTINGS": {
@@ -154,7 +155,7 @@
     "MY": "Meine",
     "MATCH": "Fragen entdecken",
     "LIKED": "Interesse",
-    "SEARCH": "Fragen suchen",
+    "SEARCH": "Top Fragen",
     "TRENDING": "Beliebt",
     "YOUR_QUESTION": "Deine Frage",
     "ME": "Ich"
