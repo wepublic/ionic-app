@@ -25,7 +25,6 @@ import {RandomQuestionsPage} from "../pages/randomQuestions/randomQuestions";
 import {SearchQuestionsPage} from "../pages/searchQuestions/searchQuestions";
 import { TagsServiceProvider } from '../providers/tags-service/tags-service';
 import {TagsHelper} from "../utils/TagsHelper";
-import {LikeBar} from "../utils/LikeBar";
 import { ConnectionErrorController } from '../utils/connection-error';
 import {MainMenuPage} from "../pages/mainMenu/mainMenu";
 import {NewsPage} from "../pages/news/news";
@@ -56,7 +55,6 @@ export function createTranslateLoader(http: Http) {
     SignUpPage,
     NewsPage,
     AnswersPage,
-    LikeBar,
     QuestionBubbleComponent,
     AnswerBubbleComponent,
   ],
