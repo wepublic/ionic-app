@@ -61,4 +61,11 @@ export class RandomQuestionsPage {
     .subscribe(null, err => this.notifier.showToast('CONNERROR'));
     this.questionService.loadRandomQuestion().subscribe(res => this.questions.push(res));
   }
+
+  reportQuestion(question) {
+    this.questionService.reportQuestion(question.id)
+    .subscribe(
+      () => this.notifier.showAlert('', 'QUESTION.REPORT_CONFIRM', 'OK'),
+      err => this.notifier.showToast('CONNERROR'));
+  }
 }

@@ -8,7 +8,10 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
+  <ion-grid ion-fixed>
+    <ion-row no-lines>
+      <a class="report" translate (click)="reportQuestion(questions[0])">QUESTION.REPORT</a>
+    </ion-row>
     <ion-row class="spacer"></ion-row>
     <ion-row>
       <question-bubble [question]="questions[0]" *ngIf="questions.length > 0"

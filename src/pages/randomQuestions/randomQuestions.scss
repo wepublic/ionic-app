@@ -1,14 +1,15 @@
 page-randomQuestions {
-  ion-content > .scroll-content {
+  ion-grid {
     display: flex;
+    height: 100%;
+  }
 
-    ion-row {
-      width: 100%;
-    }
+  ion-row {
+    width: 100%;
+  }
 
-    .spacer {
-      flex: 1;
-    }
+  .spacer {
+    flex: 1;
   }
 
   .question-bubble.downvoted {
