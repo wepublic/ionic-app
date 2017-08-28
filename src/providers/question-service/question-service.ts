@@ -28,7 +28,7 @@ export class QuestionServiceProvider {
 
   loadAllQuestions() {
     return this.http.get(API_ENDPOINT + '/Questions/')
-      .map(res => res.json());
+      .map(res => res.json().results);
   }
 
   loadAnsweredQuestions() {

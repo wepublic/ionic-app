@@ -47,10 +47,6 @@ export class SearchQuestionsPage {
   }
 
   selectTags() {
-    if (this.selectedTags.length == 0) {
-      this.clearQuestions();
-      return;
-    }
     this.refresher._top = this.content.contentTop + 'px';
     this.refresher.state = 'ready';
     this.refresher._onEnd();
@@ -63,6 +59,7 @@ export class SearchQuestionsPage {
     for (let t of this.selectedTags) {
       obs.push(this.questionService.loadQuestionByTagId(t));
     }
+    if (this.selectedTags.length == 0) obs.push(this.questionService.loadAllQuestions());
     Observable.forkJoin(obs)
     .subscribe(
       res => {

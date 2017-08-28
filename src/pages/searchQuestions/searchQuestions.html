@@ -18,7 +18,6 @@
 
 <ion-content>
   <h2 class="hint" translate ion-fixed *ngIf="refresher.state == 'inactive' && (selectedTags && selectedTags.length) && !(questions && (questions['up_unvoted'].length || questions['downvoted'].length))">SEARCH.EMPTY</h2>
-  <h2 class="hint" translate ion-fixed *ngIf="!(selectedTags && selectedTags.length)">SEARCH.SELECT_TAGS</h2>
 
   <ion-refresher (ionRefresh)="loadQuestionsForTags()" [enabled]="selectedTags && selectedTags.length && !voting">
     <ion-refresher-content></ion-refresher-content>
