@@ -2,11 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, ToastController, Content, Refresher } from 'ionic-angular';
 import { TranslateService } from "@ngx-translate/core";
 import {NewsServiceProvider} from "../../providers/news-service/news-service";
+import {MatchServiceProvider} from "../../providers/match-service/match-service";
+
 
 @Component({
   templateUrl: 'news.html',
   selector: 'page-news',
-  providers: [NewsServiceProvider],
+  providers: [NewsServiceProvider, MatchServiceProvider],
 })
 export class NewsPage {
   @ViewChild(Content) content: Content;
@@ -16,7 +18,7 @@ export class NewsPage {
   connectionErrorToast;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController,
-              public translate: TranslateService, public newsService: NewsServiceProvider) {
+              public translate: TranslateService, public matchService: MatchServiceProvider) {
     translate.get('CONNERROR', {value: 'world'}).subscribe((res: string) => {
       this.connectionErrorToast = this.toastCtrl.create({
         message: res,
@@ -31,11 +33,27 @@ export class NewsPage {
     this.refresher._onEnd();
   }
 
-  loadNews(refresher) {
-    this.newsService.loadNews().subscribe(
+  ionViewDidLoad() {
+    this.initSvg();
+  }
+
+  initSvg() {
+  }
+
+
+  loadMatch(refresher) {
+    this.matchService.loadMatch().subscribe(
       data => {
         refresher.complete();
         this.news = data;
+        console.log(this);
+
+        for (var match of data) {
+          console.log(match);
+          match.percentage = Math.round(match.percentage);
+          match.aa = Array(Math.round(match.percentage/10));
+        }
+
       },
       err => {
         refresher.complete();
