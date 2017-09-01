@@ -35,7 +35,7 @@ export class NewsPage {
     this.newsService.loadNews().subscribe(
       data => {
         refresher.complete();
-        this.news = data;
+        this.news = data.reverse();
       },
       err => {
         refresher.complete();
