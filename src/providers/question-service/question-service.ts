@@ -35,8 +35,8 @@ export class QuestionServiceProvider {
 
   loadAnsweredQuestions() {
     return this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Questions/upvotes/?answered=true', this.getHeaders(token))
-        .map(res => res.json())
+      token => this.http.get(API_ENDPOINT + '/Questions/?answered=true&ordering=-closed_date', this.getHeaders(token))
+        .map(res => res.json().results)
     );
   }
 

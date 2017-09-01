@@ -32,7 +32,6 @@ export class AnsweredQuestionsPage {
     this.questionService.loadAnsweredQuestions().subscribe(
       data => {
         refresher.complete();
-        data.sort((a, b) => b.upvotes - a.upvotes);
         this.questions = data;
       },
       err => {

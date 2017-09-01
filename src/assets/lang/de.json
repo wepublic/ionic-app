@@ -30,8 +30,8 @@
   },
 
   "MAINMENU": {
-    "ANSWEREDQUESTIONS": "Meine beantworteten Fragen",
     "OPENQUESTIONS": "Offene Fragen",
+    "ANSWEREDQUESTIONS": "Beantwortete Fragen",
     "ASK": "Frage stellen",
     "NEWS": "Info"
   },
