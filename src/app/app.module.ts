@@ -6,6 +6,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
+import { CacheModule } from "ionic-cache";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { CustomIconsModule } from "ionic2-custom-icons";
@@ -72,6 +73,7 @@ export function createTranslateLoader(http: Http) {
       autoFocusAssist: false,
     }),
     IonicStorageModule.forRoot(),
+    CacheModule.forRoot(),
     CustomIconsModule,
     TranslateModule.forRoot({
       loader: {
