@@ -33,6 +33,7 @@ export class AnsweredQuestionsPage {
       data => {
         refresher.complete();
         this.questions = data;
+        if (data.length) this.questionService.updateSeenAnsweredQuestions(data.map(d => d.id));
       },
       err => {
         refresher.complete();

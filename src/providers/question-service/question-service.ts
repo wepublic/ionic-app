@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Storage } from "@ionic/storage";
+import { CacheService } from "ionic-cache";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/map';
@@ -13,18 +14,11 @@ import {API_ENDPOINT} from '../../app/app.config';
 @Injectable()
 export class QuestionServiceProvider {
 
-  constructor(public http: Http, public storage: Storage) {
+  constructor(public http: Http, public storage: Storage, private cache: CacheService) {
   }
 
   getToken() { return Observable.fromPromise(this.storage.get('localUserToken')); }
   getHeaders(token) { return {headers: new Headers({Authorization: 'Token ' + token})}; }
-
-  loadAnsweredQuestion(questionID) : Observable<any> {
-    return this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Questions/'+questionID+'/', this.getHeaders(token))
-        .map(res => res.json())
-    );
-  }
 
   loadAllQuestions(params: string) {
     return this.getToken().mergeMap(
@@ -33,11 +27,25 @@ export class QuestionServiceProvider {
     );
   }
 
+  unseenAnsweredQuestions() {
+    return Observable.zip(
+      Observable.fromPromise(this.storage.get('seenAnsweredQuestions')),
+      this.loadAnsweredQuestions(),
+      (seenQuestions: number[], questions) =>
+        questions.reduce((res, e) => { if (seenQuestions == null || !seenQuestions.includes(e.id)) res++; return res; }, 0)
+    );
+  }
+
+  updateSeenAnsweredQuestions(ids: number[]) {
+    this.storage.set('seenAnsweredQuestions', ids);
+  }
+
   loadAnsweredQuestions() {
-    return this.getToken().mergeMap(
+    let request = this.getToken().mergeMap(
       token => this.http.get(API_ENDPOINT + '/Questions/?answered=true&ordering=-closed_date', this.getHeaders(token))
         .map(res => res.json().results)
     );
+    return this.cache.loadFromDelayedObservable('answeredQuestions', request, undefined, undefined, 'all');
   }
 
   loadOpenQuestions() {
