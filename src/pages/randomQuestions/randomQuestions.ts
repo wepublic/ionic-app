@@ -14,22 +14,34 @@ import { SearchQuestionsPage } from '../searchQuestions/searchQuestions';
 })
 export class RandomQuestionsPage {
   questions = [];
+  private seenQuestionIDs = new Set();
 
   constructor(private navCtrl: NavController, private loadCtrl: LoadingController,
               private notifier: TranslatedNotificationController,
               private questionService: QuestionServiceProvider, private tagsHelper: TagsHelper) {
   }
 
+  private addQuestion(question) {
+    if (!this.seenQuestionIDs.has(question.id)) {
+      console.log("Add question " + question.id);
+      this.seenQuestionIDs.add(question.id);
+      this.questions.push(question);
+    } else {
+      console.log("Already seen " + question.id + " and " + this.questions.length + " left");
+    }
+  }
+
   ionViewDidEnter() {
     let loading = this.loadCtrl.create();
     loading.present();
+    this.questions = [];
+    this.seenQuestionIDs.clear();
     Observable.forkJoin(
-      this.questionService.loadRandomQuestion(),
       this.questionService.loadRandomQuestion(),
       this.questionService.loadRandomQuestion())
     .subscribe(
-      res => this.questions = this.questions.concat(res),
-      err => { loading.dismiss(); this.notifier.showToast('CONNERROR'); },
+      res => res.forEach(this.addQuestion, this),
+      err => { loading.dismiss(); if (err.status != 429) this.notifier.showToast('CONNERROR'); },
       () => loading.dismiss()
     );
   }
@@ -51,7 +63,7 @@ export class RandomQuestionsPage {
     Observable.timer(1000).subscribe(res => this.questions.shift());
     this.questionService.downvoteQuestion(question.id)
     .subscribe(null, err => this.notifier.showToast('CONNERROR'));
-    this.questionService.loadRandomQuestion().subscribe(res => this.questions.push(res));
+    this.questionService.loadRandomQuestion().subscribe(q => { this.addQuestion(q); });
   }
 
   upvote(question) {
@@ -59,7 +71,7 @@ export class RandomQuestionsPage {
     Observable.timer(1000).subscribe(res => this.questions.shift());
     this.questionService.upvoteQuestion(question.id)
     .subscribe(null, err => this.notifier.showToast('CONNERROR'));
-    this.questionService.loadRandomQuestion().subscribe(res => this.questions.push(res));
+    this.questionService.loadRandomQuestion().subscribe(q => { this.addQuestion(q); });
   }
 
   reportQuestion(question) {
