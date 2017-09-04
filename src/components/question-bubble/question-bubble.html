@@ -14,14 +14,14 @@
   {{question.answers.length == 1 ? 'QUESTION.ANSWER' : 'QUESTION.ANSWERS'}}
 </div>
 <div class="votebar" [class.downvoted]="question.voted === undefined" [class.upvoted]="question.voted" (pan)="panEvent($event)" #votebar>
-  <a class="downvote" (click)="downvoteQuestion()" translate><img src="assets/icon/xIcon.svg"> QUESTION.BAD</a>
-  <a class="upvote" (click)="upvoteQuestion()" translate>QUESTION.GOOD <img src="assets/icon/+icon.svg"></a>
   <svg class="me" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 104 58" height="58px" width="104px">
     <text x="51" y="14" text-anchor="end" fill="#ffce0f">{{question.upvotes - 1}}</text>
     <image xlink:href="assets/icon/99999+me.svg" width="104" height="58" />
   </svg>
-  <svg class="community" xmlns="http://www.w3.org/2000/svg" version="1.1" width="104px" height="58px" viewBox="0 0 104 58" #community>
+  <svg class="community"  xmlns="http://www.w3.org/2000/svg" version="1.1" width="104px" height="58px" viewBox="0 0 104 58" #community>
     <text x="54" y="14">{{question.upvotes}}</text>
     <image xlink:href="assets/icon/99999.svg" width="104" height="58" />
   </svg>
+  <a class="downvote" (click)="downvoteQuestion()" translate><img src="assets/icon/xIcon.svg"> QUESTION.BAD</a>
+  <a class="upvote" (click)="upvoteQuestion()" translate>QUESTION.GOOD <img src="assets/icon/+icon.svg"></a>
 </div>

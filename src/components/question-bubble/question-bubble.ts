@@ -38,14 +38,18 @@ export class QuestionBubbleComponent {
   }
 
   downvoteQuestion() {
-    this.downvote.emit(this.question);
-    this.question.voted = false;
+    if (this.question.voted === undefined) {
+      this.downvote.emit(this.question);
+      this.question.voted = false;
+    }
   }
 
   upvoteQuestion() {
-    this.upvote.emit(this.question);
-    this.question.voted = true;
-    this.question.upvotes += 1;
+    if (!this.question.voted) {
+      this.upvote.emit(this.question);
+      this.question.voted = true;
+      this.question.upvotes += 1;
+    }
   }
 
   panEvent(e) {
