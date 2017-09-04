@@ -32,10 +32,11 @@ export class NewsPage {
   }
 
   loadNews(refresher) {
-    this.newsService.loadNews('?ordering=-time_created').subscribe(
+    this.newsService.loadNews().subscribe(
       data => {
         refresher.complete();
         this.news = data;
+        if (data.length) this.newsService.updateSeenNews(data.map(d => d.id));
       },
       err => {
         refresher.complete();

@@ -17,8 +17,16 @@ page-main {
     flex: 4;
   }
 
-  img {
+  img, svg {
     width: 80%;
     margin-bottom: 1em;
+  }
+
+  .icon-character {
+    fill: color($colors, greenDark);
+  }
+
+  .news-badge {
+    fill: color($colors, danger);
   }
 }
