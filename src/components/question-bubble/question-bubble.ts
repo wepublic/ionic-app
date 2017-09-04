@@ -38,7 +38,7 @@ export class QuestionBubbleComponent {
   }
 
   downvoteQuestion() {
-    if (this.enableDownvote && this.question.voted === undefined) {
+    if (this.enableDownvote && this.question.voted === null) {
       this.downvote.emit(this.question);
       this.question.voted = false;
     }
