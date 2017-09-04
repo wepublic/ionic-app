@@ -32,10 +32,10 @@ export class NewsPage {
   }
 
   loadNews(refresher) {
-    this.newsService.loadNews().subscribe(
+    this.newsService.loadNews('?ordering=-time_created').subscribe(
       data => {
         refresher.complete();
-        this.news = data.reverse();
+        this.news = data;
       },
       err => {
         refresher.complete();

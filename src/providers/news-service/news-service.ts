@@ -10,8 +10,8 @@ export class NewsServiceProvider {
   constructor(public http: Http, private cache: CacheService) {
   }
 
-  loadNews() {
-    let request = this.http.get(API_ENDPOINT + '/News/').map(res => res.json());
+  loadNews(params: string) {
+    let request = this.http.get(API_ENDPOINT + '/News/' + params).map(res => res.json());
     return this.cache.loadFromDelayedObservable('news', request, undefined, undefined, 'all');
   }
 
