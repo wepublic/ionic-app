@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { Http, HttpModule } from "@angular/http";
 import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { FCM } from '@ionic-native/fcm';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
@@ -102,6 +103,7 @@ export function createTranslateLoader(http: Http) {
     WelcomePage,
   ],
   providers: [
+    FCM,
     StatusBar,
     SplashScreen,
     TagsHelper,

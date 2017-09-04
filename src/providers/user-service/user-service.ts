@@ -61,7 +61,7 @@ export class UserServiceProvider {
         this.storage.set('localUserToken', data.json().Token);
         this.storage.set('localUserEmail', userEmail);
       },
-      err => { console.log("Login error"); }
+      err => { console.log("Login error", err, window.location); }
     );
     return res;
   }

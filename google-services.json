@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "852242943012",
+    "firebase_url": "https://wepublic-plusme.firebaseio.com",
+    "project_id": "wepublic-plusme",
+    "storage_bucket": "wepublic-plusme.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852242943012:android:d35e02dca8104e75",
+        "android_client_info": {
+          "package_name": "me.wepublic.plusme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852242943012-9pr812p1k11iak27rrkfhuv2voov21p7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHnxTPTgLYVuAl3WR6PeQaQX1lGqxSkBM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

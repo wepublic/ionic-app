@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { AlertController, NavController, Tabs } from "ionic-angular";
 import { Storage } from '@ionic/storage';
+import { FCM } from '@ionic-native/fcm';
 import { TranslateService } from "@ngx-translate/core";
 
 import { UserServiceProvider } from "../../providers/user-service/user-service";
@@ -27,11 +28,32 @@ export class TabsPage {
 
   constructor(private storage: Storage, private alertCtrl: AlertController,
               private navCtrl: NavController, private userService: UserServiceProvider,
-              private translate: TranslateService) {
+              private translate: TranslateService, private fcm: FCM) {
   }
 
   ionViewWillEnter() {
     this.storage.get('showedOnboarding').then(val => { if (!val) this.showOnboarding(); });
+    try {
+      this.fcm.subscribeToTopic('test');
+      this.fcm.onNotification().subscribe(data => {
+        if (data.wasTapped) { // background
+          this.tabs.select(1);
+          this.alertCtrl.create({
+            title: data.title,
+            message: JSON.stringify(data),
+            buttons: ['OK']
+          }).present();
+        } else {              // foreground
+          this.alertCtrl.create({
+            title: data.title,
+            message: data.body,
+            buttons: ['OK']
+          }).present();
+        };
+      });
+    } catch(e) {
+      console.log("No FCM available");
+    }
   }
 
   logout() {
