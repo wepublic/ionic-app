@@ -26,9 +26,11 @@ export class QuestionServiceProvider {
     );
   }
 
-  loadAllQuestions() {
-    return this.http.get(API_ENDPOINT + '/Questions/')
-      .map(res => res.json().results);
+  loadAllQuestions(params: string) {
+    return this.getToken().mergeMap(
+      token => this.http.get(API_ENDPOINT + '/Questions/' + params, this.getHeaders(token))
+        .map(res => res.json().results)
+    );
   }
 
   loadAnsweredQuestions() {

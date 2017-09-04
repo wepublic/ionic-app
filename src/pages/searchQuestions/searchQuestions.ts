@@ -47,7 +47,7 @@ export class SearchQuestionsPage {
     for (let t of this.selectedTags) {
       obs.push(this.questionService.loadQuestionByTagId(t));
     }
-    if (this.selectedTags.length == 0) obs.push(this.questionService.loadAllQuestions());
+    if (this.selectedTags.length == 0) obs.push(this.questionService.loadAllQuestions('?ordering=-upvotes'));
     Observable.forkJoin(obs)
     .subscribe(
       res => {
