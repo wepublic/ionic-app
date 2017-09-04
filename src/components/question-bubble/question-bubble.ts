@@ -38,14 +38,14 @@ export class QuestionBubbleComponent {
   }
 
   downvoteQuestion() {
-    if (this.question.voted === undefined) {
+    if (this.enableDownvote && this.question.voted === undefined) {
       this.downvote.emit(this.question);
       this.question.voted = false;
     }
   }
 
   upvoteQuestion() {
-    if (!this.question.voted) {
+    if (this.enableUpvote && !this.question.voted) {
       this.upvote.emit(this.question);
       this.question.voted = true;
       this.question.upvotes += 1;
