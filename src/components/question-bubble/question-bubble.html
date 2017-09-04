@@ -1,4 +1,4 @@
-<div class="question-bubble" [class.downvoted]="question.voted === false" [class.upvoted]="question.voted" #questionbubble>
+<div class="question-bubble" [class.downvoted]="question.voted === false" [class.upvoted]="question.voted" (pan)="panEvent($event)" #questionbubble>
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="29" width="30" class="lasche" #lasche>
     <filter id="dropshadow" height="130%">
       <feGaussianBlur in="SourceAlpha" stdDeviation="2"/> <!-- stdDeviation is how much to blur -->
