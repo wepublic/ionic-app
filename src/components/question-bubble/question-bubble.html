@@ -23,5 +23,5 @@
     <image xlink:href="assets/icon/99999.svg" width="104" height="58" />
   </svg>
   <a class="downvote" (click)="downvoteQuestion()" translate><img src="assets/icon/xIcon.svg"> QUESTION.BAD</a>
-  <a class="upvote" (click)="upvoteQuestion()" translate>QUESTION.GOOD <img src="assets/icon/+icon.svg"></a>
+  <a class="upvote" [class.invisible]="!enableUpvote" (click)="upvoteQuestion()" translate>QUESTION.GOOD <img src="assets/icon/+icon.svg"></a>
 </div>

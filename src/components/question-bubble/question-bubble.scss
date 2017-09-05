@@ -12,6 +12,10 @@ question-bubble {
     pointer-events: none;
   }
 
+  .invisible {
+    display: none;
+  }
+
   .tags {
     font-weight: bold;
     display: block;
