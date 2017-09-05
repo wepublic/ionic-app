@@ -135,13 +135,11 @@ question-bubble {
     }
 
     .community {
-      z-index: 1;
       left: 0%;
       text  { fill: color($colors, yellowElem); }
     }
 
     .me {
-      z-index: 1;
       right: 0;
       text  { fill: color($colors, yellowElem); }
     }
