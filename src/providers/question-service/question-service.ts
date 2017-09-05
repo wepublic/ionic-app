@@ -49,10 +49,11 @@ export class QuestionServiceProvider {
   }
 
   loadOpenQuestions() {
-    return this.getToken().mergeMap(
+    let request = this.getToken().mergeMap(
       token => this.http.get(API_ENDPOINT + '/Questions/upvotes/?answered=false', this.getHeaders(token))
         .map(res => res.json())
     );
+    return this.cache.loadFromDelayedObservable('openQuestions', request, undefined, undefined, 'all');
   }
 
   loadRandomQuestion() {
