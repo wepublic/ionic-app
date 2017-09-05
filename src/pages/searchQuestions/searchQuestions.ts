@@ -56,7 +56,9 @@ export class SearchQuestionsPage {
         /* Filter questions with all tags */
         .filter(question => this.selectedTags.every(t => question.tags.includes(t)))
         /* Filter duplicate questions */
-        .filter(question => seen.includes(question.id) ? false : seen.push(question.id));
+        .filter(question => seen.includes(question.id) ? false : seen.push(question.id))
+        /* Filter closed questions */
+        .filter(question => !question.closed);
         this.questions.sort((a, b) => b.upvotes - a.upvotes);
         this.refresher.complete();
       },
