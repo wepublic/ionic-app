@@ -23,7 +23,7 @@ export class LoginPage {
               private notifier: TranslatedNotificationController, private userService: UserServiceProvider) {
     this.authForm = fb.group({
       'email': ['', Validators.compose([Validators.required])],
-      'password': ['', Validators.compose([Validators.required, Validators.minLength(8)])]
+      'password': ['', Validators.compose([Validators.required])]
     });
 
     this.email = this.authForm.controls['email'];
