@@ -20,24 +20,6 @@
       <ion-input type="password" [(ngModel)]="passwordRepeat">
       </ion-input>
     </ion-item>
-    <div class="subtitle">{{ 'SIGNUP.ABOUTYOU' | translate }}</div>
-    <ion-item class="input-item" no-lines>
-      <ion-label middle stacked>{{ 'SIGNUP.GENDER' | translate }}</ion-label>
-      <ion-select interface="popover" [(ngModel)]="sex">
-        <ion-option value="m">{{ 'SIGNUP.MALE' | translate }}</ion-option>
-        <ion-option value="w">{{ 'SIGNUP.FEMALE' | translate }}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item class="input-item" no-lines>
-      <ion-label stacked>{{ 'SIGNUP.YEARLABEL' | translate }}</ion-label>
-      <ion-datetime displayFormat="YYYY" [(ngModel)]="birthYear"></ion-datetime>
-    </ion-item>
-    <ion-item class="input-item" no-lines>
-      <ion-label stacked>{{ 'SIGNUP.PLZLABEL1' | translate }}</ion-label>
-      <ion-label class="label-small" stacked>{{ 'SIGNUP.PLZLABEL2' | translate }}</ion-label>
-      <ion-input [(ngModel)]="plz" type="number">
-      </ion-input>
-    </ion-item>
   </ion-list>
   <ion-label class="notice">
     {{ 'SIGNUP.CONFIRMLABEL1' | translate }}

@@ -52,7 +52,7 @@ export class SignUpPage {
     var loading = this.loadCtrl.create();
     loading.present();
     const username = this.email.replace(/@.*/i, "");
-    this.userService.createNewUser(username, this.email, this.password, this.sex, this.birthYear, this.plz)
+    this.userService.createNewUser(username, this.email, this.password)
     .subscribe(() => {
       loading.dismiss();
       this.alertCtrl.create({

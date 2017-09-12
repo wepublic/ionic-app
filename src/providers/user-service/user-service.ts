@@ -26,17 +26,14 @@ export class UserServiceProvider {
     .map(res => res.json());
   }
 
-  createNewUser(username: string, email: string, password: string, sex, birthYear, plz) {
+  createNewUser(username: string, email: string, password: string) {
     console.log("Create user " + username);
     const headers = new Headers({ 'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: headers });
     var toSend = {
       email: email,
       password: password,
-      username: username,
-      zip_code: plz,
-      gender: sex,
-      year_of_birth: birthYear
+      username: username
     };
     var res = this.http.post(API_ENDPOINT + '/Users/', JSON.stringify(toSend), options).share();
     res.subscribe(
